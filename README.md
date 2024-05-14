@@ -19,6 +19,10 @@ This repository offers exam practice for the AZ-800 exam. It includes approximat
 5. Use the sub-questions to further explore any concepts you find challenging.
 6. Repeat this process until you feel comfortable with the material.
 
+## How to use this code
+
+![How to Use This Code](https://raw.githubusercontent.com/pc-aide/az-800/main/HowToUseThisCode.png)
+
 ## Contributions
 
 Contributions in the form of new questions, corrections, or enhancements are welcome. Feel free to open an issue or submit a pull request.
@@ -36,4 +40,3 @@ If you find this resource helpful and would like to support its continued develo
 ---
 
 *Note: This repository and its contents are not affiliated with Microsoft Corporation. The provided resources are intended to assist candidates in preparing for the AZ-800 exam but do not guarantee success on the exam.*
-
