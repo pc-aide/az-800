@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 6</title>
+    <style>
+        .highlight {
+            background-color: yellow;
+        }
+
+        .incorrect {
+            color: red;
+        }
+
+        #solutionInfo6 {
+            display: none; /* Cacher par défaut */
+            margin-bottom: 10px;
+        }
+
+        .answer-area {
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .question-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Question 6</h1>
+    <p>You have an Azure Active Directory Domain Services (Azure AD DS) domain.<br>
+    You create a new user named Admin1.<br>
+    You need Admin1 to deploy custom Group Policy settings to all the computers in the domain. The solution must use the principle of least privilege.<br>
+    What should you include in the solution? To answer, select the appropriate options in the answer area.<br><br/>
+    NOTE: Each correct selection is worth one point.</p>
+
+    <div class="answer-area">
+        <div class="question-row">
+            <span>Add Admin1 to the following group:</span>
+            <select data-answer="1">
+                <option value="AAD DC Administrators">AAD DC Administrators</option>
+                <option value="Domain Admins">Domain Admins</option>
+                <option value="Group Policy Creator Owners">Group Policy Creator Owners</option>
+            </select>
+        </div>
+
+        <div class="question-row">
+            <span>Instruct Admin1 to apply the custom Group Policy settings by:</span>
+            <select data-answer="2">
+                <option value="Creating a new GPO & linking the GPO to the domain">Creating a new GPO and linking the GPO to the domain</option>
+                <option value="Modifying AADDC Computers GPO">Modifying AADDC Computers GPO</option>
+                <option value="Modifying the default domain GPO">Modifying the default domain GPO</option>
+            </select>
+        </div>
+    </div>
+
+    <div id="solutionInfo6"></div> <!-- Div pour afficher la réponse -->
+
+    <button class="solutionButton" data-solution-info-id="solutionInfo6" data-correct-answer="Group Policy Creator Owners,Creating a new Group Policy Object (GPO) and linking the GPO to the domain" data-answer-name="answer6" data-solution-text="Solution: 1. Group Policy Creator Owners, 2. Creating a new Group Policy Object (GPO) and linking the GPO to the domain">Solution</button>
+
+    <script>
+        // Pas besoin d'ajouter du script ici car la logique est gérée par index.html
+    </script>
+</body>
+</html>

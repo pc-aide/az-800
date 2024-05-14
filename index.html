@@ -36,7 +36,7 @@
 
     <script>
         var score = 0; // Initialiser le score à 0
-        var totalQuestions = 5; // Nombre total de questions (change this number based on how many questions you have)
+        var totalQuestions = 6; // Nombre total de questions
 
         function enableDragAndDrop() {
             const draggables = document.querySelectorAll('.draggable');
@@ -53,11 +53,6 @@
                 dropzone.addEventListener('dragover', (e) => {
                     e.preventDefault();
                     e.dataTransfer.dropEffect = 'move';
-                    dropzone.classList.add('highlight');
-                });
-
-                dropzone.addEventListener('dragleave', () => {
-                    dropzone.classList.remove('highlight');
                 });
 
                 dropzone.addEventListener('drop', (e) => {
@@ -67,7 +62,6 @@
                     if (draggedElement) {
                         e.target.textContent = draggedElement.textContent;
                         e.target.dataset.action = data;
-                        dropzone.classList.remove('highlight');
                     }
                 });
             });
@@ -116,6 +110,34 @@
                             solutionInfo.innerHTML = solutionText + "<br>Your Answer: " + userAnswer.map(action => {
                                 return document.querySelector(`.draggable[data-action='${action}']`).textContent;
                             }).join(', ');
+                            solutionInfo.style.display = 'block';
+
+                            if (isCorrect) {
+                                solutionInfo.classList.add('highlight');
+                                score += 1; // Ajouter un point si la réponse est correcte
+                            } else {
+                                solutionInfo.innerHTML = "Your answer is incorrect. " + solutionInfo.innerHTML;
+                                solutionInfo.classList.add('incorrect');
+                            }
+
+                            showFinalScore();
+                        } else if (this.dataset.answerName === 'answer6') {
+                            // Logique spécifique pour la question 6
+                            const select1 = document.querySelector('select[data-answer="1"]').value;
+                            const select2 = document.querySelector('select[data-answer="2"]').value;
+                            const userAnswer = [select1, select2];
+                            const correctAnswerArray = correctAnswer.split(',');
+
+                            let isCorrect = true;
+                            userAnswer.forEach((answer, index) => {
+                                if (answer !== correctAnswerArray[index]) {
+                                    isCorrect = false;
+                                }
+                            });
+
+                            const solutionText = this.dataset.solutionText;
+                            const solutionInfo = document.getElementById(solutionInfoId);
+                            solutionInfo.innerHTML = solutionText + "<br>Your Answer: " + userAnswer.join(', ');
                             solutionInfo.style.display = 'block';
 
                             if (isCorrect) {
