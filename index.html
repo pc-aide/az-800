@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questionnaire</title>
+    <style>
+        .highlight {
+            background-color: yellow;
+        }
+
+        .incorrect {
+            color: red;
+        }
+
+        #solutionInfo {
+            display: none; /* Cacher par défaut */
+            margin-bottom: 10px;
+        }
+
+        #finalScore {
+            font-size: larger;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Questionnaire</h1>
+
+    <h2 id="finalScoreHeader"></h2> <!-- Afficher le score final dans le header -->
+
+    <div id="questionContainer"></div> <!-- Div pour afficher le contenu des questions -->
+
+    <div id="finalScore"></div> <!-- Div pour afficher le score final -->
+
+    <script>
+        var score = 0; // Initialiser le score à 0
+        var totalQuestions = 5; // Nombre total de questions (change this number based on how many questions you have)
+
+        function enableDragAndDrop() {
+            const draggables = document.querySelectorAll('.draggable');
+            const dropzones = document.querySelectorAll('.dropzone');
+
+            draggables.forEach(draggable => {
+                draggable.addEventListener('dragstart', (e) => {
+                    e.dataTransfer.setData('text/plain', e.target.dataset.action);
+                    e.dataTransfer.effectAllowed = 'move';
+                });
+            });
+
+            dropzones.forEach(dropzone => {
+                dropzone.addEventListener('dragover', (e) => {
+                    e.preventDefault();
+                    e.dataTransfer.dropEffect = 'move';
+                    dropzone.classList.add('highlight');
+                });
+
+                dropzone.addEventListener('dragleave', () => {
+                    dropzone.classList.remove('highlight');
+                });
+
+                dropzone.addEventListener('drop', (e) => {
+                    e.preventDefault();
+                    const data = e.dataTransfer.getData('text/plain');
+                    const draggedElement = document.querySelector(`.draggable[data-action='${data}']`);
+                    if (draggedElement) {
+                        e.target.textContent = draggedElement.textContent;
+                        e.target.dataset.action = data;
+                        dropzone.classList.remove('highlight');
+                    }
+                });
+            });
+        }
+
+        function executeQuestionScripts() {
+            const scripts = document.querySelectorAll('#questionContainer script');
+            scripts.forEach(script => {
+                const newScript = document.createElement('script');
+                newScript.textContent = script.textContent;
+                document.body.appendChild(newScript);
+                script.remove();
+            });
+        }
+
+        function loadQuestion(url, callback) {
+            return fetch(url)
+            .then(response => response.text())
+            .then(data => {
+                var questionContainer = document.createElement('div');
+                questionContainer.innerHTML = data;
+                document.getElementById('questionContainer').appendChild(questionContainer);
+                callback(); // Appeler la fonction de rappel après le chargement de la question
+
+                // Re-attacher les écouteurs d'événements pour chaque bouton "Solution"
+                var solutionButtons = questionContainer.querySelectorAll('.solutionButton');
+                solutionButtons.forEach(button => {
+                    button.addEventListener('click', function() {
+                        var solutionInfoId = this.dataset.solutionInfoId;
+                        var correctAnswer = this.dataset.correctAnswer;
+                        if (this.dataset.answerName === 'answer5') {
+                            // Logique spécifique pour la question 5
+                            const dropzones = document.querySelectorAll('.dropzone');
+                            let isCorrect = true;
+                            const userAnswer = Array.from(dropzones).map(dropzone => dropzone.dataset.action);
+                            const correctAnswerArray = correctAnswer.split(',');
+
+                            userAnswer.forEach((answer, index) => {
+                                if (answer !== correctAnswerArray[index]) {
+                                    isCorrect = false;
+                                }
+                            });
+
+                            const solutionText = this.dataset.solutionText;
+                            const solutionInfo = document.getElementById(solutionInfoId);
+                            solutionInfo.innerHTML = solutionText + "<br>Your Answer: " + userAnswer.map(action => {
+                                return document.querySelector(`.draggable[data-action='${action}']`).textContent;
+                            }).join(', ');
+                            solutionInfo.style.display = 'block';
+
+                            if (isCorrect) {
+                                solutionInfo.classList.add('highlight');
+                                score += 1; // Ajouter un point si la réponse est correcte
+                            } else {
+                                solutionInfo.innerHTML = "Your answer is incorrect. " + solutionInfo.innerHTML;
+                                solutionInfo.classList.add('incorrect');
+                            }
+
+                            showFinalScore();
+                        } else {
+                            // Logique pour les autres questions (1 à 4)
+                            var selectedAnswer = document.querySelector('input[name="' + this.dataset.answerName + '"]:checked');
+                            if (selectedAnswer && selectedAnswer.value === correctAnswer) {
+                                score += 1; // Ajouter un point si la réponse est correcte
+                                var solutionText = this.dataset.solutionText;
+                                var highlightedAnswer = document.createElement('div');
+                                highlightedAnswer.innerHTML = solutionText;
+                                highlightedAnswer.classList.add('highlight'); // Ajouter la classe de surlignage
+                                document.getElementById(solutionInfoId).textContent = ""; // Effacer tout contenu précédent
+                                document.getElementById(solutionInfoId).appendChild(highlightedAnswer); // Afficher la réponse au-dessus du bouton Solution
+                                document.getElementById(solutionInfoId).style.display = 'block'; // Afficher l'info
+                            } else {
+                                var incorrectMessage = document.createElement('div');
+                                incorrectMessage.textContent = "Your answer is incorrect. Please select the correct answer to see the solution.";
+                                incorrectMessage.classList.add('incorrect');
+                                document.getElementById(solutionInfoId).textContent = ""; // Effacer tout contenu précédent
+                                document.getElementById(solutionInfoId).appendChild(incorrectMessage); // Afficher le message d'erreur
+                                document.getElementById(solutionInfoId).style.display = 'block'; // Afficher l'info
+                            }
+                            showFinalScore();
+                        }
+                    });
+                });
+            });
+        }
+
+        function showFinalScore() {
+            var percentage = (score / totalQuestions) * 100; // Calculer le score en pourcentage
+            document.getElementById('finalScore').textContent = "Final Score: " + score + "/" + totalQuestions + " (" + percentage.toFixed(2) + "%)";
+            document.getElementById('finalScoreHeader').textContent = "Final Score: " + score + "/" + totalQuestions + " (" + percentage.toFixed(2) + "%)"; // Afficher le score final dans le header
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            for (var i = 1; i <= totalQuestions; i++) {
+                loadQuestion('question' + i + '.html', () => {
+                    enableDragAndDrop();
+                    executeQuestionScripts();
+                });
+            }
+        });
+    </script>
+</body>
+</html>
