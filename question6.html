@@ -60,10 +60,42 @@
 
     <div id="solutionInfo6"></div> <!-- Div pour afficher la réponse -->
 
-    <button class="solutionButton" data-solution-info-id="solutionInfo6" data-correct-answer="Group Policy Creator Owners,Creating a new Group Policy Object (GPO) and linking the GPO to the domain" data-answer-name="answer6" data-solution-text="Solution: 1. Group Policy Creator Owners, 2. Creating a new Group Policy Object (GPO) and linking the GPO to the domain">Solution</button>
+    <button class="solutionButton" data-solution-info-id="solutionInfo6" data-correct-answer="AAD DC Administrators,Modifying AADDC Computers GPO" data-answer-name="answer6" data-solution-text="Solution: 1. AAD DC Administrators, 2. Modifying AADDC Computers GPO">Solution</button>
 
     <script>
-        // Pas besoin d'ajouter du script ici car la logique est gérée par index.html
+        document.addEventListener('DOMContentLoaded', function() {
+            const solutionButton = document.querySelector('.solutionButton');
+            solutionButton.addEventListener('click', function() {
+                const solutionInfoId = this.dataset.solutionInfoId;
+                const correctAnswer = this.dataset.correctAnswer.split(',');
+                const userAnswer = [
+                    document.querySelector('select[data-answer="1"]').value,
+                    document.querySelector('select[data-answer="2"]').value
+                ];
+
+                const solutionText = this.dataset.solutionText;
+                const solutionInfo = document.getElementById(solutionInfoId);
+
+                let isCorrect = true;
+                userAnswer.forEach((answer, index) => {
+                    if (answer !== correctAnswer[index]) {
+                        isCorrect = false;
+                    }
+                });
+
+                if (isCorrect) {
+                    solutionInfo.innerHTML = solutionText + "<br>Your Answer: " + userAnswer.join(', ');
+                    solutionInfo.classList.add('highlight');
+                    window.score += 1; // Ajouter un point si la réponse est correcte
+                } else {
+                    solutionInfo.innerHTML = "Your answer is incorrect. Please select the correct answer to see the solution.";
+                    solutionInfo.classList.add('incorrect');
+                }
+
+                solutionInfo.style.display = 'block';
+                window.showFinalScore();
+            });
+        });
     </script>
 </body>
 </html>

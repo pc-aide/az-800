@@ -131,19 +131,18 @@
 
                 const solutionText = this.dataset.solutionText;
                 const solutionInfo = document.getElementById(solutionInfoId);
-                solutionInfo.innerHTML = solutionText + "<br>Your Answer: " + userAnswer.map(action => {
-                    return document.querySelector(`.draggable[data-action='${action}']`).textContent;
-                }).join(', ');
-                solutionInfo.style.display = 'block';
-
                 if (isCorrect) {
+                    solutionInfo.innerHTML = solutionText;
                     solutionInfo.classList.add('highlight');
                     score += 1; // Ajouter un point si la réponse est correcte
                 } else {
-                    solutionInfo.innerHTML = "Your answer is incorrect. " + solutionInfo.innerHTML;
+                    solutionInfo.innerHTML = "Your answer is incorrect. " + solutionText + "<br>Your Answer: " + userAnswer.map(action => {
+                        return document.querySelector(`.draggable[data-action='${action}']`).textContent;
+                    }).join(', ');
                     solutionInfo.classList.add('incorrect');
                 }
 
+                solutionInfo.style.display = 'block';
                 showFinalScore();
             });
 
