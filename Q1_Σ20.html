@@ -134,13 +134,13 @@
                     <input type="radio" id="optionA" name="answer4" value="A">
                     <label for="optionA">A. AAD DC Administrators</label><br>
                     <input type="radio" id="optionB" name="answer4" value="B">
-                    <label for="optionB">B. Domain Admins</label><br>
+                    <label for="optionB">Domain Admins</label><br>
                     <input type="radio" id="optionC" name="answer4" value="C">
-                    <label for="optionC">C. Schema Admins</label><br>
+                    <label for="optionC">Schema Admins</label><br>
                     <input type="radio" id="optionD" name="answer4" value="D">
-                    <label for="optionD">D. Enterprise Admins</label><br>
+                    <label for="optionD">Enterprise Admins</label><br>
                     <input type="radio" id="optionE" name="answer4" value="E">
-                    <label for="optionE">E. Group Policy Creator Owners</label><br>
+                    <label for="optionE">Group Policy Creator Owners</label><br>
                 </fieldset>
             </form>
 
@@ -264,13 +264,82 @@
 
             <button class="solutionButton" data-solution-info-id="solutionInfo7" data-correct-answer="2,4,1" data-answer-name="answer7" data-solution-text="Solution: 1. Create a site & a subnet, 2. Pre-create an RODC account, 3. Instruct user1 to run the AD DS installation Wizard on Server1">Solution</button>
         </div>
+
+        <!-- Contenu de question8 ajouté -->
+        <div>
+            <h1>Question 8</h1>
+            <p>Your network contains an Active Directory Domain Services (AD DS) domain. The network also contains 20 domain controllers, 100 member servers, and 100 client computers.<br><br>
+            You have a Group Policy Object (GPO) named GPO1 that contains Group Policy preferences.<br>
+            You plan to link GPO1 to the domain.<br><br>
+            You need to ensure that the preference in GPO1 apply only to domain member servers and NOT to domain controllers or client computers. All the other Group
+            Policy settings in GPO1 must apply to all the computers. The solution must minimize administrative effort.<br><br>
+            Which type of item level targeting should you use?</p>
+
+            <form action="#">
+                <fieldset>
+                    <legend>Select the appropriate type:</legend>
+                    <input type="radio" id="domain" name="answer8" value="Domain">
+                    <label for="domain">A. Domain</label><br>
+                    <input type="radio" id="os" name="answer8" value="Operating System">
+                    <label for="os">B. Operating System</label><br>
+                    <input type="radio" id="securityGroup" name="answer8" value="Security Group">
+                    <label for="securityGroup">C. Security Group</label><br>
+                    <input type="radio" id="envVar" name="answer8" value="Environment Variable">
+                    <label for="envVar">D. Environment Variable</label><br>
+                </fieldset>
+            </form>
+
+            <div id="solutionInfo8"></div> <!-- Div pour afficher la réponse -->
+
+            <button class="solutionButton" data-solution-info-id="solutionInfo8" data-correct-answer="Operating System" data-answer-name="answer8" data-solution-text="Solution: B. Operating System<br><br>OS targeting is correct only because there is an item under OS targeting called 'Computer Role' which has options to select 'Workstation', 'Member Srv' or 'Domain Controller.'<br><br/>For reference: <a href='https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/dn789189(v=ws.11)#operating-system-targeting' target='_blank'>https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/dn789189(v=ws.11)#operating-system-targeting</a>">Solution</button>
+        </div>
+
+        <!-- Contenu de question9 ajouté -->
+        <div>
+            <h1>Question 9</h1>
+            <p>You deploy a new Active Directory Domain Services (AD DS) forest named contoso.com. The domain contains three domain controllers named DC1, DC2, and DC3.<br><br>
+            You rename Default-First-Site-Name as Site1.<br>
+            You plan to ship DC1, DC2, and DC3 to datacenters in different locations.<br>
+            You need to configure replication between DC1, DC2, and DC3 to meet the following requirements:<br><br>
+            ✑ Each domain controller must reside in its own Active Directory site.<br>
+            ✑ The replication schedule between each site must be controlled independently.<br>
+            ✑ Interruptions to replication must be minimized.<br><br>
+            Which three actions should you perform in sequence in the Active Directory Sites and Services console? To answer, move the appropriate actions from the list of actions to the answer area and arrange them in the correct order.<br><br>
+            Select and Place:</p>
+
+            <div class="container">
+                <div class="actions">
+                    <h3>Actions:</h3>
+                    <div id="actionsList9">
+                        <div class="draggable" draggable="true" data-action="1">Create a connection object between DC1 & DC2</div>
+                        <div class="draggable" draggable="true" data-action="2">Create an additional site link that contains Site1 & Site2</div>
+                        <div class="draggable" draggable="true" data-action="3">Create two additional sites named Site2 & Site3. Move DC2 to Site2 & DC3 to Site3</div>
+                        <div class="draggable" draggable="true" data-action="4">Create a connection object between DC2 & DC3</div>
+                        <div class="draggable" draggable="true" data-action="5">Remove Site2 from DEFAULTIPSITELINK</div>
+                    </div>
+                </div>
+
+                <div class="answers">
+                    <h3>Answer Area:</h3>
+                    <div id="answerArea9">
+                        <div class="dropzone" data-answer-slot="1">Drop Action Here</div>
+                        <div class="dropzone" data-answer-slot="2">Drop Action Here</div>
+                        <div class="dropzone" data-answer-slot="3">Drop Action Here</div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="solutionInfo9"></div> <!-- Div pour afficher la réponse -->
+
+            <button class="solutionButton" data-solution-info-id="solutionInfo9" data-correct-answer="3,2,5" data-answer-name="answer9" data-solution-text="Solution: 1. Create two additional sites named Site2 & Site3. Move DC2 to Site2 & DC3 to Site3, 2. Create an additional site link that contains Site1 & Site2, 3. Remove Site2 from DEFAULTIPSITELINK">Solution</button>
+        </div>
     </div> <!-- Fin du div questionContainer -->
 
     <div id="finalScore"></div> <!-- Div pour afficher le score final -->
 
     <script>
         var score = 0; // Initialiser le score à 0
-        var totalQuestions = 7; // Nombre total de questions
+        var totalQuestions = 9; // Nombre total de questions
 
         function enableDragAndDrop() {
             document.querySelectorAll('.actions').forEach(container => {
@@ -326,11 +395,13 @@
                     var correctAnswer = this.dataset.correctAnswer.split(',');
                     let isCorrect = true;
 
-                    if (this.dataset.answerName === 'answer5' || this.dataset.answerName === 'answer7') {
-                        // Logique spécifique pour les questions 5 et 7
+                    if (this.dataset.answerName === 'answer5' || this.dataset.answerName === 'answer7' || this.dataset.answerName === 'answer9') {
+                        // Logique spécifique pour les questions 5, 7 et 9
                         const dropzones = this.dataset.answerName === 'answer5' 
                             ? document.querySelectorAll('#answerArea5 .dropzone') 
-                            : document.querySelectorAll('#answerArea7 .dropzone');
+                            : (this.dataset.answerName === 'answer7'
+                                ? document.querySelectorAll('#answerArea7 .dropzone')
+                                : document.querySelectorAll('#answerArea9 .dropzone'));
                         const userAnswer = Array.from(dropzones).map(dropzone => dropzone.dataset.action);
 
                         userAnswer.forEach((answer, index) => {
@@ -345,7 +416,9 @@
                             solutionInfo.innerHTML = solutionText + "<br>Your Answer: " + userAnswer.map(action => {
                                 return this.dataset.answerName === 'answer5' 
                                     ? document.querySelector(`#actionsList5 .draggable[data-action='${action}']`).textContent
-                                    : document.querySelector(`#actionsList7 .draggable[data-action='${action}']`).textContent;
+                                    : (this.dataset.answerName === 'answer7'
+                                        ? document.querySelector(`#actionsList7 .draggable[data-action='${action}']`).textContent
+                                        : document.querySelector(`#actionsList9 .draggable[data-action='${action}']`).textContent);
                             }).join(', ');
                             solutionInfo.classList.add('highlight');
                             score += 1; // Ajouter un point si la réponse est correcte
@@ -382,7 +455,7 @@
                         solutionInfo.style.display = 'block';
                         showFinalScore();
                     } else {
-                        // Logique pour les autres questions (1 à 4)
+                        // Logique pour les autres questions (1 à 4 et 8)
                         var selectedAnswer = document.querySelector('input[name="' + this.dataset.answerName + '"]:checked');
                         if (selectedAnswer && selectedAnswer.value === correctAnswer[0]) {
                             score += 1; // Ajouter un point si la réponse est correcte
