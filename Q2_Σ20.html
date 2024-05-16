@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questionnaire</title>
+    <style>
+        .highlight {
+            background-color: yellow;
+        }
+
+        .incorrect {
+            color: red;
+        }
+
+        #solutionInfo {
+            display: none; /* Cacher par défaut */
+            margin-bottom: 10px;
+        }
+
+        #finalScore {
+            font-size: larger;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .actions, .answers {
+            width: 45%;
+        }
+
+        .dropzone {
+            width: 100%;
+            min-height: 50px;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px dashed #ccc;
+            background-color: #f9f9f9;
+        }
+
+        .draggable {
+            padding: 8px;
+            margin: 5px;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            cursor: move;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .answer-area {
+            margin-top: 20px;
+        }
+
+        .question-row {
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Questionnaire</h1>
+
+    <h2 id="finalScoreHeader"></h2> <!-- Afficher le score final dans le header -->
+
+    <div id="questionContainer">
+        <!-- Contenu de question1.html -->
+        <div>
+            <h1>Question 1</h1>
+            <h2>Your network contains an Active Directory Domain Services (AD DS) domain named contoso.com. You need to identify which server is the PDC emulator for the domain.</h2>
+            <p><strong>Solution:</strong> From Active Directory Domains and Trusts, you right-click Active Directory Domains and Trusts in the console tree, and then select Operations Master.</p>
+
+            <form action="#">
+                <fieldset>
+                    <legend>Does this meet the goal?</legend>
+                    <input type="radio" id="yes1" name="answer1" value="yes">
+                    <label for="yes1">A. Yes</label><br>
+                    <input type="radio" id="no1" name="answer1" value="no">
+                    <label for="no1">B. No</label><br>
+                </fieldset>
+            </form>
+
+            <div id="solutionInfo1"></div> <!-- Div pour afficher la réponse -->
+
+            <button class="solutionButton" data-solution-info-id="solutionInfo1" data-correct-answer="no" data-answer-name="answer1" data-solution-text="<img src='https://raw.githubusercontent.com/pc-aide/Azure/main/az-800%3A%20Administering%20Windows%20Server%20Hybrid%20Core%20Infrastructure/Exam/Pre-Exam/Pra01_%CE%A320/PDC%20role.png' alt='PDC Role'><br><img src='https://raw.githubusercontent.com/pc-aide/Azure/main/az-800%3A%20Administering%20Windows%20Server%20Hybrid%20Core%20Infrastructure/Exam/Pre-Exam/Pra01_%CE%A320/PDC.png' alt='PDC Image'><br>Solution: B. No">Solution</button>
+        </div>
+
+        <!-- Contenu de question2.html -->
+        <div>
+            <h1>Question 2</h1>
+            <h2>Your network contains an Active Directory Domain Services (AD DS) forest named contoso.com. The forest root domain contains a server named server1.contoso.com.<br>
+            A two-way forest trust exists between the contoso.com forest and an AD DS forest named fabrikam.com. The fabrikam.com forest contains 10 child domains.<br>
+            You need to ensure that only the members of a group named fabrikam\Group1 can authenticate to server1.contoso.com.<br>
+            What should you do first?</h2>
+
+            <form action="#">
+                <fieldset>
+                    <legend>Select the appropriate option:</legend>
+                    <input type="radio" id="optionA" name="answer2" value="A">
+                    <label for="optionA">A. Add fabrikam\Group1 to the local Users group on server1.contoso.com.</label><br>
+                    <input type="radio" id="optionB" name="answer2" value="B">
+                    <label for="optionB">B. Enable SID filtering for the trust.</label><br>
+                    <input type="radio" id="optionC" name="answer2" value="C">
+                    <label for="optionC">C. Enable Selective authentication for the trust.</label><br>
+                    <input type="radio" id="optionD" name="answer2" value="D">
+                    <label for="optionD">D. Change the trust to a one-way external trust.</label><br>
+                </fieldset>
+            </form>
+
+            <div id="solutionInfo2"></div> <!-- Div pour afficher la réponse -->
+
+            <button class="solutionButton" data-solution-info-id="solutionInfo2" data-correct-answer="C" data-answer-name="answer2" data-solution-text="C. Enable Selective authentication for the trust<br><br>Explanation:<br>Selective authentication is a feature that allows administrators to control which users from a trusted domain can access resources in a trusting domain. To meet your requirement of allowing only members of fabrikam\Group1 to authenticate to server1.contoso.com, you would need to enable selective authentication for the trust between contoso.com and fabrikam.com and then configure it to allow authentication for only members of fabrikam\Group1. This way, only members of fabrikam\Group1 would be able to access server1.contoso.com, while other users from the fabrikam.com forest would be denied access.<br><br><img src='https://raw.githubusercontent.com/pc-aide/az-800/main/selectiveAuthentification.png' alt='Selective Authentication'><br>For reference: <a href='https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2003/cc755321(v=ws.10)' target='_blank'>Selective Authentication</a>">Solution</button>
+        </div>
+
+        <!-- Contenu de question3.html -->
+        <div>
+            <h1>Question 3</h1>
+            <h2>Your network contains an Active Directory forest. The forest contains two domains named contoso.com and east.contoso.com and the servers shown in the following table.</h2>
+
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Domain</th>
+                    <th>Configuration</th>
+                </tr>
+                <tr>
+                    <td>DC1</td>
+                    <td>contoso.com</td>
+                    <td>Domain controller</td>
+                </tr>
+                <tr>
+                    <td>Server1</td>
+                    <td>contoso.com</td>
+                    <td>Member server</td>
+                </tr>
+                <tr>
+                    <td>DC2</td>
+                    <td>east.contoso.com</td>
+                    <td>Domain controller</td>
+                </tr>
+                <tr>
+                    <td>Server2</td>
+                    <td>east.contoso.com</td>
+                    <td>Member server</td>
+                </tr>
+            </table>
+
+            <p>Contoso.com contains a user named User1.<br><br>
+            You add User1 to the built-in Backup Operators group in contoso.com.<br><br>
+            Which servers can User1 back up?</p>
+
+            <form action="#">
+                <fieldset>
+                    <legend>Select the appropriate option:</legend>
+                    <input type="radio" id="optionA" name="answer3" value="A">
+                    <label for="optionA">A. DC1 only</label><br>
+                    <input type="radio" id="optionB" name="answer3" value="B">
+                    <label for="optionB">B. Server1 only</label><br>
+                    <input type="radio" id="optionC" name="answer3" value="C">
+                    <label for="optionC">C. DC1 and DC2 only</label><br>
+                    <input type="radio" id="optionD" name="answer3" value="D">
+                    <label for="optionD">D. DC1 and Server1 only</label><br>
+                    <input type="radio" id="optionE" name="answer3" value="E">
+                    <label for="optionE">E. DC1, DC2, Server1, and Server2</label><br>
+                </fieldset>
+            </form>
+
+            <div id="solutionInfo3"></div> <!-- Div pour afficher la réponse -->
+
+            <button class="solutionButton" data-solution-info-id="solutionInfo3" data-correct-answer="A" data-answer-name="answer3" data-solution-text="A. DC1 only<br><br>Explanation:<br>The 'Backup Operators' group is a built-in group that is local to each domain controller or member server. When you add User1 to the 'Backup Operators' group in contoso.com, they are only granted backup permissions for resources within the contoso.com domain. They will not have backup permissions in the east.contoso.com domain or on any servers within it.<br>For reference: <a href='https://serverfault.com/questions/1061814/how-to-make-domain-user-for-backup-be-part-of-backup-operators-group-on-one-clie' target='_blank'>How to make domain user for backup be part of Backup Operators group on one client only?</a>">Solution</button>
+        </div>
+
+        <!-- Contenu de question4.html -->
+        <div>
+            <h1>Question 4</h1>
+            <p>Your network contains an Azure Active Directory Domain Services (Azure AD DS) domain named contoso.com.<br><br>
+            You need to configure a password policy for the local user accounts on the Azure virtual machines joined to contoso.com.<br><br>
+            What should you do? To answer, select the appropriate options in the answer area.<br><br>
+            NOTE: Each correct selection is worth one point.</p>
+
+            <div class="answer-area">
+                <div class="question-row">
+                    <span>Sign in by using a user account that is member of the:</span>
+                    <select data-answer="1" id="select4Option1">
+                        <option value="AAD DC Administrators group">AAD DC Administrators group</option>
+                        <option value="Administrators group">Administrators group</option>
+                        <option value="Domain Admins group">Domain Admins group</option>
+                    </select>
+                </div>
+
+                <div class="question-row">
+                    <span>Use a GPO linked to the:</span>
+                    <select data-answer="2" id="select4Option2">
+                        <option value="AADDC Computers OU">AADDC Computers OU</option>
+                        <option value="AADDC users OU">AADDC users OU</option>
+                        <option value="Computers container">Computers container</option>
+                    </select>
+                </div>
+            </div>
+
+            <div id="solutionInfo4"></div> <!-- Div pour afficher la réponse -->
+
+            <button class="solutionButton" data-solution-info-id="solutionInfo4" data-correct-answer="AAD DC Administrators group,AADDC Computers OU" data-answer-name="answer4" data-solution-text="Solution: 1. AAD DC Administrators group, 2. AADDC Computers OU<br><br>Explanation:<br>You need this permission to be able to login on the Azure AD domain controller<br>Password policy is a computer policy<br>For reference: <a href='https://learn.microsoft.com/en-us/entra/identity/domain-services/manage-group-policy' target='_blank'>Manage Group Policy</a>">Solution</button>
+        </div>
+
+        <!-- Contenu de question5 intégré directement -->
+        <div>
+            <h1>Question 5</h1>
+            <p>Your network contains an Active Directory Domain Services (AD DS) forest. The forest contains three domains. Each domain contains 10 domain controllers.<br><br>
+            You plan to store a DNS zone in a custom Active Directory partition.<br><br>
+            You need to create the Active Directory partition for the zone. The partition must replicate to only four of the domain controllers.<br><br>
+            What should you use?</p>
+
+            <form action="#">
+                <fieldset>
+                    <legend>Select the appropriate option:</legend>
+                    <input type="radio" id="optionA" name="answer5" value="A">
+                    <label for="optionA">A. Windows Admin Center</label><br>
+                    <input type="radio" id="optionB" name="answer5" value="B">
+                    <label for="optionB">B. DNS Manager</label><br>
+                    <input type="radio" id="optionC" name="answer5" value="C">
+                    <label for="optionC">C. Active Directory Sites and Services</label><br>
+                    <input type="radio" id="optionD" name="answer5" value="D">
+                    <label for="optionD">D. ntdsutil.exe</label><br>
+                </fieldset>
+            </form>
+
+            <div id="solutionInfo5"></div> <!-- Div pour afficher la réponse -->
+
+            <button class="solutionButton" data-solution-info-id="solutionInfo5" data-correct-answer="D" data-answer-name="answer5" data-solution-text="Solution: D. ntdsutil.exe<br><br>Explanation:<br>To create an Active Directory partition that replicates to only four of the domain controllers, you would use ntdsutil.exe.<br>Steps:<br>1. ntdsutil<br>2. domain management<br>3. connections<br>4. connect to server <server_name><br>5. quit<br>6. create nc <partition_name> applicationDirectoryPartition<br>7. quit<br>For reference: <a href='https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/cc730970(v=ws.11)' target='_blank'>Create an application directory partition</a><br>For reference: <a href='https://techdirectarchive.com/2022/01/26/ad-ds-partition-create-and-delete-with-ntdsutil-exe/' target='_blank'>Create and delete AD DS partition with ntdsutil.exe</a>">Solution</button>
+        </div>
+
+        <!-- Contenu de question6 ajouté -->
+        <div>
+            <h1>Question 6</h1>
+            <p>Your network contains an Active Directory domain named contoso.com. The domain contains the computers shown in the following table.</p>
+
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>OS</th>
+                </tr>
+                <tr>
+                    <td>Computer1</td>
+                    <td>Windows 11</td>
+                </tr>
+                <tr>
+                    <td>Server1</td>
+                    <td>Windows Server 2016</td>
+                </tr>
+                <tr>
+                    <td>Server2</td>
+                    <td>Windows Server 2019</td>
+                </tr>
+                <tr>
+                    <td>Server3</td>
+                    <td>Windows Server 2022</td>
+                </tr>
+            </table>
+
+            <p>On Server3, you create a Group Policy Object (GPO) named GPO1 and link GPO1 to contoso.com. GPO1 includes a shortcut preference named Shortcut1 that has item-level targeting configured as shown in the following exhibit.</p>
+
+            <img src='https://raw.githubusercontent.com/pc-aide/az-800/main/Targeting%20Editor.png' alt='Targeting Editor'>
+
+            <p>To which computer will Shortcut1 be applied?</p>
+
+            <form action="#">
+                <fieldset>
+                    <legend>Select the appropriate option:</legend>
+                    <input type="radio" id="optionA" name="answer6" value="A">
+                    <label for="optionA">A. Server3 only</label><br>
+                    <input type="radio" id="optionB" name="answer6" value="B">
+                    <label for="optionB">B. Computer1 and Server3 only</label><br>
+                    <input type="radio" id="optionC" name="answer6" value="C">
+                    <label for="optionC">C. Server2 and Server3 only</label><br>
+                    <input type="radio" id="optionD" name="answer6" value="D">
+                    <label for="optionD">D. Server1, Server2, and Server3 only</label><br>
+                </fieldset>
+            </form>
+
+            <div id="solutionInfo6"></div> <!-- Div pour afficher la réponse -->
+
+            <button class="solutionButton" data-solution-info-id="solutionInfo6" data-correct-answer="A" data-answer-name="answer6" data-solution-text="Solution: A. Server3 only">Solution</button>
+        </div>
+    </div> <!-- Fin du div questionContainer -->
+
+    <div id="finalScore"></div> <!-- Div pour afficher le score final -->
+
+    <script>
+        var score = 0; // Initialiser le score à 0
+        var totalQuestions = 6; // Nombre total de questions
+
+        function enableDragAndDrop() {
+            document.querySelectorAll('.actions').forEach(container => {
+                const draggables = container.querySelectorAll('.draggable');
+                const dropzones = container.nextElementSibling.querySelectorAll('.dropzone');
+
+                draggables.forEach(draggable => {
+                    draggable.addEventListener('dragstart', (e) => {
+                        e.dataTransfer.setData('text/plain', e.target.dataset.action);
+                        e.dataTransfer.effectAllowed = 'move';
+                    });
+                });
+
+                dropzones.forEach(dropzone => {
+                    dropzone.addEventListener('dragover', (e) => {
+                        e.preventDefault();
+                        e.dataTransfer.dropEffect = 'move';
+                        dropzone.classList.add('highlight');
+                    });
+
+                    dropzone.addEventListener('dragleave', () => {
+                        dropzone.classList.remove('highlight');
+                    });
+
+                    dropzone.addEventListener('drop', (e) => {
+                        e.preventDefault();
+                        const data = e.dataTransfer.getData('text/plain');
+                        const draggedElement = container.querySelector(`.draggable[data-action='${data}']`);
+                        if (draggedElement) {
+                            e.target.textContent = draggedElement.textContent;
+                            e.target.dataset.action = data;
+                            dropzone.classList.remove('highlight');
+                        }
+                    });
+                });
+            });
+        }
+
+        function showFinalScore() {
+            var percentage = (score / totalQuestions) * 100; // Calculer le score en pourcentage
+            document.getElementById('finalScore').textContent = "Final Score: " + score + "/" + totalQuestions + " (" + percentage.toFixed(2) + "%)";
+            document.getElementById('finalScoreHeader').textContent = "Final Score: " + score + "/" + totalQuestions + " (" + percentage.toFixed(2) + "%)"; // Afficher le score final dans le header
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            enableDragAndDrop();
+
+            // Re-attacher les écouteurs d'événements pour chaque bouton "Solution"
+            var solutionButtons = document.querySelectorAll('.solutionButton');
+            solutionButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    var solutionInfoId = this.dataset.solutionInfoId;
+                    var correctAnswer = this.dataset.correctAnswer.split(',');
+                    let isCorrect = true;
+
+                    if (this.dataset.answerName === 'answer5') {
+                        // Logique spécifique pour les questions 5
+                        const selectedAnswer = document.querySelector('input[name="' + this.dataset.answerName + '"]:checked');
+                        if (!selectedAnswer || selectedAnswer.value !== correctAnswer[0]) {
+                            isCorrect = false;
+                        }
+
+                        const solutionText = this.dataset.solutionText;
+                        const solutionInfo = document.getElementById(solutionInfoId);
+                        if (isCorrect) {
+                            solutionInfo.innerHTML = solutionText;
+                            solutionInfo.classList.add('highlight');
+                            score += 1; // Ajouter un point si la réponse est correcte
+                        } else {
+                            solutionInfo.innerHTML = "Your answer is incorrect. Please select the correct answer to see the solution.";
+                            solutionInfo.classList.add('incorrect');
+                        }
+
+                        solutionInfo.style.display = 'block';
+                        showFinalScore();
+                    } else if (this.dataset.answerName === 'answer4') {
+                        // Logique spécifique pour les questions 4
+                        const select1 = document.querySelector('#select4Option1').value;
+                        const select2 = document.querySelector('#select4Option2').value;
+                        const userAnswer = [select1, select2];
+                        
+                        userAnswer.forEach((answer, index) => {
+                            if (answer !== correctAnswer[index]) {
+                                isCorrect = false;
+                            }
+                        });
+
+                        const solutionText = this.dataset.solutionText;
+                        const solutionInfo = document.getElementById(solutionInfoId);
+                        if (isCorrect) {
+                            solutionInfo.innerHTML = solutionText;
+                            solutionInfo.classList.remove('incorrect');
+                            solutionInfo.classList.add('highlight');
+                            score += 1; // Ajouter un point si la réponse est correcte
+                        } else {
+                            solutionInfo.innerHTML = "Your answer is incorrect. Please select the correct answer to see the solution.";
+                            solutionInfo.classList.remove('highlight');
+                            solutionInfo.classList.add('incorrect');
+                        }
+
+                        solutionInfo.style.display = 'block';
+                        showFinalScore();
+                    } else {
+                        // Logique pour les autres questions (1 à 3, 6)
+                        var selectedAnswer = document.querySelector('input[name="' + this.dataset.answerName + '"]:checked');
+                        if (selectedAnswer && selectedAnswer.value === correctAnswer[0]) {
+                            score += 1; // Ajouter un point si la réponse est correcte
+                            var solutionText = this.dataset.solutionText;
+                            var highlightedAnswer = document.createElement('div');
+                            highlightedAnswer.innerHTML = solutionText;
+                            highlightedAnswer.classList.add('highlight'); // Ajouter la classe de surlignage
+                            document.getElementById(solutionInfoId).textContent = ""; // Effacer tout contenu précédent
+                            document.getElementById(solutionInfoId).appendChild(highlightedAnswer); // Afficher la réponse au-dessus du bouton Solution
+                            document.getElementById(solutionInfoId).style.display = 'block'; // Afficher l'info
+                        } else {
+                            var incorrectMessage = document.createElement('div');
+                            incorrectMessage.textContent = "Your answer is incorrect. Please select the correct answer to see the solution.";
+                            incorrectMessage.classList.add('incorrect');
+                            document.getElementById(solutionInfoId).textContent = ""; // Effacer tout contenu précédent
+                            document.getElementById(solutionInfoId).appendChild(incorrectMessage); // Afficher le message d'erreur
+                            document.getElementById(solutionInfoId).style.display = 'block'; // Afficher l'info
+                        }
+                        showFinalScore();
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
