@@ -549,7 +549,7 @@
 
             <div id="solutionInfo14"></div> <!-- Div pour afficher la réponse -->
 
-            <button class="solutionButton" data-solution-info-id="solutionInfo14" data-correct-answer="A" data-answer-name="answer14" data-solution-text="Solution: A. Device writeback<br><br>Device writeback is an optional feature in Azure AD Connect that allows the on-premises AD DS domain to receive information about the Azure AD joined devices, including the device registration state. By enabling this feature, you can ensure that the on-premises AD DS domain has information about the Azure AD joined devices, which is required for Windows Hello for Business to function correctly. Once this information is available in the on-premises AD DS domain, you can set the appropriate policies and configure the required infrastructure to support Windows Hello for Business.<br><br>Note: Windows Hello for Business is tied between a user and a device. Both the user and device need to be synchronized between Microsoft Entra ID and Active Directory. Device write-back is used to update the msDS-KeyCredentialLink attribute on the computer object.<br><br>For reference: <a href='https://docs.microsoft.com/en-us/windows/security/identity-protection/hello-for-business/hello-hybrid-cert-trust-prereqs' target='_blank'>Windows Hello for Business Hybrid Certificate Trust Prerequisites</a>">Solution</button>
+            <button class="solutionButton" data-solution-info-id="solutionInfo14" data-correct-answer="A" data-answer-name="answer14" data-solution-text="Solution: A. Device writeback<br><br>Device writeback is an optional feature in Azure AD Connect that allows the on-premises AD DS domain to receive information about the Azure AD joined devices, including the device registration state. By enabling this feature, you can ensure that the on-premises AD DS domain has information about the Azure AD joined devices, which is required for Windows Hello for Business to function correctly. Once this information is available in the on-premises AD DS domain, you can set the appropriate policies and configure the required infrastructure to support Windows Hello for Business.<br><br>Note: Windows Hello for Business is tied between a user and a device. Both the user and device need to be synchronized between Microsoft Entra ID and Active Directory. Device write-back is used to update the msDS-KeyCredentialLink attribute on the computer object.<br><br>For reference: <a href='https://docs.microsoft.com/en-us/windows/security/identity-protection/hello-for-business/hello-hybrid-cert-trust-prerequisites' target='_blank'>Windows Hello for Business Hybrid Certificate Trust Prerequisites</a>">Solution</button>
         </div>
 
         <!-- Contenu de question15 ajouté -->
@@ -664,13 +664,83 @@
 
             <button class="solutionButton" data-solution-info-id="solutionInfo18" data-correct-answer="B" data-answer-name="answer18" data-solution-text="Solution: B. No<br><br>Configuring the Try Next Closest Site Group Policy Object (GPO) setting in a GPO that is linked to Site1 will not ensure that the client computers in the new office are primarily authenticated by the domain controllers in Site1.<br><br>The Try Next Closest Site GPO setting controls how a client computer attempts to locate a domain controller if it is unable to locate one in its own site. It causes the client to try to find a domain controller in the next closest site, rather than trying to authenticate with a domain controller in a remote site.<br><br>To achieve the goal of ensuring that the client computers in the new office are primarily authenticated by the domain controllers in Site1, you would need to configure the site link and site link costs between Site1 and the new office site so that the new office site has a higher cost to communicate with other sites than Site1. This way, the clients will prefer to authenticate with the domain controllers in Site1.<br><br>For reference: <a href='https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/plan/enabling-clients-to-locate-the-next-closest-domain-controller' target='_blank'>Enabling Clients to Locate the Next Closest Domain Controller</a>">Solution</button>
         </div>
+
+        <!-- Contenu de question19 ajouté -->
+        <div>
+            <h1>Question 19</h1>
+            <p>Your network contains an Active Directory Domain Services (AD DS) domain named contoso.com.<br>
+            You need to identify which server is the PDC emulator for the domain.<br><br>
+            Solution: From Active Directory Sites and Services, you right-click Default-First-Site-Name in the console tree, and then select Properties.<br>
+            Does this meet the goal?</p>
+
+            <form action="#">
+                <fieldset>
+                    <legend>Select the appropriate type:</legend>
+                    <input type="radio" id="optionA" name="answer19" value="A">
+                    <label for="optionA">A. Yes</label><br>
+                    <input type="radio" id="optionB" name="answer19" value="B">
+                    <label for="optionB">B. No</label><br>
+                </fieldset>
+            </form>
+
+            <div id="solutionInfo19"></div> <!-- Div pour afficher la réponse -->
+
+            <button class="solutionButton" data-solution-info-id="solutionInfo19" data-correct-answer="B" data-answer-name="answer19" data-solution-text="Solution: B. No<br><br>1. Go to Active Directory Users and Computers.<br>2. Right-click on the Domain.<br>3. Select Operation masters.<br>4. Select PDC tab.<br><br>or see the solution 1">Solution</button>
+        </div>
+
+        <!-- Contenu de question20 ajouté -->
+        <div>
+            <h1>Question 20</h1>
+            <p>Your network contains a single-domain Active Directory Domain Services (AD DS) forest named contoso.com. The forest contains the servers shown in the following table.</p>
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td>DC1</td>
+                    <td>Domain Controller</td>
+                </tr>
+                <tr>
+                    <td>Server1</td>
+                    <td>Member server</td>
+                </tr>
+            </table>
+            <p>You plan to install a line-of-business (LOB) application on Server1. The application will install a custom Windows service.<br><br>
+            A new corporate security policy states that all custom Windows services must run under the context of a group managed service account (gMSA). You deploy a root key.<br><br>
+            You need to create, configure, and install the gMSA that will be used by the new application.<br>
+            Which two actions should you perform? Each correct answer presents part of the solution.<br><br>
+            NOTE: Each correct selection is worth one point</p>
+
+            <form action="#">
+                <fieldset>
+                    <legend>Select the appropriate type:</legend>
+                    <input type="checkbox" id="option20A" name="answer20" value="A">
+                    <label for="option20A">A. On Server1, run the setspn command.</label><br>
+                    <input type="checkbox" id="option20B" name="answer20" value="B">
+                    <label for="option20B">B. On DC1, run the New-ADServiceAccount cmdlet.</label><br>
+                    <input type="checkbox" id="option20C" name="answer20" value="C">
+                    <label for="option20C">C. On Server1, run the Install-ADServiceAccount cmdlet.</label><br>
+                    <input type="checkbox" id="option20D" name="answer20" value="D">
+                    <label for="option20D">D. On Server1, run the Get-ADServiceAccount cmdlet.</label><br>
+                    <input type="checkbox" id="option20E" name="answer20" value="E">
+                    <label for="option20E">E. On DC1, run the Set-ADComputer cmdlet.</label><br>
+                    <input type="checkbox" id="option20F" name="answer20" value="F">
+                    <label for="option20F">F. On DC1, run the Install-ADServiceAccount cmdlet.</label><br>
+                </fieldset>
+            </form>
+
+            <div id="solutionInfo20"></div> <!-- Div pour afficher la réponse -->
+
+            <button class="solutionButton" data-solution-info-id="solutionInfo20" data-correct-answer="B,C" data-answer-name="answer20" data-solution-text="Solution: B. On DC1, run the New-ADServiceAccount cmdlet<br>C. On Server1, run the Install-ADServiceAccount cmdlet<br><br>For reference: <a href='https://learn.microsoft.com/en-us/windows-server/security/group-managed-service-accounts/getting-started-with-group-managed-service-accounts' target='_blank'>Getting Started with Group Managed Service Accounts</a>">Solution</button>
+        </div>
     </div> <!-- Fin du div questionContainer -->
 
     <div id="finalScore"></div> <!-- Div pour afficher le score final -->
 
     <script>
         var score = 0; // Initialiser le score à 0
-        var totalQuestions = 18; // Nombre total de questions
+        var totalQuestions = 20; // Nombre total de questions
 
         function enableDragAndDrop() {
             document.querySelectorAll('.actions').forEach(container => {
@@ -756,10 +826,14 @@
 
                         solutionInfo.style.display = 'block';
                         showFinalScore();
-                    } else if (this.dataset.answerName === 'answer6') {
-                        // Logique spécifique pour la question 6
-                        const select1 = document.querySelector('#select6Admin1').value;
-                        const select2 = document.querySelector('#select6Admin2').value;
+                    } else if (this.dataset.answerName === 'answer6' || this.dataset.answerName === 'answer15') {
+                        // Logique spécifique pour les questions 6 et 15
+                        const select1 = this.dataset.answerName === 'answer6'
+                            ? document.querySelector('#select6Admin1').value
+                            : document.querySelector('#select15Admin1').value;
+                        const select2 = this.dataset.answerName === 'answer6'
+                            ? document.querySelector('#select6Admin2').value
+                            : document.querySelector('#select15Admin2').value;
                         const userAnswer = [select1, select2];
                         
                         userAnswer.forEach((answer, index) => {
@@ -783,17 +857,20 @@
 
                         solutionInfo.style.display = 'block';
                         showFinalScore();
-                    } else if (this.dataset.answerName === 'answer15') {
-                        // Logique spécifique pour la question 15
-                        const select1 = document.querySelector('#select15Admin1').value;
-                        const select2 = document.querySelector('#select15Admin2').value;
-                        const userAnswer = [select1, select2];
+                    } else if (this.dataset.answerName === 'answer20') {
+                        // Logique spécifique pour la question 20
+                        const selectedAnswers = document.querySelectorAll('input[name="' + this.dataset.answerName + '"]:checked');
+                        const userAnswer = Array.from(selectedAnswers).map(input => input.value);
                         
                         userAnswer.forEach((answer, index) => {
-                            if (answer !== correctAnswer[index]) {
+                            if (!correctAnswer.includes(answer)) {
                                 isCorrect = false;
                             }
                         });
+
+                        if (userAnswer.length !== correctAnswer.length) {
+                            isCorrect = false;
+                        }
 
                         const solutionText = this.dataset.solutionText;
                         const solutionInfo = document.getElementById(solutionInfoId);
@@ -811,7 +888,7 @@
                         solutionInfo.style.display = 'block';
                         showFinalScore();
                     } else {
-                        // Logique pour les autres questions (1 à 4, 8, 10, 11, 12, 14, 16, 17 et 18)
+                        // Logique pour les autres questions (1 à 4, 8, 10, 11, 12, 14, 16, 17, 18, 19)
                         var selectedAnswer = document.querySelector('input[name="' + this.dataset.answerName + '"]:checked');
                         if (selectedAnswer && selectedAnswer.value === correctAnswer[0]) {
                             score += 1; // Ajouter un point si la réponse est correcte
