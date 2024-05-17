@@ -83,22 +83,87 @@
         <!-- Contenu de question1.html -->
         <div>
             <h1>Question 1</h1>
-            <h2>Your network contains an Active Directory Domain Services (AD DS) domain named contoso.com. You need to identify which server is the PDC emulator for the domain.</h2>
-            <p><strong>Solution:</strong> From Active Directory Domains and Trusts, you right-click Active Directory Domains and Trusts in the console tree, and then select Operations Master.</p>
+            <h2>Your network contains two Active Directory forests and a domain trust as shown in the following exhibit.</h2>
+
+            <img src="https://raw.githubusercontent.com/pc-aide/az-800/main/q35.png" alt="Network Diagram">
+
+            <p>The domain trust has the following configurations:</p>
+            <ul>
+                <li>Name: adatum.com</li>
+                <li>Type: External</li>
+                <li>Direction: One-way, outgoing</li>
+                <li>Outgoing trust authentication level: Domain-wide authentication</li>
+            </ul>
+
+            <p>The forests contain the users shown in the following table.</p>
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Domain</th>
+                </tr>
+                <tr>
+                    <td>User1</td>
+                    <td>adatum.com</td>
+                </tr>
+                <tr>
+                    <td>User2</td>
+                    <td>contoso.com</td>
+                </tr>
+                <tr>
+                    <td>User3</td>
+                    <td>east.contoso.com</td>
+                </tr>
+            </table>
+
+            <p>The forests contain the network shares shown in the following table.</p>
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Domain</th>
+                </tr>
+                <tr>
+                    <td>Share1</td>
+                    <td>adatum.com</td>
+                </tr>
+                <tr>
+                    <td>Share2</td>
+                    <td>contoso.com</td>
+                </tr>
+                <tr>
+                    <td>Share3</td>
+                    <td>east.contoso.com</td>
+                </tr>
+            </table>
+
+            <p>For each of the following statements, select Yes if the statement is true. Otherwise, select No.</p>
 
             <form action="#">
                 <fieldset>
-                    <legend>Does this meet the goal?</legend>
-                    <input type="radio" id="yes1" name="answer1" value="yes">
-                    <label for="yes1">A. Yes</label><br>
-                    <input type="radio" id="no1" name="answer1" value="no">
-                    <label for="no1">B. No</label><br>
+                    <legend>User1 can be assigned permissions for Share3:</legend>
+                    <input type="radio" id="yes1" name="answer1_1" value="yes">
+                    <label for="yes1">Yes</label><br>
+                    <input type="radio" id="no1" name="answer1_1" value="no">
+                    <label for="no1">No</label><br>
+                </fieldset>
+                <fieldset>
+                    <legend>User2 can be assigned permissions for Share1:</legend>
+                    <input type="radio" id="yes2" name="answer1_2" value="yes">
+                    <label for="yes2">Yes</label><br>
+                    <input type="radio" id="no2" name="answer1_2" value="no">
+                    <label for="no2">No</label><br>
+                </fieldset>
+                <fieldset>
+                    <legend>User3 can be assigned permissions for Share1:</legend>
+                    <input type="radio" id="yes3" name="answer1_3" value="yes">
+                    <label for="yes3">Yes</label><br>
+                    <input type="radio" id="no3" name="answer1_3" value="no">
+                    <label for="no3">No</label><br>
                 </fieldset>
             </form>
 
             <div id="solutionInfo1"></div> <!-- Div pour afficher la réponse -->
 
-            <button class="solutionButton" data-solution-info-id="solutionInfo1" data-correct-answer="no" data-answer-name="answer1" data-solution-text="<img src='https://raw.githubusercontent.com/pc-aide/Azure/main/az-800%3A%20Administering%20Windows%20Server%20Hybrid%20Core%20Infrastructure/Exam/Pre-Exam/Pra01_%CE%A320/PDC%20role.png' alt='PDC Role'><br><img src='https://raw.githubusercontent.com/pc-aide/Azure/main/az-800%3A%20Administering%20Windows%20Server%20Hybrid%20Core%20Infrastructure/Exam/Pre-Exam/Pra01_%CE%A320/PDC.png' alt='PDC Image'><br>Solution: B. No">Solution</button>
+            <button class="solutionButton" data-solution-info-id="solutionInfo1" data-correct-answer="yes,no,no" data-answer-name="answer1" data-solution-text="Solution: 1. Yes, 2. No, 3. No<br><br>Explanation:<br>1. [YES]<br>There is an outgoing trust, so we trust Adatum. Since this is a forest trust, child domains can also assign permissions to Adatum users.<br><br>2. [NO]<br>The trust type is outgoing to Adatum. Only Adatum users can sign in to the Contoso forest.<br><br>3. [NO]<br>The trust type is outgoing to Adatum. Only Adatum users can sign in to the Contoso forest.<br>For reference: <a href='https://www.tech-faq.com/understanding-trust-relationships.html' target='_blank'>Understanding Trust Relationships</a>">Solution</button>
         </div>
 
         <!-- Contenu de question2.html -->
@@ -298,13 +363,153 @@
 
             <button class="solutionButton" data-solution-info-id="solutionInfo6" data-correct-answer="A" data-answer-name="answer6" data-solution-text="Solution: A. Server3 only">Solution</button>
         </div>
+
+        <!-- Contenu de question7 ajouté -->
+        <div>
+            <h1>Question 7</h1>
+            <p>Your network contains two Active Directory Domain Services (AD DS) forests named contoso.com and fabrikam.com. Contoso.com contains three child domains named amer.contoso.com, apac.contoso.com, and emea.contoso.com. Fabrikam.com contains a child domain named apac.fabrikam.com. A bidirectional forest trust exists between contoso.com and fabrikam.com.<br><br>
+            You need to provide users in the contoso.com forest with access to the resources in the fabrikam.com forest. The solution must meet the following requirements:<br><br>
+            • Users in contoso.com must only be added directly to groups in the contoso.com forest.<br>
+            • Permissions to access the resources in fabrikam.com must only be granted directly to groups in the fabrikam.com forest.<br>
+            • The number of groups must be minimized.<br><br>
+            Which type of groups should you use to organize the users and to assign permissions? To answer, drag the appropriate group types to the correct requirements. Each group may be used once, more than once, or not at all. You may need to drag the split bar between panes or scroll to view content.</p>
+
+            <div class="container">
+                <div class="actions">
+                    <div class="draggable" draggable="true" data-action="Domain global">Domain global</div>
+                    <div class="draggable" draggable="true" data-action="Domain local">Domain local</div>
+                    <div class="draggable" draggable="true" data-action="Universal">Universal</div>
+                </div>
+                <div class="answers">
+                    <div class="dropzone" data-answer="Organize users">Organize users :</div>
+                    <div class="dropzone" data-answer="Assign permissions">Assign permissions :</div>
+                </div>
+            </div>
+
+            <div id="solutionInfo7"></div> <!-- Div pour afficher la réponse -->
+
+            <button class="solutionButton" data-solution-info-id="solutionInfo7" data-correct-answer="Domain global,Domain local" data-answer-name="answer7" data-solution-text="Solution: Organize users: Domain global, Assign permissions: Domain local<br><br>Explanation:<br>To organize users in the contoso.com forest, you should use Domain global groups. To assign permissions in the fabrikam.com forest, you should use Domain local groups. This minimizes the number of groups and meets the requirement of adding users only to groups in their respective forests.<br>For reference: <a href='https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/manage/understand-security-groups#group-scope' target='_blank'>Group Scope</a>">Solution</button>
+        </div>
+
+        <!-- Contenu de question8 ajouté -->
+        <div>
+            <h1>Question 8</h1>
+            <p>Your network contains an Active Directory Domain Services (AD DS) forest named contoso.com. The forest contains a child domain named east.contoso.com and the servers shown in the following table.</p>
+            
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Domain</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td>DC1</td>
+                    <td>contoso.com</td>
+                    <td>has the schema master, infrastructure master, & domain naming master roles</td>
+                </tr>
+                <tr>
+                    <td>DC2</td>
+                    <td>east.contoso.com</td>
+                    <td>has the PDC emulator & RID master roles & is a global catalog server</td>
+                </tr>
+                <tr>
+                    <td>Server1</td>
+                    <td>contoso.com</td>
+                    <td>Has the File Server, DFS Namespaces, & DFS Replication server roles</td>
+                </tr>
+            </table>
+
+            <p>You need to create a folder for the Central Store to manage Group Policy template files for the entire forest.</p>
+            <p>What should you name the folder, and on which server should you create the folder? To answer, select the appropriate options in the answer area.</p>
+
+            <div class="answer-area">
+                <div class="question-row">
+                    <span>Name:</span>
+                    <select data-answer="1" id="select8Option1">
+                        <option value="CentralDefinitions">CentralDefinitions</option>
+                        <option value="PolicyDefinitions">PolicyDefinitions</option>
+                        <option value="TemplateDefinitions">TemplateDefinitions</option>
+                    </select>
+                </div>
+
+                <div class="question-row">
+                    <span>Server:</span>
+                    <select data-answer="2" id="select8Option2">
+                        <option value="DC1 only">DC1 only</option>
+                        <option value="DC2 only">DC2 only</option>
+                        <option value="Server1 only">Server1 only</option>
+                        <option value="DC1 & DC2 only">DC1 & DC2 only</option>
+                        <option value="DC1, DC2 & Server1">DC1, DC2 & Server1</option>
+                    </select>
+                </div>
+            </div>
+
+            <div id="solutionInfo8"></div> <!-- Div pour afficher la réponse -->
+
+            <button class="solutionButton" data-solution-info-id="solutionInfo8" data-correct-answer="PolicyDefinitions,DC1 & DC2 only" data-answer-name="answer8" data-solution-text="Solution: Name: PolicyDefinitions, Server: DC1 & DC2 only<br><br>Explanation:<br>'PolicyDefinitions' and DC1 and DC2 (each domain has its own set of Group Policies).<br>For reference: <a href='https://learn.microsoft.com/en-us/troubleshoot/windows-client/group-policy/create-and-manage-central-store#the-central-store' target='_blank'>The Central Store</a>">Solution</button>
+        </div>
+
+        <!-- Contenu de question9 ajouté -->
+        <div>
+            <h1>Question 9</h1>
+            <p>Your network contains an Active Directory Domain Services (AD DS) domain. The domain contains the domain controllers shown in the following table.</p>
+            
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td>DC1</td>
+                    <td>Has the schema master, infrastructure master, & domain naming master roles</td>
+                </tr>
+                <tr>
+                    <td>DC2</td>
+                    <td>Has the PDC emulator & RID master roles & is a global catalog server</td>
+                </tr>
+                <tr>
+                    <td>DC3</td>
+                    <td>None</td>
+                </tr>
+            </table>
+
+            <p>You need to configure DC3 to be the authoritative time server for the domain.</p>
+            <p>Which operations master role should you transfer to DC3, and which console should you use? To answer, select the appropriate options in the answer area.</p>
+
+            <div class="answer-area">
+                <div class="question-row">
+                    <span>Role:</span>
+                    <select data-answer="1" id="select9Option1">
+                        <option value="Domain naming master">Domain naming master</option>
+                        <option value="Infrastructure master">Infrastructure master</option>
+                        <option value="PDC emulator">PDC emulator</option>
+                        <option value="RID master">RID master</option>
+                        <option value="Schema master">Schema master</option>
+                    </select>
+                </div>
+
+                <div class="question-row">
+                    <span>Console:</span>
+                    <select data-answer="2" id="select9Option2">
+                        <option value="AD Administrative Center">AD Administrative Center</option>
+                        <option value="AD Domains & Trusts">AD Domains & Trusts</option>
+                        <option value="AD Sites & Services">AD Sites & Services</option>
+                        <option value="AD User & Computers">AD User & Computers</option>
+                    </select>
+                </div>
+            </div>
+
+            <div id="solutionInfo9"></div> <!-- Div pour afficher la réponse -->
+
+            <button class="solutionButton" data-solution-info-id="solutionInfo9" data-correct-answer="PDC emulator,AD User & Computers" data-answer-name="answer9" data-solution-text="Solution: Role: PDC emulator, Console: AD User & Computers<br><br>Explanation:<br>1. In the console tree, right-click Active Directory Users and Computers, point to All Tasks, and then click Operations Master.<br>2. Click the appropriate tab for the role that you want to transfer (RID, PDC, or Infrastructure), and then click Change.<br>3. Click OK to confirm that you want to transfer the role, and then click Close.<br>For reference: <a href='https://learn.microsoft.com/en-us/troubleshoot/windows-server/identity/view-transfer-fsmo-roles' target='_blank'>View and transfer FSMO roles</a>">Solution</button>
+        </div>
     </div> <!-- Fin du div questionContainer -->
 
     <div id="finalScore"></div> <!-- Div pour afficher le score final -->
 
     <script>
         var score = 0; // Initialiser le score à 0
-        var totalQuestions = 6; // Nombre total de questions
+        var totalQuestions = 9; // Nombre total de questions
 
         function enableDragAndDrop() {
             document.querySelectorAll('.actions').forEach(container => {
@@ -360,12 +565,16 @@
                     var correctAnswer = this.dataset.correctAnswer.split(',');
                     let isCorrect = true;
 
-                    if (this.dataset.answerName === 'answer5') {
-                        // Logique spécifique pour les questions 5
-                        const selectedAnswer = document.querySelector('input[name="' + this.dataset.answerName + '"]:checked');
-                        if (!selectedAnswer || selectedAnswer.value !== correctAnswer[0]) {
-                            isCorrect = false;
-                        }
+                    if (this.dataset.answerName === 'answer5' || this.dataset.answerName === 'answer7') {
+                        // Logique spécifique pour les questions 5 et 7
+                        const dropzones = document.querySelectorAll('.dropzone[data-answer]');
+                        const userAnswer = Array.from(dropzones).map(dropzone => dropzone.dataset.action);
+
+                        userAnswer.forEach((answer, index) => {
+                            if (answer !== correctAnswer[index]) {
+                                isCorrect = false;
+                            }
+                        });
 
                         const solutionText = this.dataset.solutionText;
                         const solutionInfo = document.getElementById(solutionInfoId);
@@ -380,10 +589,10 @@
 
                         solutionInfo.style.display = 'block';
                         showFinalScore();
-                    } else if (this.dataset.answerName === 'answer4') {
-                        // Logique spécifique pour les questions 4
-                        const select1 = document.querySelector('#select4Option1').value;
-                        const select2 = document.querySelector('#select4Option2').value;
+                    } else if (this.dataset.answerName === 'answer4' || this.dataset.answerName === 'answer8' || this.dataset.answerName === 'answer9') {
+                        // Logique spécifique pour les questions 4, 8 et 9
+                        const select1 = document.querySelector('#select' + this.dataset.answerName.substring(6) + 'Option1').value;
+                        const select2 = document.querySelector('#select' + this.dataset.answerName.substring(6) + 'Option2').value;
                         const userAnswer = [select1, select2];
                         
                         userAnswer.forEach((answer, index) => {
@@ -407,8 +616,47 @@
 
                         solutionInfo.style.display = 'block';
                         showFinalScore();
+                    } else if (this.dataset.answerName === 'answer1') {
+                        // Logique spécifique pour la question 1
+                        const selectedAnswer1 = document.querySelector('input[name="answer1_1"]:checked');
+                        const selectedAnswer2 = document.querySelector('input[name="answer1_2"]:checked');
+                        const selectedAnswer3 = document.querySelector('input[name="answer1_3"]:checked');
+
+                        if (selectedAnswer1 && selectedAnswer2 && selectedAnswer3) {
+                            const userAnswer = [
+                                selectedAnswer1.value,
+                                selectedAnswer2.value,
+                                selectedAnswer3.value
+                            ];
+
+                            userAnswer.forEach((answer, index) => {
+                                if (answer !== correctAnswer[index]) {
+                                    isCorrect = false;
+                                }
+                            });
+
+                            const solutionText = this.dataset.solutionText;
+                            const solutionInfo = document.getElementById(solutionInfoId);
+                            if (isCorrect) {
+                                solutionInfo.innerHTML = solutionText;
+                                solutionInfo.classList.add('highlight');
+                                score += 1; // Ajouter un point si toutes les réponses sont correctes
+                            } else {
+                                solutionInfo.innerHTML = "Your answer is incorrect. Please select the correct answer to see the solution.";
+                                solutionInfo.classList.add('incorrect');
+                            }
+
+                            solutionInfo.style.display = 'block';
+                            showFinalScore();
+                        } else {
+                            const solutionInfo = document.getElementById(solutionInfoId);
+                            solutionInfo.innerHTML = "Your answer is incorrect. Please select the correct answer to see the solution.";
+                            solutionInfo.classList.add('incorrect');
+                            solutionInfo.style.display = 'block';
+                            showFinalScore();
+                        }
                     } else {
-                        // Logique pour les autres questions (1 à 3, 6)
+                        // Logique pour les autres questions (2, 3, 6)
                         var selectedAnswer = document.querySelector('input[name="' + this.dataset.answerName + '"]:checked');
                         if (selectedAnswer && selectedAnswer.value === correctAnswer[0]) {
                             score += 1; // Ajouter un point si la réponse est correcte
