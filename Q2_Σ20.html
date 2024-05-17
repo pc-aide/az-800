@@ -523,13 +523,40 @@
 
             <button class="solutionButton" data-solution-info-id="solutionInfo10" data-correct-answer="item10.4,item10.5,item10.1" data-answer-name="answer10" data-solution-text="Solution: 1. In contoso.com, create a gMSA & a standard user account, 2. From a domain-joined computer, create a credential spec file & copy the file to Server1, 3. On Server1, install & run ccg.exe<br><br>Explanation:<br>The KDS key is already created, because there are already gMSA accounts.<br>1) Create a new gMSA account.<br>2) From a domain-joined computer, create a credential spec file and copy it to Server1. This can only be created from a domain-joined computer.<br>3) Run ccg.exe using the credentials file.<br>For reference: <a href='https://learn.microsoft.com/en-us/virtualization/windowscontainers/manage-containers/manage-serviceaccounts#use-case-for-creating-gmsa-account-for-non-domain-joined-container-hosts' target='_blank'>Creating gMSA Account for Non-Domain-Joined Container Hosts</a>">Solution</button>
         </div>
+
+        <!-- Contenu de question11 ajouté -->
+        <div>
+            <h1>Question 11</h1>
+            <p>Your on-premises network contains an Active Directory domain named contoso.com. You have an Azure AD tenant.<br><br>
+            You plan to sync contoso.com with the Azure AD tenant by using Azure AD Connect cloud sync.<br><br>
+            You need to create an account that will be used by Azure AD Connect cloud sync.<br><br>
+            Which type of account should you create?</p>
+
+            <form action="#">
+                <fieldset>
+                    <legend>Select the appropriate option:</legend>
+                    <input type="radio" id="optionA" name="answer11" value="A">
+                    <label for="optionA">A. system-assigned managed identity</label><br>
+                    <input type="radio" id="optionB" name="answer11" value="B">
+                    <label for="optionB">B. group managed service account (gMSA)</label><br>
+                    <input type="radio" id="optionC" name="answer11" value="C">
+                    <label for="optionC">C. user</label><br>
+                    <input type="radio" id="optionD" name="answer11" value="D">
+                    <label for="optionD">D. InetOrgPerson</label><br>
+                </fieldset>
+            </form>
+
+            <div id="solutionInfo11"></div> <!-- Div pour afficher la réponse -->
+
+            <button class="solutionButton" data-solution-info-id="solutionInfo11" data-correct-answer="B" data-answer-name="answer11" data-solution-text="Solution: B. group managed service account (gMSA)<br><br>Explanation:<br>Managed Service Account is recommended. the local user account is for 2017-2021 / Legacy.<br>You need the following to use Azure AD Connect cloud sync:<br>Domain Administrator or Enterprise Administrator credentials to create the Azure AD Connect Cloud Sync gMSA (group Managed Service Account) to run the agent service<br>For reference: <a href='https://learn.microsoft.com/en-us/entra/identity/hybrid/cloud-sync/how-to-prerequisites?tabs=public-cloud' target='_blank'>Azure AD Connect Cloud Sync Prerequisites</a>">Solution</button>
+        </div>
     </div> <!-- Fin du div questionContainer -->
 
     <div id="finalScore"></div> <!-- Div pour afficher le score final -->
 
     <script>
         var score = 0; // Initialiser le score à 0
-        var totalQuestions = 10; // Nombre total de questions
+        var totalQuestions = 11; // Nombre total de questions
 
         function enableDragAndDrop() {
             document.querySelectorAll('.actions .draggable').forEach(draggable => {
@@ -582,7 +609,6 @@
                     let userAnswer = [];
 
                     if (this.dataset.answerName === 'answer5') {
-                        // Logique spécifique pour les questions 5
                         const selectedAnswer = document.querySelector('input[name="' + this.dataset.answerName + '"]:checked');
                         if (selectedAnswer) {
                             userAnswer.push(selectedAnswer.value);
@@ -608,7 +634,6 @@
                         solutionInfo.style.display = 'block';
                         showFinalScore();
                     } else if (this.dataset.answerName === 'answer4' || this.dataset.answerName === 'answer8' || this.dataset.answerName === 'answer9') {
-                        // Logique spécifique pour les questions 4, 8, et 9
                         const select1 = document.querySelector(`#select${this.dataset.answerName.slice(-1)}Option1`).value;
                         const select2 = document.querySelector(`#select${this.dataset.answerName.slice(-1)}Option2`).value;
                         userAnswer = [select1, select2];
@@ -636,7 +661,6 @@
                         solutionInfo.style.display = 'block';
                         showFinalScore();
                     } else if (this.dataset.answerName === 'answer10') {
-                        // Logique spécifique pour la question 10
                         const dropzone1 = document.querySelector('#dropzoneAction1').dataset.action;
                         const dropzone2 = document.querySelector('#dropzoneAction2').dataset.action;
                         const dropzone3 = document.querySelector('#dropzoneAction3').dataset.action;
@@ -665,7 +689,6 @@
                         solutionInfo.style.display = 'block';
                         showFinalScore();
                     } else {
-                        // Logique pour les autres questions (1 à 3, 6, 7)
                         if (this.dataset.answerName === 'answer1') {
                             const organizeUsers = document.querySelector('#dropzoneOrganizeUsers').dataset.action;
                             const assignPermissions = document.querySelector('#dropzoneAssignPermissions').dataset.action;
