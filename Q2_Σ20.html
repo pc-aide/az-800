@@ -176,9 +176,7 @@
             <form action="#">
                 <fieldset>
                     <legend>Select the appropriate option:</legend>
-                    <input type="radio" id="optionA" name="answer3"
-
- value="A">
+                    <input type="radio" id="optionA" name="answer3" value="A">
                     <label for="optionA">A. DC1 only</label><br>
                     <input type="radio" id="optionB" name="answer3" value="B">
                     <label for="optionB">B. Server1 only</label><br>
@@ -309,14 +307,95 @@
             <button class="solutionButton" data-solution-info-id="solutionInfo6" data-correct-answer="A" data-answer-name="answer6" data-solution-text="Solution: A. Server3 only">Solution</button>
         </div>
 
+        <!-- Contenu de question7 ajouté -->
+        <div>
+            <h1>Question 7</h1>
+            <p>Your network contains two Active Directory forests and a domain trust as shown in the following exhibit.</p>
+            <img src="https://raw.githubusercontent.com/pc-aide/az-800/main/q35.png" alt="Domain Trust Diagram">
 
+            <p>The domain trust has the following configurations:</p>
+            <ul>
+                <li>Name: adatum.com</li>
+                <li>Type: External</li>
+                <li>Direction: One-way, outgoing</li>
+                <li>Outgoing trust authentication level: Domain-wide authentication</li>
+            </ul>
+
+            <p>The forests contain the users shown in the following table.</p>
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Domain</th>
+                </tr>
+                <tr>
+                    <td>User1</td>
+                    <td>adatum.com</td>
+                </tr>
+                <tr>
+                    <td>User2</td>
+                    <td>contoso.com</td>
+                </tr>
+                <tr>
+                    <td>User3</td>
+                    <td>east.contoso.com</td>
+                </tr>
+            </table>
+
+            <p>The forests contain the network shares shown in the following table.</p>
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>In domain</th>
+                </tr>
+                <tr>
+                    <td>Share1</td>
+                    <td>adatum.com</td>
+                </tr>
+                <tr>
+                    <td>Share2</td>
+                    <td>contoso.com</td>
+                </tr>
+                <tr>
+                    <td>Share3</td>
+                    <td>east.contoso.com</td>
+                </tr>
+            </table>
+
+            <p>For each of the following statements, select Yes if the statement is true. Otherwise, select No.</p>
+            <form action="#">
+                <fieldset>
+                    <legend>Select the correct answers:</legend>
+                    <label for="q7statement1">User1 can be assigned permissions for Share3:</label><br>
+                    <input type="radio" id="q7statement1yes" name="q7statement1" value="Yes">
+                    <label for="q7statement1yes">Yes</label><br>
+                    <input type="radio" id="q7statement1no" name="q7statement1" value="No">
+                    <label for="q7statement1no">No</label><br><br>
+
+                    <label for="q7statement2">User2 can be assigned permissions for Share1:</label><br>
+                    <input type="radio" id="q7statement2yes" name="q7statement2" value="Yes">
+                    <label for="q7statement2yes">Yes</label><br>
+                    <input type="radio" id="q7statement2no" name="q7statement2" value="No">
+                    <label for="q7statement2no">No</label><br><br>
+
+                    <label for="q7statement3">User3 can be assigned permissions for Share1:</label><br>
+                    <input type="radio" id="q7statement3yes" name="q7statement3" value="Yes">
+                    <label for="q7statement3yes">Yes</label><br>
+                    <input type="radio" id="q7statement3no" name="q7statement3" value="No">
+                    <label for="q7statement3no">No</label><br>
+                </fieldset>
+            </form>
+
+            <div id="solutionInfo7"></div> <!-- Div pour afficher la réponse -->
+
+            <button class="solutionButton" data-solution-info-id="solutionInfo7" data-correct-answer="Yes,No,No" data-answer-name="answer7" data-solution-text="1. [YES]<br>-> There is an Outgoing trust, So we trust Adatum. Since this is forest trust, child domain, also can assign permissions to Adatum users.<br><br>2. [NO]<br>-> Type trust is outgoing to Adatum. Only Adatum users can sign-in to Contoso forest.<br><br>3. [NO]<br>-> Type trust is outgoing to Adatum. Only Adatum users can sign-in to Contoso forest.<br><br>For reference: <a href='https://www.tech-faq.com/understanding-trust-relationships.html' target='_blank'>Understanding Trust Relationships</a>">Solution</button>
+        </div>
     </div> <!-- Fin du div questionContainer -->
 
     <div id="finalScore"></div> <!-- Div pour afficher le score final -->
 
     <script>
         var score = 0; // Initialiser le score à 0
-        var totalQuestions = 6; // Nombre total de questions
+        var totalQuestions = 7; // Nombre total de questions
 
         function enableDragAndDrop() {
             document.querySelectorAll('.actions .draggable').forEach(draggable => {
@@ -415,12 +494,23 @@
                         solutionInfo.style.display = 'block';
                         showFinalScore();
                     } else {
-                        // Logique pour les autres questions (1 à 3, 6)
+                        // Logique pour les autres questions (1 à 3, 6, 7)
                         if (this.dataset.answerName === 'answer1') {
                             const organizeUsers = document.querySelector('#dropzoneOrganizeUsers').dataset.action;
                             const assignPermissions = document.querySelector('#dropzoneAssignPermissions').dataset.action;
                             if (organizeUsers !== correctAnswer[0] || assignPermissions !== correctAnswer[1]) {
                                 isCorrect = false;
+                            }
+                        } else if (this.dataset.answerName === 'answer7') {
+                            const statement1 = document.querySelector('input[name="q7statement1"]:checked');
+                            const statement2 = document.querySelector('input[name="q7statement2"]:checked');
+                            const statement3 = document.querySelector('input[name="q7statement3"]:checked');
+                            if (!statement1 || !statement2 || !statement3) {
+                                isCorrect = false;
+                            } else {
+                                if (statement1.value !== correctAnswer[0] || statement2.value !== correctAnswer[1] || statement3.value !== correctAnswer[2]) {
+                                    isCorrect = false;
+                                }
                             }
                         } else {
                             var selectedAnswer = document.querySelector('input[name="' + this.dataset.answerName + '"]:checked');
