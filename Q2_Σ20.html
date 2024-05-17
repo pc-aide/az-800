@@ -444,13 +444,65 @@
 
             <button class="solutionButton" data-solution-info-id="solutionInfo8" data-correct-answer="PolicyDefinitions,DC1 & DC2 only" data-answer-name="answer8" data-solution-text="Name: PolicyDefinitions<br>Server: DC1 & DC2 only<br><br>Explanation:<br>&quot;PolicyDefinitions&quot; and DC1 and DC2 (each domain has its own set of Group Policy)<br>For reference: <a href='https://learn.microsoft.com/en-us/troubleshoot/windows-client/group-policy/create-and-manage-central-store#the-central-store' target='_blank'>Create and manage Central Store</a>">Solution</button>
         </div>
+
+        <!-- Contenu de question9 ajouté -->
+        <div>
+            <h1>Question 9</h1>
+            <p>Your network contains an Active Directory Domain Services (AD DS) domain. The domain contains the domain controllers shown in the following table.</p>
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td>DC1</td>
+                    <td>Has the schema master, infrastructure master, & domain naming master roles</td>
+                </tr>
+                <tr>
+                    <td>DC2</td>
+                    <td>Has the PDC emulator & RID master roles & is a global catalog server</td>
+                </tr>
+                <tr>
+                    <td>DC3</td>
+                    <td>None</td>
+                </tr>
+            </table>
+            <p>You need to configure DC3 to be the authoritative time server for the domain.</p>
+            <p>Which operations master role should you transfer to DC3, and which console should you use? To answer, select the appropriate options in the answer area.</p>
+
+            <div class="answer-area">
+                <div class="question-row">
+                    <span>Role:</span>
+                    <select data-answer="1" id="select9Option1">
+                        <option value="Domain naming master">Domain naming master</option>
+                        <option value="Infrastructure master">Infrastructure master</option>
+                        <option value="PDC emulator">PDC emulator</option>
+                        <option value="RID master">RID master</option>
+                        <option value="Schema master">Schema master</option>
+                    </select>
+                </div>
+                <div class="question-row">
+                    <span>Console:</span>
+                    <select data-answer="2" id="select9Option2">
+                        <option value="AD Administrative Center">AD Administrative Center</option>
+                        <option value="AD Domains & Trusts">AD Domains & Trusts</option>
+                        <option value="AD Sites & Services">AD Sites & Services</option>
+                        <option value="AD Users & Computers">AD Users & Computers</option>
+                    </select>
+                </div>
+            </div>
+
+            <div id="solutionInfo9"></div> <!-- Div pour afficher la réponse -->
+
+            <button class="solutionButton" data-solution-info-id="solutionInfo9" data-correct-answer="PDC emulator,AD Users & Computers" data-answer-name="answer9" data-solution-text="Role: PDC emulator<br>Console: AD Users & Computers<br><br>Explanation:<br>1- In the console tree, right-click Active Directory Users and Computers, point to All Tasks, and then click Operations Master.<br>2- Click the appropriate tab for the role that you want to transfer (RID, PDC, or Infrastructure), and then click Change.<br>3- Click OK to confirm that you want to transfer the role, and then click Close.<br>For reference: <a href='https://learn.microsoft.com/en-us/troubleshoot/windows-server/identity/view-transfer-fsmo-roles' target='_blank'>View and transfer FSMO roles</a>">Solution</button>
+        </div>
     </div> <!-- Fin du div questionContainer -->
 
     <div id="finalScore"></div> <!-- Div pour afficher le score final -->
 
     <script>
         var score = 0; // Initialiser le score à 0
-        var totalQuestions = 8; // Nombre total de questions
+        var totalQuestions = 9; // Nombre total de questions
 
         function enableDragAndDrop() {
             document.querySelectorAll('.actions .draggable').forEach(draggable => {
@@ -528,8 +580,8 @@
 
                         solutionInfo.style.display = 'block';
                         showFinalScore();
-                    } else if (this.dataset.answerName === 'answer4' || this.dataset.answerName === 'answer8') {
-                        // Logique spécifique pour les questions 4 et 8
+                    } else if (this.dataset.answerName === 'answer4' || this.dataset.answerName === 'answer8' || this.dataset.answerName === 'answer9') {
+                        // Logique spécifique pour les questions 4, 8, et 9
                         const select1 = document.querySelector(`#select${this.dataset.answerName.slice(-1)}Option1`).value;
                         const select2 = document.querySelector(`#select${this.dataset.answerName.slice(-1)}Option2`).value;
                         userAnswer = [select1, select2];
