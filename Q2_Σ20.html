@@ -375,13 +375,13 @@
                     <input type="radio" id="q7statement2yes" name="q7statement2" value="Yes">
                     <label for="q7statement2yes">Yes</label><br>
                     <input type="radio" id="q7statement2no" name="q7statement2" value="No">
-                    <label for="q7statement2no">No</label><br><br>
+                    <label for="q7statement2no">No"><br><br>
 
                     <label for="q7statement3">User3 can be assigned permissions for Share1:</label><br>
                     <input type="radio" id="q7statement3yes" name="q7statement3" value="Yes">
                     <label for="q7statement3yes">Yes</label><br>
                     <input type="radio" id="q7statement3no" name="q7statement3" value="No">
-                    <label for="q7statement3no">No</label><br>
+                    <label for="q7statement3no">No"><br>
                 </fieldset>
             </form>
 
@@ -496,13 +496,40 @@
 
             <button class="solutionButton" data-solution-info-id="solutionInfo9" data-correct-answer="PDC emulator,AD Users & Computers" data-answer-name="answer9" data-solution-text="Role: PDC emulator<br>Console: AD Users & Computers<br><br>Explanation:<br>1- In the console tree, right-click Active Directory Users and Computers, point to All Tasks, and then click Operations Master.<br>2- Click the appropriate tab for the role that you want to transfer (RID, PDC, or Infrastructure), and then click Change.<br>3- Click OK to confirm that you want to transfer the role, and then click Close.<br>For reference: <a href='https://learn.microsoft.com/en-us/troubleshoot/windows-server/identity/view-transfer-fsmo-roles' target='_blank'>View and transfer FSMO roles</a>">Solution</button>
         </div>
+
+        <!-- Contenu de question10 ajouté -->
+        <div>
+            <h1>Question 10</h1>
+            <p>Your network contains an Active Directory domain named contoso.com. The domain contains group managed service accounts (gMSAs). You have a server named Server1 that runs Windows Server and is in a workgroup. Server1 hosts Windows containers.</p>
+            <p>You need to ensure that the Windows containers can authenticate to contoso.com.</p>
+            <p>Which three actions should you perform in sequence? To answer, move the appropriate actions from the list of actions to the answer area and arrange them in the correct order.</p>
+
+            <div class="container">
+                <div class="actions">
+                    <div class="draggable" draggable="true" data-action="item10.1">On Server1, install & run ccg.exe</div>
+                    <div class="draggable" draggable="true" data-action="item10.2">On Server1, run New-CredentialSpec</div>
+                    <div class="draggable" draggable="true" data-action="item10.3">In contoso.com, generate a Key Distribution Service (KDS) root key</div>
+                    <div class="draggable" draggable="true" data-action="item10.4">In contoso.com, create a gMSA & a standard user account</div>
+                    <div class="draggable" draggable="true" data-action="item10.5">From a domain-joined computer, create a credential spec file & copy the file to Server1</div>
+                </div>
+                <div class="answers">
+                    <div class="dropzone" id="dropzoneAction1">drag & drop 1 here</div>
+                    <div class="dropzone" id="dropzoneAction2">drag & drop 2 here</div>
+                    <div class="dropzone" id="dropzoneAction3">drag & drop 3 here</div>
+                </div>
+            </div>
+
+            <div id="solutionInfo10"></div> <!-- Div pour afficher la réponse -->
+
+            <button class="solutionButton" data-solution-info-id="solutionInfo10" data-correct-answer="item10.4,item10.5,item10.1" data-answer-name="answer10" data-solution-text="Solution: 1. In contoso.com, create a gMSA & a standard user account, 2. From a domain-joined computer, create a credential spec file & copy the file to Server1, 3. On Server1, install & run ccg.exe<br><br>Explanation:<br>The KDS key is already created, because there are already gMSA accounts.<br>1) Create a new gMSA account.<br>2) From a domain-joined computer, create a credential spec file and copy it to Server1. This can only be created from a domain-joined computer.<br>3) Run ccg.exe using the credentials file.<br>For reference: <a href='https://learn.microsoft.com/en-us/virtualization/windowscontainers/manage-containers/manage-serviceaccounts#use-case-for-creating-gmsa-account-for-non-domain-joined-container-hosts' target='_blank'>Creating gMSA Account for Non-Domain-Joined Container Hosts</a>">Solution</button>
+        </div>
     </div> <!-- Fin du div questionContainer -->
 
     <div id="finalScore"></div> <!-- Div pour afficher le score final -->
 
     <script>
         var score = 0; // Initialiser le score à 0
-        var totalQuestions = 9; // Nombre total de questions
+        var totalQuestions = 10; // Nombre total de questions
 
         function enableDragAndDrop() {
             document.querySelectorAll('.actions .draggable').forEach(draggable => {
@@ -585,6 +612,35 @@
                         const select1 = document.querySelector(`#select${this.dataset.answerName.slice(-1)}Option1`).value;
                         const select2 = document.querySelector(`#select${this.dataset.answerName.slice(-1)}Option2`).value;
                         userAnswer = [select1, select2];
+                        
+                        userAnswer.forEach((answer, index) => {
+                            if (answer !== correctAnswer[index]) {
+                                isCorrect = false;
+                            }
+                        });
+
+                        const solutionText = this.dataset.solutionText;
+                        const solutionInfo = document.getElementById(solutionInfoId);
+                        if (isCorrect) {
+                            solutionInfo.innerHTML = solutionText;
+                            solutionInfo.classList.remove('incorrect');
+                            solutionInfo.classList.add('highlight');
+                            score += 1; // Ajouter un point si la réponse est correcte
+                        } else {
+                            const userAnswerText = userAnswer.length ? userAnswer.join(', ') : "non défini";
+                            solutionInfo.innerHTML = `Your answer is incorrect. Your answer: ${userAnswerText}. Correct answer: ${correctAnswer.join(', ')}.<br>${solutionText}`;
+                            solutionInfo.classList.remove('highlight');
+                            solutionInfo.classList.add('incorrect');
+                        }
+
+                        solutionInfo.style.display = 'block';
+                        showFinalScore();
+                    } else if (this.dataset.answerName === 'answer10') {
+                        // Logique spécifique pour la question 10
+                        const dropzone1 = document.querySelector('#dropzoneAction1').dataset.action;
+                        const dropzone2 = document.querySelector('#dropzoneAction2').dataset.action;
+                        const dropzone3 = document.querySelector('#dropzoneAction3').dataset.action;
+                        userAnswer = [dropzone1, dropzone2, dropzone3];
                         
                         userAnswer.forEach((answer, index) => {
                             if (answer !== correctAnswer[index]) {
