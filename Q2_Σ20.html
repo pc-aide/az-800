@@ -83,22 +83,30 @@
         <!-- Contenu de question1.html -->
         <div>
             <h1>Question 1</h1>
-            <h2>Your network contains an Active Directory Domain Services (AD DS) domain named contoso.com. You need to identify which server is the PDC emulator for the domain.</h2>
-            <p><strong>Solution:</strong> From Active Directory Domains and Trusts, you right-click Active Directory Domains and Trusts in the console tree, and then select Operations Master.</p>
+            <h2>Your network contains two Active Directory Domain Services (AD DS) forests named contoso.com and fabrikam.com. Contoso.com contains three child domains named amer.contoso.com, apac.contoso.com, and emea.contoso.com. Fabrikam.com contains a child domain named apac.fabrikam.com. A bidirectional forest trust exists between contoso.com and fabrikam.com.</h2>
+            <p>You need to provide users in the contoso.com forest with access to the resources in the fabrikam.com forest. The solution must meet the following requirements:</p>
+            <ul>
+                <li>Users in contoso.com must only be added directly to groups in the contoso.com forest.</li>
+                <li>Permissions to access the resources in fabrikam.com must only be granted directly to groups in the fabrikam.com forest.</li>
+                <li>The number of groups must be minimized.</li>
+            </ul>
+            <p>Which type of groups should you use to organize the users and to assign permissions? To answer, drag the appropriate group types to the correct requirements. Each group may be used once, more than once, or not at all. You may need to drag the split bar between panes or scroll to view content.</p>
 
-            <form action="#">
-                <fieldset>
-                    <legend>Does this meet the goal?</legend>
-                    <input type="radio" id="yes1" name="answer1" value="yes">
-                    <label for="yes1">A. Yes</label><br>
-                    <input type="radio" id="no1" name="answer1" value="no">
-                    <label for="no1">B. No</label><br>
-                </fieldset>
-            </form>
+            <div class="container">
+                <div class="actions">
+                    <div class="draggable" draggable="true" data-action="Domain global">Domain global</div>
+                    <div class="draggable" draggable="true" data-action="Domain local">Domain local</div>
+                    <div class="draggable" draggable="true" data-action="Universal">Universal</div>
+                </div>
+                <div class="answers">
+                    <div class="dropzone" id="dropzoneOrganizeUsers">Organize users: </div>
+                    <div class="dropzone" id="dropzoneAssignPermissions">Assign permissions: </div>
+                </div>
+            </div>
 
             <div id="solutionInfo1"></div> <!-- Div pour afficher la réponse -->
 
-            <button class="solutionButton" data-solution-info-id="solutionInfo1" data-correct-answer="no" data-answer-name="answer1" data-solution-text="<img src='https://raw.githubusercontent.com/pc-aide/Azure/main/az-800%3A%20Administering%20Windows%20Server%20Hybrid%20Core%20Infrastructure/Exam/Pre-Exam/Pra01_%CE%A320/PDC%20role.png' alt='PDC Role'><br><img src='https://raw.githubusercontent.com/pc-aide/Azure/main/az-800%3A%20Administering%20Windows%20Server%20Hybrid%20Core%20Infrastructure/Exam/Pre-Exam/Pra01_%CE%A320/PDC.png' alt='PDC Image'><br>Solution: B. No">Solution</button>
+            <button class="solutionButton" data-solution-info-id="solutionInfo1" data-correct-answer="Domain global,Domain local" data-answer-name="answer1" data-solution-text="Organize users: Domain global<br>Assign permissions: Domain local<br><br>Explanation:<br>Users go to global groups, because, they say ONLY CONTOSO.com MEMBERS. Universal group will allow CHILD DOMAIN MEMBERS as well.<br>For assigning the permissions, it should be DOMAIN LOCAL. Because of A>G>U>DL=>Permissions. AND also DOMAIN LOCAL groups, can contain groups/users of other forests.<br>For reference: <a href='https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/manage/understand-security-groups#group-scope' target='_blank'>Group Scope</a>">Solution</button>
         </div>
 
         <!-- Contenu de question2.html -->
@@ -168,7 +176,9 @@
             <form action="#">
                 <fieldset>
                     <legend>Select the appropriate option:</legend>
-                    <input type="radio" id="optionA" name="answer3" value="A">
+                    <input type="radio" id="optionA" name="answer3"
+
+ value="A">
                     <label for="optionA">A. DC1 only</label><br>
                     <input type="radio" id="optionB" name="answer3" value="B">
                     <label for="optionB">B. Server1 only</label><br>
@@ -298,6 +308,8 @@
 
             <button class="solutionButton" data-solution-info-id="solutionInfo6" data-correct-answer="A" data-answer-name="answer6" data-solution-text="Solution: A. Server3 only">Solution</button>
         </div>
+
+
     </div> <!-- Fin du div questionContainer -->
 
     <div id="finalScore"></div> <!-- Div pour afficher le score final -->
@@ -307,38 +319,33 @@
         var totalQuestions = 6; // Nombre total de questions
 
         function enableDragAndDrop() {
-            document.querySelectorAll('.actions').forEach(container => {
-                const draggables = container.querySelectorAll('.draggable');
-                const dropzones = container.nextElementSibling.querySelectorAll('.dropzone');
+            document.querySelectorAll('.actions .draggable').forEach(draggable => {
+                draggable.addEventListener('dragstart', (e) => {
+                    e.dataTransfer.setData('text/plain', e.target.dataset.action);
+                    e.dataTransfer.effectAllowed = 'move';
+                });
+            });
 
-                draggables.forEach(draggable => {
-                    draggable.addEventListener('dragstart', (e) => {
-                        e.dataTransfer.setData('text/plain', e.target.dataset.action);
-                        e.dataTransfer.effectAllowed = 'move';
-                    });
+            document.querySelectorAll('.dropzone').forEach(dropzone => {
+                dropzone.addEventListener('dragover', (e) => {
+                    e.preventDefault();
+                    e.dataTransfer.dropEffect = 'move';
+                    dropzone.classList.add('highlight');
                 });
 
-                dropzones.forEach(dropzone => {
-                    dropzone.addEventListener('dragover', (e) => {
-                        e.preventDefault();
-                        e.dataTransfer.dropEffect = 'move';
-                        dropzone.classList.add('highlight');
-                    });
+                dropzone.addEventListener('dragleave', () => {
+                    dropzone.classList.remove('highlight');
+                });
 
-                    dropzone.addEventListener('dragleave', () => {
+                dropzone.addEventListener('drop', (e) => {
+                    e.preventDefault();
+                    const data = e.dataTransfer.getData('text/plain');
+                    const draggedElement = document.querySelector(`.draggable[data-action='${data}']`);
+                    if (draggedElement) {
+                        e.target.textContent = draggedElement.textContent;
+                        e.target.dataset.action = data;
                         dropzone.classList.remove('highlight');
-                    });
-
-                    dropzone.addEventListener('drop', (e) => {
-                        e.preventDefault();
-                        const data = e.dataTransfer.getData('text/plain');
-                        const draggedElement = container.querySelector(`.draggable[data-action='${data}']`);
-                        if (draggedElement) {
-                            e.target.textContent = draggedElement.textContent;
-                            e.target.dataset.action = data;
-                            dropzone.classList.remove('highlight');
-                        }
-                    });
+                    }
                 });
             });
         }
@@ -409,24 +416,33 @@
                         showFinalScore();
                     } else {
                         // Logique pour les autres questions (1 à 3, 6)
-                        var selectedAnswer = document.querySelector('input[name="' + this.dataset.answerName + '"]:checked');
-                        if (selectedAnswer && selectedAnswer.value === correctAnswer[0]) {
-                            score += 1; // Ajouter un point si la réponse est correcte
-                            var solutionText = this.dataset.solutionText;
-                            var highlightedAnswer = document.createElement('div');
-                            highlightedAnswer.innerHTML = solutionText;
-                            highlightedAnswer.classList.add('highlight'); // Ajouter la classe de surlignage
-                            document.getElementById(solutionInfoId).textContent = ""; // Effacer tout contenu précédent
-                            document.getElementById(solutionInfoId).appendChild(highlightedAnswer); // Afficher la réponse au-dessus du bouton Solution
-                            document.getElementById(solutionInfoId).style.display = 'block'; // Afficher l'info
+                        if (this.dataset.answerName === 'answer1') {
+                            const organizeUsers = document.querySelector('#dropzoneOrganizeUsers').dataset.action;
+                            const assignPermissions = document.querySelector('#dropzoneAssignPermissions').dataset.action;
+                            if (organizeUsers !== correctAnswer[0] || assignPermissions !== correctAnswer[1]) {
+                                isCorrect = false;
+                            }
                         } else {
-                            var incorrectMessage = document.createElement('div');
-                            incorrectMessage.textContent = "Your answer is incorrect. Please select the correct answer to see the solution.";
-                            incorrectMessage.classList.add('incorrect');
-                            document.getElementById(solutionInfoId).textContent = ""; // Effacer tout contenu précédent
-                            document.getElementById(solutionInfoId).appendChild(incorrectMessage); // Afficher le message d'erreur
-                            document.getElementById(solutionInfoId).style.display = 'block'; // Afficher l'info
+                            var selectedAnswer = document.querySelector('input[name="' + this.dataset.answerName + '"]:checked');
+                            if (!selectedAnswer || selectedAnswer.value !== correctAnswer[0]) {
+                                isCorrect = false;
+                            }
                         }
+
+                        const solutionText = this.dataset.solutionText;
+                        const solutionInfo = document.getElementById(solutionInfoId);
+                        if (isCorrect) {
+                            solutionInfo.innerHTML = solutionText;
+                            solutionInfo.classList.remove('incorrect');
+                            solutionInfo.classList.add('highlight');
+                            score += 1; // Ajouter un point si la réponse est correcte
+                        } else {
+                            solutionInfo.innerHTML = "Your answer is incorrect. Please select the correct answer to see the solution.";
+                            solutionInfo.classList.remove('highlight');
+                            solutionInfo.classList.add('incorrect');
+                        }
+
+                        solutionInfo.style.display = 'block';
                         showFinalScore();
                     }
                 });
