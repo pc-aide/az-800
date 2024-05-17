@@ -445,11 +445,17 @@
                     var solutionInfoId = this.dataset.solutionInfoId;
                     var correctAnswer = this.dataset.correctAnswer.split(',');
                     let isCorrect = true;
+                    let userAnswer = [];
 
                     if (this.dataset.answerName === 'answer5') {
                         // Logique spécifique pour les questions 5
                         const selectedAnswer = document.querySelector('input[name="' + this.dataset.answerName + '"]:checked');
-                        if (!selectedAnswer || selectedAnswer.value !== correctAnswer[0]) {
+                        if (selectedAnswer) {
+                            userAnswer.push(selectedAnswer.value);
+                            if (selectedAnswer.value !== correctAnswer[0]) {
+                                isCorrect = false;
+                            }
+                        } else {
                             isCorrect = false;
                         }
 
@@ -460,7 +466,8 @@
                             solutionInfo.classList.add('highlight');
                             score += 1; // Ajouter un point si la réponse est correcte
                         } else {
-                            solutionInfo.innerHTML = "Your answer is incorrect. Please select the correct answer to see the solution.";
+                            const userAnswerText = userAnswer.length ? userAnswer.join(', ') : "non défini";
+                            solutionInfo.innerHTML = `Your answer is incorrect. Your answer: ${userAnswerText}. Correct answer: ${correctAnswer.join(', ')}.<br>${solutionText}`;
                             solutionInfo.classList.add('incorrect');
                         }
 
@@ -470,7 +477,7 @@
                         // Logique spécifique pour les questions 4
                         const select1 = document.querySelector('#select4Option1').value;
                         const select2 = document.querySelector('#select4Option2').value;
-                        const userAnswer = [select1, select2];
+                        userAnswer = [select1, select2];
                         
                         userAnswer.forEach((answer, index) => {
                             if (answer !== correctAnswer[index]) {
@@ -486,7 +493,8 @@
                             solutionInfo.classList.add('highlight');
                             score += 1; // Ajouter un point si la réponse est correcte
                         } else {
-                            solutionInfo.innerHTML = "Your answer is incorrect. Please select the correct answer to see the solution.";
+                            const userAnswerText = userAnswer.length ? userAnswer.join(', ') : "non défini";
+                            solutionInfo.innerHTML = `Your answer is incorrect. Your answer: ${userAnswerText}. Correct answer: ${correctAnswer.join(', ')}.<br>${solutionText}`;
                             solutionInfo.classList.remove('highlight');
                             solutionInfo.classList.add('incorrect');
                         }
@@ -498,6 +506,7 @@
                         if (this.dataset.answerName === 'answer1') {
                             const organizeUsers = document.querySelector('#dropzoneOrganizeUsers').dataset.action;
                             const assignPermissions = document.querySelector('#dropzoneAssignPermissions').dataset.action;
+                            userAnswer = [organizeUsers, assignPermissions];
                             if (organizeUsers !== correctAnswer[0] || assignPermissions !== correctAnswer[1]) {
                                 isCorrect = false;
                             }
@@ -508,13 +517,19 @@
                             if (!statement1 || !statement2 || !statement3) {
                                 isCorrect = false;
                             } else {
+                                userAnswer = [statement1 ? statement1.value : "non défini", statement2 ? statement2.value : "non défini", statement3 ? statement3.value : "non défini"];
                                 if (statement1.value !== correctAnswer[0] || statement2.value !== correctAnswer[1] || statement3.value !== correctAnswer[2]) {
                                     isCorrect = false;
                                 }
                             }
                         } else {
-                            var selectedAnswer = document.querySelector('input[name="' + this.dataset.answerName + '"]:checked');
-                            if (!selectedAnswer || selectedAnswer.value !== correctAnswer[0]) {
+                            const selectedAnswer = document.querySelector('input[name="' + this.dataset.answerName + '"]:checked');
+                            if (selectedAnswer) {
+                                userAnswer.push(selectedAnswer.value);
+                                if (selectedAnswer.value !== correctAnswer[0]) {
+                                    isCorrect = false;
+                                }
+                            } else {
                                 isCorrect = false;
                             }
                         }
@@ -527,7 +542,8 @@
                             solutionInfo.classList.add('highlight');
                             score += 1; // Ajouter un point si la réponse est correcte
                         } else {
-                            solutionInfo.innerHTML = "Your answer is incorrect. Please select the correct answer to see the solution.";
+                            const userAnswerText = userAnswer.length ? userAnswer.join(', ') : "non défini";
+                            solutionInfo.innerHTML = `Your answer is incorrect. Your answer: ${userAnswerText}. Correct answer: ${correctAnswer.join(', ')}.<br>${solutionText}`;
                             solutionInfo.classList.remove('highlight');
                             solutionInfo.classList.add('incorrect');
                         }
