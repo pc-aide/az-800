@@ -389,13 +389,68 @@
 
             <button class="solutionButton" data-solution-info-id="solutionInfo7" data-correct-answer="Yes,No,No" data-answer-name="answer7" data-solution-text="1. [YES]<br>-> There is an Outgoing trust, So we trust Adatum. Since this is forest trust, child domain, also can assign permissions to Adatum users.<br><br>2. [NO]<br>-> Type trust is outgoing to Adatum. Only Adatum users can sign-in to Contoso forest.<br><br>3. [NO]<br>-> Type trust is outgoing to Adatum. Only Adatum users can sign-in to Contoso forest.<br><br>For reference: <a href='https://www.tech-faq.com/understanding-trust-relationships.html' target='_blank'>Understanding Trust Relationships</a>">Solution</button>
         </div>
+
+        <!-- Contenu de question8 ajouté -->
+        <div>
+            <h1>Question 8</h1>
+            <p>Your network contains an Active Directory Domain Services (AD DS) forest named contoso.com. The forest contains a child domain named east.contoso.com and the servers shown in the following table.</p>
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Domain</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td>DC1</td>
+                    <td>contoso.com</td>
+                    <td>Has the schema master, infrastructure master, & domain naming master roles</td>
+                </tr>
+                <tr>
+                    <td>DC2</td>
+                    <td>east.contoso.com</td>
+                    <td>Has the PDC emulator & RID master roles & is a global catalog server</td>
+                </tr>
+                <tr>
+                    <td>Server1</td>
+                    <td>contoso.com</td>
+                    <td>Has the File Server, DFS Namespaces, & DFS Replication server roles</td>
+                </tr>
+            </table>
+            <p>You need to create a folder for the Central Store to manage Group Policy template files for the entire forest.</p>
+            <p>What should you name the folder, and on which server should you create the folder? To answer, select the appropriate options in the answer area.</p>
+
+            <div class="answer-area">
+                <div class="question-row">
+                    <span>Name:</span>
+                    <select data-answer="1" id="select8Option1">
+                        <option value="CentralDefinitions">CentralDefinitions</option>
+                        <option value="PolicyDefinitions">PolicyDefinitions</option>
+                        <option value="TemplateDefinitions">TemplateDefinitions</option>
+                    </select>
+                </div>
+                <div class="question-row">
+                    <span>Server:</span>
+                    <select data-answer="2" id="select8Option2">
+                        <option value="DC1 only">DC1 only</option>
+                        <option value="DC2 only">DC2 only</option>
+                        <option value="Server1 only">Server1 only</option>
+                        <option value="DC1 & DC2 only">DC1 & DC2 only</option>
+                        <option value="DC1, DC2 & Server1">DC1, DC2 & Server1</option>
+                    </select>
+                </div>
+            </div>
+
+            <div id="solutionInfo8"></div> <!-- Div pour afficher la réponse -->
+
+            <button class="solutionButton" data-solution-info-id="solutionInfo8" data-correct-answer="PolicyDefinitions,DC1 & DC2 only" data-answer-name="answer8" data-solution-text="Name: PolicyDefinitions<br>Server: DC1 & DC2 only<br><br>Explanation:<br>&quot;PolicyDefinitions&quot; and DC1 and DC2 (each domain has its own set of Group Policy)<br>For reference: <a href='https://learn.microsoft.com/en-us/troubleshoot/windows-client/group-policy/create-and-manage-central-store#the-central-store' target='_blank'>Create and manage Central Store</a>">Solution</button>
+        </div>
     </div> <!-- Fin du div questionContainer -->
 
     <div id="finalScore"></div> <!-- Div pour afficher le score final -->
 
     <script>
         var score = 0; // Initialiser le score à 0
-        var totalQuestions = 7; // Nombre total de questions
+        var totalQuestions = 8; // Nombre total de questions
 
         function enableDragAndDrop() {
             document.querySelectorAll('.actions .draggable').forEach(draggable => {
@@ -473,10 +528,10 @@
 
                         solutionInfo.style.display = 'block';
                         showFinalScore();
-                    } else if (this.dataset.answerName === 'answer4') {
-                        // Logique spécifique pour les questions 4
-                        const select1 = document.querySelector('#select4Option1').value;
-                        const select2 = document.querySelector('#select4Option2').value;
+                    } else if (this.dataset.answerName === 'answer4' || this.dataset.answerName === 'answer8') {
+                        // Logique spécifique pour les questions 4 et 8
+                        const select1 = document.querySelector(`#select${this.dataset.answerName.slice(-1)}Option1`).value;
+                        const select2 = document.querySelector(`#select${this.dataset.answerName.slice(-1)}Option2`).value;
                         userAnswer = [select1, select2];
                         
                         userAnswer.forEach((answer, index) => {
