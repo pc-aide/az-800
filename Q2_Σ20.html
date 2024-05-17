@@ -550,13 +550,61 @@
 
             <button class="solutionButton" data-solution-info-id="solutionInfo11" data-correct-answer="B" data-answer-name="answer11" data-solution-text="Solution: B. group managed service account (gMSA)<br><br>Explanation:<br>Managed Service Account is recommended. the local user account is for 2017-2021 / Legacy.<br>You need the following to use Azure AD Connect cloud sync:<br>Domain Administrator or Enterprise Administrator credentials to create the Azure AD Connect Cloud Sync gMSA (group Managed Service Account) to run the agent service<br>For reference: <a href='https://learn.microsoft.com/en-us/entra/identity/hybrid/cloud-sync/how-to-prerequisites?tabs=public-cloud' target='_blank'>Azure AD Connect Cloud Sync Prerequisites</a>">Solution</button>
         </div>
+
+        <!-- Contenu de question12 ajouté -->
+        <div>
+            <h1>Question 12</h1>
+            <p>Your network contains an Active Directory Domain Services (AD DS) domain. The domain contains the domain controllers shown in the following table.</p>
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td>DC1</td>
+                    <td>PDC emulator, RID master, & global catalog server</td>
+                </tr>
+                <tr>
+                    <td>DC2</td>
+                    <td>Infrastructure master & domain naming master</td>
+                </tr>
+                <tr>
+                    <td>DC3</td>
+                    <td>Schema master</td>
+                </tr>
+                <tr>
+                    <td>RODC1</td>
+                    <td>Read-only domain controller (RODC)</td>
+                </tr>
+            </table>
+            <p>You need to ensure that if an attacker compromises the computer account of RODC1, the attacker cannot view the Employee-Number AD DS attribute.<br><br>
+            Which partition should you modify?</p>
+
+            <form action="#">
+                <fieldset>
+                    <legend>Select the appropriate option:</legend>
+                    <input type="radio" id="optionA" name="answer12" value="A">
+                    <label for="optionA">A. configuration</label><br>
+                    <input type="radio" id="optionB" name="answer12" value="B">
+                    <label for="optionB">B. global catalog</label><br>
+                    <input type="radio" id="optionC" name="answer12" value="C">
+                    <label for="optionC">C. domain</label><br>
+                    <input type="radio" id="optionD" name="answer12" value="D">
+                    <label for="optionD">D. schema</label><br>
+                </fieldset>
+            </form>
+
+            <div id="solutionInfo12"></div> <!-- Div pour afficher la réponse -->
+
+            <button class="solutionButton" data-solution-info-id="solutionInfo12" data-correct-answer="D" data-answer-name="answer12" data-solution-text="Solution: D. schema<br><br>Explanation:<br>To mark an attribute confidential, you have to remove the Read permission for the attribute for the Authenticated Users group. Marking the attribute as confidential provides an additional safeguard against an RODC that is compromised by removing the permissions that are necessary to read the credential-like data.<br>En lien avec 2e ref : the modifications needs to be done at schema partition. If you scroll up on the left navigation menu and click on 2 Attributes its tells The following sections specify the attributes in the Active Directory Lightweight Directory Services schema.<br>For reference:<br><a href='https://learn.microsoft.com/en-us/windows/win32/ad/rodc-and-active-directory-schema#marking-attributes-as-confidential' target='_blank'>Marking Attributes as Confidential</a><br><a href='https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-adls/0afba1a7-ff6b-4878-97d0-f099de319dfb' target='_blank'>AD LS Schema Attributes</a>">Solution</button>
+        </div>
     </div> <!-- Fin du div questionContainer -->
 
     <div id="finalScore"></div> <!-- Div pour afficher le score final -->
 
     <script>
         var score = 0; // Initialiser le score à 0
-        var totalQuestions = 11; // Nombre total de questions
+        var totalQuestions = 12; // Nombre total de questions
 
         function enableDragAndDrop() {
             document.querySelectorAll('.actions .draggable').forEach(draggable => {
