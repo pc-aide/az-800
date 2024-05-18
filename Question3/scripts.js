@@ -1,5 +1,5 @@
 var score = 0; // Initialiser le score à 0
-var totalQuestions = 6; // Nombre total de questions
+var totalQuestions = 7; // Nombre total de questions
 
 function enableDragAndDrop() {
     document.querySelectorAll('.actions .draggable').forEach(draggable => {
@@ -243,7 +243,34 @@ function loadQuestions(files) {
                                 score += 1; // Ajouter un point si la réponse est correcte
                             } else {
                                 const userAnswerText = userAnswer.length ? userAnswer.join(', ') : "non défini";
-                                solutionInfo.innerHTML = `Your answer: ${userAnswerText}.<br><br>Correct answer: ${correctAnswer.join(', ')}.<br>Explanation: No granular password policies are mentioned. So the Default Domain Policy is leading. In this case, the minimal password length is 8.`;
+                                solutionInfo.innerHTML = `Your answer: ${userAnswerText}.<br><br>Correct answer: ${correctAnswer.join(', ')}.<br>Explanation: No granular password policies are mentioned. So the Default Domain Policy is leading. In this case, the minimal password length is 8.<br><br>To add to this, only 1 password policy can be in effect for a domain and can only be defined in the default domain policy, or in another GPO linked to the root domain and that would be given precedence.<br>The only way to have multiple is to use fine grained policies.`;
+                                solutionInfo.classList.remove('highlight');
+                                solutionInfo.classList.add('incorrect');
+                            }
+
+                            solutionInfo.style.display = 'block';
+                            showFinalScore();
+                        } else if (this.dataset.answerName === 'answer7') {
+                            const select1 = document.querySelector('#select7Option1').value;
+                            const select2 = document.querySelector('#select7Option2').value;
+                            userAnswer = [select1, select2];
+
+                            userAnswer.forEach((answer, index) => {
+                                if (answer !== correctAnswer[index]) {
+                                    isCorrect = false;
+                                }
+                            });
+
+                            const solutionText = this.dataset.solutionText;
+                            const solutionInfo = document.getElementById(solutionInfoId);
+                            if (isCorrect) {
+                                solutionInfo.innerHTML = solutionText;
+                                solutionInfo.classList.remove('incorrect');
+                                solutionInfo.classList.add('highlight');
+                                score += 1; // Ajouter un point si la réponse est correcte
+                            } else {
+                                const userAnswerText = userAnswer.length ? userAnswer.join(', ') : "non défini";
+                                solutionInfo.innerHTML = `Your answer: ${userAnswerText}.<br><br>Correct answer: ${correctAnswer.join(', ')}.<br>Explanation: <br>Trust1: Forest trust or external trust only.<br>Trust2: Forest trust only.`;
                                 solutionInfo.classList.remove('highlight');
                                 solutionInfo.classList.add('incorrect');
                             }
@@ -260,5 +287,5 @@ function loadQuestions(files) {
 
 document.addEventListener('DOMContentLoaded', function() {
     // Charger toutes les questions
-    loadQuestions(['question1.html', 'question2.html', 'question3.html', 'question4.html', 'question5.html', 'question6.html']);
+    loadQuestions(['question1.html', 'question2.html', 'question3.html', 'question4.html', 'question5.html', 'question6.html', 'question7.html']);
 });
