@@ -1,5 +1,5 @@
 var score = 0; // Initialiser le score à 0
-var totalQuestions = 5; // Nombre total de questions
+var totalQuestions = 6; // Nombre total de questions
 
 function enableDragAndDrop() {
     document.querySelectorAll('.actions .draggable').forEach(draggable => {
@@ -222,6 +222,34 @@ function loadQuestions(files) {
 
                             solutionInfo.style.display = 'block';
                             showFinalScore();
+                        } else if (this.dataset.answerName === 'answer6') {
+                            const answer1 = document.querySelector('input[name="answer6_1"]:checked');
+                            const answer2 = document.querySelector('input[name="answer6_2"]:checked');
+                            const answer3 = document.querySelector('input[name="answer6_3"]:checked');
+                            userAnswer = [answer1 ? answer1.value : null, answer2 ? answer2.value : null, answer3 ? answer3.value : null];
+
+                            userAnswer.forEach((answer, index) => {
+                                if (answer !== correctAnswer[index]) {
+                                    isCorrect = false;
+                                }
+                            });
+
+                            const solutionText = this.dataset.solutionText;
+                            const solutionInfo = document.getElementById(solutionInfoId);
+                            if (isCorrect) {
+                                solutionInfo.innerHTML = solutionText;
+                                solutionInfo.classList.remove('incorrect');
+                                solutionInfo.classList.add('highlight');
+                                score += 1; // Ajouter un point si la réponse est correcte
+                            } else {
+                                const userAnswerText = userAnswer.length ? userAnswer.join(', ') : "non défini";
+                                solutionInfo.innerHTML = `Your answer: ${userAnswerText}.<br><br>Correct answer: ${correctAnswer.join(', ')}.<br>Explanation: No granular password policies are mentioned. So the Default Domain Policy is leading. In this case, the minimal password length is 8.`;
+                                solutionInfo.classList.remove('highlight');
+                                solutionInfo.classList.add('incorrect');
+                            }
+
+                            solutionInfo.style.display = 'block';
+                            showFinalScore();
                         }
                     });
                 });
@@ -232,5 +260,5 @@ function loadQuestions(files) {
 
 document.addEventListener('DOMContentLoaded', function() {
     // Charger toutes les questions
-    loadQuestions(['question1.html', 'question2.html', 'question3.html', 'question4.html', 'question5.html']);
+    loadQuestions(['question1.html', 'question2.html', 'question3.html', 'question4.html', 'question5.html', 'question6.html']);
 });
