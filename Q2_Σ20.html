@@ -653,13 +653,52 @@
 
             <button class="solutionButton" data-solution-info-id="solutionInfo13" data-correct-answer="Yes,Yes,No" data-answer-name="answer13" data-solution-text="1. [YES]<br>-> Password Write back is enabled.<br>2. [YES]<br>-> Pass-Through authentication is in use, therefore AD is the Identity Provider.<br>3. [NO]<br>-> 'User2' is under 'OU2' which is not syned to the Azure Tenant.<br>">Solution</button>
         </div>
+
+        <!-- Contenu de question14 ajouté -->
+        <div>
+            <h1>Question 14</h1>
+            <p>Your on-premises network contains an Active Directory Domain Services (AD DS) domain.</p>
+            <p>You plan to sync the domain with an Azure AD tenant by using Azure AD Connect cloud sync.</p>
+            <p>You need to meet the following requirements:</p>
+            <ul>
+                <li>Install the software required to sync the domain and Azure AD.</li>
+                <li>Enable password hash synchronization.</li>
+            </ul>
+            <p>What should you install, and what should you use to enable password hash synchronization? To answer, select the appropriate options in the answer area.</p>
+
+            <div class="answer-area">
+                <div class="question-row">
+                    <span>Install:</span>
+                    <select data-answer="1" id="select14Option1">
+                        <option value="item14.1">AD Administrative Center</option>
+                        <option value="item14.2">AAD Connect</option>
+                        <option value="item14.3">The AD FS Management console</option>
+                        <option value="item14.4">The AAD Connect provisioning agent</option>
+                    </select>
+                </div>
+
+                <div class="question-row">
+                    <span>Use:</span>
+                    <select data-answer="2" id="select14Option2">
+                        <option value="item14.5">AD Administrative Center</option>
+                        <option value="item14.6">AAD Connect</option>
+                        <option value="item14.7">The AD FS Management console</option>
+                        <option value="item14.8">The Azure portal</option>
+                    </select>
+                </div>
+            </div>
+
+            <div id="solutionInfo14"></div> <!-- Div pour afficher la réponse -->
+
+            <button class="solutionButton" data-solution-info-id="solutionInfo14" data-correct-answer="item14.4,item14.8" data-answer-name="answer14" data-solution-text="Solution: 1. The AAD Connect provisioning agent, 2. The Azure portal<br><br>Explanation:<br>It seems that they are asking to use 'cloud sync,' the answer should be:<br>1: The Azure AD Connect provisioning agent: <a href='https://learn.microsoft.com/en-us/azure/active-directory/hybrid/cloud-sync/how-to-install' target='_blank'>Azure AD Connect provisioning agent</a><br>2: The Azure Portal<br>Azure AD Connect is the primary tool you need to install to set up synchronization between your on-premises AD DS domain and Azure AD. It allows you to configure various synchronization options, including password hash synchronization.<br>The Azure portal is where you can manage your Azure AD settings and configuration, including enabling and configuring password hash synchronization. This is where you'll perform the necessary steps to enable this feature in your Azure AD tenant.<br>The other options listed, such as Active Directory Administrative Center and the AD FS Management console, are not directly related to setting up Azure AD synchronization with password hash synchronization in this context, so you do not need to install them or use them for this specific requirement.<br>For reference: <a href='https://learn.microsoft.com/en-us/entra/identity/hybrid/cloud-sync/how-to-configure' target='_blank'>Configure Password Hash Synchronization</a>">Solution</button>
+        </div>
     </div> <!-- Fin du div questionContainer -->
 
     <div id="finalScore"></div> <!-- Div pour afficher le score final -->
 
     <script>
         var score = 0; // Initialiser le score à 0
-        var totalQuestions = 13; // Nombre total de questions
+        var totalQuestions = 14; // Nombre total de questions
 
         function enableDragAndDrop() {
             document.querySelectorAll('.actions .draggable').forEach(draggable => {
@@ -763,11 +802,18 @@
 
                         solutionInfo.style.display = 'block';
                         showFinalScore();
-                    } else if (this.dataset.answerName === 'answer10') {
-                        const dropzone1 = document.querySelector('#dropzoneAction1').dataset.action;
-                        const dropzone2 = document.querySelector('#dropzoneAction2').dataset.action;
-                        const dropzone3 = document.querySelector('#dropzoneAction3').dataset.action;
-                        userAnswer = [dropzone1, dropzone2, dropzone3];
+                    } else if (this.dataset.answerName === 'answer10' || this.dataset.answerName === 'answer14') {
+                        const dropzone1 = document.querySelector('#dropzoneAction1')?.dataset.action;
+                        const dropzone2 = document.querySelector('#dropzoneAction2')?.dataset.action;
+                        const dropzone3 = document.querySelector('#dropzoneAction3')?.dataset.action;
+                        const select14Option1 = document.querySelector('#select14Option1')?.value;
+                        const select14Option2 = document.querySelector('#select14Option2')?.value;
+
+                        if (this.dataset.answerName === 'answer10') {
+                            userAnswer = [dropzone1, dropzone2, dropzone3];
+                        } else if (this.dataset.answerName === 'answer14') {
+                            userAnswer = [select14Option1, select14Option2];
+                        }
                         
                         userAnswer.forEach((answer, index) => {
                             if (answer !== correctAnswer[index]) {
