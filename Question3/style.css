@@ -1,67 +1,67 @@
 .highlight {
-    background-color: yellow;
+  background-color: yellow;
 }
 
 .incorrect {
-    color: red;
+  color: red;
 }
 
 #solutionInfo {
-    display: none;
-    margin-bottom: 10px;
+  display: none; /* Cacher par défaut */
+  margin-bottom: 10px;
 }
 
 #finalScore {
-    font-size: larger;
-    margin-top: 20px;
-    font-weight: bold;
+  font-size: larger;
+  margin-top: 20px;
+  font-weight: bold;
 }
 
 .container {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .actions, .answers {
-    width: 45%;
+  width: 45%;
 }
 
 .dropzone {
-    width: 100%;
-    min-height: 50px;
-    margin-bottom: 10px;
-    padding: 10px;
-    border: 1px dashed #ccc;
-    background-color: #f9f9f9;
+  width: 100%;
+  min-height: 50px;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px dashed #ccc;
+  background-color: #f9f9f9;
 }
 
 .draggable {
-    padding: 8px;
-    margin: 5px;
-    background-color: #f0f0f0;
-    border: 1px solid #ccc;
-    cursor: move;
+  padding: 8px;
+  margin: 5px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  cursor: move;
 }
 
 table {
-    width: 100%;
-    border-collapse: collapse;
+  width: 100%;
+  border-collapse: collapse;
 }
 
 th, td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
 }
 
 th {
-    background-color: #f2f2f2;
+  background-color: #f2f2f2;
 }
 
 .answer-area {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 .question-row {
-    margin-bottom: 15px;
+  margin-bottom: 15px;
 }
