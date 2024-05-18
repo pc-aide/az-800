@@ -329,8 +329,7 @@
                 </tr>
                 <tr>
                     <td>User1</td>
-                    <td>adatum.com</td>
-                </tr>
+                    <td>adatum.com</                    </tr>
                 <tr>
                     <td>User2</td>
                     <td>contoso.com</td>
@@ -818,13 +817,40 @@
 
             <button class="solutionButton" data-solution-info-id="solutionInfo16" data-correct-answer="B" data-answer-name="answer16" data-solution-text="Solution: B. Client1<br><br>Explanation:<br>We don’t recommend using Windows Admin Center for local management of the same server on which it’s installed.<br>Installing Windows Admin Center on a Domain controller is not supported.<br>To configure Storage Replica for replicating a volume from Server1 to Server2, you should install Windows Admin Center on a management workstation or server. Since Server1 and Server2 are involved in the replication process, it's preferable to install Windows Admin Center on a separate machine to centrally manage both servers.<br>For reference: <a href='https://learn.microsoft.com/en-us/windows-server/manage/windows-admin-center/plan/installation-options' target='_blank'>Windows Admin Center Installation Options</a>">Solution</button>
         </div>
+
+        <!-- Contenu de question17 ajouté -->
+        <div>
+            <h1>Question 17</h1>
+            <p>You have an on-premises Active Directory Domain Services (AD DS) domain named contoso.com that syncs with Azure AD by using Azure AD Connect.<br><br>
+            You enable password protection for contoso.com.<br><br>
+            You need to prevent users from including the word contoso as part of their password.<br><br>
+            What should you use?</p>
+
+            <form action="#">
+                <fieldset>
+                    <legend>Select the appropriate option:</legend>
+                    <input type="radio" id="optionA" name="answer17" value="A">
+                    <label for="optionA">A. the Azure Active Directory admin center</label><br>
+                    <input type="radio" id="optionB" name="answer17" value="B">
+                    <label for="optionB">B. Active Directory Users and Computers</label><br>
+                    <input type="radio" id="optionC" name="answer17" value="C">
+                    <label for="optionC">C. Synchronization Service Manager</label><br>
+                    <input type="radio" id="optionD" name="answer17" value="D">
+                    <label for="optionD">D. Windows Admin Center</label><br>
+                </fieldset>
+            </form>
+
+            <div id="solutionInfo17"></div> <!-- Div pour afficher la réponse -->
+
+            <button class="solutionButton" data-solution-info-id="solutionInfo17" data-correct-answer="A" data-answer-name="answer17" data-solution-text="A. the Azure Active Directory admin center<br><br>Explanation:<br>You can configure the custom banned password list, which includes preventing the use of the word 'contoso' as part of passwords, through the Azure Active Directory admin center. This allows you to enforce password policies centrally for both on-premises AD DS domain and Azure AD users.<br>Microsoft Entra admin center -> Microsoft Entra Password Protection<br>For reference: <a href='https://learn.microsoft.com/en-us/azure/active-directory/authentication/howto-password-ban-bad-on-premises-operations' target='_blank'>Password Protection Operations</a>">Solution</button>
+        </div>
     </div> <!-- Fin du div questionContainer -->
 
     <div id="finalScore"></div> <!-- Div pour afficher le score final -->
 
     <script>
         var score = 0; // Initialiser le score à 0
-        var totalQuestions = 16; // Nombre total de questions
+        var totalQuestions = 17; // Nombre total de questions
 
         function enableDragAndDrop() {
             document.querySelectorAll('.actions .draggable').forEach(draggable => {
