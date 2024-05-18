@@ -1,0 +1,95 @@
+<div>
+  <h2>Question 6</h2>
+  <p>Your network contains an Active Directory Domain Services (AD DS) domain named contoso.com.<br><br>The domain contains the users shown in the following table.</p>
+  
+  <table>
+      <tr>
+          <th>Name</th>
+          <th>Located in</th>
+      </tr>
+      <tr>
+          <td>User1</td>
+          <td>Contoso.com</td>
+      </tr>
+      <tr>
+          <td>User2</td>
+          <td>Contoso.com/Users</td>
+      </tr>
+      <tr>
+          <td>User3</td>
+          <td>Contoso.com/OU1</td>
+      </tr>
+  </table>
+
+  <p>The domain has the Group Policy Objects (GPOs) shown in the following table.</p>
+
+  <table>
+      <tr>
+          <th>Name</th>
+          <th>Linked to</th>
+      </tr>
+      <tr>
+          <td>Default Domain Policy</td>
+          <td>Contoso.com</td>
+      </tr>
+      <tr>
+          <td>Default Domain Controllers Policy</td>
+          <td>Domain Controllers</td>
+      </tr>
+      <tr>
+          <td>GPO1</td>
+          <td>OU1</td>
+      </tr>
+  </table>
+
+  <p>The GPOs are configured as shown in the following table.</p>
+
+  <table>
+      <tr>
+          <th>GPO</th>
+          <th>Minimum password length</th>
+      </tr>
+      <tr>
+          <td>Default Domain Policy</td>
+          <td>8</td>
+      </tr>
+      <tr>
+          <td>Default Domain Controllers Policy</td>
+          <td>12</td>
+      </tr>
+      <tr>
+          <td>GPO1</td>
+          <td>10</td>
+      </tr>
+  </table>
+
+  <p>For each of the following statements, select Yes if the statement is true. Otherwise, select No.</p>
+
+  <form action="#">
+      <fieldset>
+          <legend>When User1 changes their password, at least eight characters must be used for the new password:</legend>
+          <input type="radio" id="user1Yes" name="answer6_1" value="Yes">
+          <label for="user1Yes">Yes</label><br>
+          <input type="radio" id="user1No" name="answer6_1" value="No">
+          <label for="user1No">No</label>
+      </fieldset>
+      <fieldset>
+          <legend>When User2 changes their password, at least 12 characters must be used for the new password:</legend>
+          <input type="radio" id="user2Yes" name="answer6_2" value="Yes">
+          <label for="user2Yes">Yes</label><br>
+          <input type="radio" id="user2No" name="answer6_2" value="No">
+          <label for="user2No">No</label>
+      </fieldset>
+      <fieldset>
+          <legend>When User3 changes their password, at least 10 characters must be used for the new password:</legend>
+          <input type="radio" id="user3Yes" name="answer6_3" value="Yes">
+          <label for="user3Yes">Yes</label><br>
+          <input type="radio" id="user3No" name="answer6_3" value="No">
+          <label for="user3No">No</label>
+      </fieldset>
+  </form>
+
+  <div id="solutionInfo6"></div>
+
+  <button class="solutionButton" data-solution-info-id="solutionInfo6" data-correct-answer="Yes,No,No" data-answer-name="answer6" data-solution-text="Correct answers:<br><br>When User1 changes their password, at least eight characters must be used for the new password: Yes<br>When User2 changes their password, at least 12 characters must be used for the new password: No<br>When User3 changes their password, at least 10 characters must be used for the new password: No<br><br>Explanation:<br>No granular password policies are mentioned. So the Default Domain Policy is leading. In this case, the minimal password length is 8.<br><br>To add to this, only 1 password policy can be in effect for a domain and can only be defined in the default domain policy, or in another GPO linked to the root domain and that would be given precedence.<br>The only way to have multiple is to use fine grained policies.">Solution</button>
+</div>
