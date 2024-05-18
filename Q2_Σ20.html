@@ -329,7 +329,8 @@
                 </tr>
                 <tr>
                     <td>User1</td>
-                    <td>adatum.com</                    </tr>
+                    <td>adatum.com</td>
+                </tr>
                 <tr>
                     <td>User2</td>
                     <td>contoso.com</td>
@@ -842,7 +843,38 @@
 
             <div id="solutionInfo17"></div> <!-- Div pour afficher la réponse -->
 
-            <button class="solutionButton" data-solution-info-id="solutionInfo17" data-correct-answer="A" data-answer-name="answer17" data-solution-text="A. the Azure Active Directory admin center<br><br>Explanation:<br>You can configure the custom banned password list, which includes preventing the use of the word 'contoso' as part of passwords, through the Azure Active Directory admin center. This allows you to enforce password policies centrally for both on-premises AD DS domain and Azure AD users.<br>Microsoft Entra admin center -> Microsoft Entra Password Protection<br>For reference: <a href='https://learn.microsoft.com/en-us/azure/active-directory/authentication/howto-password-ban-bad-on-premises-operations' target='_blank'>Password Protection Operations</a>">Solution</button>
+            <button class="solutionButton" data-solution-info-id="solutionInfo17" data-correct-answer="A" data-answer-name="answer17" data-solution-text="Solution: A. the Azure Active Directory admin center<br><br>Explanation:<br>You can configure the custom banned password list, which includes preventing the use of the word 'contoso' as part of passwords, through the Azure Active Directory admin center. This allows you to enforce password policies centrally for both on-premises AD DS domain and Azure AD users.<br>For reference: <a href='https://learn.microsoft.com/en-us/azure/active-directory/authentication/howto-password-ban-bad-on-premises-operations' target='_blank'>Azure AD Password Protection</a>">Solution</button>
+        </div>
+
+        <!-- Contenu de question18 ajouté -->
+        <div>
+            <h1>Question 18</h1>
+            <p>You have an Active Directory Domain Services (AD DS) domain that contains a group named Group1.<br><br>
+            You need to create a group managed service account (gMSA) named Account1. The solution must ensure that Group1 can use Account1.<br><br>
+            How should you complete the script? To answer, select the appropriate options in the answer area.</p>
+
+            <div class="answer-area">
+                <div class="question-row">
+                    <select data-answer="1" id="select18Option1">
+                        <option value="item18.1">Add-ADComputerServiceAccount</option>
+                        <option value="item18.2">Install-ADServiceAccount</option>
+                        <option value="item18.3">New-ADObject</option>
+                        <option value="item18.4">New-ADServiceAccount</option>
+                    </select>
+                    <span>"Account1" -DNSHostName "website.contoso.com"</span>
+                    <select data-answer="2" id="select18Option2">
+                        <option value="item18.5">-AuthenticationPolicy</option>
+                        <option value="item18.6">-Instance</option>
+                        <option value="item18.7">-PrincipalAllowdToDelegateToAccount</option>
+                        <option value="item18.8">-PrincipalAllowdToRetrieveManagedPassword</option>
+                    </select>
+                    <span>"Group1"</span>
+                </div>
+            </div>
+
+            <div id="solutionInfo18"></div> <!-- Div pour afficher la réponse -->
+
+            <button class="solutionButton" data-solution-info-id="solutionInfo18" data-correct-answer="item18.4,item18.8" data-answer-name="answer18" data-solution-text="Solution: item18.4 New-ADServiceAccount, item18.8 -PrincipalAllowdToRetrieveManagedPassword<br><br>Explanation:<br>New-ADServiceAccount -Name 'Account1' -DNSHostName 'website.contoso.com' -PrincipalsAllowedToRetrieveManagedPassword 'Group1'<br>This option specifies that 'Group1' is allowed to retrieve the managed password for 'Account1.' While it doesn't explicitly mention allowing 'Group1' to use 'Account1' for service operations, it does grant permission for retrieving the password, which may indirectly allow for its use in certain scenarios.<br>For reference: <a href='https://learn.microsoft.com/en-us/virtualization/windowscontainers/manage-containers/manage-serviceaccounts#use-case-for-creating-gmsa-account-for-non-domain-joined-container-hosts' target='_blank'>Use case for creating gMSA account for non-domain-joined container hosts</a>">Solution</button>
         </div>
     </div> <!-- Fin du div questionContainer -->
 
@@ -850,7 +882,7 @@
 
     <script>
         var score = 0; // Initialiser le score à 0
-        var totalQuestions = 17; // Nombre total de questions
+        var totalQuestions = 18; // Nombre total de questions
 
         function enableDragAndDrop() {
             document.querySelectorAll('.actions .draggable').forEach(draggable => {
@@ -954,7 +986,7 @@
 
                         solutionInfo.style.display = 'block';
                         showFinalScore();
-                    } else if (this.dataset.answerName === 'answer10' || this.dataset.answerName === 'answer14' || this.dataset.answerName === 'answer15') {
+                    } else if (this.dataset.answerName === 'answer10' || this.dataset.answerName === 'answer14' || this.dataset.answerName === 'answer15' || this.dataset.answerName === 'answer18') {
                         const dropzone1 = document.querySelector('#dropzoneAction1')?.dataset.action;
                         const dropzone2 = document.querySelector('#dropzoneAction2')?.dataset.action;
                         const dropzone3 = document.querySelector('#dropzoneAction3')?.dataset.action;
@@ -962,6 +994,8 @@
                         const select14Option2 = document.querySelector('#select14Option2')?.value;
                         const select15Option1 = document.querySelector('#select15Option1')?.value;
                         const select15Option2 = document.querySelector('#select15Option2')?.value;
+                        const select18Option1 = document.querySelector('#select18Option1')?.value;
+                        const select18Option2 = document.querySelector('#select18Option2')?.value;
 
                         if (this.dataset.answerName === 'answer10') {
                             userAnswer = [dropzone1, dropzone2, dropzone3];
@@ -969,6 +1003,8 @@
                             userAnswer = [select14Option1, select14Option2];
                         } else if (this.dataset.answerName === 'answer15') {
                             userAnswer = [select15Option1, select15Option2];
+                        } else if (this.dataset.answerName === 'answer18') {
+                            userAnswer = [select18Option1, select18Option2];
                         }
                         
                         userAnswer.forEach((answer, index) => {
