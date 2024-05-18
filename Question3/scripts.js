@@ -1,5 +1,5 @@
 var score = 0; // Initialiser le score à 0
-var totalQuestions = 4; // Nombre total de questions
+var totalQuestions = 5; // Nombre total de questions
 
 function enableDragAndDrop() {
     document.querySelectorAll('.actions .draggable').forEach(draggable => {
@@ -195,6 +195,33 @@ function loadQuestions(files) {
 
                             solutionInfo.style.display = 'block';
                             showFinalScore();
+                        } else if (this.dataset.answerName === 'answer5') {
+                            const select1 = document.querySelector('#select5Option1').value;
+                            const select2 = document.querySelector('#select5Option2').value;
+                            userAnswer = [select1, select2];
+
+                            userAnswer.forEach((answer, index) => {
+                                if (answer !== correctAnswer[index]) {
+                                    isCorrect = false;
+                                }
+                            });
+
+                            const solutionText = this.dataset.solutionText;
+                            const solutionInfo = document.getElementById(solutionInfoId);
+                            if (isCorrect) {
+                                solutionInfo.innerHTML = solutionText;
+                                solutionInfo.classList.remove('incorrect');
+                                solutionInfo.classList.add('highlight');
+                                score += 1; // Ajouter un point si la réponse est correcte
+                            } else {
+                                const userAnswerText = userAnswer.length ? userAnswer.join(', ') : "non défini";
+                                solutionInfo.innerHTML = `Your answer: ${userAnswerText}.<br><br>Correct answer: ${correctAnswer.join(', ')}.<br>For reference: <a href='https://www.youtube.com/watch?v=zYy0KAZBLQ0' target='_blank'>YouTube Video</a>, <a href='https://raw.githubusercontent.com/pc-aide/az-800/main/q54_test_attribute_on_User.png' target='_blank'>Image 1</a>, <a href='https://raw.githubusercontent.com/pc-aide/az-800/main/editor_of_sync_cfg.png' target='_blank'>Image 2</a>, <a href='https://raw.githubusercontent.com/pc-aide/az-800/main/test_sync_force_if_attribute_was_sync_to_AAD_user.png' target='_blank'>Image 3</a>`;
+                                solutionInfo.classList.remove('highlight');
+                                solutionInfo.classList.add('incorrect');
+                            }
+
+                            solutionInfo.style.display = 'block';
+                            showFinalScore();
                         }
                     });
                 });
@@ -205,5 +232,5 @@ function loadQuestions(files) {
 
 document.addEventListener('DOMContentLoaded', function() {
     // Charger toutes les questions
-    loadQuestions(['question1.html', 'question2.html', 'question3.html', 'question4.html']);
+    loadQuestions(['question1.html', 'question2.html', 'question3.html', 'question4.html', 'question5.html']);
 });
