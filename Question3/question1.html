@@ -1,4 +1,5 @@
 <div>
+  <h2>Question 1</h2>
   <h1>Overview</h1>
   <p>Company Information</p>
   <p>ADatum Corporation is a manufacturing company that has a main office in Seattle and two branch offices in Los Angeles and Montreal.</p>
@@ -102,7 +103,7 @@
   </table>
 
   <h1>Azure Resources</h1>
-  <p>ADatum has an Azure subscription that contains an Azure AD tenant. Azure AD Connect is configured to sync the adatum.com forest with Azure AD.</p>
+  <p>ADatum has an Azure subscription that contains an Azure AD tenant. Azure AD Connect est configuré pour synchroniser la forêt adatum.com avec Azure AD.</p>
 
   <p>The subscription contains the virtual networks shown in the following table.</p>
 
@@ -210,17 +211,15 @@
       <li>A direct SSH session must be used to manage all the supported virtual machines on HyperV1.</li>
   </ul>
 
-  <p>DC1 fails.</p>
-  <p>You run ntdsutil.exe.</p>
-  <p>Which five commands should you run in sequence? To answer, move the appropriate commands from the list of commands to the answer area and arrange them in the correct order?</p>
+  <p>DC1 fails.<br><br>You need to meet the technical requirements for the schema master.<br><br>You run ntdsutil.exe.<br><br>Which five commands should you run in sequence? To answer, move the appropriate commands from the list of commands to the answer area and arrange them in the correct order?</p>
 
   <div class="container">
       <div class="actions">
-          <div class="draggable" draggable="true" data-action="roles">roles</div>
+          <div class="draggable" draggable="true" data-action="seize schema master">seize schema master</div>
           <div class="draggable" draggable="true" data-action="connect">connect</div>
           <div class="draggable" draggable="true" data-action="connect to server dc2.adatum.com">connect to server dc2.adatum.com</div>
+          <div class="draggable" draggable="true" data-action="roles">roles</div>
           <div class="draggable" draggable="true" data-action="quit">quit</div>
-          <div class="draggable" draggable="true" data-action="seize schema master">seize schema master</div>
           <div class="draggable" draggable="true" data-action="metadata cleanup">metadata cleanup</div>
       </div>
       <div class="answers">
