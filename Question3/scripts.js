@@ -1,5 +1,5 @@
 var score = 0; // Initialiser le score à 0
-var totalQuestions = 3; // Nombre total de questions
+var totalQuestions = 4; // Nombre total de questions
 
 function enableDragAndDrop() {
     document.querySelectorAll('.actions .draggable').forEach(draggable => {
@@ -168,6 +168,33 @@ function loadQuestions(files) {
 
                             solutionInfo.style.display = 'block';
                             showFinalScore();
+                        } else if (this.dataset.answerName === 'answer4') {
+                            const select1 = document.querySelector('#select4Option1').value;
+                            const select2 = document.querySelector('#select4Option2').value;
+                            userAnswer = [select1, select2];
+                            
+                            userAnswer.forEach((answer, index) => {
+                                if (answer !== correctAnswer[index]) {
+                                    isCorrect = false;
+                                }
+                            });
+
+                            const solutionText = this.dataset.solutionText;
+                            const solutionInfo = document.getElementById(solutionInfoId);
+                            if (isCorrect) {
+                                solutionInfo.innerHTML = solutionText;
+                                solutionInfo.classList.remove('incorrect');
+                                solutionInfo.classList.add('highlight');
+                                score += 1; // Ajouter un point si la réponse est correcte
+                            } else {
+                                const userAnswerText = userAnswer.length ? userAnswer.join(', ') : "non défini";
+                                solutionInfo.innerHTML = `Your answer: ${userAnswerText}.<br><br>Correct answer: ${correctAnswer.join(', ')}.<br>For reference: <a href='https://learn.microsoft.com/en-us/entra/identity/authentication/howto-password-ban-bad-on-premises-deploy#read-only-domain-controller-considerations' target='_blank'>Read-only domain controller considerations</a><br><a href='https://learn.microsoft.com/en-us/entra/identity/authentication/howto-password-ban-bad-on-premises-deploy#microsoft-entra-connect-agent-updater-prerequisites' target='_blank'>Microsoft Entra Connect Agent Updater Prerequisites</a>`;
+                                solutionInfo.classList.remove('highlight');
+                                solutionInfo.classList.add('incorrect');
+                            }
+
+                            solutionInfo.style.display = 'block';
+                            showFinalScore();
                         }
                     });
                 });
@@ -178,5 +205,5 @@ function loadQuestions(files) {
 
 document.addEventListener('DOMContentLoaded', function() {
     // Charger toutes les questions
-    loadQuestions(['question1.html', 'question2.html', 'question3.html']);
+    loadQuestions(['question1.html', 'question2.html', 'question3.html', 'question4.html']);
 });
