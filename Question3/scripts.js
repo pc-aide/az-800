@@ -1,5 +1,5 @@
 var score = 0; // Initialiser le score à 0
-var totalQuestions = 2; // Nombre total de questions
+var totalQuestions = 3; // Nombre total de questions
 
 function enableDragAndDrop() {
     document.querySelectorAll('.actions .draggable').forEach(draggable => {
@@ -39,6 +39,19 @@ function showFinalScore() {
     document.getElementById('finalScoreHeader').textContent = "Final Score: " + score + "/" + totalQuestions + " (" + percentage.toFixed(2) + "%)"; // Afficher le score final dans le header
 }
 
+function sortQuestions() {
+    const container = document.getElementById('questionContainer');
+    const questions = Array.from(container.children);
+
+    questions.sort((a, b) => {
+        const numA = parseInt(a.querySelector('h2').textContent.match(/\d+/)[0]);
+        const numB = parseInt(b.querySelector('h2').textContent.match(/\d+/)[0]);
+        return numA - numB;
+    });
+
+    questions.forEach(question => container.appendChild(question));
+}
+
 function loadQuestions(files) {
     // Trier les fichiers dans l'ordre croissant
     files.sort((a, b) => {
@@ -47,7 +60,9 @@ function loadQuestions(files) {
         return numA - numB;
     });
 
-    files.forEach((file, index) => {
+    let loadedCount = 0;
+
+    files.forEach(file => {
         fetch(file)
             .then(response => response.text())
             .then(data => {
@@ -55,6 +70,12 @@ function loadQuestions(files) {
                 div.innerHTML = data;
                 document.getElementById('questionContainer').appendChild(div);
                 enableDragAndDrop();
+
+                loadedCount++;
+                if (loadedCount === files.length) {
+                    sortQuestions(); // Appel de la fonction pour trier les questions après le chargement de toutes les questions
+                }
+
                 // Re-attacher les écouteurs d'événements pour chaque bouton "Solution"
                 var solutionButtons = div.querySelectorAll('.solutionButton');
                 solutionButtons.forEach(button => {
@@ -121,6 +142,32 @@ function loadQuestions(files) {
 
                             solutionInfo.style.display = 'block';
                             showFinalScore();
+                        } else if (this.dataset.answerName === 'answer3') {
+                            const checkboxes = document.querySelectorAll('input[name="answer3"]:checked');
+                            checkboxes.forEach(checkbox => userAnswer.push(checkbox.value));
+                            userAnswer.sort();
+                            correctAnswer.sort();
+
+                            if (JSON.stringify(userAnswer) !== JSON.stringify(correctAnswer)) {
+                                isCorrect = false;
+                            }
+
+                            const solutionText = this.dataset.solutionText;
+                            const solutionInfo = document.getElementById(solutionInfoId);
+                            if (isCorrect) {
+                                solutionInfo.innerHTML = solutionText;
+                                solutionInfo.classList.remove('incorrect');
+                                solutionInfo.classList.add('highlight');
+                                score += 1; // Ajouter un point si la réponse est correcte
+                            } else {
+                                const userAnswerText = userAnswer.length ? userAnswer.join(', ') : "non défini";
+                                solutionInfo.innerHTML = `Your answer: ${userAnswerText}.<br><br>Correct answer: ${correctAnswer.join(', ')}.<br>For reference: <a href='https://learn.microsoft.com/en-us/powershell/module/activedirectory/new-aduser?view=windowsserver2022-ps' target='_blank'>New-ADUser</a>, <a href='https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/get-started/adac/advanced-ad-ds-management-using-active-directory-administrative-center--level-200-' target='_blank'>AD Administrative Center</a>`;
+                                solutionInfo.classList.remove('highlight');
+                                solutionInfo.classList.add('incorrect');
+                            }
+
+                            solutionInfo.style.display = 'block';
+                            showFinalScore();
                         }
                     });
                 });
@@ -131,5 +178,5 @@ function loadQuestions(files) {
 
 document.addEventListener('DOMContentLoaded', function() {
     // Charger toutes les questions
-    loadQuestions(['question1.html', 'question2.html']);
+    loadQuestions(['question1.html', 'question2.html', 'question3.html']);
 });
