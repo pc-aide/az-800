@@ -1,0 +1,58 @@
+<div>
+  <h2>Question 4</h2>
+  <p>Your on-premises network contains an Active Directory Domain Services (AD DS) domain. The domain contains the servers shown in the following table.</p>
+
+  <table>
+      <tr>
+          <th>Name</th>
+          <th>Description</th>
+      </tr>
+      <tr>
+          <td>DC1</td>
+          <td>Domain naming master, PDC emulator, & RID master</td>
+      </tr>
+      <tr>
+          <td>DC2</td>
+          <td>Schema master & infrastructure master</td>
+      </tr>
+      <tr>
+          <td>RODC1</td>
+          <td>Read-only domain controller (RODC)</td>
+      </tr>
+      <tr>
+          <td>Server1</td>
+          <td>AAD Connect server</td>
+      </tr>
+      <tr>
+          <td>Server2</td>
+          <td>AAD App Proxy connector</td>
+      </tr>
+  </table>
+
+  <p>The domain controllers do NOT have internet connectivity.<br><br>You plan to implement Azure AD Password Protection for the domain.<br><br>You need to deploy Azure AD Password Protection agents. The solution must meet the following requirements:<br><br>• All Azure AD Password Protection policies must be enforced.<br>• Agent updates must be applied automatically.<br>• Administrative effort must be minimized.<br><br>What should you do? To answer, select the appropriate options in the answer area.</p>
+
+  <div class="answer-area">
+      <div class="question-row">
+          <span>Install the AAD Password Protection agent on:</span>
+          <select data-answer="1" id="select4Option1">
+              <option value="item4.1">DC1 only</option>
+              <option value="item4.2">DC1 & DC2 only</option>
+              <option value="item4.3">DC1, DC2 & RODC1</option>
+          </select>
+      </div>
+      <div class="question-row">
+          <span>Install the AAD Password Protection Proxy on:</span>
+          <select data-answer="2" id="select4Option2">
+              <option value="item4.4">DC1</option>
+              <option value="item4.5">DC2</option>
+              <option value="item4.6">RODC1</option>
+              <option value="item4.7">Server1</option>
+              <option value="item4.8">Server2</option>
+          </select>
+      </div>
+  </div>
+
+  <div id="solutionInfo4"></div>
+
+  <button class="solutionButton" data-solution-info-id="solutionInfo4" data-correct-answer="item4.2,item4.7" data-answer-name="answer4" data-solution-text="Correct answer: Install the AAD Password Protection agent on: DC1 & DC2 only. Install the AAD Password Protection Proxy on: Server1.<br><br>Explanation:<br>Agents need to be on full DC's as RODC's cannot process all password changes.<br>For reference: <a href='https://learn.microsoft.com/en-us/entra/identity/authentication/howto-password-ban-bad-on-premises-deploy#read-only-domain-controller-considerations' target='_blank'>Read-only domain controller considerations</a><br>Azure AD Password Protection Proxy needs to be on a member server only and is not compatible with RODC or AAD App Proxy.<br>For reference: <a href='https://learn.microsoft.com/en-us/entra/identity/authentication/howto-password-ban-bad-on-premises-deploy#microsoft-entra-connect-agent-updater-prerequisites' target='_blank'>Microsoft Entra Connect Agent Updater Prerequisites</a>">Solution</button>
+</div>
