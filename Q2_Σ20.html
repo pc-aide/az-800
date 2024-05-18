@@ -767,13 +767,64 @@
 
             <button class="solutionButton" data-solution-info-id="solutionInfo15" data-correct-answer="item15.3,item15.8" data-answer-name="answer15" data-solution-text="Solution: 1. DC2 & DC3 only, 2. DC2 & DC3 only<br><br>Explanation:<br>User1:<br>DC2 and DC3: User1 is created within the adatum.com domain. Object replication is standard within a domain, ensuring that DC2 and DC3 receive an update.<br>DC4: Because DC4 is in a separate forest (contoso.com) and it is not specified that there is a direct trust relationship between contoso.com and west.adatum.com, User1 would not replicate to DC4.<br><br>Attribute1:<br>DC2 and DC3: Schema changes are applied at the forest level. As DC2 and DC3 have the function of Global Catalog (GC), they receive replication from Attribute1.<br>DC4: Although DC4 is also a GC, it resides in a separate forest (contoso.com). Schema changes do not automatically propagate between multiple forests.<br>For reference: <a href='https://www.windows-active-directory.com/global-catalog-server.html' target='_blank'>Global Catalog Server</a><br><a href='https://learn.microsoft.com/en-us/troubleshoot/windows-server/identity/fsmo-roles' target='_blank'>FSMO roles</a>">Solution</button>
         </div>
+
+        <!-- Contenu de question16 ajouté -->
+        <div>
+            <h1>Question 16</h1>
+            <p>Your network contains an Active Directory Domain Services (AD DS) domain. The domain contains the resources shown in the following table.</p>
+
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td>Client1</td>
+                    <td>Client computer that runs Windows</td>
+                </tr>
+                <tr>
+                    <td>DC1</td>
+                    <td>Domain controller</td>
+                </tr>
+                <tr>
+                    <td>Server1</td>
+                    <td>File server</td>
+                </tr>
+                <tr>
+                    <td>Server2</td>
+                    <td>File server</td>
+                </tr>
+            </table>
+
+            <p>You plan to replicate a volume from Server1 to Server2 by using Storage Replica.</p>
+            <p>You need to configure Storage Replica.</p>
+            <p>Where should you install Windows Admin Center?</p>
+
+            <form action="#">
+                <fieldset>
+                    <legend>Select the appropriate option:</legend>
+                    <input type="radio" id="optionA" name="answer16" value="A">
+                    <label for="optionA">A. Server1</label><br>
+                    <input type="radio" id="optionB" name="answer16" value="B">
+                    <label for="optionB">B. Client1</label><br>
+                    <input type="radio" id="optionC" name="answer16" value="C">
+                    <label for="optionC">C. DC1</label><br>
+                    <input type="radio" id="optionD" name="answer16" value="D">
+                    <label for="optionD">D. Server2</label><br>
+                </fieldset>
+            </form>
+
+            <div id="solutionInfo16"></div> <!-- Div pour afficher la réponse -->
+
+            <button class="solutionButton" data-solution-info-id="solutionInfo16" data-correct-answer="B" data-answer-name="answer16" data-solution-text="Solution: B. Client1<br><br>Explanation:<br>We don’t recommend using Windows Admin Center for local management of the same server on which it’s installed.<br>Installing Windows Admin Center on a Domain controller is not supported.<br>To configure Storage Replica for replicating a volume from Server1 to Server2, you should install Windows Admin Center on a management workstation or server. Since Server1 and Server2 are involved in the replication process, it's preferable to install Windows Admin Center on a separate machine to centrally manage both servers.<br>For reference: <a href='https://learn.microsoft.com/en-us/windows-server/manage/windows-admin-center/plan/installation-options' target='_blank'>Windows Admin Center Installation Options</a>">Solution</button>
+        </div>
     </div> <!-- Fin du div questionContainer -->
 
     <div id="finalScore"></div> <!-- Div pour afficher le score final -->
 
     <script>
         var score = 0; // Initialiser le score à 0
-        var totalQuestions = 15; // Nombre total de questions
+        var totalQuestions = 16; // Nombre total de questions
 
         function enableDragAndDrop() {
             document.querySelectorAll('.actions .draggable').forEach(draggable => {
