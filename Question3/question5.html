@@ -1,0 +1,27 @@
+<div>
+  <h2>Question 5</h2>
+  <p>Your on-premises network contains a single-domain Active Directory Domain Services (AD DS) forest. You have an Azure AD tenant named contoso.com. The AD DS forest syncs with the Azure AD tenant by using Azure AD Connect.<br><br>You need to ensure that users in the forest that have a custom attribute of NoSync are excluded from synchronization.<br><br>How should you configure the Azure AD Connect cloudFiltered attribute, and which tool should you use? To answer, select the appropriate options in the answer area.</p>
+
+  <div class="answer-area">
+    <div class="question-row">
+      <span>Attribute:</span>
+      <select data-answer="1" id="select5Option1">
+        <option value="item5.1">False</option>
+        <option value="item5.2">Null</option>
+        <option value="item5.3">True</option>
+      </select>
+    </div>
+    <div class="question-row">
+      <span>Tool:</span>
+      <select data-answer="2" id="select5Option2">
+        <option value="item5.4">ADSI Edit</option>
+        <option value="item5.5">Synchronization Rules Editor</option>
+        <option value="item5.6">The Microsoft AAD Connect wizard</option>
+      </select>
+    </div>
+  </div>
+
+  <div id="solutionInfo5"></div>
+
+  <button class="solutionButton" data-solution-info-id="solutionInfo5" data-correct-answer="item5.3,item5.5" data-answer-name="answer5" data-solution-text="Correct answer: Attribute: True. Tool: Synchronization Rules Editor.<br><br>Explanation:<br>To ensure that users in the forest who have a custom NoSync attribute are excluded from synchronization, you must configure the Azure AD Connect cloudFiltered attribute to True. And the tool that you should use is the Synchronization Rules Editor. With the Synchronization Rules Editor, you can create a custom inbound rule that sets the cloudFiltered attribute to True when the NoSync attribute is present. This will cause Azure AD Connect to exclude these users from synchronization. Keep in mind that any such change should be made with care to avoid unintended impacts on domain services and operations.<br><br>For reference: <img src='https://raw.githubusercontent.com/pc-aide/az-800/main/q54_test_attribute_on_User.png' alt='Test attribute on User' width='600'><br><img src='https://raw.githubusercontent.com/pc-aide/az-800/main/editor_of_sync_cfg.png' alt='Editor of Sync Config' width='600'><br><img src='https://raw.githubusercontent.com/pc-aide/az-800/main/test_sync_force_if_attribute_was_sync_to_AAD_user.png' alt='Test Sync Force' width='600'>">Solution</button>
+</div>
