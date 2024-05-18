@@ -849,7 +849,7 @@
         <!-- Contenu de question18 ajouté -->
         <div>
             <h1>Question 18</h1>
-            <p>You have an Active Directory Domain Services (AD DS) domain that contains a group named Group1.<br><br>
+            <p>Your network contains an Active Directory Domain Services (AD DS) domain that contains a group named Group1.<br><br>
             You need to create a group managed service account (gMSA) named Account1. The solution must ensure that Group1 can use Account1.<br><br>
             How should you complete the script? To answer, select the appropriate options in the answer area.</p>
 
@@ -876,13 +876,41 @@
 
             <button class="solutionButton" data-solution-info-id="solutionInfo18" data-correct-answer="item18.4,item18.8" data-answer-name="answer18" data-solution-text="Solution: item18.4 New-ADServiceAccount, item18.8 -PrincipalAllowdToRetrieveManagedPassword<br><br>Explanation:<br>New-ADServiceAccount -Name 'Account1' -DNSHostName 'website.contoso.com' -PrincipalsAllowedToRetrieveManagedPassword 'Group1'<br>This option specifies that 'Group1' is allowed to retrieve the managed password for 'Account1.' While it doesn't explicitly mention allowing 'Group1' to use 'Account1' for service operations, it does grant permission for retrieving the password, which may indirectly allow for its use in certain scenarios.<br>For reference: <a href='https://learn.microsoft.com/en-us/virtualization/windowscontainers/manage-containers/manage-serviceaccounts#use-case-for-creating-gmsa-account-for-non-domain-joined-container-hosts' target='_blank'>Use case for creating gMSA account for non-domain-joined container hosts</a>">Solution</button>
         </div>
+
+        <!-- Contenu de question19 ajouté -->
+        <div>
+            <h1>Question 19</h1>
+            <p>You have an on-premises Active Directory Domain Services (AD DS) domain that syncs with Azure AD.</p>
+            <p>You deploy an app that adds custom attributes to the domain.</p>
+            <p>From Azure Cloud Shell, you discover that you cannot query the custom attributes of users.</p>
+            <p>You need to ensure that the custom attributes are available in Azure AD.</p>
+            <p>Which task should you perform from Microsoft Azure Active Directory Connect first?</p>
+
+            <form action="#">
+                <fieldset>
+                    <legend>Select the appropriate option:</legend>
+                    <input type="radio" id="optionA" name="answer19" value="A">
+                    <label for="optionA">A. Configure device options</label><br>
+                    <input type="radio" id="optionB" name="answer19" value="B">
+                    <label for="optionB">B. Manage federation</label><br>
+                    <input type="radio" id="optionC" name="answer19" value="C">
+                    <label for="optionC">C. Customize synchronization options</label><br>
+                    <input type="radio" id="optionD" name="answer19" value="D">
+                    <label for="optionD">D. Refresh directory schema</label><br>
+                </fieldset>
+            </form>
+
+            <div id="solutionInfo19"></div> <!-- Div pour afficher la réponse -->
+
+            <button class="solutionButton" data-solution-info-id="solutionInfo19" data-correct-answer="D" data-answer-name="answer19" data-solution-text="Solution: D. Refresh directory schema<br><br>Explanation:<br>To ensure that custom attributes are available in Azure AD, you must first perform the 'Update Directory Schema' task in Microsoft Azure Active Directory Connect.<br>For reference:<br><img src='https://raw.githubusercontent.com/pc-aide/az-800/main/Refresh%20directory%20schema.png' alt='Refresh directory schema'><br><a href='https://support.zixcorp.com/app/answers/detail/a_id/1411' target='_blank'>Support Reference</a>">Solution</button>
+        </div>
     </div> <!-- Fin du div questionContainer -->
 
     <div id="finalScore"></div> <!-- Div pour afficher le score final -->
 
     <script>
         var score = 0; // Initialiser le score à 0
-        var totalQuestions = 18; // Nombre total de questions
+        var totalQuestions = 19; // Nombre total de questions
 
         function enableDragAndDrop() {
             document.querySelectorAll('.actions .draggable').forEach(draggable => {
