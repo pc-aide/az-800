@@ -692,13 +692,88 @@
 
             <button class="solutionButton" data-solution-info-id="solutionInfo14" data-correct-answer="item14.4,item14.8" data-answer-name="answer14" data-solution-text="Solution: 1. The AAD Connect provisioning agent, 2. The Azure portal<br><br>Explanation:<br>It seems that they are asking to use 'cloud sync,' the answer should be:<br>1: The Azure AD Connect provisioning agent: <a href='https://learn.microsoft.com/en-us/azure/active-directory/hybrid/cloud-sync/how-to-install' target='_blank'>Azure AD Connect provisioning agent</a><br>2: The Azure Portal<br>Azure AD Connect is the primary tool you need to install to set up synchronization between your on-premises AD DS domain and Azure AD. It allows you to configure various synchronization options, including password hash synchronization.<br>The Azure portal is where you can manage your Azure AD settings and configuration, including enabling and configuring password hash synchronization. This is where you'll perform the necessary steps to enable this feature in your Azure AD tenant.<br>The other options listed, such as Active Directory Administrative Center and the AD FS Management console, are not directly related to setting up Azure AD synchronization with password hash synchronization in this context, so you do not need to install them or use them for this specific requirement.<br>For reference: <a href='https://learn.microsoft.com/en-us/entra/identity/hybrid/cloud-sync/how-to-configure' target='_blank'>Configure Password Hash Synchronization</a>">Solution</button>
         </div>
+
+        <!-- Contenu de question15 ajouté -->
+        <div>
+            <h1>Question 15</h1>
+            <p>Your network contains two Active Directory Domain Services (AD DS) forests as shown in the following exhibit.</p>
+            <img src="https://raw.githubusercontent.com/pc-aide/az-800/main/q43.png" alt="Two AD DS Forests">
+
+            <p>The forests contain the domain controllers shown in the following table.</p>
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Domain</th>
+                    <th>Global catalog</th>
+                    <th>Schema master</th>
+                </tr>
+                <tr>
+                    <td>DC1</td>
+                    <td>adatum.com</td>
+                    <td>Yes</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>DC2</td>
+                    <td>adatum.com</td>
+                    <td>No</td>
+                    <td>No</td>
+                </tr>
+                <tr>
+                    <td>DC3</td>
+                    <td>west.adatum.com</td>
+                    <td>Yes</td>
+                    <td>No</td>
+                </tr>
+                <tr>
+                    <td>DC4</td>
+                    <td>contoso.com</td>
+                    <td>Yes</td>
+                    <td>Yes</td>
+                </tr>
+            </table>
+
+            <p>You perform the following actions on DC1:</p>
+            <ul>
+                <li>Create a user named User1.</li>
+                <li>Extend the schema with a new attribute named Attribute1.</li>
+            </ul>
+            <p>To which domain controllers are User1 and Attribute1 replicated? To answer, select the appropriate options in the answer area.</p>
+
+            <div class="answer-area">
+                <div class="question-row">
+                    <span>User1:</span>
+                    <select data-answer="1" id="select15Option1">
+                        <option value="item15.1">DC2 only</option>
+                        <option value="item15.2">DC3 only</option>
+                        <option value="item15.3">DC2 & DC3 only</option>
+                        <option value="item15.4">DC3 & DC4 only</option>
+                        <option value="item15.5">DC2, DC3, & DC4</option>
+                    </select>
+                </div>
+
+                <div class="question-row">
+                    <span>Attribute1:</span>
+                    <select data-answer="2" id="select15Option2">
+                        <option value="item15.6">DC2 only</option>
+                        <option value="item15.7">DC4 only</option>
+                        <option value="item15.8">DC2 & DC3 only</option>
+                        <option value="item15.9">DC2, DC3, & DC4</option>
+                    </select>
+                </div>
+            </div>
+
+            <div id="solutionInfo15"></div> <!-- Div pour afficher la réponse -->
+
+            <button class="solutionButton" data-solution-info-id="solutionInfo15" data-correct-answer="item15.3,item15.8" data-answer-name="answer15" data-solution-text="Solution: 1. DC2 & DC3 only, 2. DC2 & DC3 only<br><br>Explanation:<br>User1:<br>DC2 and DC3: User1 is created within the adatum.com domain. Object replication is standard within a domain, ensuring that DC2 and DC3 receive an update.<br>DC4: Because DC4 is in a separate forest (contoso.com) and it is not specified that there is a direct trust relationship between contoso.com and west.adatum.com, User1 would not replicate to DC4.<br><br>Attribute1:<br>DC2 and DC3: Schema changes are applied at the forest level. As DC2 and DC3 have the function of Global Catalog (GC), they receive replication from Attribute1.<br>DC4: Although DC4 is also a GC, it resides in a separate forest (contoso.com). Schema changes do not automatically propagate between multiple forests.<br>For reference: <a href='https://www.windows-active-directory.com/global-catalog-server.html' target='_blank'>Global Catalog Server</a><br><a href='https://learn.microsoft.com/en-us/troubleshoot/windows-server/identity/fsmo-roles' target='_blank'>FSMO roles</a>">Solution</button>
+        </div>
     </div> <!-- Fin du div questionContainer -->
 
     <div id="finalScore"></div> <!-- Div pour afficher le score final -->
 
     <script>
         var score = 0; // Initialiser le score à 0
-        var totalQuestions = 14; // Nombre total de questions
+        var totalQuestions = 15; // Nombre total de questions
 
         function enableDragAndDrop() {
             document.querySelectorAll('.actions .draggable').forEach(draggable => {
@@ -802,17 +877,21 @@
 
                         solutionInfo.style.display = 'block';
                         showFinalScore();
-                    } else if (this.dataset.answerName === 'answer10' || this.dataset.answerName === 'answer14') {
+                    } else if (this.dataset.answerName === 'answer10' || this.dataset.answerName === 'answer14' || this.dataset.answerName === 'answer15') {
                         const dropzone1 = document.querySelector('#dropzoneAction1')?.dataset.action;
                         const dropzone2 = document.querySelector('#dropzoneAction2')?.dataset.action;
                         const dropzone3 = document.querySelector('#dropzoneAction3')?.dataset.action;
                         const select14Option1 = document.querySelector('#select14Option1')?.value;
                         const select14Option2 = document.querySelector('#select14Option2')?.value;
+                        const select15Option1 = document.querySelector('#select15Option1')?.value;
+                        const select15Option2 = document.querySelector('#select15Option2')?.value;
 
                         if (this.dataset.answerName === 'answer10') {
                             userAnswer = [dropzone1, dropzone2, dropzone3];
                         } else if (this.dataset.answerName === 'answer14') {
                             userAnswer = [select14Option1, select14Option2];
+                        } else if (this.dataset.answerName === 'answer15') {
+                            userAnswer = [select15Option1, select15Option2];
                         }
                         
                         userAnswer.forEach((answer, index) => {
