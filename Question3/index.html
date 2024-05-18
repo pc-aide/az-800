@@ -54,6 +54,13 @@
         }
 
         function loadQuestions(files) {
+            // Trier les fichiers dans l'ordre croissant
+            files.sort((a, b) => {
+                const numA = parseInt(a.match(/\d+/)[0]);
+                const numB = parseInt(b.match(/\d+/)[0]);
+                return numA - numB;
+            });
+
             files.forEach((file, index) => {
                 fetch(file)
                     .then(response => response.text())
