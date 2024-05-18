@@ -904,13 +904,65 @@
 
             <button class="solutionButton" data-solution-info-id="solutionInfo19" data-correct-answer="D" data-answer-name="answer19" data-solution-text="Solution: D. Refresh directory schema<br><br>Explanation:<br>To ensure that custom attributes are available in Azure AD, you must first perform the 'Update Directory Schema' task in Microsoft Azure Active Directory Connect.<br>For reference:<br><img src='https://raw.githubusercontent.com/pc-aide/az-800/main/Refresh%20directory%20schema.png' alt='Refresh directory schema'><br><a href='https://support.zixcorp.com/app/answers/detail/a_id/1411' target='_blank'>Support Reference</a>">Solution</button>
         </div>
+
+        <!-- Contenu de question20 ajouté -->
+        <div>
+            <h1>Question 20</h1>
+            <p>You have an Active Directory Domain Services (AD DS) domain that contains the domain controllers shown in the following table.</p>
+
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Operations master role</th>
+                </tr>
+                <tr>
+                    <td>DC1</td>
+                    <td>Schema master</td>
+                </tr>
+                <tr>
+                    <td>DC2</td>
+                    <td>Infrastructure master</td>
+                </tr>
+                <tr>
+                    <td>DC3</td>
+                    <td>Domain naming master</td>
+                </tr>
+                <tr>
+                    <td>DC4</td>
+                    <td>PCD emulator, RID master</td>
+                </tr>
+            </table>
+
+            <p>The domain contains an app named App1 that uses a custom application partition to store configuration data.<br><br>
+            You decommission App1.<br><br>
+            When you attempt to remove the custom application partition, the process fails.<br><br>
+            Which domain controller is unavailable?</p>
+
+            <form action="#">
+                <fieldset>
+                    <legend>Select the appropriate option:</legend>
+                    <input type="radio" id="optionA" name="answer20" value="A">
+                    <label for="optionA">A. DC1</label><br>
+                    <input type="radio" id="optionB" name="answer20" value="B">
+                    <label for="optionB">B. DC2</label><br>
+                    <input type="radio" id="optionC" name="answer20" value="C">
+                    <label for="optionC">C. DC3</label><br>
+                    <input type="radio" id="optionD" name="answer20" value="D">
+                    <label for="optionD">D. DC4</label><br>
+                </fieldset>
+            </form>
+
+            <div id="solutionInfo20"></div> <!-- Div pour afficher la réponse -->
+
+            <button class="solutionButton" data-solution-info-id="solutionInfo20" data-correct-answer="C" data-answer-name="answer20" data-solution-text="Solution: C. DC3<br><br>Explanation:<br>The domain naming master FSMO role holder is the DC responsible for making changes to the forest-wide domain name space of the directory, that is, the Partitions\Configuration naming context or LDAP://CN=Partitions, CN=Configuration, DC=<domain>. This DC is the only one that can add or remove a domain from the directory. It can also add or remove cross references to domains in external directories.<br>For reference: <a href='https://learn.microsoft.com/en-us/troubleshoot/windows-server/identity/fsmo-roles#domain%20naming' target='_blank'>FSMO roles - Domain Naming Master</a>">Solution</button>
+        </div>
     </div> <!-- Fin du div questionContainer -->
 
     <div id="finalScore"></div> <!-- Div pour afficher le score final -->
 
     <script>
         var score = 0; // Initialiser le score à 0
-        var totalQuestions = 19; // Nombre total de questions
+        var totalQuestions = 20; // Nombre total de questions
 
         function enableDragAndDrop() {
             document.querySelectorAll('.actions .draggable').forEach(draggable => {
