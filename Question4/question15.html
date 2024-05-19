@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 15</title>
+</head>
+<body>
+    <div class="question" id="question15">
+        <h2>Question 15</h2>
+        <p>You have an Azure virtual machine named VM1 that runs Windows Server and has the following configurations:</p>
+        <ul>
+            <li>Size: D2s_v4</li>
+            <li>Operating system disk: 127-GiB standard SSD</li>
+            <li>Data disk: 128-GiB standard SSD</li>
+            <li>Virtual machine generation: Gen 2</li>
+        </ul>
+        <p>You plan to perform the following changes to VM1:</p>
+        <ul>
+            <li>Change the virtual machine size to D4s_v4.</li>
+            <li>Detach the data disk.</li>
+            <li>Add a new standard SSD.</li>
+        </ul>
+        <p>Which changes require downtime for VM1?</p>
+
+        <div>
+            <input type="radio" id="answer15A" name="answer15" value="A">
+            <label for="answer15A">A. Detaching the data disk only and adding a new standard SSD.</label><br>
+            <input type="radio" id="answer15B" name="answer15" value="B">
+            <label for="answer15B">B. Detaching the data disk only.</label><br>
+            <input type="radio" id="answer15C" name="answer15" value="C">
+            <label for="answer15C">C. Changing the virtual machine size only.</label><br>
+            <input type="radio" id="answer15D" name="answer15" value="D">
+            <label for="answer15D">D. Adding a new standard SSD only.</label><br>
+        </div>
+
+        <button class="solutionButton" data-answer-name="answer15" data-correct-answer="C" data-solution-info-id="solutionInfo15" data-solution-text="Correct answer: C. Changing the virtual machine size only.<br><br>Explanation: Data disks can be added and detached without requiring downtime. Changing the VM size requires the VM to be restarted.<br><br>For reference: <a href='https://docs.microsoft.com/en-us/azure/virtual-machines/resize-vm?tabs=portal' target='_blank'>Resize a virtual machine in Azure</a>">Solution</button>
+        <div id="solutionInfo15" class="solutionInfo"></div>
+    </div>
+</body>
+</html>
