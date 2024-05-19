@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 16</title>
+</head>
+<body>
+    <div class="question" id="question16">
+        <h2>Question 16</h2>
+        <p>You have an Azure virtual machine named VM1 that runs Windows Server.</p>
+        <p>You have an Azure subscription that has Microsoft Defender for Cloud enabled.</p>
+        <p>You need to ensure that you can use the Azure Policy guest configuration feature to manage VM1.</p>
+        <p>What should you do?</p>
+
+        <div>
+            <input type="radio" id="answer16A" name="answer16" value="A">
+            <label for="answer16A">A. Add the PowerShell Desired State Configuration (DSC) extension to VM1.</label><br>
+            <input type="radio" id="answer16B" name="answer16" value="B">
+            <label for="answer16B">B. Configure VM1 to use a user-assigned managed identity.</label><br>
+            <input type="radio" id="answer16C" name="answer16" value="C">
+            <label for="answer16C">C. Configure VM1 to use a system-assigned managed identity.</label><br>
+            <input type="radio" id="answer16D" name="answer16" value="D">
+            <label for="answer16D">D. Add the Custom Script Extension to VM1.</label>
+        </div>
+
+        <button class="solutionButton" data-answer-name="answer16" data-correct-answer="C" data-solution-info-id="solutionInfo16" data-solution-text="Correct answer: C. Configure VM1 to use a system-assigned managed identity.<br><br>Explanation: For the machine to authenticate to the Guest Configuration service, the machine must have a System-Assigned Managed Identity.<br>For reference: <a href='https://docs.microsoft.com/en-us/azure/virtual-machines/extensions/guest-configuration' target='_blank'>Guest Configuration</a>">Solution</button>
+        <div id="solutionInfo16" class="solutionInfo"></div>
+    </div>
+</body>
+</html>
