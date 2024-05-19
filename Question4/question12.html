@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 12</title>
+</head>
+<body>
+    <div class="question" id="question12">
+        <h2>Question 12</h2>
+        <p>You have a Windows Server container host named Server1 and a container image named image1.</p>
+        <p>You need to start a container from image1. The solution must run the container on a Hyper-V virtual machine.</p>
+        <p>Which parameter should you specify when you run the docker run command?</p>
+
+        <div>
+            <input type="radio" id="answer12A" name="answer12" value="A">
+            <label for="answer12A">A. --expose</label><br>
+            <input type="radio" id="answer12B" name="answer12" value="B">
+            <label for="answer12B">B. --privileged</label><br>
+            <input type="radio" id="answer12C" name="answer12" value="C">
+            <label for="answer12C">C. --runtime</label><br>
+            <input type="radio" id="answer12D" name="answer12" value="D">
+            <label for="answer12D">D. --isolation</label><br>
+            <input type="radio" id="answer12E" name="answer12" value="E">
+            <label for="answer12E">E. --entrypoint</label><br>
+        </div>
+
+        <button class="solutionButton" data-answer-name="answer12" data-correct-answer="D" data-solution-info-id="solutionInfo12" data-solution-text="Correct answer: D. --isolation<br><br>Explanation: To run a container on a Hyper-V virtual machine, you should specify the --isolation parameter with the value hyperv.<br>docker run --isolation hyperv image1<br><br>For reference: <a href='https://docs.microsoft.com/en-us/virtualization/windowscontainers/manage-containers/hyperv-container' target='_blank'>Hyper-V Container Management</a>">Solution</button>
+        <div id="solutionInfo12" class="solutionInfo"></div>
+    </div>
+</body>
+</html>
