@@ -14,22 +14,22 @@
         <p>How should you complete the PowerShell command? To answer, select the appropriate options in the answer area.</p>
 
         <div>
-            <label for="select15Option1">-Path .\HyperVJeasConfig</label>
             <select id="select15Option1">
                 <option value="Enter-PSSession">Enter-PSSession</option>
                 <option value="NewPSSessionConfigurationFile">NewPSSessionConfigurationFile</option>
                 <option value="Register-PSSessionConfiguration">Register-PSSessionConfiguration</option>
             </select>
+            <label for="select15Option1">-Path .\HyperVJeasConfig</label>
         </div>
 
         <div>
-            <label for="select15Option2">-Name 'HyperVJeaHelpDesk' -Force</label>
             <select id="select15Option2">
                 <option value=".ps1">.ps1</option>
                 <option value=".psm1">.psm1</option>
                 <option value=".psrc">.psrc</option>
                 <option value=".pssc">.pssc</option>
             </select>
+            <label for="select15Option2">-Name 'HyperVJeaHelpDesk' -Force</label>
         </div>
 
         <button class="solutionButton" data-answer-name="answer15" data-correct-answer="Register-PSSessionConfiguration,.pssc" data-solution-info-id="solutionInfo15" data-solution-text="Correct answer: Register-PSSessionConfiguration -Path .\HyperVJeasConfig -Name 'HyperVJeaHelpDesk' -Force -ConfigurationFile .pssc.<br><br>Explanation: The question clearly states the session configuration (.PSSC) file has been created. You must register the session. Answers are Register-PSSessionConfiguration and .pssc.<br>For reference: <a href='https://learn.microsoft.com/en-us/powershell/scripting/security/remoting/jea/register-jea?view=powershell-7.2' target='_blank'>Register JEA</a>">Solution</button>
