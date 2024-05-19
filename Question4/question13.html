@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 13</title>
+</head>
+<body>
+    <div class="question" id="question13">
+        <h2>Question 13</h2>
+        <p>You plan to deploy a containerized application that requires .NET Core.</p>
+        <p>You need to create a container image for the application. The image must be as small as possible.</p>
+        <p>Which base image should you use?</p>
+
+        <div>
+            <input type="radio" id="answer13A" name="answer13" value="A">
+            <label for="answer13A">A. Windows Server</label><br>
+            <input type="radio" id="answer13B" name="answer13" value="B">
+            <label for="answer13B">B. Nano Server</label><br>
+            <input type="radio" id="answer13C" name="answer13" value="C">
+            <label for="answer13C">C. Windows</label><br>
+            <input type="radio" id="answer13D" name="answer13" value="D">
+            <label for="answer13D">D. Server Core</label><br>
+        </div>
+
+        <button class="solutionButton" data-answer-name="answer13" data-correct-answer="B" data-solution-info-id="solutionInfo13" data-solution-text="Correct answer: B. Nano Server<br><br>Explanation: This is our smallest base container image. As mentioned above, this means less APIs available. For Nano Server, we focused on scenarios where developers will be writing new applications on which the framework can target the specific APIs of Nano Server. Examples of frameworks, languages, or apps that are supported on Nano Server are .Net Core (now called .Net).<br><br>For reference: <a href='https://techcommunity.microsoft.com/t5/containers/nano-server-x-server-core-x-server-which-base-image-is-the-right/ba-p/2835785' target='_blank'>Nano Server x Server Core x Server: Which base image is the right choice?</a>">Solution</button>
+        <div id="solutionInfo13" class="solutionInfo"></div>
+    </div>
+</body>
+</html>
