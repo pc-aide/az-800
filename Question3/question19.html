@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 19</title>
+</head>
+<body>
+    <div class="question" id="question19">
+        <h2>Question 19</h2>
+        <p>Your company has a main office and a branch office. The two offices are connected by using a WAN link. Each office contains a firewall that filters WAN traffic.</p>
+        <p>The network in the branch office contains 10 servers that run Windows Server. All servers are administered from the main office only.</p>
+        <p>You plan to manage the servers in the branch office by using a Windows Admin Center gateway.</p>
+        <p>On a server in the branch office, you install the Windows Admin Center gateway by using the defaults settings.</p>
+        <p>You need to configure the firewall in the branch office to allow the required inbound connection to the Windows Admin Center gateway.</p>
+        <p>Which inbound TCP port should you allow?</p>
+
+        <div>
+            <input type="radio" id="answer19A" name="answer19" value="A">
+            <label for="answer19A">A. 443</label><br>
+            <input type="radio" id="answer19B" name="answer19" value="B">
+            <label for="answer19B">B. 3389</label><br>
+            <input type="radio" id="answer19C" name="answer19" value="C">
+            <label for="answer19C">C. 5985</label><br>
+            <input type="radio" id="answer19D" name="answer19" value="D">
+            <label for="answer19D">D. 6516</label>
+        </div>
+
+        <button class="solutionButton" data-answer-name="answer19" data-correct-answer="A" data-solution-info-id="solutionInfo19" data-solution-text="Correct answer: A. 443.<br><br>Explanation: Windows Admin Center Gateway listens on both ports 443 and 6516 by default. Port 443 is used for HTTPS connections, which encrypts the communication between the client and the gateway. Port 6516 is used for the Windows Remote Management (WinRM) protocol, which is a standard Simple Object Access Protocol (SOAP)-based, firewall-friendly protocol that allows you to remotely manage Windows-based servers and clients.<br>For reference: <a href='https://learn.microsoft.com/en-us/windows-server/manage/windows-admin-center/azure/deploy-wac-in-azure' target='_blank'>Deploy WAC in Azure</a>">Solution</button>
+        <div id="solutionInfo19" class="solutionInfo"></div>
+    </div>
+</body>
+</html>
