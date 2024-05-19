@@ -391,7 +391,35 @@ function loadQuestions(files) {
                         
                             solutionInfo.style.display = 'block';
                             showFinalScore();
-                        }                                         
+                        }        
+                        else if (this.dataset.answerName === 'answer12') {
+                            const selectedAnswer = document.querySelector('input[name="answer12"]:checked');
+                            if (selectedAnswer) {
+                                userAnswer.push(selectedAnswer.value);
+                                if (selectedAnswer.value !== correctAnswer[0]) {
+                                    isCorrect = false;
+                                }
+                            } else {
+                                isCorrect = false;
+                            }
+                        
+                            const solutionText = this.dataset.solutionText;
+                            const solutionInfo = document.getElementById(solutionInfoId);
+                            if (isCorrect) {
+                                solutionInfo.innerHTML = solutionText;
+                                solutionInfo.classList.remove('incorrect');
+                                solutionInfo.classList.add('highlight');
+                                score += 1; // Ajouter un point si la réponse est correcte
+                            } else {
+                                const userAnswerText = userAnswer.length ? userAnswer.join(', ') : "non défini";
+                                solutionInfo.innerHTML = `Your answer: ${userAnswerText}.<br><br>Correct answer: ${correctAnswer.join(', ')}.<br><br>Explanation: To run a container on a Hyper-V virtual machine, you should specify the --isolation parameter with the value hyperv.<br>docker run --isolation hyperv image1<br><br>For reference: <a href='https://docs.microsoft.com/en-us/virtualization/windowscontainers/manage-containers/hyperv-container' target='_blank'>Hyper-V Container Management</a>`;
+                                solutionInfo.classList.remove('highlight');
+                                solutionInfo.classList.add('incorrect');
+                            }
+                        
+                            solutionInfo.style.display = 'block';
+                            showFinalScore();
+                        }            
                         
                     });
                 });
