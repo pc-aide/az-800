@@ -1,5 +1,5 @@
 var score = 0; // Initialiser le score à 0
-var totalQuestions = 9; // Nombre total de questions
+var totalQuestions = 10; // Nombre total de questions
 
 function enableDragAndDrop() {
     document.querySelectorAll('.actions .draggable').forEach(draggable => {
@@ -334,6 +334,34 @@ function loadQuestions(files) {
                             solutionInfo.style.display = 'block';
                             showFinalScore();
                         }
+                        else if (this.dataset.answerName === 'answer10') {
+                            const select1 = document.querySelector('#select10Option1').value;
+                            const select2 = document.querySelector('#select10Option2').value;
+                            userAnswer = [select1, select2];
+                        
+                            userAnswer.forEach((answer, index) => {
+                                if (answer !== correctAnswer[index]) {
+                                    isCorrect = false;
+                                }
+                            });
+                        
+                            const solutionText = this.dataset.solutionText;
+                            const solutionInfo = document.getElementById(solutionInfoId);
+                            if (isCorrect) {
+                                solutionInfo.innerHTML = solutionText;
+                                solutionInfo.classList.remove('incorrect');
+                                solutionInfo.classList.add('highlight');
+                                score += 1; // Ajouter un point si la réponse est correcte
+                            } else {
+                                const userAnswerText = userAnswer.length ? userAnswer.join(', ') : "non défini";
+                                solutionInfo.innerHTML = `Your answer: ${userAnswerText}.<br><br>Correct answer: ${correctAnswer.join(', ')}.<br><br>Explanation: On-Premises: Install Windows Admin Center and configure Azure Network Adapter.<br>Azure: Create an existing virtual network gateway.<br><br>For reference:<br><a href='https://learn.microsoft.com/en-us/windows-server/manage/windows-admin-center/azure/use-azure-network-adapter' target='_blank'>Windows Admin Center - Azure Network Adapter</a><br><a href='https://learn.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal' target='_blank'>Azure VPN Gateway - Point-to-Site</a>`;
+                                solutionInfo.classList.remove('highlight');
+                                solutionInfo.classList.add('incorrect');
+                            }
+                        
+                            solutionInfo.style.display = 'block';
+                            showFinalScore();
+                        }
                         
                     });
                 });
@@ -344,5 +372,5 @@ function loadQuestions(files) {
 
 document.addEventListener('DOMContentLoaded', function() {
     // Charger toutes les questions
-    loadQuestions(['question1.html', 'question2.html', 'question3.html', 'question4.html', 'question5.html', 'question6.html', 'question7.html', 'question8.html', 'question9.html']);
+    loadQuestions(['question1.html', 'question2.html', 'question3.html', 'question4.html', 'question5.html', 'question6.html', 'question7.html', 'question8.html', 'question9.html', 'question10.html']);
 });
