@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 14</title>
+</head>
+<body>
+    <div class="question" id="question14">
+        <h2>Question 14</h2>
+        <p>Your network contains two Active Directory Domain Services (AD DS) forests named contoso.com and fabrikam.com. A two-way forest trust exists between the forests. Each forest contains a single domain.</p>
+        <p>The domains contain the servers shown in the following table.</p>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Domain</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>Server1</td>
+                <td>contoso.com</td>
+                <td>Hosts a Windows Admin Center gateway</td>
+            </tr>
+            <tr>
+                <td>Server2</td>
+                <td>fabrikam.com</td>
+                <td>Hosts resources that will be managed remotely by using Windows Admin Center on Server1</td>
+            </tr>
+        </table>
+        <p>You need to configure resource-based constrained delegation so that the users in contoso.com can use Windows Admin Center on Server1 to connect to Server2.</p>
+        <p>How should you complete the command? To answer, select the appropriate options in the answer area.</p>
+        
+        <label for="select14Option1">Set-ADComputer -Identity :</label>
+        <select id="select14Option1">
+            <option value="(Get-ADComputer server1.contoso.com)">(Get-ADComputer server1.contoso.com)</option>
+            <option value="(Get-ADComputer server2.fabrikam.com)">(Get-ADComputer server2.fabrikam.com)</option>
+            <option value="(Get-ADGroup 'Contoso\DomainUsers')">(Get-ADGroup 'Contoso\DomainUsers')</option>
+            <option value="(Get-ADGroup 'Fabrikam\Domain Users')">(Get-ADGroup 'Fabrikam\Domain Users')</option>
+        </select>
+
+        <label for="select14Option2">-PrincipalsAllowedToDelegateToAccount :</label>
+        <select id="select14Option2">
+            <option value="(Get-ADComputer server1.contoso.com)">(Get-ADComputer server1.contoso.com)</option>
+            <option value="(Get-ADComputer server2.fabrikam.com)">(Get-ADComputer server2.fabrikam.com)</option>
+            <option value="(Get-ADGroup 'Contoso\DomainUsers')">(Get-ADGroup 'Contoso\DomainUsers')</option>
+            <option value="(Get-ADGroup 'Fabrikam\Domain Users')">(Get-ADGroup 'Fabrikam\Domain Users')</option>
+        </select>
+
+        <button class="solutionButton" data-answer-name="answer14" data-correct-answer="(Get-ADComputer server2.fabrikam.com),(Get-ADComputer server1.contoso.com)" data-solution-info-id="solutionInfo14" data-solution-text="Correct answer: Set-ADComputer -Identity (Get-ADComputer server2.fabrikam.com) -PrincipalsAllowedToDelegateToAccount (Get-ADComputer server1.contoso.com).<br><br>For reference: <a href='https://docs.microsoft.com/en-us/windows-server/manage/windows-admin-center/configure/user-access-control#:~:text=To%20configure%20Resource,Get%2DADComputer%20wac' target='_blank'>Configure Resource-Based Constrained Delegation</a>">Solution</button>
+        <div id="solutionInfo14" class="solutionInfo"></div>
+    </div>
+</body>
+</html>
