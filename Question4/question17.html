@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 17</title>
+</head>
+<body>
+    <div class="question" id="question17">
+        <h2>Question 17</h2>
+        <p>You have a server named Server1 that runs Windows Server and has the Hyper-V server role installed. Server1 hosts a virtual machine named VM1.</p>
+        <p>Server1 has an NVMe storage device. The device is currently assigned to VM1 by using Discrete Device Assignment.</p>
+        <p>You need to make the device available to Server1.</p>
+        <p>Which four actions should you perform in sequence? To answer, move the appropriate actions from the list of actions to the answer area and arrange them in the correct order.</p>
+
+        <div class="container">
+            <div class="actions">
+                <div class="draggable" draggable="true" data-action="item17.1">From Server1, stop VM1</div>
+                <div class="draggable" draggable="true" data-action="item17.2">From Server1, run the Remove-VMAssignableDevice cmdlet</div>
+                <div class="draggable" draggable="true" data-action="item17.3">From Server1, run the Mount-VMHostAssignableDevice cmdlet</div>
+                <div class="draggable" draggable="true" data-action="item17.4">From Server1, enable the device by using Device Manager</div>
+                <div class="draggable" draggable="true" data-action="item17.5">From VM1, disable the device by using Device Manager</div>
+            </div>
+            <div class="answers">
+                <div class="dropzone" id="dropzoneAction17.8">Drag&DropHere17.8</div>
+                <div class="dropzone" id="dropzoneAction17.9">Drag&DropHere17.9</div>
+                <div class="dropzone" id="dropzoneAction17.10">Drag&DropHere17.10</div>
+                <div class="dropzone" id="dropzoneAction17.11">Drag&DropHere17.11</div>
+            </div>
+        </div>
+
+        <button class="solutionButton" data-answer-name="answer17" data-correct-answer="item17.1,item17.2,item17.3,item17.4" data-solution-info-id="solutionInfo17" data-solution-text="Correct answers:<br>1. From Server1, stop VM1.<br>2. From Server1, run the Remove-VMAssignableDevice cmdlet.<br>3. From Server1, run the Mount-VMHostAssignableDevice cmdlet.<br>4. From Server1, enable the device by using Device Manager.<br><br>Explanation: <br>1. From Server1, Stop VM1. (You need to stop VM1 to release the NVMe storage device from the virtual machine.)<br>2. From Server1, run the Remove-VMAssignableDevice cmdlet. (This step detaches the device from the virtual machine.)<br>3. From Server1, run the Mount-VMHostAssignableDevice cmdlet. (Now that the device is no longer assigned to VM1, This makes the NVMe storage device available to Server1.)<br>4. From Server1, enable the device by using Device Manager. (Once the device is attached to Server1, you should enable it in Device Manager to make it usable by the host server.)<br><br>For reference: <a href='https://docs.microsoft.com/en-us/windows-server/virtualization/hyper-v/deploy/deploying-storage-devices-using-dda' target='_blank'>Deploying Storage Devices Using DDA</a>, <a href='https://docs.microsoft.com/en-us/windows-server/virtualization/hyper-v/deploy/deploying-graphics-devices-using-dda#removing-a-device-and-returning-it-to-the-host' target='_blank'>Removing a Device and Returning it to the Host</a>">Solution</button>
+        <div id="solutionInfo17" class="solutionInfo"></div>
+    </div>
+</body>
+</html>
