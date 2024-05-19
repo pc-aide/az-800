@@ -280,7 +280,35 @@ function loadQuestions(files) {
                             solutionInfo.style.display = 'block';
                             showFinalScore();
                         }
-                                                                        
+                        else if (this.dataset.answerName === 'answer8') {
+                            const selectedAnswer = document.querySelector('input[name="answer8"]:checked');
+                            if (selectedAnswer) {
+                                userAnswer.push(selectedAnswer.value);
+                                if (selectedAnswer.value !== correctAnswer[0]) {
+                                    isCorrect = false;
+                                }
+                            } else {
+                                isCorrect = false;
+                            }
+                        
+                            const solutionText = this.dataset.solutionText;
+                            const solutionInfo = document.getElementById(solutionInfoId);
+                            if (isCorrect) {
+                                solutionInfo.innerHTML = solutionText;
+                                solutionInfo.classList.remove('incorrect');
+                                solutionInfo.classList.add('highlight');
+                                score += 1; // Ajouter un point si la réponse est correcte
+                            } else {
+                                const userAnswerText = userAnswer.length ? userAnswer.join(', ') : "non défini";
+                                solutionInfo.innerHTML = `Your answer: ${userAnswerText}.<br><br>Correct answer: ${correctAnswer.join(', ')}.<br><br>Explanation: A reservation is for a DHCP request. An exclusion is for fixed IP. Create an exclusion range to prevent DHCP from handing out addresses between 192.168.16.242 - 192.168.16.245.`;
+                                solutionInfo.classList.remove('highlight');
+                                solutionInfo.classList.add('incorrect');
+                            }
+                        
+                            solutionInfo.style.display = 'block';
+                            showFinalScore();
+                        }
+                        
                     });
                 });
             })
