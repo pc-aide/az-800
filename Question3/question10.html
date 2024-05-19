@@ -1,0 +1,30 @@
+<div>
+  <h2>Question 10</h2>
+  <p>You have 10 on-premises servers that run Windows Server.<br>You plan to use Azure Network Adapter to connect the servers to the resources in Azure.<br>Which prerequisites do you require on-premises and in Azure? To answer, select the appropriate options in the answer area.</p>
+
+  <div class="answer-area">
+    <div class="question-row">
+      <span>To configure the on-premises servers, use:</span>
+      <select data-answer="1" id="select10Option1">
+        <option value="item10.1">Azure CLI</option>
+        <option value="item10.2">Routing & Remote Access</option>
+        <option value="item10.3">Server Manager</option>
+        <option value="item10.4">Windows Admin Center</option>
+      </select>
+    </div>
+    <div class="question-row">
+      <span>To connect the Azure resources & Azure Network Server Manager Adapter, use:</span>
+      <select data-answer="2" id="select10Option2">
+        <option value="item10.5">Azure Bastion</option>
+        <option value="item10.6">Azure Firewall</option>
+        <option value="item10.7">An Azure vnet gateway</option>
+        <option value="item10.8">A private endpoint</option>
+        <option value="item10.9">A public Azure LB</option>
+      </select>
+    </div>
+  </div>
+
+  <div id="solutionInfo10"></div>
+
+  <button class="solutionButton" data-solution-info-id="solutionInfo10" data-correct-answer="item10.4,item10.7" data-answer-name="answer10" data-solution-text="Correct answers:<br><br>To configure the on-premises servers, use: Windows Admin Center<br>To connect the Azure resources & Azure Network Server Manager Adapter, use: An Azure vnet gateway<br><br>Explanation:<br>On-Premises: Install Windows Admin Center and configure Azure Network Adapter.<br>Azure: Create an existing virtual network gateway.<br><br>For reference:<br><a href='https://learn.microsoft.com/en-us/windows-server/manage/windows-admin-center/azure/use-azure-network-adapter' target='_blank'>Windows Admin Center - Azure Network Adapter</a><br><a href='https://learn.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal' target='_blank'>Azure VPN Gateway - Point-to-Site</a>">Solution</button>
+</div>
