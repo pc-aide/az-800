@@ -1,10 +1,10 @@
 var score = 0; // Initialiser le score à 0
-var totalQuestions = 10; // Nombre total de questions
+var totalQuestions = 12; // Nombre total de questions
 
 function enableDragAndDrop() {
-    document.querySelectorAll('.actions .draggable').forEach(draggable => {
+    document.querySelectorAll('.draggable').forEach(draggable => {
         draggable.addEventListener('dragstart', (e) => {
-            e.dataTransfer.setData('text/plain', e.target.dataset.action);
+            e.dataTransfer.setData('text/plain', e.target.id);
             e.dataTransfer.effectAllowed = 'move';
         });
     });
@@ -23,10 +23,10 @@ function enableDragAndDrop() {
         dropzone.addEventListener('drop', (e) => {
             e.preventDefault();
             const data = e.dataTransfer.getData('text/plain');
-            const draggedElement = document.querySelector(`.draggable[data-action='${data}']`);
+            const draggedElement = document.getElementById(data);
             if (draggedElement) {
                 e.target.textContent = draggedElement.textContent;
-                e.target.dataset.action = data;
+                e.target.dataset.action = draggedElement.dataset.action;
                 dropzone.classList.remove('highlight');
             }
         });
@@ -86,11 +86,11 @@ function loadQuestions(files) {
                         let userAnswer = [];
 
                         if (this.dataset.answerName === 'answer1') {
-                            const dropzone1 = document.querySelector('#dropzoneAction1').dataset.action;
-                            const dropzone2 = document.querySelector('#dropzoneAction2').dataset.action;
-                            const dropzone3 = document.querySelector('#dropzoneAction3').dataset.action;
-                            const dropzone4 = document.querySelector('#dropzoneAction4').dataset.action;
-                            const dropzone5 = document.querySelector('#dropzoneAction5').dataset.action;
+                            const dropzone1 = document.querySelector('#dropzone1-1').dataset.action;
+                            const dropzone2 = document.querySelector('#dropzone1-2').dataset.action;
+                            const dropzone3 = document.querySelector('#dropzone1-3').dataset.action;
+                            const dropzone4 = document.querySelector('#dropzone1-4').dataset.action;
+                            const dropzone5 = document.querySelector('#dropzone1-5').dataset.action;
                             userAnswer = [dropzone1, dropzone2, dropzone3, dropzone4, dropzone5];
 
                             userAnswer.forEach((answer, index) => {
@@ -305,8 +305,7 @@ function loadQuestions(files) {
 
                             solutionInfo.style.display = 'block';
                             showFinalScore();
-                        }
-                        else if (this.dataset.answerName === 'answer9') {
+                        } else if (this.dataset.answerName === 'answer9') {
                             const selectedAnswer = document.querySelector('input[name="answer9"]:checked');
                             if (selectedAnswer) {
                                 userAnswer.push(selectedAnswer.value);
@@ -316,7 +315,7 @@ function loadQuestions(files) {
                             } else {
                                 isCorrect = false;
                             }
-                        
+
                             const solutionText = this.dataset.solutionText;
                             const solutionInfo = document.getElementById(solutionInfoId);
                             if (isCorrect) {
@@ -330,13 +329,68 @@ function loadQuestions(files) {
                                 solutionInfo.classList.remove('highlight');
                                 solutionInfo.classList.add('incorrect');
                             }
-                        
+
+                            solutionInfo.style.display = 'block';
+                            showFinalScore();
+                        } else if (this.dataset.answerName === 'answer10') {
+                            const select1 = document.querySelector('#select10Option1').value;
+                            const select2 = document.querySelector('#select10Option2').value;
+                            userAnswer = [select1, select2];
+
+                            userAnswer.forEach((answer, index) => {
+                                if (answer !== correctAnswer[index]) {
+                                    isCorrect = false;
+                                }
+                            });
+
+                            const solutionText = this.dataset.solutionText;
+                            const solutionInfo = document.getElementById(solutionInfoId);
+                            if (isCorrect) {
+                                solutionInfo.innerHTML = solutionText;
+                                solutionInfo.classList.remove('incorrect');
+                                solutionInfo.classList.add('highlight');
+                                score += 1; // Ajouter un point si la réponse est correcte
+                            } else {
+                                const userAnswerText = userAnswer.length ? userAnswer.join(', ') : "non défini";
+                                solutionInfo.innerHTML = `Your answer: ${userAnswerText}.<br><br>Correct answer: ${correctAnswer.join(', ')}.<br><br>Explanation: On-Premises: Install Windows Admin Center and configure Azure Network Adapter.<br>Azure: Create an existing virtual network gateway.<br><br>For reference:<br><a href='https://learn.microsoft.com/en-us/windows-server/manage/windows-admin-center/azure/use-azure-network-adapter' target='_blank'>Windows Admin Center - Azure Network Adapter</a><br><a href='https://learn.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal' target='_blank'>Azure VPN Gateway - Point-to-Site</a>`;
+                                solutionInfo.classList.remove('highlight');
+                                solutionInfo.classList.add('incorrect');
+                            }
+
+                            solutionInfo.style.display = 'block';
+                            showFinalScore();
+                        } else if (this.dataset.answerName === 'answer11') {
+                            const dropzone1 = document.querySelector('#dropzone11-1').dataset.action;
+                            const dropzone2 = document.querySelector('#dropzone11-2').dataset.action;
+                            const dropzone3 = document.querySelector('#dropzone11-3').dataset.action;
+                            userAnswer = [dropzone1, dropzone2, dropzone3];
+
+                            userAnswer.forEach((answer, index) => {
+                                if (answer !== correctAnswer[index]) {
+                                    isCorrect = false;
+                                }
+                            });
+
+                            const solutionText = this.dataset.solutionText;
+                            const solutionInfo = document.getElementById(solutionInfoId);
+                            if (isCorrect) {
+                                solutionInfo.innerHTML = solutionText;
+                                solutionInfo.classList.remove('incorrect');
+                                solutionInfo.classList.add('highlight');
+                                score += 1; // Ajouter un point si la réponse est correcte
+                            } else {
+                                const userAnswerText = userAnswer.length ? userAnswer.join(', ') : "non défini";
+                                solutionInfo.innerHTML = `Your answer: ${userAnswerText}.<br><br>Correct answer: ${correctAnswer.join(', ')}.<br><br>Explanation: In my test on Windows Server 2022:<br>1. Request New Certificate, Open certificate and Copy Thumbprint<br>2. Go to Apps & Features, click Windows Admin Center, click Modify, click Next<br>3. Click Change, Paste Thumbprint, click Change, click Finish, Ready.<br><br>For reference:<br><a href='http://coryretherford.com/Lists/Posts/Post.aspx?ID=418' target='_blank'>Replace certificate in Windows Admin Center</a><br><img src='https://raw.githubusercontent.com/pc-aide/az-800/main/q2.png' alt='Step 1' width='600'><br><img src='https://raw.githubusercontent.com/pc-aide/az-800/main/q2_2.png' alt='Step 2' width='600'><br><img src='https://raw.githubusercontent.com/pc-aide/az-800/main/q2_3.png' alt='Step 3' width='600'>`;
+                                solutionInfo.classList.remove('highlight');
+                                solutionInfo.classList.add('incorrect');
+                            }
+
                             solutionInfo.style.display = 'block';
                             showFinalScore();
                         }
-                        else if (this.dataset.answerName === 'answer10') {
-                            const select1 = document.querySelector('#select10Option1').value;
-                            const select2 = document.querySelector('#select10Option2').value;
+                        else if (this.dataset.answerName === 'answer12') {
+                            const select1 = document.querySelector('#select12Option1').value;
+                            const select2 = document.querySelector('#select12Option2').value;
                             userAnswer = [select1, select2];
                         
                             userAnswer.forEach((answer, index) => {
@@ -354,7 +408,7 @@ function loadQuestions(files) {
                                 score += 1; // Ajouter un point si la réponse est correcte
                             } else {
                                 const userAnswerText = userAnswer.length ? userAnswer.join(', ') : "non défini";
-                                solutionInfo.innerHTML = `Your answer: ${userAnswerText}.<br><br>Correct answer: ${correctAnswer.join(', ')}.<br><br>Explanation: On-Premises: Install Windows Admin Center and configure Azure Network Adapter.<br>Azure: Create an existing virtual network gateway.<br><br>For reference:<br><a href='https://learn.microsoft.com/en-us/windows-server/manage/windows-admin-center/azure/use-azure-network-adapter' target='_blank'>Windows Admin Center - Azure Network Adapter</a><br><a href='https://learn.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal' target='_blank'>Azure VPN Gateway - Point-to-Site</a>`;
+                                solutionInfo.innerHTML = `Your answer: ${userAnswerText}.<br><br>Correct answer: ${correctAnswer.join(', ')}.<br><br>For reference: <a href='https://docs.microsoft.com/en-us/windows-server/manage/windows-admin-center/azure/azure-monitor' target='_blank'>Azure Monitor with Windows Admin Center</a>`;
                                 solutionInfo.classList.remove('highlight');
                                 solutionInfo.classList.add('incorrect');
                             }
@@ -372,5 +426,9 @@ function loadQuestions(files) {
 
 document.addEventListener('DOMContentLoaded', function() {
     // Charger toutes les questions
-    loadQuestions(['question1.html', 'question2.html', 'question3.html', 'question4.html', 'question5.html', 'question6.html', 'question7.html', 'question8.html', 'question9.html', 'question10.html']);
+    loadQuestions([
+        'question1.html', 'question2.html', 'question3.html', 'question4.html', 'question5.html',
+        'question6.html', 'question7.html', 'question8.html', 'question9.html', 'question10.html',
+        'question11.html', 'question12.html'
+    ]);
 });
