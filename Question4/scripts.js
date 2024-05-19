@@ -503,8 +503,36 @@ function loadQuestions(files) {
                         
                             solutionInfo.style.display = 'block';
                             showFinalScore();
-                        }                                        
+                        }      
+                        else if (this.dataset.answerName === 'answer16') {
+                            const select1 = document.querySelector('select[name="answer16-1"]').value;
+                            const select2 = document.querySelector('select[name="answer16-2"]').value;
+                            const select3 = document.querySelector('select[name="answer16-3"]').value;
+                            userAnswer = [select1, select2, select3];
                         
+                            userAnswer.forEach((answer, index) => {
+                                if (answer !== correctAnswer[index]) {
+                                    isCorrect = false;
+                                }
+                            });
+                        
+                            const solutionText = this.dataset.solutionText;
+                            const solutionInfo = document.getElementById(solutionInfoId);
+                            if (isCorrect) {
+                                solutionInfo.innerHTML = solutionText;
+                                solutionInfo.classList.remove('incorrect');
+                                solutionInfo.classList.add('highlight');
+                                score += 1; // Ajouter un point si la réponse est correcte
+                            } else {
+                                const userAnswerText = userAnswer.length ? userAnswer.join(', ') : "non défini";
+                                solutionInfo.innerHTML = `Your answer: ${userAnswerText}.<br><br>Correct answers: ${correctAnswer.join(', ')}.<br><br>Explanation: Container1: This is a Windows container that must NOT share a kernel with other containers. To achieve this, you can use Hyper-V isolation.<br>Container2: This is a Linux container that requires two static IP addresses. In Windows Server, Linux containers cannot use Hyper-V isolation; to achieve this, you can only use process isolation.<br>Container3: This is a Windows container that runs a database and requires a static IP address. For Windows containers, you can use either Hyper-V isolation or process isolation, and it depends on your specific requirements. Since there are no specific constraints mentioned, you have the flexibility to choose either isolation mode.<br><br>For reference: <a href='https://learn.microsoft.com/en-us/virtualization/windowscontainers/manage-containers/hyperv-container#hyper-v-isolation' target='_blank'>Hyper-V Isolation</a>, <a href='https://ubuntu.com/tutorials/windows-ubuntu-hyperv-containers#7-run-an-ubuntu-container-on-hyperv' target='_blank'>Ubuntu Containers on Hyper-V</a>, <a href='https://learn.microsoft.com/en-us/virtualization/windowscontainers/manage-containers/hyperv-container' target='_blank'>Windows Containers Management</a>`;
+                                solutionInfo.classList.remove('highlight');
+                                solutionInfo.classList.add('incorrect');
+                            }
+                        
+                            solutionInfo.style.display = 'block';
+                            showFinalScore();
+                        }                                                        
                     });
                 });
             })
