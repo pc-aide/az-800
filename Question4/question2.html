@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 2</title>
+</head>
+<body>
+    <div class="question" id="question2">
+        <h2>Question 2</h2>
+        <p>Your on-premises network contains an Active Directory domain named contoso.com and 500 servers that run Windows Server. All the servers are Azure Arc-enabled and joined to contoso.com.</p>
+        <p>You need to implement PowerShell Desired State Configuration (DSC) on all the servers. The solution must minimize administrative effort.</p>
+        <p>Where should you store the DSC scripts, and what should you use to apply DSC to the servers? To answer, select the appropriate options in the answer area.</p>
+
+        <div>
+            <label for="select2Option1">Store in:</label>
+            <select id="select2Option1">
+                <option value="An Azure App Configuration store">An Azure App Configuration store</option>
+                <option value="An Azure Automation account">An Azure Automation account</option>
+                <option value="An Azure Policy definition">An Azure Policy definition</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="select2Option2">Use:</label>
+            <select id="select2Option2">
+                <option value="A GPO in AD DS">A GPO in AD DS</option>
+                <option value="Azure VMs extensions">Azure VMs extensions</option>
+                <option value="Guest configuration in Azure Policy">Guest configuration in Azure Policy</option>
+            </select>
+        </div>
+
+        <button class="solutionButton" data-answer-name="answer2" data-correct-answer="An Azure Automation account,Guest configuration in Azure Policy" data-solution-info-id="solutionInfo2" data-solution-text="Correct answer: Store in: An Azure Automation account. Use: Guest configuration in Azure Policy.<br><br>Explanation: Before you enable Automation State Configuration, we would like you to know that a newer version of DSC is now generally available, managed by a feature of Azure Policy named guest configuration. The guest configuration service combines features of DSC Extension, Azure Automation State Configuration, and the most commonly requested features from customer feedback. Guest configuration also includes hybrid machine support through Arc-enabled servers.<br><br>For reference: <a href='https://learn.microsoft.com/en-us/azure/automation/automation-dsc-overview?source=recommendations' target='_blank'>Automation DSC Overview</a>">Solution</button>
+        <div id="solutionInfo2" class="solutionInfo"></div>
+    </div>
+</body>
+</html>
