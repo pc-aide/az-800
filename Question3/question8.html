@@ -1,0 +1,99 @@
+<div>
+  <h2>Question 8</h2>
+  <p>Your network contains an Active Directory Domain Services (AD DS) domain named contoso.com. The domain contains the users shown in the following table.</p>
+  
+  <table>
+      <tr>
+          <th>Name</th>
+          <th>Located in</th>
+      </tr>
+      <tr>
+          <td>User1</td>
+          <td>Contoso\Users</td>
+      </tr>
+      <tr>
+          <td>User2</td>
+          <td>Contoso\OU1</td>
+      </tr>
+      <tr>
+          <td>User3</td>
+          <td>Contoso\OU1\OU2</td>
+      </tr>
+  </table>
+
+  <p>The domain has the Group Policy Objects (GPOs) shown in the following table.</p>
+
+  <table>
+      <tr>
+          <th>Name</th>
+          <th>Linked to</th>
+          <th>Enforcement</th>
+      </tr>
+      <tr>
+          <td>GPO1</td>
+          <td>Contoso.com</td>
+          <td>Enforce is enabled for the GPO link</td>
+      </tr>
+      <tr>
+          <td>GPO2</td>
+          <td>OU1</td>
+          <td>None</td>
+      </tr>
+      <tr>
+          <td>GPO3</td>
+          <td>OU2</td>
+          <td>Block inheritance is enabled for OU2</td>
+      </tr>
+  </table>
+
+  <p>The GPOs are configured to map a drive named H as shown in the following table.</p>
+
+  <table>
+      <tr>
+          <th>Name</th>
+          <th>Configuration</th>
+      </tr>
+      <tr>
+          <td>GPO1</td>
+          <td>Drive H maps to \\server1\share</td>
+      </tr>
+      <tr>
+          <td>GPO2</td>
+          <td>Drive H maps to \\server2\share</td>
+      </tr>
+      <tr>
+          <td>GPO3</td>
+          <td>Drive H maps to \\server3\share</td>
+      </tr>
+  </table>
+
+  <p>For each of the following statements, select Yes if the statement is true. Otherwise, select No.</p>
+
+  <form action="#">
+      <fieldset>
+          <legend>For User1, \\server2\share maps to drive H:</legend>
+          <input type="radio" id="user1Yes" name="answer8_1" value="Yes">
+          <label for="user1Yes">Yes</label><br>
+          <input type="radio" id="user1No" name="answer8_1" value="No">
+          <label for="user1No">No</label>
+      </fieldset>
+      <fieldset>
+          <legend>For User2, \\server1\share maps to drive H:</legend>
+          <input type="radio" id="user2Yes" name="answer8_2" value="Yes">
+          <label for="user2Yes">Yes</label><br>
+          <input type="radio" id="user2No" name="answer8_2" value="No">
+          <label for="user2No">No</label>
+      </fieldset>
+      <fieldset>
+          <legend>For User3, \\server3\share maps to drive H:</legend>
+          <input type="radio" id="user3Yes" name="answer8_3" value="Yes">
+          <label for="user3Yes">Yes</label><br>
+          <input type="radio" id="user3No" name="answer8_3" value="No">
+          <label for="user3No">No</label>
+      </fieldset>
+  </form>
+
+  <div id="solutionInfo8"></div>
+
+  <button class="solutionButton" data-solution-info-id="solutionInfo8" data-correct-answer="No,Yes,No" data-answer-name="answer8" data-solution-text="Correct answers:<br><br>For User1, \\server2\share maps to drive H: No<br>For User2, \\server1\share maps to drive H: Yes<br>For User3, \\server3\share maps to drive H: No<br><br>Explanation: Enforced. If the GPO link is enforced, it cannot be blocked at a lower-level (in the Group Policy processing hierarchy) container.<br><br>For reference: <a href='https://learn.microsoft.com/en-us/powershell/module/grouppolicy/set-gplink?view=windowsserver2022-ps' target='_blank'>Set-GPLink</a>">Solution</button>
+</div>
