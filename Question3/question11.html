@@ -1,29 +1,23 @@
-else if (this.dataset.answerName === 'answer11') {
-    const dropzone1 = document.querySelector('#dropzoneAction1').dataset.action;
-    const dropzone2 = document.querySelector('#dropzoneAction2').dataset.action;
-    const dropzone3 = document.querySelector('#dropzoneAction3').dataset.action;
-    userAnswer = [dropzone1, dropzone2, dropzone3];
+<div>
+  <h2>Question 11</h2>
+  <p>You have a server named Server1 that has Windows Admin Center installed. The certificate used by Windows Admin Center was obtained from a certification authority (CA).<br>The certificate expires.<br>You need to replace the certificate.<br>Which three actions should you perform in sequence? To answer, move the appropriate actions from the list of actions to the answer area and arrange them in the correct order.</p>
 
-    userAnswer.forEach((answer, index) => {
-        if (answer !== correctAnswer[index]) {
-            isCorrect = false;
-        }
-    });
+  <p>Select and Place:</p>
+  
+  <div class="drag-drop-list">
+    <div class="draggable" data-action="item11.1">Obtain & install a new certificate</div>
+    <div class="draggable" data-action="item11.2">From IIS Manager, bind a certificate</div>
+    <div class="draggable" data-action="item11.3">Run Windows Admin Center Setup & select Remove</div>
+    <div class="draggable" data-action="item11.4">Run Windows Admin Center Setup & select Repair</div>
+    <div class="draggable" data-action="item11.5">Run Windows Admin Center Setup & select Change</div>
+    <div class="draggable" data-action="item11.6">Copy the certificate thumbprint</div>
+  </div>
 
-    const solutionText = this.dataset.solutionText;
-    const solutionInfo = document.getElementById(solutionInfoId);
-    if (isCorrect) {
-        solutionInfo.innerHTML = solutionText;
-        solutionInfo.classList.remove('incorrect');
-        solutionInfo.classList.add('highlight');
-        score += 1; // Ajouter un point si la réponse est correcte
-    } else {
-        const userAnswerText = userAnswer.length ? userAnswer.join(', ') : "non défini";
-        solutionInfo.innerHTML = `Your answer: ${userAnswerText}.<br><br>Correct answer: ${correctAnswer.join(', ')}.<br><br>Explanation: In my test on Windows Server 2022:<br>1. Request New Certificate, Open certificate and Copy Thumbprint<br>2. Go to Apps & Features, click Windows Admin Center, click Modify, click Next<br>3. Click Change, Paste Thumbprint, click Change, click Finish, Ready.<br><br>For reference:<br><a href='http://coryretherford.com/Lists/Posts/Post.aspx?ID=418' target='_blank'>Replace certificate in Windows Admin Center</a><br><img src='https://raw.githubusercontent.com/pc-aide/az-800/main/q2.png' alt='Step 1' width='600'><br><img src='https://raw.githubusercontent.com/pc-aide/az-800/main/q2_2.png' alt='Step 2' width='600'><br><img src='https://raw.githubusercontent.com/pc-aide/az-800/main/q2_3.png' alt='Step 3' width='600'>`;
-        solutionInfo.classList.remove('highlight');
-        solutionInfo.classList.add('incorrect');
-    }
+  <div class="dropzone" id="dropzoneAction1">drag & drop 1 here</div>
+  <div class="dropzone" id="dropzoneAction2">drag & drop 2 here</div>
+  <div class="dropzone" id="dropzoneAction3">drag & drop 3 here</div>
 
-    solutionInfo.style.display = 'block';
-    showFinalScore();
-}
+  <div id="solutionInfo11"></div>
+
+  <button class="solutionButton" data-solution-info-id="solutionInfo11" data-correct-answer="item11.1,item11.6,item11.5" data-answer-name="answer11" data-solution-text="Correct answers:<br><br>1. Obtain & install a new certificate<br>2. Copy the certificate thumbprint<br>3. Run Windows Admin Center Setup & select Change<br><br>Explanation: In my test on Windows Server 2022:<br>1. Request New Certificate, Open certificate and Copy Thumbprint<br>2. Go to Apps & Features, click Windows Admin Center, click Modify, click Next<br>3. Click Change, Paste Thumbprint, click Change, click Finish, Ready.<br><br>For reference:<br><a href='http://coryretherford.com/Lists/Posts/Post.aspx?ID=418' target='_blank'>Replace certificate in Windows Admin Center</a><br><img src='https://raw.githubusercontent.com/pc-aide/az-800/main/q2.png' alt='Step 1' width='600'><br><img src='https://raw.githubusercontent.com/pc-aide/az-800/main/q2_2.png' alt='Step 2' width='600'><br><img src='https://raw.githubusercontent.com/pc-aide/az-800/main/q2_3.png' alt='Step 3' width='600'>">Solution</button>
+</div>
