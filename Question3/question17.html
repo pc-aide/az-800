@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 17</title>
+</head>
+<body>
+    <div class="question" id="question17">
+        <h2>Question 17</h2>
+        <p>You have an Azure subscription named sub1 and 500 on-premises virtual machines that run Windows Server.</p>
+        <p>You plan to onboard the on-premises virtual machines to Azure Arc by running the Azure Arc deployment script.</p>
+        <p>You need to create an identity that will be used by the script to authenticate access to sub1. The solution must use the principle of least privilege.</p>
+        <p>How should you complete the command? To answer, select the appropriate options in the answer area.</p>
+
+        <div>
+            <select id="select17Option1">
+                <option value="New-AzADAppCredential">New-AzADAppCredential</option>
+                <option value="New-AzADServicePrincipal">New-AzADServicePrincipal</option>
+                <option value="New-AzUserAssignedIdentity">New-AzUserAssignedIdentity</option>
+            </select>
+            <label for="select17Option1"></label>
+        </div>
+
+        <div>
+            <label for="select17Option2">-DisplayName 'Arc-for-servers' -Role</label>
+            <select id="select17Option2">
+                <option value="'Azure Connected Machine Onboarding'">'Azure Connected Machine Onboarding'</option>
+                <option value="'Virtual Machine Contributor'">'Virtual Machine Contributor'</option>
+                <option value="'Virtual Machine User Login'">'Virtual Machine User Login'</option>
+            </select>
+        </div>
+
+        <button class="solutionButton" data-answer-name="answer17" data-correct-answer="New-AzADServicePrincipal,'Azure Connected Machine Onboarding'" data-solution-info-id="solutionInfo17" data-solution-text="Correct answer: New-AzADServicePrincipal -DisplayName 'Arc-for-servers' -Role 'Azure Connected Machine Onboarding'.<br><br>Explanation: For the machine to authenticate to the Guest Configuration service, the machine must have a System-Assigned Managed Identity.<br>For reference: <a href='https://docs.microsoft.com/en-us/azure/azure-arc/servers/onboard-service-principal' target='_blank'>Onboard Service Principal</a>">Solution</button>
+        <div id="solutionInfo17" class="solutionInfo"></div>
+    </div>
+</body>
+</html>
