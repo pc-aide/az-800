@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 11</title>
+</head>
+<body>
+    <div class="question" id="question11">
+        <h2>Question 11</h2>
+        <p>You have a server named Host1 that has the Hyper-V server role installed. Host1 hosts a virtual machine named VM1.</p>
+        <p>You have a management server named Server1 that runs Windows Server. You remotely manage Host1 from Server1 by using Hyper-V Manager.</p>
+        <p>You need to ensure that you can access a USB hard drive connected to Server1 when you connect to VM1 by using Virtual Machine Connection.</p>
+        <p>Which two actions should you perform? Each correct answer presents part of the solution. NOTE: Each correct selection is worth one point.</p>
+
+        <div>
+            <input type="checkbox" id="answer11A" name="answer11" value="A">
+            <label for="answer11A">A. From the Hyper-V Settings of Host1, select Allow enhanced session mode.</label><br>
+            <input type="checkbox" id="answer11B" name="answer11" value="B">
+            <label for "answer11B">B. From Virtual Machine Connection, select Show Options, and then select the USB hard drive.</label><br>
+            <input type="checkbox" id="answer11C" name="answer11" value="C">
+            <label for="answer11C">C. From Virtual Machine Connection, switch to a basic session.</label><br>
+            <input type="checkbox" id="answer11D" name="answer11" value="D">
+            <label for="answer11D">D. From Disk Management on Host1, select Rescan Disks.</label><br>
+            <input type="checkbox" id="answer11E" name="answer11" value="E">
+            <label for="answer11E">E. From Disk Management on Host1, attach a virtual hard disk.</label><br>
+        </div>
+
+        <button class="solutionButton" data-answer-name="answer11" data-correct-answer="A,B" data-solution-info-id="solutionInfo11" data-solution-text="Correct answer: A. From the Hyper-V Settings of Host1, select Allow enhanced session mode<br>B. From Virtual Machine Connection, select Show Options, and then select the USB hard drive<br><br>Explanation: Open VMConnect. Select the virtual machine that you want to connect to. Click Show options. Select Local resources. Click More. Select the drive that you want to use on the virtual machine and click Ok.<br><br>A. This allows enhanced session mode, which can provide USB redirection and other features.<br>B. When connecting to VM1 using VMConnect, you can configure local resources, including USB devices, through the 'Show Options' menu.<br><br>For reference: <a href='https://docs.microsoft.com/en-us/windows-server/virtualization/hyper-v/learn-more/use-local-resources-on-hyper-v-virtual-machine-with-vmconnect' target='_blank'>Use Local Resources on Hyper-V Virtual Machine with VMConnect</a>">Solution</button>
+        <div id="solutionInfo11" class="solutionInfo"></div>
+    </div>
+</body>
+</html>
