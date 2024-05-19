@@ -1,0 +1,29 @@
+else if (this.dataset.answerName === 'answer11') {
+    const dropzone1 = document.querySelector('#dropzoneAction1').dataset.action;
+    const dropzone2 = document.querySelector('#dropzoneAction2').dataset.action;
+    const dropzone3 = document.querySelector('#dropzoneAction3').dataset.action;
+    userAnswer = [dropzone1, dropzone2, dropzone3];
+
+    userAnswer.forEach((answer, index) => {
+        if (answer !== correctAnswer[index]) {
+            isCorrect = false;
+        }
+    });
+
+    const solutionText = this.dataset.solutionText;
+    const solutionInfo = document.getElementById(solutionInfoId);
+    if (isCorrect) {
+        solutionInfo.innerHTML = solutionText;
+        solutionInfo.classList.remove('incorrect');
+        solutionInfo.classList.add('highlight');
+        score += 1; // Ajouter un point si la réponse est correcte
+    } else {
+        const userAnswerText = userAnswer.length ? userAnswer.join(', ') : "non défini";
+        solutionInfo.innerHTML = `Your answer: ${userAnswerText}.<br><br>Correct answer: ${correctAnswer.join(', ')}.<br><br>Explanation: In my test on Windows Server 2022:<br>1. Request New Certificate, Open certificate and Copy Thumbprint<br>2. Go to Apps & Features, click Windows Admin Center, click Modify, click Next<br>3. Click Change, Paste Thumbprint, click Change, click Finish, Ready.<br><br>For reference:<br><a href='http://coryretherford.com/Lists/Posts/Post.aspx?ID=418' target='_blank'>Replace certificate in Windows Admin Center</a><br><img src='https://raw.githubusercontent.com/pc-aide/az-800/main/q2.png' alt='Step 1' width='600'><br><img src='https://raw.githubusercontent.com/pc-aide/az-800/main/q2_2.png' alt='Step 2' width='600'><br><img src='https://raw.githubusercontent.com/pc-aide/az-800/main/q2_3.png' alt='Step 3' width='600'>`;
+        solutionInfo.classList.remove('highlight');
+        solutionInfo.classList.add('incorrect');
+    }
+
+    solutionInfo.style.display = 'block';
+    showFinalScore();
+}
