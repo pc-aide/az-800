@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 1</title>
+</head>
+<body>
+    <div class="question" id="question1">
+        <h2>Question 1</h2>
+        <p>You have an on-premises Active Directory Domain Services (AD DS) domain that syncs with an Azure Active Directory (Azure AD) tenant.</p>
+        <p>You have an on-premises web app named WebApp1 that only supports Kerberos authentication.</p>
+        <p>You need to ensure that users can access WebApp1 by using their Azure AD account. The solution must minimize administrative effort.</p>
+        <p>What should you configure? To answer, select the appropriate options in the answer area.</p>
+
+        <div>
+            <label for="select1Option1">In AAD:</label>
+            <select id="select1Option1">
+                <option value="The AAD Application Proxy connector">The AAD Application Proxy connector</option>
+                <option value="The AAD Application Proxy service">The AAD Application Proxy service</option>
+                <option value="Web Application Proxy">Web Application Proxy</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="select1Option2">On-premises:</label>
+            <select id="select1Option2">
+                <option value="The AAD Application Proxy connector">The AAD Application Proxy connector</option>
+                <option value="The AAD Application Proxy service">The AAD Application Proxy service</option>
+                <option value="Web Application Proxy">Web Application Proxy</option>
+            </select>
+        </div>
+
+        <button class="solutionButton" data-answer-name="answer1" data-correct-answer="The AAD Application Proxy service,The AAD Application Proxy connector" data-solution-info-id="solutionInfo1" data-solution-text="Correct answer: In AAD: The AAD Application Proxy service. On-premises: The AAD Application Proxy connector.<br><br>Explanation: To use Application Proxy, you need a Windows server running Windows Server 2012 R2 or later. You'll install the Application Proxy connector on the server.">Solution</button>
+        <div id="solutionInfo1" class="solutionInfo"></div>
+    </div>
+</body>
+</html>
