@@ -1,5 +1,5 @@
 var score = 0; // Initialiser le score à 0
-var totalQuestions = 13; // Nombre total de questions
+var totalQuestions = 14; // Nombre total de questions
 
 function enableDragAndDrop() {
     document.querySelectorAll('.draggable').forEach(draggable => {
@@ -444,6 +444,34 @@ function loadQuestions(files) {
                             solutionInfo.style.display = 'block';
                             showFinalScore();
                         }
+                        else if (this.dataset.answerName === 'answer14') {
+                            const select1 = document.querySelector('#select14Option1').value;
+                            const select2 = document.querySelector('#select14Option2').value;
+                            userAnswer = [select1, select2];
+                        
+                            userAnswer.forEach((answer, index) => {
+                                if (answer !== correctAnswer[index]) {
+                                    isCorrect = false;
+                                }
+                            });
+                        
+                            const solutionText = this.dataset.solutionText;
+                            const solutionInfo = document.getElementById(solutionInfoId);
+                            if (isCorrect) {
+                                solutionInfo.innerHTML = solutionText;
+                                solutionInfo.classList.remove('incorrect');
+                                solutionInfo.classList.add('highlight');
+                                score += 1; // Ajouter un point si la réponse est correcte
+                            } else {
+                                const userAnswerText = userAnswer.length ? userAnswer.join(', ') : "non défini";
+                                solutionInfo.innerHTML = `Your answer: ${userAnswerText}.<br><br>Correct answer: ${correctAnswer.join(', ')}.<br><br>For reference: <a href='https://docs.microsoft.com/en-us/windows-server/manage/windows-admin-center/configure/user-access-control#:~:text=To%20configure%20Resource,Get%2DADComputer%20wac' target='_blank'>Configure Resource-Based Constrained Delegation</a>`;
+                                solutionInfo.classList.remove('highlight');
+                                solutionInfo.classList.add('incorrect');
+                            }
+                        
+                            solutionInfo.style.display = 'block';
+                            showFinalScore();
+                        }
                         
                     });
                 });
@@ -457,6 +485,6 @@ document.addEventListener('DOMContentLoaded', function() {
     loadQuestions([
         'question1.html', 'question2.html', 'question3.html', 'question4.html', 'question5.html',
         'question6.html', 'question7.html', 'question8.html', 'question9.html', 'question10.html',
-        'question11.html', 'question12.html', 'question13.html'
+        'question11.html', 'question12.html', 'question13.html', 'question14.html'
     ]);
 });
