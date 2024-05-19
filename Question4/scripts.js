@@ -195,7 +195,35 @@ function loadQuestions(files) {
                         
                             solutionInfo.style.display = 'block';
                             showFinalScore();
-                        }                        
+                        }
+                        else if (this.dataset.answerName === 'answer5') {
+                            const selectedAnswer = document.querySelector('input[name="answer5"]:checked');
+                            if (selectedAnswer) {
+                                userAnswer.push(selectedAnswer.value);
+                                if (selectedAnswer.value !== correctAnswer[0]) {
+                                    isCorrect = false;
+                                }
+                            } else {
+                                isCorrect = false;
+                            }
+                        
+                            const solutionText = this.dataset.solutionText;
+                            const solutionInfo = document.getElementById(solutionInfoId);
+                            if (isCorrect) {
+                                solutionInfo.innerHTML = solutionText;
+                                solutionInfo.classList.remove('incorrect');
+                                solutionInfo.classList.add('highlight');
+                                score += 1; // Ajouter un point si la réponse est correcte
+                            } else {
+                                const userAnswerText = userAnswer.length ? userAnswer.join(', ') : "non défini";
+                                solutionInfo.innerHTML = `Your answer: ${userAnswerText}.<br><br>Correct answer: ${correctAnswer.join(', ')}.<br><br>Explanation: Automanage does not support Trusted Launch VMs. Trusted Launch is not supported on Azure VMs and considering the options provided:<br><br>Server1 is a Windows Server 2022 Datacenter with Trusted Launch, so it should not have Azure Automanage enabled.<br>Server2 is a Windows Server 2022 Datacenter with a Standard security type, and Server3 is a Windows Server 2022 Datacenter with a Standard security type. Both Server2 and Server3 can have Azure Automanage enabled.<br>Server4 is a Windows Server 2019 Datacenter, and Trusted Launch is not supported on VMs, so it should not have Azure Automanage enabled.<br>Automanage does not support Trusted Launch VMs.<br><br>For reference: <a href='https://learn.microsoft.com/en-us/azure/automanage/overview-about' target='_blank'>Azure Automanage Overview</a>`;
+                                solutionInfo.classList.remove('highlight');
+                                solutionInfo.classList.add('incorrect');
+                            }
+                        
+                            solutionInfo.style.display = 'block';
+                            showFinalScore();
+                        }                                        
                         
                     });
                 });
