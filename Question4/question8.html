@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 8</title>
+</head>
+<body>
+    <div class="question" id="question8">
+        <h2>Question 8</h2>
+        <p>You have a server named Server1 that runs Windows Server and has the DHCP Server role installed. Server1 contains the following single scope:</p>
+        <ul>
+            <li>Scope: 192.168.16.0</li>
+            <li>Address pool: 192.168.16.1-192.168.16.254</li>
+            <li>Subnet mask: 255.255.255.0</li>
+            <li>Lease duration: 8 days</li>
+        </ul>
+        <p>You have four testing devices that are configured with static IP addresses as shown in the following table.</p>
+
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>IP address</th>
+            </tr>
+            <tr>
+                <td>TestDevice1</td>
+                <td>192.168.16.242</td>
+            </tr>
+            <tr>
+                <td>TestDevice2</td>
+                <td>192.168.16.243</td>
+            </tr>
+            <tr>
+                <td>TestDevice3</td>
+                <td>192.168.16.244</td>
+            </tr>
+            <tr>
+                <td>TestDevice4</td>
+                <td>192.168.16.245</td>
+            </tr>
+        </table>
+
+        <p>The test devices are turned on once a month.</p>
+        <p>You need to prevent Server1 from assigning the IP addresses allocated to the test devices to other devices when the test devices are offline. The solution must minimize administrative effort.</p>
+        <p>What should you do?</p>
+
+        <div>
+            <input type="radio" id="answer8A" name="answer8" value="A">
+            <label for="answer8A">A. Create a policy.</label><br>
+            <input type="radio" id="answer8B" name="answer8" value="B">
+            <label for="answer8B">B. Create reservations.</label><br>
+            <input type="radio" id="answer8C" name="answer8" value="C">
+            <label for="answer8C">C. Configure the Scope options.</label><br>
+            <input type="radio" id="answer8D" name="answer8" value="D">
+            <label for="answer8D">D. Create an exclusion range.</label><br>
+        </div>
+
+        <button class="solutionButton" data-answer-name="answer8" data-correct-answer="D" data-solution-info-id="solutionInfo8" data-solution-text="Correct answer: D. Create an exclusion range<br><br>Explanation: A reservation is for a DHCP request. An exclusion is for fixed IP. Create an exclusion range to prevent DHCP from handing out addresses between 192.168.16.242 - 192.168.16.245.">Solution</button>
+        <div id="solutionInfo8" class="solutionInfo"></div>
+    </div>
+</body>
+</html>
