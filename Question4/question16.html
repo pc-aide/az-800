@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 16</title>
+</head>
+<body>
+    <div class="question" id="question16">
+        <h2>Question 16</h2>
+        <p>You have a Windows Server container host named Server1 that has a single disk.</p>
+        <p>On Server1, you plan to start the containers shown in the following table.</p>
+        
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>Container1</td>
+                <td>Container1 is a Windows container that contains a web app in development. The container must not share a kernel with other containers</td>
+            </tr>
+            <tr>
+                <td>Container2</td>
+                <td>Container2 is a Linux container that runs a web app. The container requires two static IP addresses</td>
+            </tr>
+            <tr>
+                <td>Container3</td>
+                <td>Container3 is a Windows container that runs a database. The container requires a static IP address</td>
+            </tr>
+        </table>
+
+        <p>Which isolation mode can you use for each container? To answer, select the appropriate options in the answer area.</p>
+
+        <div>
+            <label for="container1">Container1:</label>
+            <select id="container1" name="answer16-1">
+                <option value="item16.1">Hyper-V isolation only</option>
+                <option value="item16.2">Process isolation only</option>
+                <option value="item16.3">Hyper-V isolation or process isolation</option>
+            </select><br>
+            
+            <label for="container2">Container2:</label>
+            <select id="container2" name="answer16-2">
+                <option value="item16.4">Hyper-V isolation only</option>
+                <option value="item16.5">Process isolation only</option>
+                <option value="item16.6">Hyper-V isolation or process isolation</option>
+            </select><br>
+            
+            <label for="container3">Container3:</label>
+            <select id="container3" name="answer16-3">
+                <option value="item16.7">Hyper-V isolation only</option>
+                <option value="item16.8">Process isolation only</option>
+                <option value="item16.9">Hyper-V isolation or process isolation</option>
+            </select><br>
+        </div>
+
+        <button class="solutionButton" data-answer-name="answer16" data-correct-answer="item16.1,item16.5,item16.9" data-solution-info-id="solutionInfo16" data-solution-text="Correct answers: <br>Container1: Hyper-V isolation only<br>Container2: Process isolation only<br>Container3: Hyper-V isolation or process isolation<br><br>Explanation: <br>Container1: This is a Windows container that must NOT share a kernel with other containers. To achieve this, you can use Hyper-V isolation.<br>Container2: This is a Linux container that requires two static IP addresses. In Windows Server, Linux containers cannot use Hyper-V isolation; to achieve this, you can only use process isolation.<br>Container3: This is a Windows container that runs a database and requires a static IP address. For Windows containers, you can use either Hyper-V isolation or process isolation, and it depends on your specific requirements. Since there are no specific constraints mentioned, you have the flexibility to choose either isolation mode.<br><br>For reference: <a href='https://learn.microsoft.com/en-us/virtualization/windowscontainers/manage-containers/hyperv-container#hyper-v-isolation' target='_blank'>Hyper-V Isolation</a>, <a href='https://ubuntu.com/tutorials/windows-ubuntu-hyperv-containers#7-run-an-ubuntu-container-on-hyperv' target='_blank'>Ubuntu Containers on Hyper-V</a>, <a href='https://learn.microsoft.com/en-us/virtualization/windowscontainers/manage-containers/hyperv-container' target='_blank'>Windows Containers Management</a>">Solution</button>
+        <div id="solutionInfo16" class="solutionInfo"></div>
+    </div>
+</body>
+</html>
