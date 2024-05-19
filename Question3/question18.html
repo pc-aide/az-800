@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 18</title>
+</head>
+<body>
+    <div class="question" id="question18">
+        <h2>Question 18</h2>
+        <p>You have an Azure virtual machine named VM1 that has a private IP address only.</p>
+        <p>You configure the Windows Admin Center extension on VM1.</p>
+        <p>You have an on-premises computer that runs Windows 11. You use the computer for server management.</p>
+        <p>You need to ensure that you can use Windows Admin Center from the Azure portal to manage VM1.</p>
+        <p>What should you configure?</p>
+
+        <div>
+            <input type="radio" id="answer18A" name="answer18" value="A">
+            <label for="answer18A">A. an Azure Bastion host on the virtual network that contains VM1.</label><br>
+            <input type="radio" id="answer18B" name="answer18" value="B">
+            <label for="answer18B">B. a VPN connection to the virtual network that contains VM1.</label><br>
+            <input type="radio" id="answer18C" name="answer18" value="C">
+            <label for="answer18C">C. a private endpoint on the virtual network that contains VM1.</label><br>
+            <input type="radio" id="answer18D" name="answer18" value="D">
+            <label for="answer18D">D. a network security group (NSG) rule that allows inbound traffic on port 443.</label>
+        </div>
+
+        <button class="solutionButton" data-answer-name="answer18" data-correct-answer="B" data-solution-info-id="solutionInfo18" data-solution-text="Correct answer: B. a VPN connection to the virtual network that contains VM1.<br><br>Explanation: In my mind, this has to be B. You're connecting from on-prem to a server in Azure that only has a private IP address. Without a tunnel, the NSG isn't going to work as you're connecting to a private address in a different network.<br>For reference: <a href='https://learn.microsoft.com/en-us/windows-server/manage/windows-admin-center/azure/manage-vm' target='_blank'>Manage VM with Windows Admin Center</a>">Solution</button>
+        <div id="solutionInfo18" class="solutionInfo"></div>
+    </div>
+</body>
+</html>
