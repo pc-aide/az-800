@@ -363,7 +363,35 @@ function loadQuestions(files) {
                         
                             solutionInfo.style.display = 'block';
                             showFinalScore();
-                        }                        
+                        }     
+                        else if (this.dataset.answerName === 'answer11') {
+                            const selectedAnswers = document.querySelectorAll('input[name="answer11"]:checked');
+                            selectedAnswers.forEach(answer => userAnswer.push(answer.value));
+                            
+                            userAnswer.sort();
+                            correctAnswer.sort();
+                            
+                            if (JSON.stringify(userAnswer) !== JSON.stringify(correctAnswer)) {
+                                isCorrect = false;
+                            }
+                        
+                            const solutionText = this.dataset.solutionText;
+                            const solutionInfo = document.getElementById(solutionInfoId);
+                            if (isCorrect) {
+                                solutionInfo.innerHTML = solutionText;
+                                solutionInfo.classList.remove('incorrect');
+                                solutionInfo.classList.add('highlight');
+                                score += 1; // Ajouter un point si la réponse est correcte
+                            } else {
+                                const userAnswerText = userAnswer.length ? userAnswer.join(', ') : "non défini";
+                                solutionInfo.innerHTML = `Your answer: ${userAnswerText}.<br><br>Correct answer: ${correctAnswer.join(', ')}.<br><br>Explanation: Open VMConnect. Select the virtual machine that you want to connect to. Click Show options. Select Local resources. Click More. Select the drive that you want to use on the virtual machine and click Ok.<br><br>A. This allows enhanced session mode, which can provide USB redirection and other features.<br>B. When connecting to VM1 using VMConnect, you can configure local resources, including USB devices, through the 'Show Options' menu.<br><br>For reference: <a href='https://docs.microsoft.com/en-us/windows-server/virtualization/hyper-v/learn-more/use-local-resources-on-hyper-v-virtual-machine-with-vmconnect' target='_blank'>Use Local Resources on Hyper-V Virtual Machine with VMConnect</a>`;
+                                solutionInfo.classList.remove('highlight');
+                                solutionInfo.classList.add('incorrect');
+                            }
+                        
+                            solutionInfo.style.display = 'block';
+                            showFinalScore();
+                        }                                         
                         
                     });
                 });
