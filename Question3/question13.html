@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 13</title>
+</head>
+<body>
+    <div class="question" id="question13">
+        <h2>Question 13</h2>
+        <p>You have an on-premises Active Directory Domain Services (AD DS) domain that syncs with an Azure Active Directory (Azure AD) tenant. The domain contains two servers named Server1 and Server2.</p>
+        <p>A user named Admin1 is a member of the local Administrators group on Server1 and Server2.</p>
+        <p>You plan to manage Server1 and Server2 by using Azure Arc. Azure Arc objects will be added to a resource group named RG1.</p>
+        <p>You need to ensure that Admin1 can configure Server1 and Server2 to be managed by using Azure Arc.</p>
+        <p>What should you do first?</p>
+
+        <div>
+            <input type="radio" id="answer13A" name="answer13" value="A">
+            <label for="answer13A">A. From the Azure portal, generate a new onboarding script.</label><br>
+            <input type="radio" id="answer13B" name="answer13" value="B">
+            <label for="answer13B">B. Assign Admin1 the Azure Connected Machine Onboarding role for RG1.</label><br>
+            <input type="radio" id="answer13C" name="answer13" value="C">
+            <label for="answer13C">C. Hybrid Azure AD join Server1 and Server2.</label><br>
+            <input type="radio" id="answer13D" name="answer13" value="D">
+            <label for="answer13D">D. Create an Azure cloud-only account for Admin1.</label>
+        </div>
+
+        <button class="solutionButton" data-answer-name="answer13" data-correct-answer="A" data-solution-info-id="solutionInfo13" data-solution-text="Correct answer: A. From the Azure portal, generate a new onboarding script.<br><br>Explanation: The question asks that 'Admin1', a user account, has the appropriate permissions. The role of Azure Connected Machine Onboarding can only be assigned to a service principal, as confirmed by the link given to justify the wrong answer. Admin1 cannot be assigned this role, it's impossible, check it for yourself. Admin1, as a local server admin, has all the rights he/she needs. The correct answer is 'A', generate a new onboarding script. One can onboard more than one server with the same script. Onboarding two certainly doesn't impose an administrative burden to use this method.<br>For reference: <a href='https://learn.microsoft.com/en-us/azure/azure-arc/servers/onboard-portal' target='_blank'>Azure Arc Onboarding</a>">Solution</button>
+        <div id="solutionInfo13" class="solutionInfo"></div>
+    </div>
+</body>
+</html>
