@@ -1,5 +1,5 @@
 var score = 0; // Initialiser le score à 0
-var totalQuestions = 18; // Nombre total de questions
+var totalQuestions = 19; // Nombre total de questions
 
 function enableDragAndDrop() {
     document.querySelectorAll('.draggable').forEach(draggable => {
@@ -584,6 +584,34 @@ function loadQuestions(files) {
                             solutionInfo.style.display = 'block';
                             showFinalScore();
                         }
+                        else if (this.dataset.answerName === 'answer19') {
+                            const selectedAnswer = document.querySelector('input[name="answer19"]:checked');
+                            if (selectedAnswer) {
+                                userAnswer.push(selectedAnswer.value);
+                                if (selectedAnswer.value !== correctAnswer[0]) {
+                                    isCorrect = false;
+                                }
+                            } else {
+                                isCorrect = false;
+                            }
+                        
+                            const solutionText = this.dataset.solutionText;
+                            const solutionInfo = document.getElementById(solutionInfoId);
+                            if (isCorrect) {
+                                solutionInfo.innerHTML = solutionText;
+                                solutionInfo.classList.remove('incorrect');
+                                solutionInfo.classList.add('highlight');
+                                score += 1; // Ajouter un point si la réponse est correcte
+                            } else {
+                                const userAnswerText = userAnswer.length ? userAnswer.join(', ') : "non défini";
+                                solutionInfo.innerHTML = `Your answer: ${userAnswerText}.<br><br>Correct answer: ${correctAnswer.join(', ')}.<br><br>Explanation: Windows Admin Center Gateway listens on both ports 443 and 6516 by default. Port 443 is used for HTTPS connections, which encrypts the communication between the client and the gateway. Port 6516 is used for the Windows Remote Management (WinRM) protocol, which is a standard Simple Object Access Protocol (SOAP)-based, firewall-friendly protocol that allows you to remotely manage Windows-based servers and clients.<br>For reference: <a href='https://learn.microsoft.com/en-us/windows-server/manage/windows-admin-center/azure/deploy-wac-in-azure' target='_blank'>Deploy WAC in Azure</a>`;
+                                solutionInfo.classList.remove('highlight');
+                                solutionInfo.classList.add('incorrect');
+                            }
+                        
+                            solutionInfo.style.display = 'block';
+                            showFinalScore();
+                        }
                         
                     });
                 });
@@ -598,6 +626,6 @@ document.addEventListener('DOMContentLoaded', function() {
         'question1.html', 'question2.html', 'question3.html', 'question4.html', 'question5.html',
         'question6.html', 'question7.html', 'question8.html', 'question9.html', 'question10.html',
         'question11.html', 'question12.html', 'question13.html', 'question14.html', 'question15.html',
-        'question16.html', 'question17.html', 'question18.html'
+        'question16.html', 'question17.html', 'question18.html', 'question19.html'
     ]);
 });
