@@ -1,0 +1,53 @@
+<div>
+  <h2>Question 9</h2>
+  <p>Your network contains an Active Directory Domain Services (AD DS) domain. The domain contains a user named User1. User1 is a member of a group named Group1 and is in an organizational unit (OU) named OU1.<br><br>The domain has minimum password lengths configured as shown in the following table.</p>
+  
+  <table>
+      <tr>
+          <th>Value</th>
+          <th>Location</th>
+      </tr>
+      <tr>
+          <td>10</td>
+          <td>Default Domain Policy</td>
+      </tr>
+      <tr>
+          <td>12</td>
+          <td>Default Domain Controllers Policy</td>
+      </tr>
+      <tr>
+          <td>8</td>
+          <td>Group Policy linked to OU1</td>
+      </tr>
+      <tr>
+          <td>14</td>
+          <td>Password settings object applied to Group1</td>
+      </tr>
+      <tr>
+          <td>7</td>
+          <td>Password settings object applied to User1</td>
+      </tr>
+  </table>
+
+  <p>What is the minimum password length that User1 should use when changing to a new password?</p>
+
+  <form action="#">
+      <fieldset>
+          <legend>Select the minimum password length:</legend>
+          <input type="radio" id="answer9A" name="answer9" value="A">
+          <label for="answer9A">A. 7</label><br>
+          <input type="radio" id="answer9B" name="answer9" value="B">
+          <label for="answer9B">B. 8</label><br>
+          <input type="radio" id="answer9C" name="answer9" value="C">
+          <label for="answer9C">C. 10</label><br>
+          <input type="radio" id="answer9D" name="answer9" value="D">
+          <label for="answer9D">D. 12</label><br>
+          <input type="radio" id="answer9E" name="answer9" value="E">
+          <label for="answer9E">E. 14</label>
+      </fieldset>
+  </form>
+
+  <div id="solutionInfo9"></div>
+
+  <button class="solutionButton" data-solution-info-id="solutionInfo9" data-correct-answer="A" data-answer-name="answer9" data-solution-text="Correct answer: A. 7.<br><br>Explanation: When determining the minimum password length that User1 should use when changing to a new password, the following precedence order should be considered:<br><br>Password Settings object applied directly to the user (User1).<br>Password Settings object applied to the user's group (Group1).<br>Group Policy linked to the user's organizational unit (OU1).<br>Default Domain Policy.<br>Default Domain Controllers Policy.<br><br>Based on the precedence order and the configuration provided:<br>Password Settings object applied to User1: 7<br>Password Settings object applied to Group1: 14<br>Group Policy linked to OU1: 8<br>Default Domain Policy: 10<br>Default Domain Controllers Policy: 12<br><br>User1's minimum password length will be determined by the Password Settings object applied directly to the user (User1), which specifies a minimum password length of 7 characters. Therefore, User1 should use a minimum password length of 7 characters when changing to a new password.">Solution</button>
+</div>
