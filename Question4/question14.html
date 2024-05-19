@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 14</title>
+</head>
+<body>
+    <div class="question" id="question14">
+        <h2>Question 14</h2>
+        <p>You have an Azure virtual machine named VM1 that runs Windows Server.</p>
+        <p>You perform the following actions on VM1:</p>
+        <ul>
+            <li>Create a folder named Folder1 on volume C.</li>
+            <li>Create a folder named Folder2 on volume D.</li>
+            <li>Add a new data disk to VM1 and create a new volume that is assigned drive letter E.</li>
+            <li>Install an app named App1 on volume E.</li>
+        </ul>
+        <p>You plan to resize VM1.</p>
+        <p>Which objects will be present after you resize VM1?</p>
+
+        <div>
+            <input type="radio" id="answer14A" name="answer14" value="A">
+            <label for="answer14A">A. Folder1, volume E, and App1 only</label><br>
+            <input type="radio" id="answer14B" name="answer14" value="B">
+            <label for="answer14B">B. Folder1 only</label><br>
+            <input type="radio" id="answer14C" name="answer14" value="C">
+            <label for="answer14C">C. Folder1 and Folder2 only</label><br>
+            <input type="radio" id="answer14D" name="answer14" value="D">
+            <label for="answer14D">D. Folder1, Folder2, App1, and volume E</label><br>
+        </div>
+
+        <button class="solutionButton" data-answer-name="answer14" data-correct-answer="A" data-solution-info-id="solutionInfo14" data-solution-text="Correct answer: A. Folder1, volume E, and App1 only<br><br>Explanation: The answer is A. Folder 2 is on D: which by default is the scratch disk that is wiped on a re-boot. A re-size of the VM requires a reboot of the VM, therefore the contents of D will be wiped.<br><br>For reference: <a href='https://www.cloudelicious.net/azure-vms-and-their-temporary-storage/#:~:text=For%20Windows%20Server%2C%20the%20temporary%20disk%20is%20mounted%20as%20D%3A%5C.%20Linux%20based%20VM%E2%80%99s%20have%20the%20temporary%20disk%20mounted%20as%20%E2%80%9C/dev/sdb1%E2%80%9D.%20Of%20course%2C%20the%20same%20principles%20apply%2C%20your%20risk%20losing%20data%20that%20can%E2%80%99t%20be%20recovered%20when%20storing%20data%20on%20this%20disk.' target='_blank'>Azure VMs and Their Temporary Storage</a><br><a href='https://docs.microsoft.com/en-us/answers/questions/235/can-i-use-the-temporary-disk-the-d-drive-by-defaul.html' target='_blank'>Temporary Disk (D: Drive) by Default</a>">Solution</button>
+        <div id="solutionInfo14" class="solutionInfo"></div>
+    </div>
+</body>
+</html>
