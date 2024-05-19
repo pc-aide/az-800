@@ -1,5 +1,5 @@
 var score = 0; // Initialiser le score à 0
-var totalQuestions = 15; // Nombre total de questions
+var totalQuestions = 16; // Nombre total de questions
 
 function enableDragAndDrop() {
     document.querySelectorAll('.draggable').forEach(draggable => {
@@ -500,6 +500,34 @@ function loadQuestions(files) {
                             solutionInfo.style.display = 'block';
                             showFinalScore();
                         }
+                        else if (this.dataset.answerName === 'answer16') {
+                            const selectedAnswer = document.querySelector('input[name="answer16"]:checked');
+                            if (selectedAnswer) {
+                                userAnswer.push(selectedAnswer.value);
+                                if (selectedAnswer.value !== correctAnswer[0]) {
+                                    isCorrect = false;
+                                }
+                            } else {
+                                isCorrect = false;
+                            }
+                        
+                            const solutionText = this.dataset.solutionText;
+                            const solutionInfo = document.getElementById(solutionInfoId);
+                            if (isCorrect) {
+                                solutionInfo.innerHTML = solutionText;
+                                solutionInfo.classList.remove('incorrect');
+                                solutionInfo.classList.add('highlight');
+                                score += 1; // Ajouter un point si la réponse est correcte
+                            } else {
+                                const userAnswerText = userAnswer.length ? userAnswer.join(', ') : "non défini";
+                                solutionInfo.innerHTML = `Your answer: ${userAnswerText}.<br><br>Correct answer: ${correctAnswer.join(', ')}.<br><br>Explanation: For the machine to authenticate to the Guest Configuration service, the machine must have a System-Assigned Managed Identity.<br>For reference: <a href='https://docs.microsoft.com/en-us/azure/virtual-machines/extensions/guest-configuration' target='_blank'>Guest Configuration</a>`;
+                                solutionInfo.classList.remove('highlight');
+                                solutionInfo.classList.add('incorrect');
+                            }
+                        
+                            solutionInfo.style.display = 'block';
+                            showFinalScore();
+                        }
                         
                     });
                 });
@@ -513,6 +541,6 @@ document.addEventListener('DOMContentLoaded', function() {
     loadQuestions([
         'question1.html', 'question2.html', 'question3.html', 'question4.html', 'question5.html',
         'question6.html', 'question7.html', 'question8.html', 'question9.html', 'question10.html',
-        'question11.html', 'question12.html', 'question13.html', 'question14.html', 'question15.html'
+        'question11.html', 'question12.html', 'question13.html', 'question14.html', 'question15.html', 'question16.html'
     ]);
 });
