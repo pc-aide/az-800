@@ -447,7 +447,35 @@ function loadQuestions(files) {
                         
                             solutionInfo.style.display = 'block';
                             showFinalScore();
-                        }                              
+                        }     
+                        else if (this.dataset.answerName === 'answer14') {
+                            const selectedAnswer = document.querySelector('input[name="answer14"]:checked');
+                            if (selectedAnswer) {
+                                userAnswer.push(selectedAnswer.value);
+                                if (selectedAnswer.value !== correctAnswer[0]) {
+                                    isCorrect = false;
+                                }
+                            } else {
+                                isCorrect = false;
+                            }
+                        
+                            const solutionText = this.dataset.solutionText;
+                            const solutionInfo = document.getElementById(solutionInfoId);
+                            if (isCorrect) {
+                                solutionInfo.innerHTML = solutionText;
+                                solutionInfo.classList.remove('incorrect');
+                                solutionInfo.classList.add('highlight');
+                                score += 1; // Ajouter un point si la réponse est correcte
+                            } else {
+                                const userAnswerText = userAnswer.length ? userAnswer.join(', ') : "non défini";
+                                solutionInfo.innerHTML = `Your answer: ${userAnswerText}.<br><br>Correct answer: ${correctAnswer.join(', ')}.<br><br>Explanation: The answer is A. Folder 2 is on D: which by default is the scratch disk that is wiped on a re-boot. A re-size of the VM requires a reboot of the VM, therefore the contents of D will be wiped.<br><br>For reference: <a href='https://www.cloudelicious.net/azure-vms-and-their-temporary-storage/#:~:text=For%20Windows%20Server%2C%20the%20temporary%20disk%20is%20mounted%20as%20D%3A%5C.%20Linux%20based%20VM%E2%80%99s%20have%20the%20temporary%20disk%20mounted%20as%20%E2%80%9C/dev/sdb1%E2%80%9D.%20Of%20course%2C%20the%20same%20principles%20apply%2C%20your%20risk%20losing%20data%20that%20can%E2%80%99t%20be%20recovered%20when%20storing%20data%20on%20this%20disk.' target='_blank'>Azure VMs and Their Temporary Storage</a><br><a href='https://docs.microsoft.com/en-us/answers/questions/235/can-i-use-the-temporary-disk-the-d-drive-by-defaul.html' target='_blank'>Temporary Disk (D: Drive) by Default</a>`;
+                                solutionInfo.classList.remove('highlight');
+                                solutionInfo.classList.add('incorrect');
+                            }
+                        
+                            solutionInfo.style.display = 'block';
+                            showFinalScore();
+                        }                                        
                         
                     });
                 });
