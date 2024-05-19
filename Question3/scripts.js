@@ -1,5 +1,5 @@
 var score = 0; // Initialiser le score à 0
-var totalQuestions = 12; // Nombre total de questions
+var totalQuestions = 13; // Nombre total de questions
 
 function enableDragAndDrop() {
     document.querySelectorAll('.draggable').forEach(draggable => {
@@ -416,6 +416,34 @@ function loadQuestions(files) {
                             solutionInfo.style.display = 'block';
                             showFinalScore();
                         }
+                        else if (this.dataset.answerName === 'answer13') {
+                            const selectedAnswer = document.querySelector('input[name="answer13"]:checked');
+                            if (selectedAnswer) {
+                                userAnswer.push(selectedAnswer.value);
+                                if (selectedAnswer.value !== correctAnswer[0]) {
+                                    isCorrect = false;
+                                }
+                            } else {
+                                isCorrect = false;
+                            }
+                        
+                            const solutionText = this.dataset.solutionText;
+                            const solutionInfo = document.getElementById(solutionInfoId);
+                            if (isCorrect) {
+                                solutionInfo.innerHTML = solutionText;
+                                solutionInfo.classList.remove('incorrect');
+                                solutionInfo.classList.add('highlight');
+                                score += 1; // Ajouter un point si la réponse est correcte
+                            } else {
+                                const userAnswerText = userAnswer.length ? userAnswer.join(', ') : "non défini";
+                                solutionInfo.innerHTML = `Your answer: ${userAnswerText}.<br><br>Correct answer: ${correctAnswer.join(', ')}.<br><br>Explanation: The question asks that "Admin1", a user account, has the appropriate permissions. The role of Azure Connected Machine Onboarding can only be assigned to a service principal, as confirmed by the link given to justify the wrong answer. Admin1 cannot be assigned this role, it's impossible, check it for yourself. Admin1, as a local server admin, has all the rights he/she needs. The correct answer is "A", generate a new onboarding script. One can onboard more than one server with the same script. Onboarding two certainly doesn't impose an administrative burden to use this method.<br>For reference: <a href='https://learn.microsoft.com/en-us/azure/azure-arc/servers/onboard-portal' target='_blank'>Azure Arc Onboarding</a>`;
+                                solutionInfo.classList.remove('highlight');
+                                solutionInfo.classList.add('incorrect');
+                            }
+                        
+                            solutionInfo.style.display = 'block';
+                            showFinalScore();
+                        }
                         
                     });
                 });
@@ -429,6 +457,6 @@ document.addEventListener('DOMContentLoaded', function() {
     loadQuestions([
         'question1.html', 'question2.html', 'question3.html', 'question4.html', 'question5.html',
         'question6.html', 'question7.html', 'question8.html', 'question9.html', 'question10.html',
-        'question11.html', 'question12.html'
+        'question11.html', 'question12.html', 'question13.html'
     ]);
 });
