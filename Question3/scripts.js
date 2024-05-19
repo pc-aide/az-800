@@ -1,5 +1,5 @@
 var score = 0; // Initialiser le score à 0
-var totalQuestions = 19; // Nombre total de questions
+var totalQuestions = 20; // Nombre total de questions
 
 function enableDragAndDrop() {
     document.querySelectorAll('.draggable').forEach(draggable => {
@@ -612,6 +612,33 @@ function loadQuestions(files) {
                             solutionInfo.style.display = 'block';
                             showFinalScore();
                         }
+                        else if (this.dataset.answerName === 'answer20') {
+                            const checkboxes = document.querySelectorAll('input[name="answer20"]:checked');
+                            checkboxes.forEach(checkbox => userAnswer.push(checkbox.value));
+                            userAnswer.sort();
+                            correctAnswer.sort();
+                        
+                            if (JSON.stringify(userAnswer) !== JSON.stringify(correctAnswer)) {
+                                isCorrect = false;
+                            }
+                        
+                            const solutionText = this.dataset.solutionText;
+                            const solutionInfo = document.getElementById(solutionInfoId);
+                            if (isCorrect) {
+                                solutionInfo.innerHTML = solutionText;
+                                solutionInfo.classList.remove('incorrect');
+                                solutionInfo.classList.add('highlight');
+                                score += 1; // Ajouter un point si la réponse est correcte
+                            } else {
+                                const userAnswerText = userAnswer.length ? userAnswer.join(', ') : "non défini";
+                                solutionInfo.innerHTML = `Your answer: ${userAnswerText}.<br><br>Correct answer: ${correctAnswer.join(', ')}.<br><br>Explanation: Automation is needed for the Update Management, and for Arc to work you need the AMA Agent.<br><br>Important: The Log Analytics agent is on a deprecation path and won't be supported after August 31, 2024. If you use the Log Analytics agent to ingest data to Azure Monitor, migrate to the new Azure Monitor agent prior to that date.<br>For reference: <a href='https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/manage/hybrid/server/best-practices/arc-update-management' target='_blank'>Azure Arc Update Management</a>`;
+                                solutionInfo.classList.remove('highlight');
+                                solutionInfo.classList.add('incorrect');
+                            }
+                        
+                            solutionInfo.style.display = 'block';
+                            showFinalScore();
+                        }
                         
                     });
                 });
@@ -626,6 +653,6 @@ document.addEventListener('DOMContentLoaded', function() {
         'question1.html', 'question2.html', 'question3.html', 'question4.html', 'question5.html',
         'question6.html', 'question7.html', 'question8.html', 'question9.html', 'question10.html',
         'question11.html', 'question12.html', 'question13.html', 'question14.html', 'question15.html',
-        'question16.html', 'question17.html', 'question18.html', 'question19.html'
+        'question16.html', 'question17.html', 'question18.html', 'question19.html', 'question20.html'
     ]);
 });
