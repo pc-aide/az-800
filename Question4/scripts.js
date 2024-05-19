@@ -169,7 +169,33 @@ function loadQuestions(files) {
                             solutionInfo.style.display = 'block';
                             showFinalScore();
                         }
+                        else if (this.dataset.answerName === 'answer4') {
+                            const selectedAnswers = document.querySelectorAll('input[name="answer4"]:checked');
+                            selectedAnswers.forEach(answer => userAnswer.push(answer.value));
+                            
+                            correctAnswer.forEach(answer => {
+                                if (!userAnswer.includes(answer)) {
+                                    isCorrect = false;
+                                }
+                            });
                         
+                            const solutionText = this.dataset.solutionText;
+                            const solutionInfo = document.getElementById(solutionInfoId);
+                            if (isCorrect) {
+                                solutionInfo.innerHTML = solutionText;
+                                solutionInfo.classList.remove('incorrect');
+                                solutionInfo.classList.add('highlight');
+                                score += 1; // Ajouter un point si la réponse est correcte
+                            } else {
+                                const userAnswerText = userAnswer.length ? userAnswer.join(', ') : "non défini";
+                                solutionInfo.innerHTML = `Your answer: ${userAnswerText}.<br><br>Correct answer: ${correctAnswer.join(', ')}.<br><br>Explanation: For configuring an Azure runbook in Azure Automation, you can use two primary scripting languages:<br><br>PowerShell: PowerShell is the most commonly used language for creating Azure Automation runbooks. It provides a robust scripting environment with rich capabilities for automating tasks in Azure and other Microsoft environments. PowerShell scripts can interact with Azure resources using Azure cmdlets and APIs.<br>Python: Azure Automation also supports Python as a scripting language for creating runbooks. Python is a popular and versatile language known for its simplicity and readability. With Python scripts, you can automate various tasks in Azure, just like you would with PowerShell.<br><br>For reference: <a href='https://learn.microsoft.com/en-us/azure/automation/automation-runbook-types' target='_blank'>Automation Runbook Types</a>`;
+                                solutionInfo.classList.remove('highlight');
+                                solutionInfo.classList.add('incorrect');
+                            }
+                        
+                            solutionInfo.style.display = 'block';
+                            showFinalScore();
+                        }                        
                         
                     });
                 });
