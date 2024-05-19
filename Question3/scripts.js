@@ -1,5 +1,5 @@
 var score = 0; // Initialiser le score à 0
-var totalQuestions = 17; // Nombre total de questions
+var totalQuestions = 18; // Nombre total de questions
 
 function enableDragAndDrop() {
     document.querySelectorAll('.draggable').forEach(draggable => {
@@ -556,6 +556,34 @@ function loadQuestions(files) {
                             solutionInfo.style.display = 'block';
                             showFinalScore();
                         }
+                        else if (this.dataset.answerName === 'answer18') {
+                            const selectedAnswer = document.querySelector('input[name="answer18"]:checked');
+                            if (selectedAnswer) {
+                                userAnswer.push(selectedAnswer.value);
+                                if (selectedAnswer.value !== correctAnswer[0]) {
+                                    isCorrect = false;
+                                }
+                            } else {
+                                isCorrect = false;
+                            }
+                        
+                            const solutionText = this.dataset.solutionText;
+                            const solutionInfo = document.getElementById(solutionInfoId);
+                            if (isCorrect) {
+                                solutionInfo.innerHTML = solutionText;
+                                solutionInfo.classList.remove('incorrect');
+                                solutionInfo.classList.add('highlight');
+                                score += 1; // Ajouter un point si la réponse est correcte
+                            } else {
+                                const userAnswerText = userAnswer.length ? userAnswer.join(', ') : "non défini";
+                                solutionInfo.innerHTML = `Your answer: ${userAnswerText}.<br><br>Correct answer: ${correctAnswer.join(', ')}.<br><br>Explanation: In my mind, this has to be B. You're connecting from on-prem to a server in Azure that only has a private IP address. Without a tunnel, the NSG isn't going to work as you're connecting to a private address in a different network.<br>For reference: <a href='https://learn.microsoft.com/en-us/windows-server/manage/windows-admin-center/azure/manage-vm' target='_blank'>Manage VM with Windows Admin Center</a>`;
+                                solutionInfo.classList.remove('highlight');
+                                solutionInfo.classList.add('incorrect');
+                            }
+                        
+                            solutionInfo.style.display = 'block';
+                            showFinalScore();
+                        }
                         
                     });
                 });
@@ -570,6 +598,6 @@ document.addEventListener('DOMContentLoaded', function() {
         'question1.html', 'question2.html', 'question3.html', 'question4.html', 'question5.html',
         'question6.html', 'question7.html', 'question8.html', 'question9.html', 'question10.html',
         'question11.html', 'question12.html', 'question13.html', 'question14.html', 'question15.html',
-        'question16.html', 'question17.html'
+        'question16.html', 'question17.html', 'question18.html'
     ]);
 });
