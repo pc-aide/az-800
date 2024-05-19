@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 9</title>
+</head>
+<body>
+    <div class="question" id="question9">
+        <h2>Question 9</h2>
+        <p>You have an Active Directory Domain Services (AD DS) domain. The domain contains three servers named Server1, Server2, and Server3 that run Windows Server.</p>
+        <p>You sign in to Server1 by using a domain account and start a remote PowerShell session to Server2. From the remote PowerShell session, you attempt to access a resource on Server3, but access to the resource is denied.</p>
+        <p>You need to ensure that your credentials are passed from Server1 to Server3. The solution must minimize administrative effort.</p>
+        <p>What should you do?</p>
+
+        <div>
+            <input type="radio" id="answer9A" name="answer9" value="A">
+            <label for="answer9A">A. Configure Kerberos constrained delegation.</label><br>
+            <input type="radio" id="answer9B" name="answer9" value="B">
+            <label for="answer9B">B. Configure Just Enough Administration (JEA).</label><br>
+            <input type="radio" id="answer9C" name="answer9" value="C">
+            <label for="answer9C">C. Configure selective authentication for the domain.</label><br>
+            <input type="radio" id="answer9D" name="answer9" value="D">
+            <label for="answer9D">D. Disable the Enforce user logon restrictions policy setting for the domain.</label><br>
+        </div>
+
+        <button class="solutionButton" data-answer-name="answer9" data-correct-answer="A" data-solution-info-id="solutionInfo9" data-solution-text="Correct answer: A. Configure Kerberos constrained delegation<br><br>Explanation: I will go with A, because the Questions says to minimize administrative effort.<br>The table in the linked source states that Just Enough Administration (JEA) can provide the best security but requires more detailed configuration.<br>JEA allows you to restrict what commands an administrator can run during a PowerShell session. It can be used to solve the second hop problem.<br><br>For reference: <a href='https://learn.microsoft.com/en-us/powershell/scripting/learn/remoting/ps-remoting-second-hop?view=powershell-7.3' target='_blank'>PS Remoting Second Hop</a>">Solution</button>
+        <div id="solutionInfo9" class="solutionInfo"></div>
+    </div>
+</body>
+</html>
