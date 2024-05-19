@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 20</title>
+</head>
+<body>
+    <div class="question" id="question20">
+        <h2>Question 20</h2>
+        <p>You have an Azure subscription that contains the following resources:</p>
+        <ul>
+            <li>An Azure Log Analytics workspace</li>
+            <li>An Azure Automation account</li>
+            <li>Azure Arc</li>
+        </ul>
+        <p>You have an on-premises server named Server1 that is onboarded to Azure Arc.</p>
+        <p>You need to manage Microsoft updates on Server1 by using Azure Arc.</p>
+        <p>Which two actions should you perform? Each correct answer presents part of the solution.</p>
+
+        <div>
+            <input type="checkbox" id="answer20A" name="answer20" value="A">
+            <label for="answer20A">A. From the Automation account, enable Update Management for Server1.</label><br>
+            <input type="checkbox" id="answer20B" name="answer20" value="B">
+            <label for="answer20B">B. From the Virtual machines data source of the Log Analytics workspace, connect Server1.</label><br>
+            <input type="checkbox" id="answer20C" name="answer20" value="C">
+            <label for="answer20C">C. On Server1, install the Azure Monitor agent.</label><br>
+            <input type="checkbox" id="answer20D" name="answer20" value="D">
+            <label for="answer20D">D. Add Microsoft Sentinel to the Log Analytics workspace.</label>
+        </div>
+
+        <button class="solutionButton" data-answer-name="answer20" data-correct-answer="A,C" data-solution-info-id="solutionInfo20" data-solution-text="Correct answers: A. From the Automation account, enable Update Management for Server1. C. On Server1, install the Azure Monitor agent.<br><br>Explanation: Automation is needed for the Update Management, and for Arc to work you need the AMA Agent.<br><br>Important: The Log Analytics agent is on a deprecation path and won't be supported after August 31, 2024. If you use the Log Analytics agent to ingest data to Azure Monitor, migrate to the new Azure Monitor agent prior to that date.<br>For reference: <a href='https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/manage/hybrid/server/best-practices/arc-update-management' target='_blank'>Azure Arc Update Management</a>">Solution</button>
+        <div id="solutionInfo20" class="solutionInfo"></div>
+    </div>
+</body>
+</html>
