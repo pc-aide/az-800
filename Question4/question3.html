@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 3</title>
+</head>
+<body>
+    <div class="question" id="question3">
+        <h2>Question 3</h2>
+        <h3>Overview</h3>
+        <h4>Company Information</h4>
+        <p>ADatum Corporation is a manufacturing company that has a main office in Seattle and two branch offices in Los Angeles and Montreal.</p>
+
+        <h4>Fabrikam Partnership</h4>
+        <p>ADatum recently partnered with a company named Fabrikam, Inc.</p>
+        <p>Fabrikam is a manufacturing company that has a main office in Boston and a branch office in Orlando.</p>
+        <p>Both companies intend to collaborate on several joint projects.</p>
+
+        <h3>Existing Environment</h3>
+        <h4>ADatum AD DS Environment</h4>
+        <p>The on-premises network of ADatum contains an Active Directory Domain Services (AD DS) forest named adatum.com.</p>
+        <p>The forest contains two domains named adatum.com and east.adatum.com and the domain controllers shown in the following table.</p>
+
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Domain</th>
+                <th>Operations master roles</th>
+            </tr>
+            <tr>
+                <td>DC1</td>
+                <td>adatum.com</td>
+                <td>Schema master</td>
+            </tr>
+            <tr>
+                <td>DC2</td>
+                <td>adatum.com</td>
+                <td>None</td>
+            </tr>
+            <tr>
+                <td>DC3</td>
+                <td>east.adatum.com</td>
+                <td>PDC emulator, RID master</td>
+            </tr>
+        </table>
+
+        <h4>Fabrikam AD DS Environment</h4>
+        <p>The on-premises network of Fabrikam contains an AD DS forest named fabrikam.com.</p>
+        <p>The forest contains two domains named fabrikam.com and south.fabrikam.com.</p>
+        <p>The fabrikam.com domain contains an organizational unit (OU) named Marketing.</p>
+
+        <h3>Server Infrastructure</h3>
+        <p>The adatum.com domain contains the servers shown in the following table.</p>
+
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Role</th>
+            </tr>
+            <tr>
+                <td>HyperV1</td>
+                <td>Hyper-V</td>
+            </tr>
+            <tr>
+                <td>SSPace1</td>
+                <td>File & Storage Services</td>
+            </tr>
+        </table>
+
+        <p>HyperV1 contains the virtual machines shown in the following table.</p>
+
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>OS</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>VM1</td>
+                <td>Windows Server 2022 Datacenter</td>
+                <td>Joined to the adatum.com domain Contains a file share named Data1 & a local user named User1</td>
+            </tr>
+            <tr>
+                <td>VM2</td>
+                <td>Red Hat Enterprise Linux (RHEL)</td>
+                <td>Contains a local user named User2</td>
+            </tr>
+            <tr>
+                <td>VM3</td>
+                <td>Windows Server 2022 Standard</td>
+                <td>Joined to the adatum.com domain Has the File & Storage Services role installed</td>
+            </tr>
+        </table>
+
+        <p>All the virtual machines on HyperV1 have only the default management tools installed.</p>
+
+        <p>SSPace1 contains the Storage Spaces virtual disks shown in the following table.</p>
+
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Number of physical disks</th>
+                <th>Redundancy</th>
+            </tr>
+            <tr>
+                <td>Disk1</td>
+                <td>8</td>
+                <td>Three-way mirror</td>
+            </tr>
+            <tr>
+                <td>Disk2</td>
+                <td>12</td>
+                <td>Parity</td>
+            </tr>
+        </table>
+
+        <h3>Azure Resources</h3>
+        <p>ADatum has an Azure subscription that contains an Azure AD tenant. Azure AD Connect is configured to sync the adatum.com forest with Azure AD.</p>
+
+        <p>The subscription contains the virtual networks shown in the following table.</p>
+
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Location</th>
+                <th>Subnet</th>
+            </tr>
+            <tr>
+                <td>vnet1</td>
+                <td>West US</td>
+                <td>Subnet1, Subnet2</td>
+            </tr>
+            <tr>
+                <td>vnet2</td>
+                <td>West US</td>
+                <td>SubnetA, SubnetB</td>
+            </tr>
+        </table>
+
+        <p>The subscription contains the Azure Private DNS zones shown in the following table.</p>
+
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>vnet link</th>
+            </tr>
+            <tr>
+                <td>Zone1.com</td>
+                <td>vnet1</td>
+            </tr>
+            <tr>
+                <td>Zone2.com</td>
+                <td>vnet2</td>
+            </tr>
+            <tr>
+                <td>Zone3.com</td>
+                <td>None</td>
+            </tr>
+        </table>
+
+        <p>The subscription contains the virtual machines shown in the following table.</p>
+
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>OS</th>
+                <th>Security type</th>
+            </tr>
+            <tr>
+                <td>Server1</td>
+                <td>Windows Server 2022 Datacenter: Azure Edition</td>
+                <td>Trusted launch</td>
+            </tr>
+            <tr>
+                <td>Server2</td>
+                <td>Windows Server 2022 Datacenter: Azure Edition</td>
+                <td>Standard</td>
+            </tr>
+            <tr>
+                <td>Server3</td>
+                <td>Windows Server 2022 Datacenter</td>
+                <td>Standard</td>
+            </tr>
+            <tr>
+                <td>Server4</td>
+                <td>Windows Server 2019 Datacenter</td>
+                <td>Trusted launch</td>
+            </tr>
+        </table>
+
+        <p>All the servers are in a workgroup.</p>
+
+        <p>The subscription contains a storage account named storage1 that has a file share named share1.</p>
+
+        <h3>Requirements</h3>
+        <h4>Planned Changes</h4>
+        <p>ADatum plans to implement the following changes:</p>
+        <ul>
+            <li>Sync Data1 to share1.</li>
+            <li>Configure an Azure runbook named Task1.</li>
+            <li>Enable Azure AD users to sign in to Server1.</li>
+            <li>Create an Azure DNS Private Resolver that has the following configurations:
+                <ul>
+                    <li>Name: Private1</li>
+                    <li>Region: West US</li>
+                    <li>Virtual network: VNet1</li>
+                    <li>Inbound endpoint: SubnetB</li>
+                </ul>
+            </li>
+            <li>Enable users in the adatum.com domain to access the resources in the south.fabrikam.com domain.</li>
+        </ul>
+
+        <h4>Technical Requirements</h4>
+        <p>ADatum identifies the following technical requirements:</p>
+        <ul>
+            <li>The data on SSPace1 must be available always.</li>
+            <li>DC2 must become the schema master if DC1 fails.</li>
+            <li>VM3 must be configured to enable per-folder quotas.</li>
+            <li>Trusts must allow access to only the required resources.</li>
+            <li>The users in the Marketing OU must have access to storage1.</li>
+            <li>Azure Automanage must be used on all supported Azure virtual machines.</li>
+            <li>A direct SSH session must be used to manage all the supported virtual machines on HyperV1.</li>
+        </ul>
+
+        <p>You need to implement the planned changes for Azure AD users to sign in to Server1.</p>
+        <p>Which PowerShell cmdlet should you run?</p>
+
+        <div>
+            <input type="radio" id="answer3A" name="answer3" value="A">
+            <label for="answer3A">A. New-ADComputer</label><br>
+            <input type="radio" id="answer3B" name="answer3" value="B">
+            <label for="answer3B">B. Set-AzVM</label><br>
+            <input type="radio" id="answer3C" name="answer3" value="C">
+            <label for="answer3C">C. Set-AzVMExtension</label><br>
+            <input type="radio" id="answer3D" name="answer3" value="D">
+            <label for="answer3D">D. Add-ADComputerServiceAccount</label><br>
+        </div>
+
+        <button class="solutionButton" data-answer-name="answer3" data-correct-answer="C" data-solution-info-id="solutionInfo3" data-solution-text="Correct answer: C. Set-AzVMExtension<br><br>Explanation: To enable Azure AD users to sign in to Server1 (which is in a workgroup) you need to install AADLoginForWindows extension (full name: Azure AD based Windows Login, recently renamed to: Microsoft Entra login VM)">Solution</button>
+        <div id="solutionInfo3" class="solutionInfo"></div>
+    </div>
+</body>
+</html>
