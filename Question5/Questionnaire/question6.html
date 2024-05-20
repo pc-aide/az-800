@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 6</title>
+</head>
+<body>
+    <div>
+        <h2>Question 6</h2>
+        <p>You have an Azure subscription that contains the virtual networks shown in the following table.</p>
+
+        <table border="1">
+            <tr>
+                <th>Name</th>
+                <th>Subnet</th>
+                <th>Location</th>
+            </tr>
+            <tr>
+                <td>vnet1</td>
+                <td>subnet11, subnet12</td>
+                <td>West US</td>
+            </tr>
+            <tr>
+                <td>vnet2</td>
+                <td>subnet21</td>
+                <td>West US</td>
+            </tr>
+            <tr>
+                <td>vnet3</td>
+                <td>subnet31</td>
+                <td>Central US</td>
+            </tr>
+        </table>
+
+        <p>You deploy a virtual machine named VM1 that runs Windows Server. VM1 is connected to Subnet11.</p>
+
+        <p>You plan to add an additional network interface named NIC1 to VM1. To which subnets can NIC1 be attached?</p>
+
+        <div>
+            <input type="radio" id="optionA" name="answer" value="A">
+            <label for="optionA">A. Subnet11 only</label>
+        </div>
+        <div>
+            <input type="radio" id="optionB" name="answer" value="B">
+            <label for="optionB">B. Subnet12 only</label>
+        </div>
+        <div>
+            <input type="radio" id="optionC" name="answer" value="C">
+            <label for="optionC">C. Subnet11 and Subnet12 only</label>
+        </div>
+        <div>
+            <input type="radio" id="optionD" name="answer" value="D">
+            <label for="optionD">D. Subnet12 and Subnet21 only</label>
+        </div>
+        <div>
+            <input type="radio" id="optionE" name="answer" value="E">
+            <label for="optionE">E. Subnet11, Subnet12, Subnet21, and Subnet31</label>
+        </div>
+
+        <div id="solutionInfo6"></div>
+
+        <button class="solutionButton" data-solution-info-id="solutionInfo6" data-correct-answer="C" data-answer-name="answer6" data-solution-text="Correct answer: C. Subnet11 and Subnet12 only.<br><br>Explanation: It is possible to attach many NICs to the same subnet so an additional NIC to Subnet11 is also possible. Subnet21 and Subnet31 do not belong to VNet1. To clarify, NIC1 can only be attached to Subnet12 within VNet1. It cannot be attached to Subnet21 in VNet2 or Subnet31 in VNet3 directly, as they are in different VNets.<br><br>For reference: <a href='https://learn.microsoft.com/en-us/azure/virtual-machines/windows/multiple-nics' target='_blank'>Multiple NICs in Azure VMs</a>.">Solution</button>
+    </div>
+    <script src="Scripts/answer6.js"></script>
+</body>
+</html>
