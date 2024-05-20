@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 20</title>
+</head>
+<body>
+    <div>
+        <h2>Question 20</h2>
+        <p>Your network contains an on-premises Active Directory Domain Services (AD DS) domain named contoso.com. The domain contains three servers that run Windows Server and have the Hyper-V server role installed. Each server has a Switch Embedded Teaming (SET) team.
+        You need to verify that Remote Direct Memory Access (RDMA) and all the required Windows Server settings are configured properly on each server to support an Azure Stack HCI cluster.
+        What should you use?</p>
+
+        <div class="container">
+            <div class="actions">
+                <input type="radio" id="option20A" name="answer20" value="A. Server Manager">
+                <label for="option20A">A. Server Manager</label><br>
+                <input type="radio" id="option20B" name="answer20" value="B. the Get-NetAdapter cmdlet">
+                <label for="option20B">B. the Get-NetAdapter cmdlet</label><br>
+                <input type="radio" id="option20C" name="answer20" value="C. Failover Cluster Manager">
+                <label for="option20C">C. Failover Cluster Manager</label><br>
+                <input type="radio" id="option20D" name="answer20" value="D. the Validate-DCB cmdlet">
+                <label for="option20D">D. the Validate-DCB cmdlet</label><br>
+            </div>
+        </div>
+
+        <div id="solutionInfo20"></div>
+
+        <button class="solutionButton" data-solution-info-id="solutionInfo20" data-correct-answer="D. the Validate-DCB cmdlet" data-answer-name="answer20" data-solution-text="Correct answer: D. the Validate-DCB cmdlet.<br><br>Explanation: After deploying a server cluster, run the Validate-DCB tool to test networking. After updating a server cluster, depending on your scenario, run both validation options to troubleshoot cluster issues. After setting up replication with Storage Replica, validate that the replication is proceeding normally by checking some specific events and running a couple commands. After creating a server cluster, run the Validate-DCB tool before placing it into production. You can use the Validate-DCB cmdlet to verify that Remote Direct Memory Access (RDMA) and all the required Windows Server settings are configured properly on each server to support an Azure Stack HCI cluster. The Validate-DCB cmdlet checks that the settings on the local computer are configured correctly for Data Center Bridging (DCB) and RDMA. This includes checking for the presence of the required software and hardware, such as the RDMA network adapter and the DCB feature, and verifying that the settings on the network adapter are configured correctly.<br><br>For reference: <a href='https://github.com/Microsoft/Validate-DCB' target='_blank'>Validate-DCB on GitHub</a>, <a href='https://learn.microsoft.com/en-us/azure-stack/hci/deploy/validate#install-and-run-the-validate-dcb-tool' target='_blank'>Install and run the Validate-DCB tool</a>, <a href='https://learn.microsoft.com/en-us/azure-stack/hci/deploy/validate' target='_blank'>Validate Azure Stack HCI</a>.">Solution</button>
+    </div>
+</body>
+</html>
