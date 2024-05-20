@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 18</title>
+</head>
+<body>
+    <div>
+        <h2>Question 18</h2>
+        <p>You have a server named Server1 that hosts Windows containers.
+        You plan to deploy an application that will have multiple containers. Each container will be on the same subnet. Each container requires a separate MAC address and IP address. Each container must be able to communicate by using its IP address.
+        You need to create a Docker network that supports the deployment of the application.
+        Which type of network should you create?</p>
+
+        <div class="container">
+            <div class="actions">
+                <input type="radio" id="option18A" name="answer18" value="A. NAT">
+                <label for="option18A">A. NAT</label><br>
+                <input type="radio" id="option18B" name="answer18" value="B. transparent">
+                <label for="option18B">B. transparent</label><br>
+                <input type="radio" id="option18C" name="answer18" value="C. I2bridge">
+                <label for="option18C">C. I2bridge</label><br>
+                <input type="radio" id="option18D" name="answer18" value="D. I2tunnel">
+                <label for="option18D">D. I2tunnel</label><br>
+            </div>
+        </div>
+
+        <div id="solutionInfo18"></div>
+
+        <button class="solutionButton" data-solution-info-id="solutionInfo18" data-correct-answer="B. transparent" data-answer-name="answer18" data-solution-text="Correct answer: B. transparent.<br><br>Explanation: Transparent network driver. Containers attached to a network created with the 'transparent' driver will be directly connected to the physical network through an external Hyper-V switch. IPs from the physical network can be assigned statically (requires user-specified --subnet option) or dynamically using an external DHCP server. Option B, as MAC Address Spoofing is required in Transparent mode only.<br><br>For reference: <a href='https://docs.microsoft.com/en-us/virtualization/windowscontainers/container-networking/network-drivers-topologies' target='_blank'>Network drivers and topologies</a>.">Solution</button>
+    </div>
+</body>
+</html>
