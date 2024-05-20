@@ -8,6 +8,38 @@ function showFinalScore() {
     document.getElementById('finalScore').textContent = "Final Score: " + score + "/" + totalQuestions + " (" + percentage.toFixed(2) + "%)";
 }
 
+function enableDragAndDrop() {
+    document.querySelectorAll('.draggable').forEach(draggable => {
+        draggable.addEventListener('dragstart', (e) => {
+            e.dataTransfer.setData('text/plain', e.target.id);
+            e.dataTransfer.effectAllowed = 'move';
+        });
+    });
+
+    document.querySelectorAll('.dropzone').forEach(dropzone => {
+        dropzone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            e.dataTransfer.dropEffect = 'move';
+            dropzone.classList.add('highlight');
+        });
+
+        dropzone.addEventListener('dragleave', () => {
+            dropzone.classList.remove('highlight');
+        });
+
+        dropzone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            const data = e.dataTransfer.getData('text/plain');
+            const draggedElement = document.getElementById(data);
+            if (draggedElement) {
+                e.target.textContent = draggedElement.dataset.action;
+                e.target.dataset.itemId = draggedElement.id;
+                dropzone.classList.remove('highlight');
+            }
+        });
+    });
+}
+
 function loadQuestions(files) {
     files.forEach(file => {
         fetch('Questionnaire/' + file)
@@ -16,6 +48,8 @@ function loadQuestions(files) {
                 const div = document.createElement('div');
                 div.innerHTML = data;
                 document.getElementById('questionContainer').appendChild(div);
+
+                enableDragAndDrop(); // Assurez-vous que le drag-and-drop est activé
 
                 // Attacher les écouteurs d'événements pour chaque bouton "Solution"
                 const solutionButtons = div.querySelectorAll('.solutionButton');
