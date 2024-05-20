@@ -516,6 +516,32 @@ function loadQuestions(files) {
                             solutionInfo.style.display = 'block';
                             showFinalScore();
                         }
+                        else if (this.dataset.answerName === 'answer18') {
+                            const selectedAnswer = document.querySelector('input[name="answer18"]:checked');
+                            const userAnswer = selectedAnswer ? [selectedAnswer.value] : [];
+                        
+                            if (!selectedAnswer || selectedAnswer.value !== correctAnswer[0]) {
+                                isCorrect = false;
+                            }
+                        
+                            const solutionText = this.dataset.solutionText;
+                            const solutionInfo = document.getElementById(solutionInfoId);
+                            if (isCorrect) {
+                                solutionInfo.innerHTML = solutionText;
+                                solutionInfo.classList.remove('incorrect');
+                                solutionInfo.classList.add('highlight');
+                                score += 1; // Ajouter un point si la réponse est correcte
+                            } else {
+                                const userAnswerText = userAnswer.length ? userAnswer.join(', ') : "non défini";
+                                solutionInfo.innerHTML = `Your answer: ${userAnswerText}.<br><br>Correct answer: ${correctAnswer.join(', ')}.<br><br>Explanation: Transparent network driver. Containers attached to a network created with the 'transparent' driver will be directly connected to the physical network through an external Hyper-V switch. IPs from the physical network can be assigned statically (requires user-specified --subnet option) or dynamically using an external DHCP server. Option B, as MAC Address Spoofing is required in Transparent mode only.<br><br>For reference: <a href='https://docs.microsoft.com/en-us/virtualization/windowscontainers/container-networking/network-drivers-topologies' target='_blank'>Network drivers and topologies</a>.`;
+                                solutionInfo.classList.remove('highlight');
+                                solutionInfo.classList.add('incorrect');
+                            }
+                        
+                            solutionInfo.style.display = 'block';
+                            showFinalScore();
+                        }
+                        
                     });
                 });
             })
