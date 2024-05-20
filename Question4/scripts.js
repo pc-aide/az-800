@@ -27,6 +27,7 @@ function enableDragAndDrop() {
             if (draggedElement) {
                 e.target.textContent = draggedElement.textContent;
                 e.target.dataset.action = draggedElement.dataset.action;
+                e.target.dataset.itemId = draggedElement.id;
                 dropzone.classList.remove('highlight');
             }
         });
@@ -83,12 +84,11 @@ function loadQuestions(files) {
                         var solutionInfoId = this.dataset.solutionInfoId;
                         var correctAnswer = this.dataset.correctAnswer.split(',');
                         let isCorrect = true;
-                        let userAnswer = [];
 
                         if (this.dataset.answerName === 'answer1') {
                             const select1 = document.querySelector('#select1Option1').value;
                             const select2 = document.querySelector('#select1Option2').value;
-                            userAnswer = [select1, select2];
+                            const userAnswer = [select1, select2];
 
                             userAnswer.forEach((answer, index) => {
                                 if (answer !== correctAnswer[index]) {
@@ -112,18 +112,17 @@ function loadQuestions(files) {
 
                             solutionInfo.style.display = 'block';
                             showFinalScore();
-                        }
-                        else if (this.dataset.answerName === 'answer2') {
+                        } else if (this.dataset.answerName === 'answer2') {
                             const select1 = document.querySelector('#select2Option1').value;
                             const select2 = document.querySelector('#select2Option2').value;
-                            userAnswer = [select1, select2];
-                        
+                            const userAnswer = [select1, select2];
+
                             userAnswer.forEach((answer, index) => {
                                 if (answer !== correctAnswer[index]) {
                                     isCorrect = false;
                                 }
                             });
-                        
+
                             const solutionText = this.dataset.solutionText;
                             const solutionInfo = document.getElementById(solutionInfoId);
                             if (isCorrect) {
@@ -137,21 +136,17 @@ function loadQuestions(files) {
                                 solutionInfo.classList.remove('highlight');
                                 solutionInfo.classList.add('incorrect');
                             }
-                        
+
                             solutionInfo.style.display = 'block';
                             showFinalScore();
-                        }
-                        else if (this.dataset.answerName === 'answer3') {
+                        } else if (this.dataset.answerName === 'answer3') {
                             const selectedAnswer = document.querySelector('input[name="answer3"]:checked');
-                            if (selectedAnswer) {
-                                userAnswer.push(selectedAnswer.value);
-                                if (selectedAnswer.value !== correctAnswer[0]) {
-                                    isCorrect = false;
-                                }
-                            } else {
+                            const userAnswer = selectedAnswer ? [selectedAnswer.value] : [];
+
+                            if (!selectedAnswer || selectedAnswer.value !== correctAnswer[0]) {
                                 isCorrect = false;
                             }
-                        
+
                             const solutionText = this.dataset.solutionText;
                             const solutionInfo = document.getElementById(solutionInfoId);
                             if (isCorrect) {
@@ -165,20 +160,19 @@ function loadQuestions(files) {
                                 solutionInfo.classList.remove('highlight');
                                 solutionInfo.classList.add('incorrect');
                             }
-                        
+
                             solutionInfo.style.display = 'block';
                             showFinalScore();
-                        }
-                        else if (this.dataset.answerName === 'answer4') {
+                        } else if (this.dataset.answerName === 'answer4') {
                             const selectedAnswers = document.querySelectorAll('input[name="answer4"]:checked');
-                            selectedAnswers.forEach(answer => userAnswer.push(answer.value));
-                            
+                            const userAnswer = Array.from(selectedAnswers).map(answer => answer.value);
+
                             correctAnswer.forEach(answer => {
                                 if (!userAnswer.includes(answer)) {
                                     isCorrect = false;
                                 }
                             });
-                        
+
                             const solutionText = this.dataset.solutionText;
                             const solutionInfo = document.getElementById(solutionInfoId);
                             if (isCorrect) {
@@ -192,21 +186,17 @@ function loadQuestions(files) {
                                 solutionInfo.classList.remove('highlight');
                                 solutionInfo.classList.add('incorrect');
                             }
-                        
+
                             solutionInfo.style.display = 'block';
                             showFinalScore();
-                        }
-                        else if (this.dataset.answerName === 'answer5') {
+                        } else if (this.dataset.answerName === 'answer5') {
                             const selectedAnswer = document.querySelector('input[name="answer5"]:checked');
-                            if (selectedAnswer) {
-                                userAnswer.push(selectedAnswer.value);
-                                if (selectedAnswer.value !== correctAnswer[0]) {
-                                    isCorrect = false;
-                                }
-                            } else {
+                            const userAnswer = selectedAnswer ? [selectedAnswer.value] : [];
+
+                            if (!selectedAnswer || selectedAnswer.value !== correctAnswer[0]) {
                                 isCorrect = false;
                             }
-                        
+
                             const solutionText = this.dataset.solutionText;
                             const solutionInfo = document.getElementById(solutionInfoId);
                             if (isCorrect) {
@@ -220,21 +210,17 @@ function loadQuestions(files) {
                                 solutionInfo.classList.remove('highlight');
                                 solutionInfo.classList.add('incorrect');
                             }
-                        
+
                             solutionInfo.style.display = 'block';
                             showFinalScore();
-                        }
-                        else if (this.dataset.answerName === 'answer6') {
+                        } else if (this.dataset.answerName === 'answer6') {
                             const selectedAnswer = document.querySelector('input[name="answer6"]:checked');
-                            if (selectedAnswer) {
-                                userAnswer.push(selectedAnswer.value);
-                                if (selectedAnswer.value !== correctAnswer[0]) {
-                                    isCorrect = false;
-                                }
-                            } else {
+                            const userAnswer = selectedAnswer ? [selectedAnswer.value] : [];
+
+                            if (!selectedAnswer || selectedAnswer.value !== correctAnswer[0]) {
                                 isCorrect = false;
                             }
-                        
+
                             const solutionText = this.dataset.solutionText;
                             const solutionInfo = document.getElementById(solutionInfoId);
                             if (isCorrect) {
@@ -248,21 +234,17 @@ function loadQuestions(files) {
                                 solutionInfo.classList.remove('highlight');
                                 solutionInfo.classList.add('incorrect');
                             }
-                        
+
                             solutionInfo.style.display = 'block';
                             showFinalScore();
-                        }      
-                        else if (this.dataset.answerName === 'answer7') {
+                        } else if (this.dataset.answerName === 'answer7') {
                             const selectedAnswer = document.querySelector('input[name="answer7"]:checked');
-                            if (selectedAnswer) {
-                                userAnswer.push(selectedAnswer.value);
-                                if (selectedAnswer.value !== correctAnswer[0]) {
-                                    isCorrect = false;
-                                }
-                            } else {
+                            const userAnswer = selectedAnswer ? [selectedAnswer.value] : [];
+
+                            if (!selectedAnswer || selectedAnswer.value !== correctAnswer[0]) {
                                 isCorrect = false;
                             }
-                        
+
                             const solutionText = this.dataset.solutionText;
                             const solutionInfo = document.getElementById(solutionInfoId);
                             if (isCorrect) {
@@ -276,21 +258,17 @@ function loadQuestions(files) {
                                 solutionInfo.classList.remove('highlight');
                                 solutionInfo.classList.add('incorrect');
                             }
-                        
+
                             solutionInfo.style.display = 'block';
                             showFinalScore();
-                        }
-                        else if (this.dataset.answerName === 'answer8') {
+                        } else if (this.dataset.answerName === 'answer8') {
                             const selectedAnswer = document.querySelector('input[name="answer8"]:checked');
-                            if (selectedAnswer) {
-                                userAnswer.push(selectedAnswer.value);
-                                if (selectedAnswer.value !== correctAnswer[0]) {
-                                    isCorrect = false;
-                                }
-                            } else {
+                            const userAnswer = selectedAnswer ? [selectedAnswer.value] : [];
+
+                            if (!selectedAnswer || selectedAnswer.value !== correctAnswer[0]) {
                                 isCorrect = false;
                             }
-                        
+
                             const solutionText = this.dataset.solutionText;
                             const solutionInfo = document.getElementById(solutionInfoId);
                             if (isCorrect) {
@@ -304,21 +282,17 @@ function loadQuestions(files) {
                                 solutionInfo.classList.remove('highlight');
                                 solutionInfo.classList.add('incorrect');
                             }
-                        
+
                             solutionInfo.style.display = 'block';
                             showFinalScore();
-                        }
-                        else if (this.dataset.answerName === 'answer9') {
+                        } else if (this.dataset.answerName === 'answer9') {
                             const selectedAnswer = document.querySelector('input[name="answer9"]:checked');
-                            if (selectedAnswer) {
-                                userAnswer.push(selectedAnswer.value);
-                                if (selectedAnswer.value !== correctAnswer[0]) {
-                                    isCorrect = false;
-                                }
-                            } else {
+                            const userAnswer = selectedAnswer ? [selectedAnswer.value] : [];
+
+                            if (!selectedAnswer || selectedAnswer.value !== correctAnswer[0]) {
                                 isCorrect = false;
                             }
-                        
+
                             const solutionText = this.dataset.solutionText;
                             const solutionInfo = document.getElementById(solutionInfoId);
                             if (isCorrect) {
@@ -332,21 +306,17 @@ function loadQuestions(files) {
                                 solutionInfo.classList.remove('highlight');
                                 solutionInfo.classList.add('incorrect');
                             }
-                        
+
                             solutionInfo.style.display = 'block';
                             showFinalScore();
-                        }
-                        else if (this.dataset.answerName === 'answer10') {
+                        } else if (this.dataset.answerName === 'answer10') {
                             const selectedAnswer = document.querySelector('input[name="answer10"]:checked');
-                            if (selectedAnswer) {
-                                userAnswer.push(selectedAnswer.value);
-                                if (selectedAnswer.value !== correctAnswer[0]) {
-                                    isCorrect = false;
-                                }
-                            } else {
+                            const userAnswer = selectedAnswer ? [selectedAnswer.value] : [];
+
+                            if (!selectedAnswer || selectedAnswer.value !== correctAnswer[0]) {
                                 isCorrect = false;
                             }
-                        
+
                             const solutionText = this.dataset.solutionText;
                             const solutionInfo = document.getElementById(solutionInfoId);
                             if (isCorrect) {
@@ -360,21 +330,20 @@ function loadQuestions(files) {
                                 solutionInfo.classList.remove('highlight');
                                 solutionInfo.classList.add('incorrect');
                             }
-                        
+
                             solutionInfo.style.display = 'block';
                             showFinalScore();
-                        }     
-                        else if (this.dataset.answerName === 'answer11') {
+                        } else if (this.dataset.answerName === 'answer11') {
                             const selectedAnswers = document.querySelectorAll('input[name="answer11"]:checked');
-                            selectedAnswers.forEach(answer => userAnswer.push(answer.value));
-                            
+                            const userAnswer = Array.from(selectedAnswers).map(answer => answer.value);
+
                             userAnswer.sort();
                             correctAnswer.sort();
-                            
+
                             if (JSON.stringify(userAnswer) !== JSON.stringify(correctAnswer)) {
                                 isCorrect = false;
                             }
-                        
+
                             const solutionText = this.dataset.solutionText;
                             const solutionInfo = document.getElementById(solutionInfoId);
                             if (isCorrect) {
@@ -388,21 +357,17 @@ function loadQuestions(files) {
                                 solutionInfo.classList.remove('highlight');
                                 solutionInfo.classList.add('incorrect');
                             }
-                        
+
                             solutionInfo.style.display = 'block';
                             showFinalScore();
-                        }        
-                        else if (this.dataset.answerName === 'answer12') {
+                        } else if (this.dataset.answerName === 'answer12') {
                             const selectedAnswer = document.querySelector('input[name="answer12"]:checked');
-                            if (selectedAnswer) {
-                                userAnswer.push(selectedAnswer.value);
-                                if (selectedAnswer.value !== correctAnswer[0]) {
-                                    isCorrect = false;
-                                }
-                            } else {
+                            const userAnswer = selectedAnswer ? [selectedAnswer.value] : [];
+
+                            if (!selectedAnswer || selectedAnswer.value !== correctAnswer[0]) {
                                 isCorrect = false;
                             }
-                        
+
                             const solutionText = this.dataset.solutionText;
                             const solutionInfo = document.getElementById(solutionInfoId);
                             if (isCorrect) {
@@ -416,21 +381,17 @@ function loadQuestions(files) {
                                 solutionInfo.classList.remove('highlight');
                                 solutionInfo.classList.add('incorrect');
                             }
-                        
+
                             solutionInfo.style.display = 'block';
                             showFinalScore();
-                        }      
-                        else if (this.dataset.answerName === 'answer13') {
+                        } else if (this.dataset.answerName === 'answer13') {
                             const selectedAnswer = document.querySelector('input[name="answer13"]:checked');
-                            if (selectedAnswer) {
-                                userAnswer.push(selectedAnswer.value);
-                                if (selectedAnswer.value !== correctAnswer[0]) {
-                                    isCorrect = false;
-                                }
-                            } else {
+                            const userAnswer = selectedAnswer ? [selectedAnswer.value] : [];
+
+                            if (!selectedAnswer || selectedAnswer.value !== correctAnswer[0]) {
                                 isCorrect = false;
                             }
-                        
+
                             const solutionText = this.dataset.solutionText;
                             const solutionInfo = document.getElementById(solutionInfoId);
                             if (isCorrect) {
@@ -444,21 +405,17 @@ function loadQuestions(files) {
                                 solutionInfo.classList.remove('highlight');
                                 solutionInfo.classList.add('incorrect');
                             }
-                        
+
                             solutionInfo.style.display = 'block';
                             showFinalScore();
-                        }     
-                        else if (this.dataset.answerName === 'answer14') {
+                        } else if (this.dataset.answerName === 'answer14') {
                             const selectedAnswer = document.querySelector('input[name="answer14"]:checked');
-                            if (selectedAnswer) {
-                                userAnswer.push(selectedAnswer.value);
-                                if (selectedAnswer.value !== correctAnswer[0]) {
-                                    isCorrect = false;
-                                }
-                            } else {
+                            const userAnswer = selectedAnswer ? [selectedAnswer.value] : [];
+
+                            if (!selectedAnswer || selectedAnswer.value !== correctAnswer[0]) {
                                 isCorrect = false;
                             }
-                        
+
                             const solutionText = this.dataset.solutionText;
                             const solutionInfo = document.getElementById(solutionInfoId);
                             if (isCorrect) {
@@ -472,21 +429,17 @@ function loadQuestions(files) {
                                 solutionInfo.classList.remove('highlight');
                                 solutionInfo.classList.add('incorrect');
                             }
-                        
+
                             solutionInfo.style.display = 'block';
                             showFinalScore();
-                        }    
-                        else if (this.dataset.answerName === 'answer15') {
+                        } else if (this.dataset.answerName === 'answer15') {
                             const selectedAnswer = document.querySelector('input[name="answer15"]:checked');
-                            if (selectedAnswer) {
-                                userAnswer.push(selectedAnswer.value);
-                                if (selectedAnswer.value !== correctAnswer[0]) {
-                                    isCorrect = false;
-                                }
-                            } else {
+                            const userAnswer = selectedAnswer ? [selectedAnswer.value] : [];
+
+                            if (!selectedAnswer || selectedAnswer.value !== correctAnswer[0]) {
                                 isCorrect = false;
                             }
-                        
+
                             const solutionText = this.dataset.solutionText;
                             const solutionInfo = document.getElementById(solutionInfoId);
                             if (isCorrect) {
@@ -500,22 +453,21 @@ function loadQuestions(files) {
                                 solutionInfo.classList.remove('highlight');
                                 solutionInfo.classList.add('incorrect');
                             }
-                        
+
                             solutionInfo.style.display = 'block';
                             showFinalScore();
-                        }      
-                        else if (this.dataset.answerName === 'answer16') {
+                        } else if (this.dataset.answerName === 'answer16') {
                             const select1 = document.querySelector('select[name="answer16-1"]').value;
                             const select2 = document.querySelector('select[name="answer16-2"]').value;
                             const select3 = document.querySelector('select[name="answer16-3"]').value;
-                            userAnswer = [select1, select2, select3];
-                        
+                            const userAnswer = [select1, select2, select3];
+
                             userAnswer.forEach((answer, index) => {
                                 if (answer !== correctAnswer[index]) {
                                     isCorrect = false;
                                 }
                             });
-                        
+
                             const solutionText = this.dataset.solutionText;
                             const solutionInfo = document.getElementById(solutionInfoId);
                             if (isCorrect) {
@@ -529,10 +481,41 @@ function loadQuestions(files) {
                                 solutionInfo.classList.remove('highlight');
                                 solutionInfo.classList.add('incorrect');
                             }
-                        
+
                             solutionInfo.style.display = 'block';
                             showFinalScore();
-                        }                                                        
+                        } else if (this.dataset.answerName === 'answer17') {
+                            const dropzone1 = document.querySelector('#dropzone17-1').dataset.itemId;
+                            const dropzone2 = document.querySelector('#dropzone17-2').dataset.itemId;
+                            const dropzone3 = document.querySelector('#dropzone17-3').dataset.itemId;
+                            const dropzone4 = document.querySelector('#dropzone17-4').dataset.itemId;
+                            const userAnswer = [dropzone1, dropzone2, dropzone3, dropzone4];
+
+                            const correctAnswerIds = ['item17-1', 'item17-2', 'item17-3', 'item17-4'];
+
+                            userAnswer.forEach((answer, index) => {
+                                if (answer !== correctAnswerIds[index]) {
+                                    isCorrect = false;
+                                }
+                            });
+
+                            const solutionText = this.dataset.solutionText;
+                            const solutionInfo = document.getElementById(solutionInfoId);
+                            if (isCorrect) {
+                                solutionInfo.innerHTML = `Your answer: ${userAnswer.join(', ')}.<br><br>Correct answer: ${correctAnswerIds.join(', ')}.<br><br>Explanation: To make the NVMe storage device available to Server1, you need to perform the following actions in sequence:<br>1. From Server1, stop VM1.<br>2. From Server1, run the Remove-VMAssignableDevice cmdlet.<br>3. From Server1, run the Mount-VMHostAssignableDevice cmdlet.<br>4. From Server1, enable the device by using Device Manager.<br><br>For reference: <a href='https://learn.microsoft.com/en-us/troubleshoot/windows-server/identity/transfer-or-seize-operation-master-roles-in-ad-ds#seize-or-transfer-operation-master-roles' target='_blank'>Seize or transfer operation master roles</a>`;
+                                solutionInfo.classList.remove('incorrect');
+                                solutionInfo.classList.add('highlight');
+                                score += 1; // Ajouter un point si la réponse est correcte
+                            } else {
+                                const userAnswerText = userAnswer.length ? userAnswer.join(', ') : "non défini";
+                                solutionInfo.innerHTML = `Your answer: ${userAnswerText}.<br><br>Correct answer: ${correctAnswerIds.join(', ')}.<br><br>Explanation: To make the NVMe storage device available to Server1, you need to perform the following actions in sequence:<br>1. From Server1, stop VM1.<br>2. From Server1, run the Remove-VMAssignableDevice cmdlet.<br>3. From Server1, run the Mount-VMHostAssignableDevice cmdlet.<br>4. From Server1, enable the device by using Device Manager.<br><br>For reference: <a href='https://learn.microsoft.com/en-us/troubleshoot/windows-server/identity/transfer-or-seize-operation-master-roles-in-ad-ds#seize-or-transfer-operation-master-roles' target='_blank'>Seize or transfer operation master roles</a>`;
+                                solutionInfo.classList.remove('highlight');
+                                solutionInfo.classList.add('incorrect');
+                            }
+
+                            solutionInfo.style.display = 'block';
+                            showFinalScore();
+                        }
                     });
                 });
             })
