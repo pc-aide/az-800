@@ -565,7 +565,32 @@ function loadQuestions(files) {
                         
                             solutionInfo.style.display = 'block';
                             showFinalScore();
-                        }                        
+                        }   
+                        else if (this.dataset.answerName === 'answer20') {
+                            const selectedAnswer = document.querySelector('input[name="answer20"]:checked');
+                            const userAnswer = selectedAnswer ? [selectedAnswer.value] : [];
+                        
+                            if (!selectedAnswer || selectedAnswer.value !== correctAnswer[0]) {
+                                isCorrect = false;
+                            }
+                        
+                            const solutionText = this.dataset.solutionText;
+                            const solutionInfo = document.getElementById(solutionInfoId);
+                            if (isCorrect) {
+                                solutionInfo.innerHTML = solutionText;
+                                solutionInfo.classList.remove('incorrect');
+                                solutionInfo.classList.add('highlight');
+                                score += 1; // Ajouter un point si la réponse est correcte
+                            } else {
+                                const userAnswerText = userAnswer.length ? userAnswer.join(', ') : "non défini";
+                                solutionInfo.innerHTML = `Your answer: ${userAnswerText}.<br><br>Correct answer: ${correctAnswer.join(', ')}.<br><br>Explanation: After deploying a server cluster, run the Validate-DCB tool to test networking. After updating a server cluster, depending on your scenario, run both validation options to troubleshoot cluster issues. After setting up replication with Storage Replica, validate that the replication is proceeding normally by checking some specific events and running a couple commands. After creating a server cluster, run the Validate-DCB tool before placing it into production. You can use the Validate-DCB cmdlet to verify that Remote Direct Memory Access (RDMA) and all the required Windows Server settings are configured properly on each server to support an Azure Stack HCI cluster. The Validate-DCB cmdlet checks that the settings on the local computer are configured correctly for Data Center Bridging (DCB) and RDMA. This includes checking for the presence of the required software and hardware, such as the RDMA network adapter and the DCB feature, and verifying that the settings on the network adapter are configured correctly.<br><br>For reference: <a href='https://github.com/Microsoft/Validate-DCB' target='_blank'>Validate-DCB on GitHub</a>, <a href='https://learn.microsoft.com/en-us/azure-stack/hci/deploy/validate#install-and-run-the-validate-dcb-tool' target='_blank'>Install and run the Validate-DCB tool</a>, <a href='https://learn.microsoft.com/en-us/azure-stack/hci/deploy/validate' target='_blank'>Validate Azure Stack HCI</a>.`;
+                                solutionInfo.classList.remove('highlight');
+                                solutionInfo.classList.add('incorrect');
+                            }
+                        
+                            solutionInfo.style.display = 'block';
+                            showFinalScore();
+                        }  
                         
                     });
                 });
