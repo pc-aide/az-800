@@ -541,6 +541,31 @@ function loadQuestions(files) {
                             solutionInfo.style.display = 'block';
                             showFinalScore();
                         }
+                        else if (this.dataset.answerName === 'answer19') {
+                            const selectedAnswer = document.querySelector('input[name="answer19"]:checked');
+                            const userAnswer = selectedAnswer ? [selectedAnswer.value] : [];
+                        
+                            if (!selectedAnswer || selectedAnswer.value !== correctAnswer[0]) {
+                                isCorrect = false;
+                            }
+                        
+                            const solutionText = this.dataset.solutionText;
+                            const solutionInfo = document.getElementById(solutionInfoId);
+                            if (isCorrect) {
+                                solutionInfo.innerHTML = solutionText;
+                                solutionInfo.classList.remove('incorrect');
+                                solutionInfo.classList.add('highlight');
+                                score += 1; // Ajouter un point si la réponse est correcte
+                            } else {
+                                const userAnswerText = userAnswer.length ? userAnswer.join(', ') : "non défini";
+                                solutionInfo.innerHTML = `Your answer: ${userAnswerText}.<br><br>Correct answer: ${correctAnswer.join(', ')}.<br><br>Explanation: To automate the deployment and configuration of Azure virtual machines (VMs), you can use a Resource Manager template. These templates let you create consistent deployments each time. Extensions can also be included in templates to automatically configure a VM as part of the deployment. One useful extension joins VMs to a domain, which can be used with Azure Active Directory Domain Services (Azure AD DS) managed domains.<br><br>For reference: <a href='https://www.ludovicmedard.com/create-an-arm-template-of-a-virtual-machine-automatically-joined-to-a-domain/' target='_blank'>Create an ARM template of a virtual machine automatically joined to a domain</a>.`;
+                                solutionInfo.classList.remove('highlight');
+                                solutionInfo.classList.add('incorrect');
+                            }
+                        
+                            solutionInfo.style.display = 'block';
+                            showFinalScore();
+                        }                        
                         
                     });
                 });
