@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 2</title>
+    <style>
+        .container {
+            display: flex;
+            gap: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h2>Question 2</h2>
+        <p>You have a Windows Server container host named Server1 and an Azure subscription.
+        You deploy an Azure container registry named Registry1 to the subscription.
+        On Server1, you create a container image named image1.
+        You need to store image1 in Registry1.
+        Which command should you run on Server1? To answer, select the appropriate options in the answer area.</p>
+
+        <div class="container">
+            <select id="select2Option1">
+                <option value="item2.1">docker</option>
+                <option value="item2.2">azcopy</option>
+                <option value="item2.3">xcopy</option>
+                <option value="item2.4">git</option>
+            </select>
+
+            <select id="select2Option2">
+                <option value="item2.5">export</option>
+                <option value="item2.6">import</option>
+                <option value="item2.7">pull</option>
+                <option value="item2.8">push</option>
+            </select>
+
+            <p>Registry1.Azurecr.io/image</p>
+        </div>
+
+        <div id="solutionInfo2"></div>
+
+        <button class="solutionButton" data-solution-info-id="solutionInfo2" data-correct-answer="item2.1,item2.8" data-answer-name="answer2" data-solution-text="Correct answer: docker (item2.1), push (item2.8).<br><br>Explanation: Push the image to your registry. Now that you've tagged the image with the fully qualified path to your private registry, you can push it to the registry with docker push:<br>docker push myregistry.azurecr.io/samples/nginx<br><br>For reference: <a href='https://docs.microsoft.com/en-us/azure/container-registry/container-registry-get-started-docker-cli?tabs=azure-cli#push-the-image-to-your-registry' target='_blank'>Push the image to your registry</a>.">Solution</button>
+    </div>
+</body>
+</html>
