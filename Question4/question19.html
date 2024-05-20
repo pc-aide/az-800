@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 19</title>
+</head>
+<body>
+    <div>
+        <h2>Question 19</h2>
+        <p>You have an on-premises Active Directory Domain Services (AD DS) domain that syncs with an Azure Active Directory (Azure AD) tenant.
+        You plan deploy 100 new Azure virtual machines that will run Windows Server.
+        You need to ensure that each new virtual machine is joined to the AD DS domain.
+        What should you use?</p>
+
+        <div class="container">
+            <div class="actions">
+                <input type="radio" id="option19A" name="answer19" value="A. an Azure Resource Manager (ARM) template">
+                <label for="option19A">A. an Azure Resource Manager (ARM) template</label><br>
+                <input type="radio" id="option19B" name="answer19" value="B. a Group Policy Object (GPO)">
+                <label for="option19B">B. a Group Policy Object (GPO)</label><br>
+                <input type="radio" id="option19C" name="answer19" value="C. Azure AD Connect">
+                <label for="option19C">C. Azure AD Connect</label><br>
+                <input type="radio" id="option19D" name="answer19" value="D. an Azure management group">
+                <label for="option19D">D. an Azure management group</label><br>
+            </div>
+        </div>
+
+        <div id="solutionInfo19"></div>
+
+        <button class="solutionButton" data-solution-info-id="solutionInfo19" data-correct-answer="A. an Azure Resource Manager (ARM) template" data-answer-name="answer19" data-solution-text="Correct answer: A. an Azure Resource Manager (ARM) template.<br><br>Explanation: To automate the deployment and configuration of Azure virtual machines (VMs), you can use a Resource Manager template. These templates let you create consistent deployments each time. Extensions can also be included in templates to automatically configure a VM as part of the deployment. One useful extension joins VMs to a domain, which can be used with Azure Active Directory Domain Services (Azure AD DS) managed domains.<br><br>For reference: <a href='https://www.ludovicmedard.com/create-an-arm-template-of-a-virtual-machine-automatically-joined-to-a-domain/' target='_blank'>Create an ARM template of a virtual machine automatically joined to a domain</a>.">Solution</button>
+    </div>
+</body>
+</html>
