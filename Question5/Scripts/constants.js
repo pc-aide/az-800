@@ -17,17 +17,13 @@ function loadQuestions(files) {
                 div.innerHTML = data;
                 document.getElementById('questionContainer').appendChild(div);
 
-                // Re-attacher les écouteurs d'événements pour chaque bouton "Solution"
-                var solutionButtons = div.querySelectorAll('.solutionButton');
+                // Attacher les écouteurs d'événements pour chaque bouton "Solution"
+                const solutionButtons = div.querySelectorAll('.solutionButton');
                 solutionButtons.forEach(button => {
-                    button.addEventListener('click', function() {
-                        const solutionInfoId = this.dataset.solutionInfoId;
-                        const correctAnswer = this.dataset.correctAnswer.split(',');
-
-                        if (this.dataset.answerName === 'answer1') {
-                            checkAnswer1(correctAnswer, solutionInfoId, this.dataset.solutionText);
-                        }
-                    });
+                    const answerName = button.dataset.answerName;
+                    if (typeof window[`attachSolutionButtonListeners_${answerName}`] === 'function') {
+                        window[`attachSolutionButtonListeners_${answerName}`](button);
+                    }
                 });
             })
             .catch(error => console.error('Error loading question:', error));
