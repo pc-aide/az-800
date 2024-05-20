@@ -69,11 +69,19 @@ function loadQuestions(files) {
 
 function loadScripts(scripts) {
     return Promise.all(scripts.map(script => {
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve) => {
             const scriptTag = document.createElement('script');
             scriptTag.src = 'Scripts/' + script;
             scriptTag.onload = resolve;
-            scriptTag.onerror = () => reject(new Error(`Failed to load script: ${script}`));
+            scriptTag.onerror = (error) => {
+                if (error.target.src.includes('404')) {
+                    console.warn(`Script not found: ${script}`);
+                    resolve(); // Ignore 404 errors and resolve the promise
+                } else {
+                    console.error(`Failed to load script: ${script}`, error);
+                    resolve(); // Resolve the promise even on error to continue loading other scripts
+                }
+            };
             document.body.appendChild(scriptTag);
         });
     }));
