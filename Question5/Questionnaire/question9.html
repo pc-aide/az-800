@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 9</title>
+</head>
+<body>
+    <div>
+        <h2>Question 9</h2>
+        <p>Your on-premises network contains a server named Server1 and uses an IP address space of 192.168.10.0/24.</p>
+        <p>You have an Azure virtual network that contains a subnet named Subnet1. Subnet1 uses an IP address space of 192.168.10.0/24.</p>
+        <p>You need to migrate Server1 to Subnet1. You must use Azure Extended Network to maintain the existing IP address of Server1.</p>
+        <p>What is the minimum number of virtual machines that you should deploy? To answer, select the appropriate options in the answer area.</p>
+
+        <div>
+            <label for="select1">VMs that run Windows SRV 2022 Azure Edition:</label>
+            <select id="select1">
+                <option value="item9.1">0</option>
+                <option value="item9.2">1</option>
+                <option value="item9.3">2</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="select2">VMs that run Windows SRV 2019 or Windows SRV 2022:</label>
+            <select id="select2">
+                <option value="item9.4">0</option>
+                <option value="item9.5">1</option>
+                <option value="item9.6">2</option>
+            </select>
+        </div>
+
+        <div id="solutionInfo9"></div>
+
+        <button class="solutionButton" data-solution-info-id="solutionInfo9" data-correct-answer="item9.2,item9.5" data-answer-name="answer9" data-solution-text="Correct answer: VMs that run Windows SRV 2022 Azure Edition: 1, VMs that run Windows SRV 2019 or Windows SRV 2022: 1.<br><br>Explanation: 2 NVA - Network Virtual Appliance:<br>- On-prem: WinSrv 2019 or 2022<br>- Azure: WinSrv 2022 Azure Edition<br><br>Each subnet that you are going to extend requires one pair of appliances.<br>You're 2 appliances, 1 on-prem, 1 in Azure.<br><br>For reference: <a href='https://learn.microsoft.com/en-us/windows-server/manage/windows-admin-center/azure/azure-extended-network' target='_blank'>Azure Extended Network</a>.">Solution</button>
+    </div>
+    <script src="Scripts/answer9.js"></script>
+</body>
+</html>
