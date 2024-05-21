@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 10</title>
+</head>
+<body>
+    <div>
+        <h2>Question 10</h2>
+        <p>You have a server named Server1 that has the Hyper-V server role installed. Server1 hosts the virtual machines shown in the following exhibit.</p>
+        <img src="https://raw.githubusercontent.com/pc-aide/az-800/main/Question5/q29.png" alt="VM Exhibit">
+
+        <p>Use the drop-down menus to select the answer choice that completes each statement based on the information presented in the graphic.</p>
+
+        <div>
+            <label for="select10-1">can have production checkpoints:</label>
+            <select id="select10-1">
+                <option value="item10.1">Only VM1</option>
+                <option value="item10.2">Only VM1 & VM2</option>
+                <option value="item10.3">VM1, VM2, & VM3</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="select10-2">can be hibernated:</label>
+            <select id="select10-2">
+                <option value="item10.4">Only VM1</option>
+                <option value="item10.5">Only VM1 & VM2</option>
+                <option value="item10.6">VM1, VM2, & VM3</option>
+            </select>
+        </div>
+
+        <div id="solutionInfo10"></div>
+
+        <button class="solutionButton" data-solution-info-id="solutionInfo10" data-correct-answer="item10.3,item10.5" data-answer-name="answer10" data-solution-text="Correct answer: can have production checkpoints: VM1, VM2, & VM3; can be hibernated: Only VM1 & VM2.<br><br>Explanation: Seems correct: Production checkpoints from server 2016 (config version 8.0), Hybernate from server 2019 (config version 9).<br><br>For reference: <a href='https://learn.microsoft.com/en-us/windows-server/virtualization/hyper-v/deploy/upgrade-virtual-machine-version-in-hyper-v-on-windows-or-windows-server' target='_blank'>Upgrade virtual machine version in Hyper-V</a>.">Solution</button>
+    </div>
+    <script src="Scripts/answer10.js"></script>
+</body>
+</html>
