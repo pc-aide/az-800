@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 14</title>
+</head>
+<body>
+    <div>
+        <h2>Question 14</h2>
+        <p>You have an Azure subscription that contains a virtual network named VNet1. VNet1 contains three subnets named Subnet1, Subnet2, and Subnet3.</p>
+        <p>You deploy a virtual machine that has the following settings:</p>
+        <ul>
+            <li>Name: VM1</li>
+            <li>Subnet: Subnet2</li>
+            <li>Network interface name: NIC1</li>
+            <li>Operating system: Windows Server 2022</li>
+        </ul>
+        <p>You need to ensure that VM1 can route traffic between Subnet1 and Subnet3. The solution must minimize administrative effort.</p>
+        <p>What should you do? To answer, select the appropriate options in the answer area.</p>
+
+        <div>
+            <label for="selectAzurePortal">From the Azure portal:</label>
+            <select id="selectAzurePortal">
+                <option value="item14.1">Associate a routing table with Subnet2</option>
+                <option value="item14.2">Attach two additional interfaces to VM1</option>
+                <option value="item14.3">Enable IP forwarding for NIC1</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="selectOnVM1">On VM1:</label>
+            <select id="selectOnVM1">
+                <option value="item14.4">Install & configure a network controller</option>
+                <option value="item14.5">Install & configure Routing & Remote Access</option>
+                <option value="item14.6">Run the route add command</option>
+            </select>
+        </div>
+
+        <div id="solutionInfo14"></div>
+
+        <button class="solutionButton" data-solution-info-id="solutionInfo14" data-correct-answer="item14.3,item14.6" data-answer-name="answer14" data-solution-text="Correct answer: From the Azure portal: Enable IP forwarding for NIC1, On VM1: Run the route add command.<br><br>Explanation: Box 1: It has to be IP forwarding for NIC1 because a routing table would be assigned to subnet 1 and 3. Here I only have the option to assign it to subnet 2.<br>Box 2: with the step 'run the route add command' they assume there is already a routing table and you are adding a route to the table.<br><br>For reference: <a href='https://learn.microsoft.com/en-us/azure/virtual-network/virtual-network-network-interface?tabs=azure-portal' target='_blank'>Azure Network Interface</a>.">Solution</button>
+    </div>
+    <script src="Scripts/answer14.js"></script>
+</body>
+</html>
