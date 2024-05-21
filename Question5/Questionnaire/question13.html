@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 13</title>
+</head>
+<body>
+    <div>
+        <h2>Question 13</h2>
+        <p>You have an Azure subscription that contains the virtual machines shown in the following table.</p>
+
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>OS</th>
+            </tr>
+            <tr>
+                <td>VM1</td>
+                <td>Windows SRV 2022 Datacenter: Azure Edition</td>
+            </tr>
+            <tr>
+                <td>VM2</td>
+                <td>Windows SRV 2022 Datacenter: Azure Edition Core</td>
+            </tr>
+            <tr>
+                <td>VM3</td>
+                <td>Windows SRV 2022 Datacenter</td>
+            </tr>
+            <tr>
+                <td>VM4</td>
+                <td>Windows SRV 2019 Datacenter</td>
+            </tr>
+        </table>
+
+        <p>You plan to implement Azure Automanage for Windows Server.</p>
+        <p>You need to identify the operating system prerequisites.</p>
+        <p>Which virtual machines support Hotpatch, and which virtual machines support SMB over QUIC? To answer, select the appropriate options in the answer area.</p>
+
+        <div>
+            <label for="selectHotpatch">Hotpatch:</label>
+            <select id="selectHotpatch">
+                <option value="item13.1">VM1 only</option>
+                <option value="item13.2">VM2 only</option>
+                <option value="item13.3">VM1 & VM2</option>
+                <option value="item13.4">VM1, VM2, & VM3 only</option>
+                <option value="item13.5">VM1, VM2, VM3, & VM4</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="selectSMB">SMB over QUIC:</label>
+            <select id="selectSMB">
+                <option value="item13.6">VM1 only</option>
+                <option value="item13.7">VM2 only</option>
+                <option value="item13.8">VM1 & VM2</option>
+                <option value="item13.9">VM1, VM2, & VM3 only</option>
+                <option value="item13.10">VM1, VM2, VM3, & VM4</option>
+            </select>
+        </div>
+
+        <div id="solutionInfo13"></div>
+
+        <button class="solutionButton" data-solution-info-id="solutionInfo13" data-correct-answer="item13.3,item13.8" data-answer-name="answer13" data-solution-text="Correct answer: Hotpatch: VM1 & VM2, SMB over QUIC: VM1 & VM2.<br><br>Explanation: Windows Server 2022 is the latest Long-Term Servicing Channel (LTSC) release with five years of mainstream support + five years of extended support. Choose the image that is right for your application needs.<br>Server with Desktop Experience includes all roles and a graphical user interface (GUI). Server Core omits the GUI for a smaller OS footprint.<br>Azure Edition with Desktop Experience includes additional new functionality such as Hotpatch, SMB over QUIC, extended network for Azure, and is optimized to run in Azure.<br>Azure Edition Core includes additional new functionality such as Hotpatch, SMB over QUIC, extended network for Azure, and is optimized to run in Azure.<br><br>For reference: <a href='https://learn.microsoft.com/en-us/windows-server/get-started/hotpatch' target='_blank'>Hotpatch</a>, <a href='https://learn.microsoft.com/en-us/azure/automanage/automanage-windows-server' target='_blank'>Automanage for Windows Server</a>, <a href='https://learn.microsoft.com/en-us/azure/automanage/automanage-smb-over-quic' target='_blank'>Automanage SMB over QUIC</a>.">Solution</button>
+    </div>
+    <script src="Scripts/answer13.js"></script>
+</body>
+</html>
