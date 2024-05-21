@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 19</title>
+</head>
+<body>
+    <div>
+        <h2>Question 19</h2>
+        <p>You have an Azure virtual machine named VM1 that contains the drives shown in the following table.</p>
+        
+        <table>
+            <tr>
+                <th>Letter</th>
+                <th>Name</th>
+            </tr>
+            <tr>
+                <td>C</td>
+                <td>OS</td>
+            </tr>
+            <tr>
+                <td>D</td>
+                <td>Temporary Storage</td>
+            </tr>
+            <tr>
+                <td>E</td>
+                <td>Data Disk</td>
+            </tr>
+        </table>
+
+        <p>On VM1, you plan to install an app named App1. The data for App1 must be stored on a persistent data disk assigned to drive D.</p>
+        <p>You need to assign the data disk to drive D.</p>
+        <p>What should you do on VM1 first?</p>
+
+        <div>
+            <input type="radio" id="item19.1" name="answer19" value="item19.1">
+            <label for="item19.1">A. Change the drive letter of the Temporary Storage drive to F.</label><br>
+            <input type="radio" id="item19.2" name="answer19" value="item19.2">
+            <label for="item19.2">B. Move pagefile.sys to the Operating System drive.</label><br>
+            <input type="radio" id="item19.3" name="answer19" value="item19.3">
+            <label for="item19.3">C. Stop (deallocate) VM1.</label><br>
+            <input type="radio" id="item19.4" name="answer19" value="item19.4">
+            <label for="item19.4">D. Expand the Temporary Storage drive.</label>
+        </div>
+
+        <div id="solutionInfo19"></div>
+
+        <button class="solutionButton" data-solution-info-id="solutionInfo19" data-correct-answer="item19.2" data-answer-name="answer19" data-solution-text="Correct answer: Move pagefile.sys to the Operating System drive.<br><br>Explanation: First you need to move pagefile.sys and then change the drive letter.<br><br>For reference: <a href='https://learn.microsoft.com/en-us/azure/virtual-machines/windows/change-drive-letter' target='_blank'>Change Drive Letter</a>.">Solution</button>
+    </div>
+    <script src="Scripts/answer19.js"></script>
+</body>
+</html>
