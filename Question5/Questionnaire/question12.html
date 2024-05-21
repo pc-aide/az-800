@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 12</title>
+</head>
+<body>
+    <div>
+        <h2>Question 12</h2>
+        <p>You have a Windows Server container host named Server1.</p>
+        <p>You start the containers on Server1 as shown in the following table.</p>
+
+        <table border="1">
+            <tr>
+                <th>Name</th>
+                <th>Image</th>
+                <th>Uses Hyper-V isolation</th>
+                <th>Process running on container</th>
+            </tr>
+            <tr>
+                <td>Container1</td>
+                <td>microsoft/iis</td>
+                <td>No</td>
+                <td>ProcessA</td>
+            </tr>
+            <tr>
+                <td>Container2</td>
+                <td>microsoft/iis</td>
+                <td>No</td>
+                <td>ProcessB</td>
+            </tr>
+            <tr>
+                <td>Container3</td>
+                <td>microsoft/iis</td>
+                <td>Yes</td>
+                <td>ProcessC</td>
+            </tr>
+            <tr>
+                <td>Container4</td>
+                <td>microsoft/iis</td>
+                <td>Yes</td>
+                <td>ProcessD</td>
+            </tr>
+        </table>
+
+        <p>You need to validate the status of ProcessA and ProcessC.</p>
+        <p>Where can you verify that ProcessA and ProcessC are in a running state? To answer, select the appropriate options in the answer area.</p>
+
+        <div>
+            <label for="select12-1">ProcessA:</label>
+            <select id="select12-1">
+                <option value="item12.1">Container1 only</option>
+                <option value="item12.2">Container1 & Container2 only</option>
+                <option value="item12.3">Container1 & Server1 only</option>
+                <option value="item12.4">Container1, Container2, & Server1 only</option>
+                <option value="item12.5">All the containers & Server1</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="select12-2">ProcessC:</label>
+            <select id="select12-2">
+                <option value="item12.6">Container3 only</option>
+                <option value="item12.7">Container3 & Container4 only</option>
+                <option value="item12.8">Container3 & Server1 only</option>
+                <option value="item12.9">Container3, Container4, & Server1 only</option>
+                <option value="item12.10">All the containers & Server1</option>
+            </select>
+        </div>
+
+        <div id="solutionInfo12"></div>
+
+        <button class="solutionButton" data-solution-info-id="solutionInfo12" data-correct-answer="item12.3,item12.6" data-answer-name="answer12" data-solution-text="Correct answer: ProcessA: item12.3, ProcessC: item12.6.<br><br>Explanation: ProcessA is in a container that has process isolation. So, both Container1 and the host (Server1) can see the process. ProcessC is in a hyper-V isolation container, so only Container3 can see the process.<br><br>For reference: <a href='https://argonsys.com/microsoft-cloud/library/how-to-identify-processes-running-inside-a-windows-container-from-the-container-host/' target='_blank'>How to identify processes running inside a Windows container from the container host</a>.">Solution</button>
+    </div>
+    <script src="Scripts/answer12.js"></script>
+</body>
+</html>
