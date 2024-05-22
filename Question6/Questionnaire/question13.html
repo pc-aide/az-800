@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 13</title>
+</head>
+<body>
+    <div>
+        <h2>Question 13</h2>
+        <p>You have an on-premises Active Directory Domain Services (AD DS) domain that syncs with an Azure Active Directory (Azure AD) tenant. The on-premises network is connected to Azure by using a Site-to-Site VPN.</p>
+        <p>You have the DNS zones shown in the following table.</p>
+
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Location</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>contoso.com</td>
+                    <td>A domain controller named DC1 on the on-premises network</td>
+                    <td>Provide name resolution on-premises</td>
+                </tr>
+                <tr>
+                    <td>fabrikam.com</td>
+                    <td>An Azure private DNS zone</td>
+                    <td>Provides name resolution for all Azure virtual networks</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>You need to ensure that names from fabrikam.com can be resolved from the on-premises network. Which two actions should you perform? Each correct answer presents part of the solution.</p>
+
+        <div>
+            <input type="checkbox" id="optionA" name="answer" value="A">
+            <label for="optionA">A. Create a stub zone for fabrikam.com on DC1.</label>
+        </div>
+        <div>
+            <input type="checkbox" id="optionB" name="answer" value="B">
+            <label for="optionB">B. Create a conditional forwarder for fabrikam.com on DC1.</label>
+        </div>
+        <div>
+            <input type="checkbox" id="optionC" name="answer" value="C">
+            <label for="optionC">C. Create a secondary zone for fabrikam.com on DC1.</label>
+        </div>
+        <div>
+            <input type="checkbox" id="optionD" name="answer" value="D">
+            <label for="optionD">D. Deploy an Azure virtual machine that runs Windows Server. Modify the DNS Servers settings for the virtual network.</label>
+        </div>
+        <div>
+            <input type="checkbox" id="optionE" name="answer" value="E">
+            <label for="optionE">E. Deploy an Azure virtual machine that runs Windows Server. Configure the virtual machine as a DNS forwarder.</label>
+        </div>
+
+        <div id="solutionInfo13"></div>
+
+        <button class="solutionButton" data-solution-info-id="solutionInfo13" data-correct-answer="B,E" data-answer-name="answer13" data-solution-text="Correct answers: B. Create a conditional forwarder for fabrikam.com on DC1. E. Deploy an Azure virtual machine that runs Windows Server. Configure the virtual machine as a DNS forwarder.<br><br>Explanation: A DNS forwarder is a Virtual Machine running on the Virtual Network linked to the Private DNS Zone that can proxy DNS queries coming from other Virtual Networks or from on-premises.<br><br>For reference: <a href='https://docs.microsoft.com/en-us/azure/private-link/private-endpoint-dns#on-premises-workloads-using-a-dns-forwarder' target='_blank'>Private Endpoint DNS</a>, <a href='https://learn.microsoft.com/en-us/answers/questions/181776/azure-private-dns-zone-resolution-from-on-prem' target='_blank'>Azure Private DNS Zone Resolution</a>, <a href='https://learn.microsoft.com/en-us/azure/dns/private-resolver-hybrid-dns' target='_blank'>Private Resolver Hybrid DNS</a>.">Solution</button>
+    </div>
+    <script src="Scripts/answer13.js"></script>
+</body>
+</html>
