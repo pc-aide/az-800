@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 10</title>
+</head>
+<body>
+    <div>
+        <h2>Question 10</h2>
+        <p>You are planning the deployment of DNS to a new network.</p>
+        <p>You have three internal DNS servers as shown in the following table.</p>
+
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Location</th>
+                    <th>IP address</th>
+                    <th>Local DNS zone</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Server1</td>
+                    <td>Montreal</td>
+                    <td>10.0.1.10</td>
+                    <td>contoso.local</td>
+                </tr>
+                <tr>
+                    <td>Server2</td>
+                    <td>Toronto</td>
+                    <td>10.0.2.10</td>
+                    <td>east.contoso.local</td>
+                </tr>
+                <tr>
+                    <td>Server3</td>
+                    <td>Seattle</td>
+                    <td>10.0.3.10</td>
+                    <td>west.contoso.local</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>The contoso.local zone contains zone delegations for east.contoso.local and west.contoso.local. All the DNS servers use root hints.</p>
+        <p>You need to ensure that all the DNS servers can resolve the names of all the internal namespaces and internet hosts.</p>
+        <p>Solution: On Server2, you create a conditional forwarder for contoso.local and west.contoso.local. On Server3, you create a conditional forwarder for contoso.local and east.contoso.local. Does this meet the goal?</p>
+
+        <div>
+            <input type="radio" id="optionYes" name="answer" value="Yes">
+            <label for="optionYes">Yes</label>
+        </div>
+        <div>
+            <input type="radio" id="optionNo" name="answer" value="No">
+            <label for="optionNo">No</label>
+        </div>
+
+        <div id="solutionInfo10"></div>
+
+        <button class="solutionButton" data-solution-info-id="solutionInfo10" data-correct-answer="Yes" data-answer-name="answer10" data-solution-text="Correct answer: Yes.<br><br>Explanation: YES- Delegation tells S1 how to find S2 and S3. Cond forward from S2 to S1/S3 and from S2 to S1/S3 allows all internals to resolve. And they can all find internet hosts because theyre using root hints. Please correct me if needed.<br><br>Indeed, the solution you provided meets the goal. By creating conditional forwarders on Server2 and Server3, you ensure that DNS resolution for the internal namespaces (such as east.contoso.local and west.contoso.local) is handled correctly. This approach allows you to resolve both internal namespaces and internet hosts effectively.<br><br>Since all the DNS servers are already using root hints, they will be able to resolve internet host names. By creating the conditional forwarders, the DNS servers will be able to resolve the names of all the internal namespaces as well.<br><br>For reference: <a href='https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/plan/reviewing-dns-concepts' target='_blank'>Reviewing DNS Concepts</a>.">Solution</button>
+    </div>
+    <script src="Scripts/answer10.js"></script>
+</body>
+</html>
