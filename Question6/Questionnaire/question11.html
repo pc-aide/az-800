@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 11</title>
+</head>
+<body>
+    <div>
+        <h2>Question 11</h2>
+        <p>Your network contains an Active Directory Domain Services (AD DS) domain. The domain contains 10 servers that run Windows Server. The servers have static IP addresses.</p>
+        <p>You plan to use DHCP to assign IP addresses to the servers.</p>
+        <p>You need to ensure that each server always receives the same IP address. Which type of identifier should you use to create a DHCP reservation for each server?</p>
+
+        <div>
+            <input type="radio" id="optionA" name="answer" value="A">
+            <label for="optionA">A. NetBIOS name</label>
+        </div>
+        <div>
+            <input type="radio" id="optionB" name="answer" value="B">
+            <label for="optionB">B. MAC address</label>
+        </div>
+        <div>
+            <input type="radio" id="optionC" name="answer" value="C">
+            <label for="optionC">C. fully qualified domain name (FQDN)</label>
+        </div>
+        <div>
+            <input type="radio" id="optionD" name="answer" value="D">
+            <label for="optionD">D. universally unique identifier (UUID)</label>
+        </div>
+
+        <div id="solutionInfo11"></div>
+
+        <button class="solutionButton" data-solution-info-id="solutionInfo11" data-correct-answer="B" data-answer-name="answer11" data-solution-text="Correct answer: B. MAC address.<br><br>Explanation: When a DHCP client sends a DHCPDISCOVER, it can include the MAC address or a unique client identifier.<br><br>For reference: <a href='https://docs.microsoft.com/en-us/powershell/module/dhcpserver/add-dhcpserverv4reservation?view=windowsserver2022-ps' target='_blank'>Add-DhcpServerv4Reservation</a>, <a href='https://docs.infoblox.com/space/NAG8/22252617/Configuring+IPv4+Fixed+Addresses' target='_blank'>Configuring IPv4 Fixed Addresses</a>.">Solution</button>
+    </div>
+    <script src="Scripts/answer11.js"></script>
+</body>
+</html>
