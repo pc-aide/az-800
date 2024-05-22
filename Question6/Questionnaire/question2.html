@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 2</title>
+</head>
+<body>
+    <div>
+        <h2>Question 2</h2>
+        <p>Your network contains two VLANs for client computers and one VLAN for a datacenter. Each VLAN is assigned an IPv4 subnet. Currently, all the client computers use static IP addresses.</p>
+        <p>You plan to deploy a DHCP server to the VLAN in the datacenter.</p>
+        <p>You need to use the DHCP server to provide IP configurations to all the client computers.</p>
+        <p>What is the minimum number of scopes and DHCP relays you should create? To answer, select the appropriate option in the answer area.</p>
+
+        <div>
+            <label for="dhcpScopes">DHCP scopes:</label>
+            <select id="listDeroulante2_0">
+                <option value="item2.1">1</option>
+                <option value="item2.2">2</option>
+                <option value="item2.3">3</option>
+                <option value="item2.4">4</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="dhcpRelays">DHCP relays:</label>
+            <select id="listDeroulante2_1">
+                <option value="item2.5">1</option>
+                <option value="item2.6">2</option>
+                <option value="item2.7">3</option>
+                <option value="item2.8">4</option>
+            </select>
+        </div>
+
+        <div id="solutionInfo2"></div>
+
+        <button class="solutionButton" data-solution-info-id="solutionInfo2" data-correct-answer="item2.2,item2.6" data-answer-name="answer2" data-solution-text="Correct answer: DHCP scopes: 2, DHCP relays: 2.<br><br>Explanation: You need to use the DHCP server to provide IP configurations to all the client computers. We need to create two DHCP address scopes. One scope for each subnet, that contains client computers. Because DHCPDISCOVER packets sent by the DHCP clients are transported within the local subnet only, we need to add a DHCP relay agent to each subnet that does not contain a DHCP server. The DHCP relay agent will react to the DHCPDISCOVER broadcasts within its local subnet and will contact the configured DHCP server to retrieve an IP address for the client.<br><br>For reference: <a href='https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc771390(v=ws.11)' target='_blank'>DHCP Relay Agent</a>.">Solution</button>
+    </div>
+    <script src="Scripts/answer2.js"></script>
+</body>
+</html>
