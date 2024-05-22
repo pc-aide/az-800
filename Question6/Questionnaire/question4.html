@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 4</title>
+</head>
+<body>
+    <div>
+        <h2>Question 4</h2>
+        <p>You are planning the deployment of DNS to a new network.</p>
+        <p>You have three internal DNS servers as shown in the following table.</p>
+        
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Location</th>
+                <th>IP address</th>
+                <th>Local DNS zone</th>
+            </tr>
+            <tr>
+                <td>Server1</td>
+                <td>Montreal</td>
+                <td>10.0.1.10</td>
+                <td>contoso.local</td>
+            </tr>
+            <tr>
+                <td>Server2</td>
+                <td>Toronto</td>
+                <td>10.0.2.10</td>
+                <td>east.contoso.local</td>
+            </tr>
+            <tr>
+                <td>Server3</td>
+                <td>Seattle</td>
+                <td>10.0.3.10</td>
+                <td>west.contoso.local</td>
+            </tr>
+        </table>
+
+        <p>The contoso.local zone contains zone delegations for east.contoso.local and west.contoso.local. All the DNS servers use root hints.</p>
+        <p>You need to ensure that all the DNS servers can resolve the names of all the internal namespaces and internet hosts.</p>
+        <p>Solution: You configure Server2 and Server3 to forward DNS requests to 10.0.1.10.</p>
+        <p>Does this meet the goal?</p>
+
+        <div>
+            <input type="radio" id="yes" name="answer4" value="Yes">
+            <label for="yes">Yes</label><br>
+            <input type="radio" id="no" name="answer4" value="No">
+            <label for="no">No</label>
+        </div>
+
+        <div id="solutionInfo4"></div>
+
+        <button class="solutionButton" data-solution-info-id="solutionInfo4" data-correct-answer="No" data-answer-name="answer4" data-solution-text="Correct answer: No.<br><br>Explanation: Configuring a conditional forwarder for contoso.local on Server2 and Server3 will help these servers forward queries for contoso.local to Server1. However, this does not ensure that Server1 can resolve names for east.contoso.local and west.contoso.local since those zones are delegated. You need to configure Server1 to be aware of the east.conloso.local and west.contoso.local zones by either:<br><br>1. Configuring conditional forwarders on Server1 for east.conloso.local and west.contoso.local pointing to Server2 and Server3, respectively.<br><br>2. Ensuring proper zone delegation and possibly using stub zones on Server1 for east.conloso.local and west.contoso.local.<br><br>For reference: <a href='https://docs.microsoft.com/en-us/troubleshoot/windows-server/networking/root-hints-reappear-after-removed' target='_blank'>Root Hints</a>, <a href='https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/plan/reviewing-dns-concepts' target='_blank'>Reviewing DNS Concepts</a>.">Solution</button>
+    </div>
+    <script src="Scripts/answer4.js"></script>
+</body>
+</html>
