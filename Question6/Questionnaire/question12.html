@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 12</title>
+</head>
+<body>
+    <div>
+        <h2>Question 12</h2>
+        <p>Your network contains an Active Directory Domain Services (AD DS) domain named contoso.com. The domain contains the VPN servers shown in the following table.</p>
+
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>IP address</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>VPN1</td>
+                    <td>172.16.0.254</td>
+                </tr>
+                <tr>
+                    <td>VPN2</td>
+                    <td>131.10.15.254</td>
+                </tr>
+                <tr>
+                    <td>VPN3</td>
+                    <td>10.10.0.254</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>You have a server named NPS1 that has Network Policy Server (NPS) installed. NPS1 has the following RADIUS clients:</p>
+        <img src="https://raw.githubusercontent.com/pc-aide/az-800/main/Question6/q11.jpg" alt="RADIUS clients configuration">
+
+        <p>VPN1, VPN2, and VPN3 use NPS1 for RADIUS authentication. All the users in contoso.com are allowed to establish VPN connections.</p>
+        <p>For each of the following statements, select Yes if the statement is true. Otherwise, select No.</p>
+
+        <p>The contoso.com users can authenticate successfully when they establish a VPN connection to VPN1:</p>
+        <div>
+            <input type="radio" id="vpn1Yes" name="vpn1" value="Yes">
+            <label for="vpn1Yes">Yes</label>
+        </div>
+        <div>
+            <input type="radio" id="vpn1No" name="vpn1" value="No">
+            <label for="vpn1No">No</label>
+        </div>
+
+        <p>The contoso.com users can authenticate successfully when they establish a VPN connection to VPN2:</p>
+        <div>
+            <input type="radio" id="vpn2Yes" name="vpn2" value="Yes">
+            <label for="vpn2Yes">Yes</label>
+        </div>
+        <div>
+            <input type="radio" id="vpn2No" name="vpn2" value="No">
+            <label for="vpn2No">No</label>
+        </div>
+
+        <p>The contoso.com users can authenticate successfully when they establish a VPN connection to VPN3:</p>
+        <div>
+            <input type="radio" id="vpn3Yes" name="vpn3" value="Yes">
+            <label for="vpn3Yes">Yes</label>
+        </div>
+        <div>
+            <input type="radio" id="vpn3No" name="vpn3" value="No">
+            <label for="vpn3No">No</label>
+        </div>
+
+        <div id="solutionInfo12"></div>
+
+        <button class="solutionButton" data-solution-info-id="solutionInfo12" data-correct-answer="No,Yes,No" data-answer-name="answer12" data-solution-text="Correct answers:<br>VPN1: No.<br>VPN2: Yes.<br>VPN3: No.<br><br>Explanation: Box 1: No. NPSClient1 is not enabled.<br>Box 2: Yes. NPSClient2 is configured correctly. It is enabled and has the correct IP address of VPN2.<br>Box 3: No. NPSClient3 has an incorrect IP address configured for VPN3.<br><br>For reference: <a href='https://learn.microsoft.com/en-us/windows-server/remote/remote-access/tutorial-aovpn-deploy-setup' target='_blank'>Deploy Always On VPN</a>.">Solution</button>
+    </div>
+    <script src="Scripts/answer12.js"></script>
+</body>
+</html>
