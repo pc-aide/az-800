@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 8</title>
+</head>
+<body>
+    <div>
+        <h2>Question 8</h2>
+        <p>You have an Azure virtual machine named VM1 that runs Windows Server.</p>
+        <p>You need to configure the management of VM1 to meet the following requirements:</p>
+        <ul>
+            <li>Require administrators to request access to VM1 before establishing a Remote Desktop connection.</li>
+            <li>Limit access to VM1 from specific source IP addresses.</li>
+            <li>Limit access to VM1 to a specific management port.</li>
+        </ul>
+        <p>What should you configure?</p>
+
+        <div>
+            <input type="radio" id="optionA" name="answer" value="A">
+            <label for="optionA">A. a network security group (NSG)</label>
+        </div>
+        <div>
+            <input type="radio" id="optionB" name="answer" value="B">
+            <label for="optionB">B. Azure Active Directory (Azure AD) Privileged Identity Management (PIM)</label>
+        </div>
+        <div>
+            <input type="radio" id="optionC" name="answer" value="C">
+            <label for="optionC">C. Microsoft Defender for Cloud</label>
+        </div>
+        <div>
+            <input type="radio" id="optionD" name="answer" value="D">
+            <label for="optionD">D. Azure Front Door</label>
+        </div>
+
+        <div id="solutionInfo8"></div>
+
+        <button class="solutionButton" data-solution-info-id="solutionInfo8" data-correct-answer="C" data-answer-name="answer8" data-solution-text="Correct answer: C. Microsoft Defender for Cloud.<br><br>Explanation: JIT lets you allow access to your VMs only when the access is needed, on the ports needed, and for the period of time needed.<br><br>For reference: <a href='https://docs.microsoft.com/en-us/azure/defender-for-cloud/just-in-time-access-usage?tabs=jit-config-asc%2Cjit-request-asc' target='_blank'>Just-in-time VM access in Microsoft Defender for Cloud</a>.">Solution</button>
+    </div>
+    <script src="Scripts/answer8.js"></script>
+</body>
+</html>
