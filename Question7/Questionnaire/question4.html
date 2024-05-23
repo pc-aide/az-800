@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 4</title>
+</head>
+<body>
+    <div>
+        <h2>Question 4</h2>
+        <p>Your network contains a DHCP server.</p>
+        <p>You plan to add a new subnet and deploy Windows Server to the subnet.</p>
+        <p>You need to use the server as a DHCP relay agent.</p>
+        <p>Which role should you install on the server?</p>
+
+        <div>
+            <input type="radio" id="optionA" name="answer" value="A">
+            <label for="optionA">A. Network Policy and Access Services</label>
+        </div>
+        <div>
+            <input type="radio" id="optionB" name="answer" value="B">
+            <label for="optionB">B. Remote Access</label>
+        </div>
+        <div>
+            <input type="radio" id="optionC" name="answer" value="C">
+            <label for="optionC">C. Network Controller</label>
+        </div>
+        <div>
+            <input type="radio" id="optionD" name="answer" value="D">
+            <label for="optionD">D. DHCP Server</label>
+        </div>
+
+        <div id="solutionInfo4"></div>
+
+        <button class="solutionButton" data-solution-info-id="solutionInfo4" data-correct-answer="B" data-answer-name="answer4" data-solution-text="Correct answer: B. Remote Access.<br><br>Explanation: To install the DHCP relay agent on Windows Server, you need to deploy the Remote Access server role. The DHCP relay agent is a feature of Remote Access and isn't included in the DHCP server role.<br><br>The DHCP Relay feature is a part of the Routing and Remote Access Service (RRAS) in Windows Server, and it can be used independently of the DHCP Server role.<br><br>For reference: <a href='https://learn.microsoft.com/en-us/windows-server/networking/technologies/dhcp/dhcp-deploy-relay-agent' target='_blank'>DHCP Relay Agent Deployment</a>.">Solution</button>
+    </div>
+    <script src="Scripts/answer4.js"></script>
+</body>
+</html>
