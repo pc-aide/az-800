@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 14</title>
+</head>
+<body>
+    <div>
+        <h2>Question 14</h2>
+        <p>You have an on-premises server named Server1 that runs Windows Server.</p>
+        <p>You have an Azure virtual network that contains an Azure virtual network gateway.</p>
+        <p>You need to connect only Server1 to the Azure virtual network. What should you use?</p>
+
+        <div>
+            <input type="radio" id="optionA" name="answer" value="A">
+            <label for="optionA">A. a Site-to-Site VPN</label>
+        </div>
+        <div>
+            <input type="radio" id="optionB" name="answer" value="B">
+            <label for="optionB">B. Azure Network Adapter</label>
+        </div>
+        <div>
+            <input type="radio" id="optionC" name="answer" value="C">
+            <label for="optionC">C. an ExpressRoute circuit</label>
+        </div>
+        <div>
+            <input type="radio" id="optionD" name="answer" value="D">
+            <label for="optionD">D. Azure Extended Network</label>
+        </div>
+
+        <div id="solutionInfo14"></div>
+
+        <button class="solutionButton" data-solution-info-id="solutionInfo14" data-correct-answer="B" data-answer-name="answer14" data-solution-text="Correct answer: B. Azure Network Adapter.<br><br>Explanation: When to use Azure Network Adapter: Azure Network Adapter Point-to-Site VPN connections are useful when you want to connect to your virtual network from a remote location, such as a branch office, store, or other location. You can also use Azure Network Adapter instead of a Site-to-Site VPN when you require only a few servers to connect to a virtual network. Azure Network Adapter connections don't require a VPN device or a public-facing IP address.<br><br>For reference: <a href='https://docs.microsoft.com/en-us/windows-server/manage/windows-admin-center/azure/use-azure-network-adapter' target='_blank'>Use Azure Network Adapter</a>.">Solution</button>
+    </div>
+    <script src="Scripts/answer14.js"></script>
+</body>
+</html>
