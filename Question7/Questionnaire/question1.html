@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 1</title>
+</head>
+<body>
+    <div>
+        <h2>Question 1</h2>
+        <p>You have an on-premises server named Server1 that runs Windows Server. Server1 contains an app named App1 and a firewall named Firewall1.</p>
+        <p>You have an Azure subscription.</p>
+        <p>Internal users connect to App1 by using WebSockets.</p>
+        <p>You need to make App1 available to users on the internet. The solution must minimize the number of inbound ports open on Firewall1.</p>
+        <p>What should you include in the solution?</p>
+
+        <div>
+            <input type="radio" id="optionA" name="answer" value="A">
+            <label for="optionA">A. Microsoft Application Request Routing (ARR) Version 2</label>
+        </div>
+        <div>
+            <input type="radio" id="optionB" name="answer" value="B">
+            <label for="optionB">B. Azure Application Gateway</label>
+        </div>
+        <div>
+            <input type="radio" id="optionC" name="answer" value="C">
+            <label for="optionC">C. Azure Relay</label>
+        </div>
+        <div>
+            <input type="radio" id="optionD" name="answer" value="D">
+            <label for="optionD">D. Web Application Proxy</label>
+        </div>
+
+        <div id="solutionInfo1"></div>
+
+        <button class="solutionButton" data-solution-info-id="solutionInfo1" data-correct-answer="C" data-answer-name="answer1" data-solution-text="Correct answer: C. Azure Relay.<br><br>Explanation: The Azure Relay service enables you to securely expose services that run in your corporate network to the public cloud. You can do so without opening a port on your firewall, or making intrusive changes to your corporate network infrastructure.<br><br>For reference: <a href='https://learn.microsoft.com/en-us/azure/azure-relay/relay-what-is-it' target='_blank'>Azure Relay</a>.">Solution</button>
+    </div>
+    <script src="Scripts/answer1.js"></script>
+</body>
+</html>
