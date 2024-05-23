@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 20</title>
+</head>
+<body>
+    <div>
+        <h2>Question 20</h2>
+        <p>You have servers that run Windows Server 2022 as shown in the following table.</p>
+        
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Location</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Server1</td>
+                    <td>On-premises</td>
+                    <td>Hosts a Microsoft SQL Server 2019 instance</td>
+                </tr>
+                <tr>
+                    <td>Server2</td>
+                    <td>Azure</td>
+                    <td>Contains the .NET SDK</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>Server2 contains a .NET app named App1.</p>
+        <p>You need to establish a WebSocket connection from App1 to the SQL Server instance on Server1. The solution must meet the following requirements:</p>
+        <ul>
+            <li>Minimize the number of network ports that must be open on the on-premises network firewall.</li>
+            <li>Minimize administrative effort.</li>
+        </ul>
+        <p>What should you create first?</p>
+
+        <div>
+            <input type="radio" id="optionA" name="answer" value="A">
+            <label for="optionA">A. an Azure Relay namespace</label>
+        </div>
+        <div>
+            <input type="radio" id="optionB" name="answer" value="B">
+            <label for="optionB">B. an Azure VPN gateway</label>
+        </div>
+        <div>
+            <input type="radio" id="optionC" name="answer" value="C">
+            <label for="optionC">C. a WFC relay connection</label>
+        </div>
+        <div>
+            <input type="radio" id="optionD" name="answer" value="D">
+            <label for="optionD">D. a hybrid connection</label>
+        </div>
+
+        <div id="solutionInfo20"></div>
+
+        <button class="solutionButton" data-solution-info-id="solutionInfo20" data-correct-answer="A" data-answer-name="answer20" data-solution-text="Correct answer: A. an Azure Relay namespace.<br><br>Explanation: First: Azure Relay Namespace. Then: Create a hybrid connection.<br><br>The Hybrid Connections feature in Azure Relay is a secure, and open-protocol evolution of the Relay features that existed earlier. You can use it on any platform and in any language. Hybrid Connections feature in Azure Relay is based on HTTP and WebSockets protocols. It allows you to send requests and receive responses over web sockets or HTTP(S). This feature is compatible with WebSocket API in common web browsers.<br><br>1. Create a Relay namespace by using the Azure portal.<br>2. Create a hybrid connection in that namespace by using the Azure portal.<br>3. Write a server (listener) console application to receive messages.<br>4. Write a client (sender) console application to send messages.<br>Run applications.<br><br>For reference: <a href='https://learn.microsoft.com/en-us/azure/azure-relay/relay-hybrid-connections-dotnet-get-started' target='_blank'>Azure Relay</a>.">Solution</button>
+    </div>
+    <script src="Scripts/answer20.js"></script>
+</body>
+</html>
