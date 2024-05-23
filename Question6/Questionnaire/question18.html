@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 18</title>
+</head>
+<body>
+    <div>
+        <h2>Question 18</h2>
+        <p>Your network contains an Active Directory Domain Services (AD DS) domain. The domain contains a user named User1 and the servers shown in the following table.</p>
+
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Server role</th>
+                    <th>DHCP scope</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Server1</td>
+                    <td>DHCP Server</td>
+                    <td>Scope1, Scope2</td>
+                </tr>
+                <tr>
+                    <td>Server2</td>
+                    <td>DHCP Server</td>
+                    <td>Scope3, Scope4</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>You need to ensure that User1 can manage only Scope1 and Scope3.</p>
+        <p>What should you do?</p>
+
+        <div>
+            <input type="radio" id="optionA" name="answer" value="A">
+            <label for="optionA">A. Add User1 to the DHCP Administrators group on Server1 and Server2.</label>
+        </div>
+        <div>
+            <input type="radio" id="optionB" name="answer" value="B">
+            <label for="optionB">B. Implement IP Address Management (IPAM).</label>
+        </div>
+        <div>
+            <input type="radio" id="optionC" name="answer" value="C">
+            <label for="optionC">C. Add User1 to the DHCP Administrators domain local group.</label>
+        </div>
+        <div>
+            <input type="radio" id="optionD" name="answer" value="D">
+            <label for="optionD">D. Implement Windows Admin Center and add connections to Server1 and Server2.</label>
+        </div>
+
+        <div id="solutionInfo18"></div>
+
+        <button class="solutionButton" data-solution-info-id="solutionInfo18" data-correct-answer="B" data-answer-name="answer18" data-solution-text="Correct answer: B. Implement IP Address Management (IPAM).<br><br>Explanation: Access scopes: An access scope determines the objects that a user has access to. You can use access scopes to define administrative domains in IPAM. For example, you might create access scopes based on geographical location. By default, IPAM includes an access scope of Global. All other access scopes are subsets of the Global access scope. Users or groups that are assigned to the Global access scope have access to all objects in IPAM that are permitted by their assigned role.<br><br>For reference: <a href='https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/dn741281(v=ws.11)' target='_blank'>IPAM</a>.">Solution</button>
+    </div>
+    <script src="Scripts/answer18.js"></script>
+</body>
+</html>
