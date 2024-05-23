@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 2</title>
+</head>
+<body>
+    <div>
+        <h2>Question 2</h2>
+        <p>You need to implement the planned changes for the Azure DNS Private Resolver.</p>
+        <p>Which private DNS zones can you use for name resolution?</p>
+
+        <div>
+            <input type="radio" id="optionA" name="answer" value="A">
+            <label for="optionA">A. Zone1.com only</label>
+        </div>
+        <div>
+            <input type="radio" id="optionB" name="answer" value="B">
+            <label for="optionB">B. Zone2.com only</label>
+        </div>
+        <div>
+            <input type="radio" id="optionC" name="answer" value="C">
+            <label for="optionC">C. Zone1.com and Zone2.com only</label>
+        </div>
+        <div>
+            <input type="radio" id="optionD" name="answer" value="D">
+            <label for="optionD">D. Zone2.com and Zone3.com only</label>
+        </div>
+        <div>
+            <input type="radio" id="optionE" name="answer" value="E">
+            <label for="optionE">E. Zone1.com, Zone2.com, and Zone3.com</label>
+        </div>
+
+        <div id="solutionInfo2"></div>
+
+        <button class="solutionButton" data-solution-info-id="solutionInfo2" data-correct-answer="A" data-answer-name="answer2" data-solution-text="Correct answer: A. Zone1.com only.<br><br>Explanation: The records contained in a private DNS zone aren't resolvable from the Internet. DNS resolution against a private DNS zone works only from virtual networks that are linked to it.<br><br>To implement the planned changes for the Azure DNS Private Resolver named 'Private1' in region West US with Virtual network VNet1 and inbound endpoint SubnetB, you need to consider the virtual network links of the private DNS zones. Here's the breakdown:<br>VNet1 is connected to Zone1.com, which means you can use Zone1.com for name resolution.<br>VNet2 is connected to Zone2.com, which is not relevant for the specific configuration in VNet1.<br>Zone3.com is not linked to any virtual network.<br><br>Based on this information, the private DNS zones you can use for name resolution with the Azure DNS Private Resolver 'Private1' are:<br>A. Zone1.com only.<br>You can use Zone1.com for name resolution within VNet1, which aligns with the planned configuration for the Azure DNS Private Resolver. Zone2.com and Zone3.com are not linked to VNet1, so they are not directly relevant to this specific configuration.<br><br>For reference: <a href='https://learn.microsoft.com/en-us/azure/dns/private-dns-privatednszone' target='_blank'>Private DNS Zones</a>.">Solution</button>
+    </div>
+    <script src="Scripts/answer2.js"></script>
+</body>
+</html>
