@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 17</title>
+</head>
+<body>
+    <div>
+        <h2>Question 17</h2>
+        <p>Your network contains an Active Directory Domain Services (AD DS) domain named contoso.com. The domain contains two servers named Server1 and Server2.<br>
+        Server1 contains a disk named Disk2. Disk2 contains a folder named UserData. UserData is shared to the Domain Users group. Disk2 is configured for deduplication. Server1 is protected by using Azure Backup.<br>
+        Server1 fails.<br>
+        You connect Disk2 to Server2.<br>
+        You need to ensure that you can access all the files on Disk2 as quickly as possible.<br>
+        What should you do?</p>
+        <form id="questionForm">
+            <input type="radio" id="optionA" name="answer" value="A">
+            <label for="optionA">A. Create a storage pool.</label><br>
+            <input type="radio" id="optionB" name="answer" value="B">
+            <label for="optionB">B. Restore files from Azure Backup.</label><br>
+            <input type="radio" id="optionC" name="answer" value="C">
+            <label for="optionC">C. Install the File Server Resource Manager server role.</label><br>
+            <input type="radio" id="optionD" name="answer" value="D">
+            <label for="optionD">D. Install the Data Deduplication server role.</label><br>
+        </form>
+        <div id="solutionInfo17"></div>
+        <button class="solutionButton" data-solution-info-id="solutionInfo17" data-correct-answer="D" data-answer-name="answer17" data-solution-text="Correct answer: D. Install the Data Deduplication server role.<br><br>Explanation: To swiftly access all the files on Disk2 after connecting it to Server2, you should install the Data Deduplication server role. Here’s why: Data Deduplication: Disk2 is already configured for deduplication on Server1. When you move Disk2 to Server2, the deduplication settings are retained. The deduplication filter recognizes the volume as an atomic unit, including all deduplication settings. You’ll be able to access the deduplicated files directly without unpacking the entire data. No additional efforts are required.<br><br>Ref: <a href='https://docs.microsoft.com/en-us/windows-server/storage/data-deduplication/overview' target='_blank'>Overview</a>, <a href='https://techcommunity.microsoft.com/t5/storage-at-microsoft/introduction-to-data-deduplication-in-windows-server-2012/ba-p/424257' target='_blank'>Introduction to Data Deduplication in Windows Server 2012</a>">Solution</button>
+    </div>
+    <script src="Scripts/answer17.js"></script>
+</body>
+</html>
