@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 12</title>
+</head>
+<body>
+    <div>
+        <h2>Question 12</h2>
+        <p>You have on-premises file servers that run Windows Server as shown in the following table.</p>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Relevant folder</th>
+            </tr>
+            <tr>
+                <td>Server1</td>
+                <td>D:\Folder1, E:\Folder2</td>
+            </tr>
+            <tr>
+                <td>Server2</td>
+                <td>D:\Data</td>
+            </tr>
+        </table>
+
+        <p>You have the Azure file shares shown in the following table.</p>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Location</th>
+            </tr>
+            <tr>
+                <td>Share1</td>
+                <td>East US</td>
+            </tr>
+            <tr>
+                <td>Share2</td>
+                <td>East US</td>
+            </tr>
+        </table>
+
+        <p>You add a Storage Sync Service named Sync1 and an Azure File Sync sync group named Group1. Group1 uses share1 as a cloud endpoint. You register Server1 and Server2 with Sync1. You add D:\Folder1 from Server1 as a server endpoint in Group1.</p>
+        <p>For each of the following statements, select Yes if the statement is true. Otherwise, select No.</p>
+
+        <form>
+            <label for="q12s1">You can add share2 as a cloud endpoint in Group1:</label><br>
+            <input type="radio" id="q12s1-yes" name="q12s1" value="Yes">
+            <label for="q12s1-yes">Yes</label><br>
+            <input type="radio" id="q12s1-no" name="q12s1" value="No">
+            <label for="q12s1-no">No</label><br>
+
+            <label for="q12s2">You can add E:\Folder2 from Server1 as a server endpoint in Group1:</label><br>
+            <input type="radio" id="q12s2-yes" name="q12s2" value="Yes">
+            <label for="q12s2-yes">Yes</label><br>
+            <input type="radio" id="q12s2-no" name="q12s2" value="No">
+            <label for="q12s2-no">No</label><br>
+
+            <label for="q12s3">You can add D:\Data from Server2 as a server endpoint in Group1:</label><br>
+            <input type="radio" id="q12s3-yes" name="q12s3" value="Yes">
+            <label for="q12s3-yes">Yes</label><br>
+            <input type="radio" id="q12s3-no" name="q12s3" value="No">
+            <label for="q12s3-no">No</label><br>
+        </form>
+
+        <div id="solutionInfo12"></div>
+
+        <button class="solutionButton" data-solution-info-id="solutionInfo12" data-correct-answer="No,No,Yes" data-answer-name="answer12" data-solution-text="Correct answers:<br><br>
+        You can add share2 as a cloud endpoint in Group1: No<br>
+        You can add E:\Folder2 from Server1 as a server endpoint in Group1: No<br>
+        You can add D:\Data from Server2 as a server endpoint in Group1: Yes<br><br>
+        Explanation:<br>
+        A sync group only has 1 cloud endpoint, so share 2 (a cloud endpoint) cannot be added.<br>
+        Only 1 server endpoint from the same server is allowed in the same sync group, so E:\Folder 2 of Server 1 cannot be a server endpoint. D:\Folder 1 is already the server endpoint within the sync group.<br>
+        Server 2 can be added as a Server Endpoint as long as the server is registered.<br><br>
+        Ref:<br>
+        <a href='https://docs.microsoft.com/en-us/answers/questions/110822/azure-file-sync-multiple-sync-directories-for-same.html' target='_blank'>Azure File Sync - Multiple Sync Directories</a><br>
+        <a href='https://docs.microsoft.com/en-us/azure/storage/files/storage-sync-files-deployment-guide' target='_blank'>Azure File Sync Deployment Guide</a>">Solution</button>
+    </div>
+    <script src="Scripts/answer12.js"></script>
+</body>
+</html>
