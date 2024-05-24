@@ -9,8 +9,7 @@
     <div>
         <h2>Question 9</h2>
         <p>Your network contains an Active Directory Domain Services (AD DS) forest. The forest contains the sites and site links shown in the following exhibit.</p>
-        <img src="https://raw.githubusercontent.com/pc-aide/az-800/main/Question7/q36.png" alt="Sites and site links">
-
+        <img src="https://raw.githubusercontent.com/pc-aide/az-800/main/Question7/q36.png" alt="Site Links Exhibit">
         <p>The sites contain the bridgehead domain controllers shown in the following table.</p>
         <table>
             <tr>
@@ -36,7 +35,7 @@
         </table>
 
         <p>The IP intersite transport container is configured as shown in the following exhibit.</p>
-        <img src="https://raw.githubusercontent.com/pc-aide/az-800/main/Question7/q36_2.png" alt="IP intersite transport container configuration">
+        <img src="https://raw.githubusercontent.com/pc-aide/az-800/main/Question7/q36_2.png" alt="IP Intersite Transport Exhibit">
 
         <p>For each of the following statements, select Yes if the statement is true. Otherwise, select No.</p>
 
@@ -60,7 +59,7 @@
 
         <div id="solutionInfo9"></div>
 
-        <button class="solutionButton" data-solution-info-id="solutionInfo9" data-correct-answer="Yes,No,No" data-answer-name="answer9" data-solution-text="Correct answers:<br>DC1 can replicate directly to DC3: Yes.<br>DC1 will load balance replication traffic to DC4 via SiteLink3 & SiteLink4: No.<br>To ensure that replication between DC4 & DC2 is routed via DC1, the configuration of the IP intersite transport container must be modified: No.<br><br>Explanation:<br>1. DC1 can replicate with DC3 via SiteLink1 and SiteLink2.<br>2. Load balancing does not happen automatically with different costs.<br>3. Replication can occur via DC1 without any additional modifications.">Solution</button>
+        <button class="solutionButton" data-solution-info-id="solutionInfo9" data-correct-answer="Yes,No,No" data-answer-name="answer9" data-solution-text="Correct answers:<br>DC1 can replicate directly to DC3: Yes.<br>DC1 will load balance replication traffic to DC4 via SiteLink3 & SiteLink4: No.<br>To ensure that replication between DC4 & DC2 is routed via DC1, the configuration of the IP intersite transport container must be modified: No.<br><br>Explanation:<br>1. With the links bridged, DC1 can replicate with DC3 via SiteLink1 (Site1 -> Site2) and SiteLink2 (Site2 -> Site3).<br>2. Load balancing does not happen automatically with different costs. DC1 will likely replicate via SiteLink3 as it is a direct link to Site3, then Site3 to Site4 via SiteLink4. SiteLink3 is also a direct link.<br>3. With the links bridged, replication can occur via DC1 without any additional modifications.">Solution</button>
     </div>
     <script src="Scripts/answer9.js"></script>
 </body>
