@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 7</title>
+</head>
+<body>
+    <div>
+        <h2>Question 7</h2>
+        <p>You have a server named Server1 that runs Windows Server. Server1 has a just-a-bunch-of-disks (JBOD) enclosure attached.
+        You plan to create a storage pool on Server1 and a virtual disk that will use a mirror layout.
+        You are considering whether to use a two-way or a three-way mirror layout.
+        What is the minimum number of disks required for each type of mirror layout? To answer, select the appropriate options in the answer area.</p>
+
+        <form id="question7">
+            <label for="twoWayMirror">Two-way mirror:</label>
+            <select id="twoWayMirror" name="answer">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+            </select><br>
+
+            <label for="threeWayMirror">Three-way mirror:</label>
+            <select id="threeWayMirror" name="answer">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+            </select>
+        </form>
+
+        <div id="solutionInfo7"></div>
+
+        <button class="solutionButton" data-solution-info-id="solutionInfo7" data-correct-answer="2,5" data-answer-name="answer7" data-solution-text="Correct answer: Two-way mirror requires a minimum of 2 disks, and three-way mirror requires a minimum of 5 disks.">Solution</button>
+    </div>
+
+    <div id="finalScore"></div>
+
+    <script src="Scripts/answer7.js"></script>
+</body>
+</html>
