@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 10</title>
+</head>
+<body>
+    <div>
+        <h2>Question 10</h2>
+        <p>You have a Group Policy Object (GPO) named GPO1 that contains user settings only.
+        You plan to apply GPO1 to a global security group named Group1.
+        You link GPO1 to the domain, and you remove all the permissions granted to the Authenticated Users group.
+        You need to configure permissions for GPOI to meet the following requirements:
+        <ul>
+            <li>GPO1 must apply only to the users in Group1.</li>
+            <li>The solution must use the principle of least privilege.</li>
+        </ul>
+        Which permissions should you grant to Group1 and the Domain Computers group?</p>
+
+        <form id="question10">
+            <label for="group1">Group1:</label>
+            <select id="group1" name="group1">
+                <option value="Apply group policy & Read">Apply group policy & Read</option>
+                <option value="Apply group policy only">Apply group policy only</option>
+                <option value="Read only">Read only</option>
+            </select><br><br>
+            <label for="domainComputers">Domain Computers:</label>
+            <select id="domainComputers" name="domainComputers">
+                <option value="Apply group policy & Read">Apply group policy & Read</option>
+                <option value="Apply group policy only">Apply group policy only</option>
+                <option value="Read only">Read only</option>
+            </select><br><br>
+        </form>
+
+        <div id="solutionInfo10"></div>
+
+        <button class="solutionButton" data-solution-info-id="solutionInfo10" data-correct-answer="Apply group policy & Read, Read only" data-answer-name="answer10" data-solution-text="Correct answer: Apply group policy & Read for Group1 and Read only for Domain Computers.<br><br>Explanation: Computers read only since 'must apply only to the users in Group1'. When you choose 'Read only' for Group1 GPO will not be applied for members of Group1. You shouldn't choose 'Apply group policy' specific permission for Domain Computers group, because this GPO is not designed for this group, but this group have to have Read specific permission.<br><br>Ref: <a href='https://support.microsoft.com/en-us/topic/ms16-072-security-update-for-group-policy -june-14-2016-7570425d-d460-3003-b2ac-a464c874725d' target='_blank'>MS16-072 Security Update</a>, <a href='https://www.grouppolicy.biz/2010/05/how-to-apply-a-group-policy-object-to-individual-users-or-computer/' target='_blank'>How to Apply a Group Policy Object to Individual Users or Computers</a>.">Solution</button>
+    </div>
+
+    <footer>
+        <div id="finalScore"></div>
+    </footer>
+
+    <script src="Scripts/answer10.js"></script>
+</body>
+</html>
