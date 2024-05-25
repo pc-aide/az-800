@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 9</title>
+</head>
+<body>
+    <div>
+        <h2>Question 9</h2>
+        <p>You have an on-premises Active Directory Domain Services (AD DS) domain that syncs with an Azure Active Directory (Azure AD) tenant. Group writeback is enabled in Azure AD Connect.
+        The AD DS domain contains a server named Server1. Server1 contains a shared folder named share1.
+        You have an Azure Storage account named storage2 that uses Azure AD-based access control. The storage2 account contains a share named share2.
+        You need to create a security group that meets the following requirements:
+        <ul>
+            <li>Can contain users from the AD DS domain</li>
+            <li>Can be used to authorize user access to share1 and share2</li>
+        </ul>
+        What should you do?</p>
+
+        <form id="question9">
+            <input type="radio" id="optionA" name="answer" value="A">
+            <label for="optionA">A. In the Azure AD tenant, create a security group that has assigned membership.</label><br>
+            <input type="radio" id="optionB" name="answer" value="B">
+            <label for="optionB">B. In the AD DS domain, create a universal security group.</label><br>
+            <input type="radio" id="optionC" name="answer" value="C">
+            <label for="optionC">C. In the Azure AD tenant, create a security group that has dynamic membership.</label><br>
+            <input type="radio" id="optionD" name="answer" value="D">
+            <label for="optionD">D. In the Azure AD tenant, create a Microsoft 365 group.</label><br>
+        </form>
+
+        <div id="solutionInfo9"></div>
+
+        <button class="solutionButton" data-solution-info-id="solutionInfo9" data-correct-answer="A" data-answer-name="answer9" data-solution-text="Correct answer: In the Azure AD tenant, create a security group that has assigned membership. This option allows straightforward management of group membership and ensures compatibility with both on-premises and Azure environments due to the Azure AD Connect synchronization and the group writeback feature.<br><br>Explanation: This option allows straightforward management of group membership and ensures compatibility with both on-premises and Azure environments due to the Azure AD Connect synchronization and the group writeback feature.<br><br>Ref: <a href='https://learn.microsoft.com/en-us/azure/active-directory/hybrid/how-to-connect-group-writeback-v2' target='_blank'>Azure AD Connect Group Writeback</a>.">Solution</button>
+    </div>
+
+    <footer>
+        <div id="finalScore"></div>
+    </footer>
+
+    <script src="Scripts/answer9.js"></script>
+</body>
+</html>
