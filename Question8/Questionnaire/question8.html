@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 8</title>
+</head>
+<body>
+    <div>
+        <h2>Question 8</h2>
+        <p>Your company has offices in Boston and Montreal. The offices are connected by using a 10-Mbps WAN link that is often saturated.
+        The office in Boston contains the following:
+        <ul>
+            <li>An Active Directory Domain Services (AD DS) domain controller named DC1</li>
+            <li>A server named Server1 that runs Windows Server and has the File Server role installed</li>
+        </ul>
+        The office in Montreal contains 20 client computers that run Windows 10. Montreal does NOT have any servers.
+        The company plans to deploy a new line-of-business (LOB) application to all the client computers. The installation source files for the application are in \\Server1\Apps.
+        You need to make the installation source files available to the client computers in the Montreal office by using the minimum amount of WAN bandwidth possible.
+        What should you do?</p>
+
+        <form id="question8">
+            <label for="serverOption">On Server1:</label>
+            <select id="serverOption" name="serverOption">
+                <option value="Enable BranchCache in hosted cache mode">Enable BranchCache in hosted cache mode</option>
+                <option value="Enable BranchCache in Distributed cache mode">Enable BranchCache in Distributed cache mode</option>
+                <option value="Install the BranchCache for network files role service">Install the BranchCache for network files role service</option>
+            </select><br><br>
+
+            <label for="clientOption">On the client:</label>
+            <select id="clientOption" name="clientOption">
+                <option value="Enable BranchCache in hosted cache mode">Enable BranchCache in hosted cache mode</option>
+                <option value="Enable BranchCache in Distributed cache mode">Enable BranchCache in Distributed cache mode</option>
+                <option value="Install the BranchCache for network files role service">Install the BranchCache for network files role service</option>
+            </select><br><br>
+        </form>
+
+        <div id="solutionInfo8"></div>
+
+        <button class="solutionButton" data-solution-info-id="solutionInfo8" data-correct-answer="Install the BranchCache for network files role service,Enable BranchCache in Distributed cache mode" data-answer-name="answer8" data-solution-text="Correct answer: On Server1: Install the BranchCache for network files role service. On the client: Enable BranchCache in Distributed cache mode. <br><br>Explanation: Main office is - BranchCache for Network Files role service of the File Services server role. For branch office or clients - install branch cache in distributed mode or hosted mode. -- distributed because several clients will have a copy. You could also use the office and have - branch cache - with hosted cache server mode enabled- ** not used this question.<br/><br/><img src='https://raw.githubusercontent.com/pc-aide/az-800/main/Question8/q18.jpg'><br><br>Reference: https://learn.microsoft.com/en-us/windows-server/networking/branchcache/branchcache#BKMK_2">Solution</button>
+    </div>
+
+    <footer>
+        <div id="finalScore"></div>
+    </footer>
+
+    <script src="Scripts/answer8.js"></script>
+</body>
+</html>
