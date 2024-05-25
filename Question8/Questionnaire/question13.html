@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 13</title>
+</head>
+<body>
+    <div>
+        <h2>Question 13</h2>
+        <p>You have an on-premises DNS server named Server1 that runs Windows Server. Server1 hosts a DNS zone named fabnkam.com.
+        You have an Azure subscription that contains the resources shown in the following table.</p>
+
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>vnet1</td>
+                <td>Virtual network</td>
+                <td>Connects to the on-premises network by using a Site-to-Site VPN</td>
+            </tr>
+            <tr>
+                <td>VM1</td>
+                <td>Virtual machine</td>
+                <td>Runs Windows Server & has the DNS Server role installed</td>
+            </tr>
+            <tr>
+                <td>contoso.com (private)</td>
+                <td>Private DNS zone</td>
+                <td>Linked to vnet1</td>
+            </tr>
+            <tr>
+                <td>contoso.com (public)</td>
+                <td>Public DNS zone</td>
+                <td>Contains the DNS records of all the platform as a service (PaaS) resource</td>
+            </tr>
+        </table>
+
+        <p>You need to design a solution that will automatically resolve the names of any PaaS resources for which you configure private endpoints in Vnet1.
+        How should you configure the name resolution? To answer, select the appropriate options in the answer area.</p>
+
+        <form id="question13">
+            <label for="vnet1">On vnet1:</label>
+            <select id="vnet1" name="vnet1">
+                <option value="" disabled selected>Select an option</option>
+                <option value="Configure VM1 to forward requests for the contoso.com zone to the public DNS zone">Configure VM1 to forward requests for the contoso.com zone to the public DNS zone</option>
+                <option value="Configure vnet1 to use a custom DNS server that is set to the Azure-provided DNS at 168.63.129.16">Configure vnet1 to use a custom DNS server that is set to the Azure-provided DNS at 168.63.129.16</option>
+                <option value="Configure VM1 to forward requests for the contoso.com zone to the Azure-provided DNS at 168.63.129.16">Configure VM1 to forward requests for the contoso.com zone to the Azure-provided DNS at 168.63.129.16</option>
+            </select>
+            <br><br>
+            <label for="onPremises">On the on-premises network:</label>
+            <select id="onPremises" name="onPremises">
+                <option value="" disabled selected>Select an option</option>
+                <option value="Configure forwarding for the contoso.com zone to VM1">Configure forwarding for the contoso.com zone to VM1</option>
+                <option value="Configure forwarding for the contoso.com zone to the public DNS zone">Configure forwarding for the contoso.com zone to the public DNS zone</option>
+                <option value="Configure forwarding for the contoso.com zone to the Azure-provided DNS at 168.63.129.16">Configure forwarding for the contoso.com zone to the Azure-provided DNS at 168.63.129.16</option>
+            </select>
+        </form>
+
+        <div id="solutionInfo13"></div>
+
+        <button class="solutionButton" data-solution-info-id="solutionInfo13" data-correct-answer="Configure VM1 to forward requests for the contoso.com zone to the Azure-provided DNS at 168.63.129.16,Configure forwarding for the contoso.com zone to VM1" data-answer-name="answer13" data-solution-text="Correct answers:<br>1. Configure VM1 to forward requests for the contoso.com zone to the Azure-provided DNS at 168.63.129.16<br>2. Configure forwarding for the contoso.com zone to VM1<br><br>Explanation:<br>Correct configuration ensures name resolution for private endpoints and minimizes latency.<br><br>Ref: <a href='https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-dns#on-premises-workloads-using-a-dns-forwarder' target='_blank'>Private Endpoint DNS</a>, <a href='https://learn.microsoft.com/en-us/azure/private-link/media/private-endpoint-dns/on-premises-using-azure-dns.png' target='_blank'>Diagram</a>.">Solution</button>
+    </div>
+
+    <footer>
+        <div id="finalScore"></div>
+    </footer>
+
+    <script src="Scripts/answer13.js"></script>
+</body>
+</html>
