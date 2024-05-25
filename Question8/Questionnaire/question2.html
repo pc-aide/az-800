@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 2</title>
+</head>
+<body>
+    <div>
+        <h2>Question 2</h2>
+        <p>Your network contains an Active Directory Domain Services (AD DS) domain named contoso.com. The domain contains a server named Server1 that has the
+        DFS Namespaces role service installed. Server1 hosts a domain-based Distributed File System (DFS) Namespace named Files.
+        The domain contains a file server named Server2. Server2 contains a shared folder named Share1. Share1 contains a subfolder named Folder1.
+        In the Files namespace, you create a folder named Folder1 that has a target of \\Server2.contoso.com\Share1\Folder1.
+        You need to configure a logon script that will map drive letter M to Folder1. The solution must use the path of the DFS Namespace.</p>
+
+        <p>How should you configure the command to map the drive letter? To answer, select the appropriate options in the answer area.</p>
+
+        <form id="questionForm">
+            <p>
+                net use m: 
+                <select name="firstOption">
+                    <option value="\\contoso.com">\\contoso.com</option>
+                    <option value="\\files.contoso.com">\\files.contoso.com</option>
+                    <option value="\\Server1.contoso.com">\\Server1.contoso.com</option>
+                    <option value="\\Server2.contoso.com">\\Server2.contoso.com</option>
+                </select>
+                <select name="secondOption">
+                    <option value="\files\folder1">\files\folder1</option>
+                    <option value="\files\share1\folder1">\files\share1\folder1</option>
+                    <option value="\folder1">\folder1</option>
+                    <option value="\share1\folder1">\share1\folder1</option>
+                </select>
+            </p>
+            <br><br>
+            <div id="solutionInfo2"></div>
+            <button type="button" class="solutionButton" data-solution-info-id="solutionInfo2" data-correct-answer="\\contoso.com,\files\folder1" data-answer-name="answer2" data-solution-text="Correct answer: net use m: \\contoso.com\files\folder1.<br><br>Explanation: look at the question again. in the Files namespace (\\contoso\files), you create a folder named Folder1 that has a target… - so the full namespace is \\contoso\files\folder1. The files and folder1 add to the root namespace contoso.com. The target is added to the folder1 as a folder target, but we need none of that information to answer the question.<br><br>Ref: <a href='https://learn.microsoft.com/en-us/windows-server/storage/dfs-namespaces/dfs-overview' target='_blank'>Microsoft Documentation</a>.">Solution</button>
+        </form>
+    </div>
+    <script src="Scripts/answer2.js"></script>
+</body>
+</html>
