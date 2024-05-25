@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 16</title>
+</head>
+<body>
+    <div>
+        <h2>Question 16</h2>
+        <p>Your network contains an Active Directory Domain Services (AD DS) forest. The forest contains three Active Directory sites named Site1, Site2, and Site3. Each site contains two domain controllers. The sites are connected by using DEFAULTIPSITELINK.</p>
+        <p>You open a new branch office that contains only client computers.</p>
+        <p>You need to ensure that the client computers in the new office are primarily authenticated by the domain controllers in Site1.</p>
+        <p>Solution: You create a new subnet object that is associated to Site1.</p>
+        <p>Does this meet the goal?</p>
+
+        <form id="question16">
+            <input type="radio" id="optionYes" name="answer" value="Yes">
+            <label for="optionYes">Yes</label><br>
+            <input type="radio" id="optionNo" name="answer" value="No">
+            <label for="optionNo">No</label><br>
+        </form>
+
+        <div id="solutionInfo16"></div>
+
+        <button class="solutionButton" data-solution-info-id="solutionInfo16" data-correct-answer="Yes" data-answer-name="answer16" data-solution-text="Correct answer: Yes.<br><br>Explanation: By associating a site with one or more subnets, you assign a set of IP addresses to the site. DNS uses the site name to locate a domain controller in that site (or in the next closest site to the client). DNS then provides the IP address of the domain controller to the client for the purpose of connecting to the domain controller. For this reason, it is important to ensure that the IP address that you assign to a domain controller maps to a subnet that is associated with the site of the respective server object. Yes, creating a new subnet object that is associated with Site1 would meet the goal of ensuring that client computers in the new office are primarily authenticated by the domain controllers in Site1. When a client computer requests authentication, Active Directory will use the subnet-to-site association to determine which site the client computer is in, and will then direct the authentication request to a domain controller in that site. By associating the new subnet with Site1, client computers in the new office will be directed to authenticate with domain controllers in Site1.<br><br>Ref: <a href='https://social.technet.microsoft.com/Forums/en-US/bd02927e-4f1e-4928-9f77-d08aace9212d/how-to-design-and-devide-multiple-subnet-for-active-directory-sites?forum=winserverDS' target='_blank'>Technet Forum</a>">Solution</button>
+    </div>
+
+    <footer>
+        <div id="finalScore"></div>
+    </footer>
+
+    <script src="Scripts/answer16.js"></script>
+</body>
+</html>
