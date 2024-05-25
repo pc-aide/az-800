@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 11</title>
+</head>
+<body>
+    <div>
+        <h2>Question 11</h2>
+        <p>Your network contains a two-domain on-premises Active Directory Domain Services (AD DS) forest named contoso.com. The forest contains the domain controllers shown in the following table.</p>
+
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Domain</th>
+                <th>AD site</th>
+            </tr>
+            <tr>
+                <td>DC1</td>
+                <td>Forest-wide & domain-wide FSMO role holder</td>
+                <td>contoso.com</td>
+                <td>Hub</td>
+            </tr>
+            <tr>
+                <td>DC2</td>
+                <td>Domain-wide FSMO role holder</td>
+                <td>child.contoso.com</td>
+                <td>Site1</td>
+            </tr>
+            <tr>
+                <td>RODC3</td>
+                <td>Read-only domain controller (RODC)</td>
+                <td>contoso.com</td>
+                <td>Site2</td>
+            </tr>
+        </table>
+
+        <p>All domain controllers are backed up by using Azure Backup.
+        You create an Active Directory site named Site3. Site1, Site2, and Site3 each has a dedicated site link to the Hub site.
+        In Site3, you install a new server named Server1.
+        You need to promote Server1 to an RODC in child.contoso.com by using the Install from Media (IFM) option. The solution must minimize network traffic.
+        What should you do?</p>
+
+        <form id="question11">
+            <label for="ifmServer">Server to use to create the IFM source:</label>
+            <select id="ifmServer" name="ifmServer">
+                <option value="DC1">DC1</option>
+                <option value="DC2">DC2</option>
+                <option value="Server1">Server1</option>
+                <option value="RODC3">RODC3</option>
+            </select><br><br>
+            <label for="ifmTool">Tool to use to create the IFM source:</label>
+            <select id="ifmTool" name="ifmTool">
+                <option value="Azure Backup">Azure Backup</option>
+                <option value="Dcdiag.exe">Dcdiag.exe</option>
+                <option value="Ntdsutil.exe">Ntdsutil.exe</option>
+                <option value="Repadmin.exe">Repadmin.exe</option>
+                <option value="Windows Server Backup">Windows Server Backup</option>
+            </select><br><br>
+        </form>
+
+        <div id="solutionInfo11"></div>
+
+        <button class="solutionButton" data-solution-info-id="solutionInfo11" data-correct-answer="DC2, Ntdsutil.exe" data-answer-name="answer11" data-solution-text="Correct answer: Server to use to create the IFM source: DC2, Tool to use to create the IFM source: Ntdsutil.exe.<br><br>Explanation: DC2 to create source. The media that you use to create additional domain controllers must be taken from a domain controller in the same domain as the domain of the new domain controller. To create installation media for a read-only domain controller (RODC), you can run the ntdsutil ifm command on either a writable domain controller.<br><br>Ref: <a href='https://social.technet.microsoft.com/wiki/contents/articles/8630.active-directory-step-by-step-guide-to-install-an-additional-domain-controller-using-ifm.aspx' target='_blank'>Active Directory Step-by-Step Guide to Install an Additional Domain Controller using IFM</a>.">Solution</button>
+    </div>
+
+    <footer>
+        <div id="finalScore"></div>
+    </footer>
+
+    <script src="Scripts/answer11.js"></script>
+</body>
+</html>
