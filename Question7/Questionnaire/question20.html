@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 20</title>
+</head>
+<body>
+    <div>
+        <h2>Question 20</h2>
+        <p>You have a server named Server1. You plan to use Storage Spaces to expand the storage available to Server1. You attach eight physical disks to Server1. Four disks are HDDs and four are SSDs. You need to create a volume on Server1 that will use the storage on all the new disks. The solution must provide the fastest read performance for frequently used files.</p>
+        <p>Which three actions should you perform in sequence? To answer, move the appropriate actions from the list of actions to the answer area and arrange them in the correct order.</p>
+
+        <form id="questionForm">
+            <label>Drag and drop actions:</label><br>
+            <select id="action1">
+                <option value="">Select action</option>
+                <option value="Create a vDisk">Create a vDisk</option>
+                <option value="Convert each new disk into a dynamic disk">Convert each new disk into a dynamic disk</option>
+                <option value="Create a storage pool">Create a storage pool</option>
+                <option value="Create a spanned volume">Create a spanned volume</option>
+                <option value="Convert each new disk into a GPT disk">Convert each new disk into a GPT disk</option>
+                <option value="Create a simple volume">Create a simple volume</option>
+            </select>
+            <br>
+            <select id="action2">
+                <option value="">Select action</option>
+                <option value="Create a vDisk">Create a vDisk</option>
+                <option value="Convert each new disk into a dynamic disk">Convert each new disk into a dynamic disk</option>
+                <option value="Create a storage pool">Create a storage pool</option>
+                <option value="Create a spanned volume">Create a spanned volume</option>
+                <option value="Convert each new disk into a GPT disk">Convert each new disk into a GPT disk</option>
+                <option value="Create a simple volume">Create a simple volume</option>
+            </select>
+            <br>
+            <select id="action3">
+                <option value="">Select action</option>
+                <option value="Create a vDisk">Create a vDisk</option>
+                <option value="Convert each new disk into a dynamic disk">Convert each new disk into a dynamic disk</option>
+                <option value="Create a storage pool">Create a storage pool</option>
+                <option value="Create a spanned volume">Create a spanned volume</option>
+                <option value="Convert each new disk into a GPT disk">Convert each new disk into a GPT disk</option>
+                <option value="Create a simple volume">Create a simple volume</option>
+            </select>
+        </form>
+
+        <div id="solutionInfo20"></div>
+        <button class="solutionButton" data-solution-info-id="solutionInfo20" data-correct-answer="Create a storage pool,Create a vDisk,Create a simple volume" data-answer-name="answer20" data-solution-text="Correct answers: Create a storage pool, Create a vDisk, Create a simple volume.<br><br>Explanation: Create a storage pool. (This combines the HDDs and SSDs into a single pool of storage.) Create a virtual disk. (This is done within the storage pool and allows you to configure the type of resiliency, size, and tiering for performance.) Create a simple volume. (This is done on the virtual disk you created and allows you to assign a drive letter and use the storage.)<br><br>Ref: <a href='https://redmondmag.com/articles/2018/07/31/storage-spaces-windows-server-2016-1.aspx' target='_blank'>Redmondmag</a>, <a href='https://redmondmag.com/articles/2018/08/02/storage-spaces-windows-server-2016-2.aspx' target='_blank'>Redmondmag</a>, <a href='https://docs.microsoft.com/en-us/learn/modules/implement-storage-spaces-storage-spaces-direct/4-implement-storage-spaces' target='_blank'>Microsoft Learn</a>">Solution</button>
+    </div>
+    <script src="Scripts/answer20.js"></script>
+</body>
+</html>
