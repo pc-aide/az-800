@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 4</title>
+</head>
+<body>
+    <div>
+        <h2>Question 4</h2>
+        <p>You plan to create a virtual disk named VDisk1 that will use storage tiers. Which pools can you use to create VDisk1?</p>
+        <form id="question4Form">
+            <label>
+                <input type="radio" name="answer" value="A">
+                Pool2 only
+            </label><br>
+            <label>
+                <input type="radio" name="answer" value="B">
+                Pool1 only
+            </label><br>
+            <label>
+                <input type="radio" name="answer" value="C">
+                Pool1, Pool2, and Pool3
+            </label><br>
+            <label>
+                <input type="radio" name="answer" value="D">
+                Pool1 and Pool2 only
+            </label><br>
+            <label>
+                <input type="radio" name="answer" value="E">
+                Pool3 only
+            </label><br>
+            <label>
+                <input type="radio" name="answer" value="F">
+                Pool2 and Pool3 only
+            </label><br>
+            <label>
+                <input type="radio" name="answer" value="G">
+                Pool1 and Pool3 only
+            </label><br>
+        </form>
+
+        <div id="solutionInfo4"></div>
+
+        <button type="button" class="solutionButton" data-solution-info-id="solutionInfo4" data-correct-answer="F" data-answer-name="answer4" data-solution-text="Correct answer: F. Pool2 and Pool3 only.<br><br>Explanation: Only premium SSD managed disks and standard SSDs, or ultra disks can be added to a disk pool. You must have at least one SSD and one physical drive attached to use storage tiers.<br><br>Ref: <a href='https://techcommunity.microsoft.com/t5/core-infrastructure-and-security/storage-spaces-how-to-configure-storage-tiers-with-windows/ba-p/256700' target='_blank'>Microsoft Tech Community</a>, <a href='https://learn.microsoft.com/en-us/azure/virtual-machines/disks-pools' target='_blank'>Microsoft Documentation</a>.">Solution</button>
+    </div>
+
+    <script src="Scripts/answer4.js"></script>
+</body>
+</html>
