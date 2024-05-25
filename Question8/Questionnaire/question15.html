@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 15</title>
+</head>
+<body>
+    <div>
+        <h2>Question 15</h2>
+        <p>Your network contains an Active Directory Domain Services (AD DS) forest. The forest contains three domains. Each domain contains 10 domain controllers.</p>
+        <p>You plan to store a DNS zone in a custom Active Directory partition.</p>
+        <p>You need to create the Active Directory partition for the zone. The partition must replicate to only four of the domain controllers.</p>
+        <p>What should you use?</p>
+
+        <form id="question15">
+            <input type="radio" id="optionA" name="answer" value="A">
+            <label for="optionA">A. dnscmd.exe</label><br>
+            <input type="radio" id="optionB" name="answer" value="B">
+            <label for="optionB">B. Active Directory Sites and Services</label><br>
+            <input type="radio" id="optionC" name="answer" value="C">
+            <label for="optionC">C. Set-DnsServer</label><br>
+            <input type="radio" id="optionD" name="answer" value="D">
+            <label for="optionD">D. DNS Manager</label><br>
+        </form>
+
+        <div id="solutionInfo15"></div>
+
+        <button class="solutionButton" data-solution-info-id="solutionInfo15" data-correct-answer="A" data-answer-name="answer15" data-solution-text="Correct answer: A. dnscmd.exe<br><br>Explanation: dnscmd /createdirectorypartition.<br><br>Ref: <a href='https://learn.microsoft.com/en-us/troubleshoot/windows-server/networking/create-apply-custom-application-directory-partition' target='_blank'>Create and Apply Custom Application Directory Partition</a>">Solution</button>
+    </div>
+
+    <footer>
+        <div id="finalScore"></div>
+    </footer>
+
+    <script src="Scripts/answer15.js"></script>
+</body>
+</html>
