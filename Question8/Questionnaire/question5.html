@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 5</title>
+</head>
+<body>
+    <div>
+        <h2>Question 5</h2>
+        <p>You have two servers that have the Hyper-V server role installed. The servers are joined to a failover cluster. Both servers can connect to the same disk on an iSCSI storage device.
+        You plan to use the iSCSI storage to store highly available Hyper-V virtual machines that will support live migration functionality.
+        You need to configure a storage resource in the failover cluster to store the virtual machines.
+        What should you configure?</p>
+
+        <form id="question5">
+            <input type="radio" id="optionA" name="answer" value="A">
+            <label for="optionA">A. Cluster Shared Volumes (CSV)</label><br>
+            <input type="radio" id="optionB" name="answer" value="B">
+            <label for="optionB">B. Distributed File System (DFS) Replication</label><br>
+            <input type="radio" id="optionC" name="answer" value="C">
+            <label for="optionC">C. a storage pool</label><br>
+            <input type="radio" id="optionD" name="answer" value="D">
+            <label for="optionD">D. a mirrored volume</label><br>
+        </form>
+
+        <div id="solutionInfo5"></div>
+
+        <button class="solutionButton" data-solution-info-id="solutionInfo5" data-correct-answer="A" data-answer-name="answer5" data-solution-text="Correct answer: Cluster Shared Volumes (CSV) would be the appropriate configuration for storing highly available Hyper-V virtual machines that support live migration functionality. CSV allows multiple nodes in a failover cluster to have simultaneous read-write access to the same LUN (logical unit number) on an iSCSI storage device, making it possible for live migration of virtual machines between the Hyper-V servers.">Solution</button>
+    </div>
+
+    <div id="finalScore"></div>
+
+    <script src="Scripts/answer5.js"></script>
+</body>
+</html>
