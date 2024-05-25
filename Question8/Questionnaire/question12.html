@@ -4,9 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Question 12</title>
+    <style>
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+        .actions, .answers {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .draggable {
+            padding: 10px;
+            border: 1px solid #000;
+            border-radius: 5px;
+            background-color: #f0f0f0;
+            cursor: move;
+            width: 200px;
+            text-align: center;
+        }
+        .dropzone {
+            padding: 10px;
+            border: 2px dashed #000;
+            border-radius: 5px;
+            background-color: #fff;
+            width: 220px;
+            text-align: center;
+        }
+        .highlight {
+            border-color: green;
+        }
+    </style>
 </head>
 <body>
-    <div>
+    <div class="container">
         <h2>Question 12</h2>
         <p>You deploy a single-domain Active Directory Domain Services (AD DS) forest named contoso.com.
         You deploy a server to the domain and configure the server to run a service.
@@ -14,29 +47,23 @@
         Which three PowerShell cmdlets should you run in sequence? To answer, move the appropriate cmdlets from the list of cmdlets to the answer area and arrange them in the correct order.</p>
 
         <div class="actions">
-            <div class="draggable" id="cmd1" draggable="true" data-cmd="Add-KdsRootKey">Add-KdsRootKey</div>
-            <div class="draggable" id="cmd2" draggable="true" data-cmd="New-ADServiceAccount">New-ADServiceAccount</div>
-            <div class="draggable" id="cmd3" draggable="true" data-cmd="Install-ADServiceAccount">Install-ADServiceAccount</div>
-            <div class="draggable" id="cmd4" draggable="true" data-cmd="Add-ADComputerServiceAccount">Add-ADComputerServiceAccount</div>
-            <div class="draggable" id="cmd5" draggable="true" data-cmd="Set-KdfsConfiguration">Set-KdfsConfiguration</div>
-            <div class="draggable" id="cmd6" draggable="true" data-cmd="Add-ADGroupMember">Add-ADGroupMember</div>
+            <div class="draggable" id="cmd1" draggable="true" data-action="New-ADServiceAccount">New-ADServiceAccount</div>
+            <div class="draggable" id="cmd2" draggable="true" data-action="Install-ADServiceAccount">Install-ADServiceAccount</div>
+            <div class="draggable" id="cmd3" draggable="true" data-action="Add-ADComputerServiceAccount">Add-ADComputerServiceAccount</div>
+            <div class="draggable" id="cmd4" draggable="true" data-action="Set-KdfsConfiguration">Set-KdfsConfiguration</div>
+            <div class="draggable" id="cmd5" draggable="true" data-action="Add-KdsRootKey">Add-KdsRootKey</div>
+            <div class="draggable" id="cmd6" draggable="true" data-action="Add-ADGroupMember">Add-ADGroupMember</div>
         </div>
 
         <div class="answers">
-            <div class="dropzone" id="dropzone12-1">Drop Zone 1</div>
-            <div class="dropzone" id="dropzone12-2">Drop Zone 2</div>
-            <div class="dropzone" id="dropzone12-3">Drop Zone 3</div>
+            <div class="dropzone" id="dropzone12-1">dropZone12.1</div>
+            <div class="dropzone" id="dropzone12-2">dropZone12.2</div>
+            <div class="dropzone" id="dropzone12-3">dropZone12.3</div>
         </div>
 
         <div id="solutionInfo12"></div>
 
-        <button class="solutionButton" data-solution-info-id="solutionInfo12" data-correct-answer="Add-KdsRootKey, New-ADServiceAccount, Install-ADServiceAccount" data-answer-name="answer12" data-solution-text="Correct answer: Add-KdsRootKey, New-ADServiceAccount, Install-ADServiceAccount.<br><br>Explanation: 
-        1. Add-KdsRootKey is used to create the root key needed for the group managed service account (gMSA).
-        2. New-ADServiceAccount is used to create the gMSA.
-        3. Install-ADServiceAccount is used to install the gMSA on the server where the service will run.<br><br>Ref: 
-        <a href='https://docs.microsoft.com/en-us/powershell/module/addsadministration/add-kdsrootkey' target='_blank'>Add-KdsRootKey</a>, 
-        <a href='https://docs.microsoft.com/en-us/powershell/module/addsadministration/new-adserviceaccount' target='_blank'>New-ADServiceAccount</a>, 
-        <a href='https://docs.microsoft.com/en-us/powershell/module/addsadministration/install-adserviceaccount' target='_blank'>Install-ADServiceAccount</a>.">Solution</button>
+        <button class="solutionButton" data-solution-info-id="solutionInfo12" data-correct-answer="Add-KdsRootKey,New-ADServiceAccount,Install-ADServiceAccount" data-answer-name="answer12" data-solution-text="Correct answers:<br>1. Add-KdsRootKey<br>2. New-ADServiceAccount<br>3. Install-ADServiceAccount<br><br>Explanation:<br>1. Add-KdsRootKey is used to create the root key needed for the group managed service account (gMSA).<br>2. New-ADServiceAccount is used to create the gMSA.<br>3. Install-ADServiceAccount is used to install the gMSA on the server where the service will run.<br><br>Ref: <a href='https://docs.microsoft.com/en-us/powershell/module/addsadministration/add-kdsrootkey' target='_blank'>Add-KdsRootKey</a>, <a href='https://docs.microsoft.com/en-us/powershell/module/addsadministration/new-adserviceaccount' target='_blank'>New-ADServiceAccount</a>, <a href='https://docs.microsoft.com/en-us/powershell/module/addsadministration/install-adserviceaccount' target='_blank'>Install-ADServiceAccount</a>.">Solution</button>
     </div>
 
     <footer>
