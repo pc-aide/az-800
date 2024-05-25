@@ -7,14 +7,23 @@
     <style>
         .container {
             display: flex;
-            flex-direction: column;
         }
-        .question-part {
-            margin-bottom: 20px;
+        .list, .dropzones {
+            width: 50%;
+            padding: 10px;
         }
-        .permissions img {
-            max-width: 100%;
-            height: auto;
+        .draggable {
+            padding: 8px;
+            margin: 4px;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            cursor: move;
+        }
+        .dropzone {
+            padding: 16px;
+            margin: 8px;
+            background-color: #f9f9f9;
+            border: 2px dashed #ccc;
         }
     </style>
 </head>
@@ -22,7 +31,8 @@
     <div>
         <h2>Question 1</h2>
         <p>Your network contains an Active Directory Domain Services (AD DS) domain named adatum.com. The domain contains a server named Server1 and the users shown in the following table.</p>
-        <table>
+
+        <table border="1">
             <tr>
                 <th>Name</th>
                 <th>Member of</th>
@@ -40,16 +50,15 @@
                 <td>Group3</td>
             </tr>
         </table>
-        <p>Server1 contains a folder named D:\Folder1. The advanced security settings for Folder1 are configured as shown in the Permissions exhibit. (Click the Permissions tab.)</p>
-        <div class="permissions">
-            <img src="https://raw.githubusercontent.com/pc-aide/az-800/main/Question8/q10.png" alt="Permissions Exhibit">
-        </div>
+
+        <p>Server1 contains a folder named D:\Folder1. The advanced security settings for Folder1 are configured as shown in the Permissions exhibit. (Click the
+Permissions tab.)</p>
+        <img src="https://raw.githubusercontent.com/pc-aide/az-800/main/Question8/q10.png" alt="Permissions exhibit">
         <p>Folder1 is shared by using the following configurations:</p>
-        <div class="permissions">
-            <img src="https://raw.githubusercontent.com/pc-aide/az-800/main/Question8/q10_2.png" alt="Share Configurations">
-        </div>
+        <img src="https://raw.githubusercontent.com/pc-aide/az-800/main/Question8/q10_2.png" alt="Share configurations">
+        
         <p>The share permissions for Share1 are shown in the following table.</p>
-        <table>
+        <table border="1">
             <tr>
                 <th>Group</th>
                 <th>Permission</th>
@@ -63,32 +72,29 @@
                 <td>Allow - Full Control</td>
             </tr>
         </table>
+
         <p>For each of the following statements, select Yes if the statement is true. Otherwise, select No.</p>
-        <form id="question1Form">
-            <div class="question-part">
-                <label>User1 can read the files in share1:</label><br>
-                <input type="radio" id="user1Yes" name="user1" value="Yes">
-                <label for="user1Yes">Yes</label><br>
-                <input type="radio" id="user1No" name="user1" value="No">
-                <label for="user1No">No</label>
-            </div>
-            <div class="question-part">
-                <label>User3 can delete files in Share1:</label><br>
-                <input type="radio" id="user3Yes" name="user3" value="Yes">
-                <label for="user3Yes">Yes</label><br>
-                <input type="radio" id="user3No" name="user3" value="No">
-                <label for="user3No">No</label>
-            </div>
-            <div class="question-part">
-                <label>If User2 connects to \\Server1.adatum.com from File Explorer, Share1 will be listed:</label><br>
-                <input type="radio" id="user2Yes" name="user2" value="Yes">
-                <label for="user2Yes">Yes</label><br>
-                <input type="radio" id="user2No" name="user2" value="No">
-                <label for="user2No">No</label>
-            </div>
+
+        <form id="questionForm">
+            <p>
+                User1 can read the files in share1:
+                <label><input type="radio" name="user1Read" value="Yes"> Yes</label>
+                <label><input type="radio" name="user1Read" value="No"> No</label>
+            </p>
+            <p>
+                User3 can delete files in Share1:
+                <label><input type="radio" name="user3Delete" value="Yes"> Yes</label>
+                <label><input type="radio" name="user3Delete" value="No"> No</label>
+            </p>
+            <p>
+                If User2 connects to \\Server1.adatum.com from File Explorer, Share1 will be listed:
+                <label><input type="radio" name="user2List" value="Yes"> Yes</label>
+                <label><input type="radio" name="user2List" value="No"> No</label>
+            </p>
+            <br><br>
+            <div id="solutionInfo1"></div>
+            <button type="button" class="solutionButton" data-solution-info-id="solutionInfo1" data-correct-answer="Yes,No,No" data-answer-name="answer1" data-solution-text="Correct answers: User1 can read the files in share1: Yes. User3 can delete files in Share1: No. If User2 connects to \\Server1.adatum.com from File Explorer, Share1 will be listed: No.<br><br>Explanation: Box 1: Yes - Group1 has Read access to Folder1 and Change access to Share1. Therefore, User1 can read the files in Share1. Box 2: No - Group3 has Full Control access to Share1. However, Group3 has no permissions configured Folder1. Therefore, User3 cannot access the files in Share1. Group2 has write permission to Folder1. However, Group2 has no permission on Share1. Therefore, users in Group2 cannot access files in the shared folder. Access Based Enumeration when enabled hides files and folders that users do not have permission to access. However, Access Based Enumeration is not enabled on Share1. This is indicated by the FolderEnumerationMode ג€&quot; Unrestricted setting. Therefore, the share will be visible to User2 even though User2 cannot access the shared folder.<br><br>Ref: <a href='https://learn.microsoft.com/en-us/azure/storage/files/storage-files-identity-ad-ds-configure-permissions' target='_blank'>Microsoft Documentation</a>.">Solution</button>
         </form>
-        <div id="solutionInfo1"></div>
-        <button class="solutionButton" data-solution-info-id="solutionInfo1" data-correct-answer="Yes,No,No" data-answer-name="answer1" data-solution-text="Correct answers: User1 can read the files in share1: Yes. User3 can delete files in Share1: No. If User2 connects to \\Server1.adatum.com from File Explorer, Share1 will be listed: No.<br><br>Explanation: Very important are share permissions. User1 has access share and permissions. User2 has only access on file. User3 has access to to share but not permission on folder.<br><br>Ref: <a href='https://learn.microsoft.com/en-us/azure/storage/files/storage-files-identity-ad-ds-configure-permissions' target='_blank'>Microsoft Learn</a>">Solution</button>
     </div>
     <script src="Scripts/answer1.js"></script>
 </body>
