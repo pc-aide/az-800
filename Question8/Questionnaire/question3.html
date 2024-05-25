@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 3</title>
+    <style>
+        .dropzone {
+            width: 300px;
+            height: 40px;
+            border: 2px dashed #ccc;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f9f9f9;
+        }
+        .highlight {
+            border-color: #66afe9;
+            box-shadow: 0 0 5px rgba(102, 175, 233, 0.6);
+        }
+        .draggable {
+            width: 300px;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 2px solid #ccc;
+            background-color: #e9e9e9;
+            cursor: move;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h2>Question 3</h2>
+        <p>You have two on-premises servers named Server1 and Server2 that run Windows Server.
+        You have an Azure Storage account named storage1 that contains a file share named share1. Server1 syncs with share1 by using Azure File Sync.
+        You need to configure Server2 to sync with share1.</p>
+
+        <p>Which three actions should you perform in sequence? To answer, move the appropriate actions from the list of actions to the answer area and arrange them in the correct order.</p>
+
+        <div style="display: flex;">
+            <div style="margin-right: 20px;">
+                <strong>Actions:</strong>
+                <div id="dragContainer">
+                    <div class="draggable" draggable="true" id="action1" data-item="1">Add a server endpoint to the sync group</div>
+                    <div class="draggable" draggable="true" id="action2" data-item="2">Register Server2 with the Storage Sync Service</div>
+                    <div class="draggable" draggable="true" id="action3" data-item="3">Add a Storage Sync Service to the Azure Subscription</div>
+                    <div class="draggable" draggable="true" id="action4" data-item="4">On Server2, install the Azure File Sync agent</div>
+                    <div class="draggable" draggable="true" id="action5" data-item="5">Add a cloud endpoint to the sync group</div>
+                </div>
+            </div>
+
+            <div>
+                <strong>Drop Zones:</strong>
+                <div id="dropContainer">
+                    <div id="dropZone3.1" class="dropzone" data-item=""></div>
+                    <div id="dropZone3.2" class="dropzone" data-item=""></div>
+                    <div id="dropZone3.3" class="dropzone" data-item=""></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="solutionInfo3"></div>
+        <button type="button" class="solutionButton" data-solution-info-id="solutionInfo3" data-correct-answer="4,2,1" data-answer-name="answer3" data-solution-text="Correct answer: 1. On Server2, install the Azure File Sync agent, 2. Register Server2 with the Storage Sync Service, 3. Add a server endpoint to the sync group.<br><br>Explanation: Before a server can be used as a server endpoint in an Azure File Sync sync group, it must be registered with a Storage Sync Service. Install the Azure File Sync agent.<br><br>Ref: <a href='https://docs.microsoft.com/en-us/azure/storage/file-sync/file-sync-server-registration' target='_blank'>Microsoft Documentation</a>, <a href='https://docs.microsoft.com/en-us/azure/storage/file-sync/file-sync-server-endpoint-create?tabs=azure-portal' target='_blank'>Microsoft Documentation</a>.">Solution</button>
+    </div>
+
+    <script src="Scripts/answer3.js"></script>
+</body>
+</html>
