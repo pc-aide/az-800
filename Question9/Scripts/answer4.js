@@ -1,45 +1,86 @@
+function enableDragAndDrop() {
+  document.querySelectorAll('.draggable').forEach(draggable => {
+      draggable.addEventListener('dragstart', (e) => {
+          e.dataTransfer.setData('text/plain', e.target.id);
+          e.dataTransfer.effectAllowed = 'move';
+      });
+  });
+
+  document.querySelectorAll('.dropzone').forEach(dropzone => {
+      dropzone.addEventListener('dragover', (e) => {
+          e.preventDefault();
+          e.dataTransfer.dropEffect = 'move';
+          dropzone.classList.add('highlight');
+      });
+
+      dropzone.addEventListener('dragleave', () => {
+          dropzone.classList.remove('highlight');
+      });
+
+      dropzone.addEventListener('drop', (e) => {
+          e.preventDefault();
+          const data = e.dataTransfer.getData('text/plain');
+          const draggedElement = document.getElementById(data);
+          if (draggedElement) {
+              e.target.textContent = draggedElement.dataset.action;
+              e.target.dataset.action = draggedElement.dataset.action;
+              e.target.dataset.itemId = draggedElement.id;
+              dropzone.classList.remove('highlight');
+          }
+      });
+  });
+}
+
 function attachSolutionButtonListeners_question4(button) {
-    button.addEventListener('click', function() {
-        // Réinitialiser les couleurs des réponses
-        document.querySelectorAll('.dropzone').forEach(dropzone => {
-            dropzone.classList.remove('incorrect', 'highlight');
-        });
+  button.addEventListener('click', function() {
+      const solutionInfoId = this.dataset.solutionInfoId;
+      const correctAnswer = this.dataset.correctAnswer.split(',');
+      checkAnswer4(correctAnswer, solutionInfoId, this.dataset.solutionText);
+  });
+}
 
-        // Vérifier les réponses
-        let allCorrect = true;
+function checkAnswer4(correctAnswer, solutionInfoId, solutionText) {
+  const selectedAnswers = [];
+  for (let i = 1; i <= correctAnswer.length; i++) {
+      const selectedOption = document.querySelector(`#dropZone4_${i}`);
+      selectedAnswers.push(selectedOption ? selectedOption.textContent : null);
+  }
 
-        const dropZone4_1 = document.getElementById('dropZone4_1');
-        const dropZone4_2 = document.getElementById('dropZone4_2');
-        const dropZone4_3 = document.getElementById('dropZone4_3');
+  let isCorrect = true;
+  selectedAnswers.forEach((answer, index) => {
+      if (answer !== correctAnswer[index]) {
+          isCorrect = false;
+      }
+  });
 
-        if (dropZone4_1.dataset.itemId === 'item4.2') {
-            dropZone4_1.classList.add('highlight');
-        } else {
-            dropZone4_1.classList.add('incorrect');
-            allCorrect = false;
-        }
+  const solutionInfo = document.getElementById(solutionInfoId);
+  if (isCorrect) {
+      solutionInfo.innerHTML = solutionText;
+      solutionInfo.classList.remove('incorrect');
+      solutionInfo.classList.add('highlight');
+      score += 1; // Ajouter un point si la réponse est correcte
+  } else {
+      const userAnswerText = selectedAnswers.length ? selectedAnswers.join(', ') : "No answers selected";
+      solutionInfo.innerHTML = `Your answers: ${userAnswerText}.<br><br>${solutionText}`;
+      solutionInfo.classList.remove('highlight');
+      solutionInfo.classList.add('incorrect');
+  }
 
-        if (dropZone4_2.dataset.itemId === 'item4.4') {
-            dropZone4_2.classList.add('highlight');
-        } else {
-            dropZone4_2.classList.add('incorrect');
-            allCorrect = false;
-        }
+  solutionInfo.style.display = 'block';
+  showFinalScore();
+}
 
-        if (dropZone4_3.dataset.itemId === 'item4.6') {
-            dropZone4_3.classList.add('highlight');
-        } else {
-            dropZone4_3.classList.add('incorrect');
-            allCorrect = false;
-        }
+document.addEventListener('DOMContentLoaded', function() {
+  enableDragAndDrop();
+  document.querySelectorAll('.solutionButton').forEach(button => {
+      attachSolutionButtonListeners_question4(button);
+  });
+});
 
-        // Mise à jour du score
-        if (allCorrect) {
-            score++;
-        }
-        showFinalScore();
-
-        // Afficher l'explication
-        document.getElementById('solutionInfo_question4').style.display = 'block';
-    });
+function showFinalScore() {
+  const finalScoreElement = document.getElementById('finalScore');
+  if (finalScoreElement) {
+      const percentage = (score / totalQuestions) * 100;
+      finalScoreElement.textContent = `Final Score: ${score}/${totalQuestions} (${percentage.toFixed(2)}%)`;
+  }
 }
