@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 16</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div>
+        <h2>Question 16</h2>
+        <p>Overview -</p>
+        <p>Fabrikam, Inc is a manufacturing company that has a main office in New York and a branch office in Seattle.</p>
+
+        <h3>Existing Environment -</h3>
+        <h4>On-premises Servers -</h4>
+        <p>The on-premises network contains servers that run Windows Server as shown in the following table.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Configuration</th>
+                    <th>Office</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>AADC1</td>
+                    <td>AAD Connect</td>
+                    <td>New York</td>
+                </tr>
+                <tr>
+                    <td>App1</td>
+                    <td>Application SRV</td>
+                    <td>New York</td>
+                </tr>
+                <tr>
+                    <td>App2</td>
+                    <td>Application SRV</td>
+                    <td>Seattle</td>
+                </tr>
+                <tr>
+                    <td>DC1</td>
+                    <td>Domain Controller</td>
+                    <td>New York</td>
+                </tr>
+                <tr>
+                    <td>DC2</td>
+                    <td>Domain Controller</td>
+                    <td>Seattle</td>
+                </tr>
+                <tr>
+                    <td>DHCP1</td>
+                    <td>DHCP SRV</td>
+                    <td>New York</td>
+                </tr>
+                <tr>
+                    <td>DHCP2</td>
+                    <td>DHCP SRV</td>
+                    <td>Seattle</td>
+                </tr>
+                <tr>
+                    <td>FS1</td>
+                    <td>File SRV</td>
+                    <td>New York</td>
+                </tr>
+                <tr>
+                    <td>FS2</td>
+                    <td>File SRV</td>
+                    <td>Seattle</td>
+                </tr>
+                <tr>
+                    <td>VM1</td>
+                    <td>None</td>
+                    <td>New York</td>
+                </tr>
+                <tr>
+                    <td>VM2</td>
+                    <td>None</td>
+                    <td>Seattle</td>
+                </tr>
+                <tr>
+                    <td>Web1</td>
+                    <td>Web SRV</td>
+                    <td>New York</td>
+                </tr>
+                <tr>
+                    <td>Web2</td>
+                    <td>Web SRV</td>
+                    <td>Seattle</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>DC1 hosts all the operation master roles.</p>
+        <p>VM1 and VM2 are connected to the internet.</p>
+        <p>WEB1 and WEB2 run an Internet Information Services (IIS) web app named Webapp1.</p>
+
+        <h4>On-premises Network -</h4>
+        <p>The New York and Seattle offices are connected by using redundant WAN links.</p>
+        <p>The client computers in each office get IP addresses from their local DHCP server.</p>
+        <p>DHCP1 contains a scope named Scope1 that has addresses for the New York office, DHCP2 contains a scope named Scope2 that has addresses for the Seattle office.</p>
+
+        <h4>Identity Infrastructure -</h4>
+        <p>The network contains a single on-premises Active Directory Domain Services (AD DS) domain named corp.falbrikam.com. Currently, all the service accounts use individual domain user accounts.</p>
+        <p>All domain controllers have the DNS Server role installed and host a copy of the Active Directory integrated DNS zone of corp.fabrikam.com.</p>
+        <p>The corp.fabrikam.com AD DS domain syncs with an Azure Active Directory (Azure AD) tenant.</p>
+
+        <h4>Group Policy Objects (GPOs)</h4>
+        <p>The corp.fabrikam.com domain contains the organizational units (OUs) and custom Group Policy Objects (GPOs) shown in the following table.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>OU name</th>
+                    <th>Linked GPO</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>AllUsers</td>
+                    <td>GPO1</td>
+                    <td>Contains all the user accounts in the domain</td>
+                </tr>
+                <tr>
+                    <td>AllComputers</td>
+                    <td>GPO2</td>
+                    <td>Contains all the computer accounts for the client computers in the domain</td>
+                </tr>
+                <tr>
+                    <td>AllServers</td>
+                    <td>GPO3</td>
+                    <td>Contains all the computer accounts for Windows servers</td>
+                </tr>
+                <tr>
+                    <td>VirtualDesktops</td>
+                    <td>GPO4</td>
+                    <td>A new OU that will contain the computers account for Azure Virtual Desktop session hosts</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Requirements -</h3>
+        <h4>Planned Changes -</h4>
+        <p>Fabrikam identifies the following planned changes:</p>
+        <ul>
+            <li>Create a single Azure subscription named Sub1 that will contain a single Azure virtual network named Vnet1.</li>
+            <li>Replace the WAN links between the Seattle and New York offices by using Azure Virtual WAN and FxpressRoute. Both on premises offices will be connected to Vnet1 by using ExpressRoute.</li>
+            <li>Create three Azure file shares named newyorkfiles, seattlefiles, and companyfiles.</li>
+            <li>Create a domain controller named dc3.corp.fabrikam.com in Vnet1.</li>
+            <li>Deploy an Azure Virtual Desktop host pool to Vnet1. The Azure Virtual Desktop session hosts will be hybrid Azure AD-joined.</li>
+            <li>License all servers for Microsoft Defender for servers.</li>
+            <li>Use Azure Policy to enforce configuration management policies on the servers in Azure and on-premises.</li>
+        </ul>
+
+        <h4>Networking Requirements -</h4>
+        <p>Fabrikam identifies the following networking requirements:</p>
+        <ul>
+            <li>Implement Virtual WAN and ensure that all the network traffic between the sites uses Virtual WAN. All communications must occur over ExpressRoute.</li>
+            <li>If a DHCP server fails, ensure that the client computers can continue to receive their dynamic IP address and renew their existing lease.</li>
+            <li>Ensure that the resources in Vnet1 can resolve the names of the on-premises servers in the corp.fabrikam.com domain.</li>
+        </ul>
+
+        <h4>Security Requirements -</h4>
+        <p>Fabrikam identifies the following security requirements:</p>
+        <ul>
+            <li>Apply GPO4 to the Azure Virtual Desktop session hosts. Ensure that Azure Virtual Desktop user sessions lock after being idle for 10 minutes. Users must be able to control the lockout time manually from their client computer.</p>
+            <li>Ensure that server administrators request approval before they can establish a Remote Desktop connection to an Azure virtual machine. If the request is approved, the connection must be established within two hours.</p>
+            <li>Prevent user passwords from containing all or part of words that are based on the company name, such as Fab, f@br1kAm or fabr!|.</p>
+            <li>Ensure that all instances of Webapp1 use the same service account. The password of the service account must change automatically every 30 days.</p>
+            <li>Prevent domain controllers from directly contacting hosts on the internet.</p>
+        </ul>
+
+        <h4>File Sharing Requirements -</h4>
+        <p>You need to configure the synchronization of Azure files to meet the following requirements:</p>
+        <ul>
+            <li>Ensure that seattlefiles syncs to FS2.</li>
+            <li>Ensure that newyorkfiles syncs to FS1.</li>
+            <li>Ensure that companyfiles syncs to both FS1 and FS2.</li>
+        </ul>
+
+        <h3>Question</h3>
+        <p>You need to meet the security requirements for passwords. Where should you configure the components for Azure AD Password Protection? To answer, drag the appropriate components to the correct locations. Each component may be used once, more than once, or not at all. You may need to drag the split bar between panes or scroll to view content.</p>
+
+        <div class="container">
+            <div class="actions">
+                <div class="draggable" id="item16-1" draggable="true" data-action="DC1 only">DC1 only</div>
+                <div class="draggable" id="item16-2" draggable="true" data-action="All the domain controllers">All the domain controllers</div>
+                <div class="draggable" id="item16-3" draggable="true" data-action="VM1 & VM2">VM1 & VM2</div>
+                <div class="draggable" id="item16-4" draggable="true" data-action="The AAD tenant">The AAD tenant</div>
+            </div>
+            <div class="answers">
+                <div class="dropzone" id="dropZone16_1">The Azure AD Password Protection DC agent</div>
+                <div class="dropzone" id="dropZone16_2">The AAD Password Protection proxy service</div>
+                <div class="dropzone" id="dropZone16_3">A custom banned password list</div>
+            </div>
+        </div>
+
+        <button class="solutionButton" data-solution-info-id="solutionInfo_question16" data-correct-answer="item16-2,item16-3,item16-4" data-answer-name="question16" data-solution-text="Correct answers:<br>1. The Azure AD Password Protection DC agent: All the domain controllers.<br>2. The AAD Password Protection proxy service: VM1 & VM2.<br>3. A custom banned password list: The AAD tenant.<br><br>Explanation:<br>On-premises deployment of Azure AD Password Protection uses the same global and custom banned password lists that are stored in Azure AD, and does the same checks for on-premises password changes as Azure AD does for cloud-based changes. Whenever an Azure AD Password Protection password policy is downloaded, that policy is specific to a tenant. In other words, password policies are always a combination of the Microsoft global banned-password list and the per-tenant custom banned-password list.<br><br>Reference:<br>- <a href='https://learn.microsoft.com/en-us/azure/active-directory/authentication/concept-password-ban-bad-on-premises' target='_blank'>Azure AD Password Protection</a>">Solution</button>
+
+        <div id="solutionInfo_question16" class="solutionInfo" style="display: none;"></div>
+    </div>
+    <script src="Scripts/answer16.js"></script>
+</body>
+</html>
