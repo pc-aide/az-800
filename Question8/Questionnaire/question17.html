@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 17</title>
+</head>
+<body>
+    <div>
+        <h2>Question 17</h2>
+        <p>Your network contains an Active Directory Domain Services (AD DS) domain named contoso.com.</p>
+        <p>The network contains the servers shown in the following table.</p>
+
+        <table border="1">
+            <tr>
+                <th>Name</th>
+                <th>Role</th>
+                <th>Domain/workgroup</th>
+                <th>OS</th>
+            </tr>
+            <tr>
+                <td>DC1</td>
+                <td>AD DS, DNS server</td>
+                <td>contoso.com</td>
+                <td>Windows SRV</td>
+            </tr>
+            <tr>
+                <td>Server1</td>
+                <td>DHCP Server</td>
+                <td>contoso.com</td>
+                <td>Windows SRV</td>
+            </tr>
+            <tr>
+                <td>Server2</td>
+                <td>None</td>
+                <td>contoso.com</td>
+                <td>Windows SRV Core</td>
+            </tr>
+            <tr>
+                <td>Server3</td>
+                <td>None</td>
+                <td>Workgroup1</td>
+                <td>Windows SRV Core</td>
+            </tr>
+        </table>
+
+        <p>You plan to implement IP Address Management (IPAM).</p>
+        <p>You need to use the Group Policy based provisioning method for managed servers. The solution must support server discovery.</p>
+        <p>What should you do? To answer, select the appropriate options in the answer area.</p>
+
+        <form id="question17">
+            <label for="ipamServer">Server on which to deploy the IPAM server role:</label>
+            <select id="ipamServer" name="ipamServer">
+                <option value="DC1">DC1</option>
+                <option value="Server1">Server1</option>
+                <option value="Server2">Server2</option>
+                <option value="Server3">Server3</option>
+            </select>
+            <br><br>
+
+            <label for="provisionedServers">Servers that must be provisioned for IPAM:</label>
+            <select id="provisionedServers" name="provisionedServers">
+                <option value="DC1 & Server1">DC1 & Server1</option>
+                <option value="DC1 & Server3">DC1 & Server3</option>
+                <option value="Server1 & Server2">Server1 & Server2</option>
+                <option value="Server2 & Server3">Server2 & Server3</option>
+            </select>
+        </form>
+
+        <div id="solutionInfo17"></div>
+
+        <button class="solutionButton" data-solution-info-id="solutionInfo17" data-correct-answer="Server2,DC1 & Server1" data-answer-name="answer17" data-solution-text="Correct answers: <br><br>Server on which to deploy the IPAM server role: Server2 <br>Servers that must be provisioned for IPAM: DC1 & Server1<br><br>Explanation: IPAM must be installed on a domain member computer. You cannot install IPAM on a domain controller. If IPAM is installed on the same server with DHCP, then DHCP server discovery will be disabled.<br><br>Ref: <a href='https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/jj878312(v=ws.11)' target='_blank'>IPAM Deployment</a><br><a href='https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/hh831353(v=ws.11)#ipam-deployment-options' target='_blank'>IPAM Deployment Options</a>">Solution</button>
+    </div>
+
+    <footer>
+        <div id="finalScore"></div>
+    </footer>
+
+    <script src="Scripts/answer17.js"></script>
+</body>
+</html>
