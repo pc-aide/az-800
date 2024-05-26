@@ -73,3 +73,11 @@ footer {
   font-size: larger;
   font-weight: bold;
 }
+
+#questionContainer {
+  margin-bottom: 100px; /* Ajouter de la marge pour éviter le chevauchement avec le footer */
+}
+
+.question {
+  margin-bottom: 50px; /* Ajouter de la marge pour éviter le chevauchement avec le footer */
+}

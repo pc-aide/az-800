@@ -1,0 +1,69 @@
+<div class="question">
+  <h2>Question 2</h2>
+  <p>You have an Active Directory domain that contains a file server named Server1. Server1 runs Windows Server and includes the file shares shown in the following table.</p>
+
+  <table>
+      <thead>
+          <tr>
+              <th>Share Name</th>
+              <th>Path</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr>
+              <td>Users</td>
+              <td>D:\Users</td>
+          </tr>
+          <tr>
+              <td>Accounts</td>
+              <td>D:\Dept\Accounts</td>
+          </tr>
+          <tr>
+              <td>Marketing</td>
+              <td>D:\Dept\Marketing</td>
+          </tr>
+          <tr>
+              <td>CustomerService</td>
+              <td>D:\Dept\CustomerService</td>
+          </tr>
+      </tbody>
+  </table>
+
+  <p>When users login to the network they receive the following network drive mappings.</p>
+  <ul>
+      <li>H: maps to \\server1\users\%UserName%</li>
+      <li>G: maps to \\server1\%Department%</li>
+  </ul>
+
+  <p>You need to limit the amount of space consumed by users on Server1. The solution must meet the following requirements:</p>
+  <ul>
+      <li>Prevent users using more than 5GB of space on their H: drive</li>
+      <li>Prevent Accounts department users from using more than 10GB of space on the G: drive</li>
+      <li>Prevent Marketing department users from using more than 15GB of space on the G: drive</li>
+      <li>Prevent Customer Service department users from using more than 2GB of space on the G: drive</li>
+      <li>Minimize administrative effort</li>
+  </ul>
+
+  <p>What should you use?</p>
+
+  <div class="question-row">
+      <label><input type="radio" name="fsrm-quotas" value="A"> A. File Server Resource Manager (FSRM) quotas</label>
+  </div>
+  <div class="question-row">
+      <label><input type="radio" name="fsrm-quotas" value="B"> B. Storage tiering</label>
+  </div>
+  <div class="question-row">
+      <label><input type="radio" name="fsrm-quotas" value="C"> C. NTFS Disk quotas</label>
+  </div>
+  <div class="question-row">
+      <label><input type="radio" name="fsrm-quotas" value="D"> D. Group Policy Preferences</label>
+  </div>
+
+  <button class="solutionButton" data-answer-name="question2">Solution</button>
+
+  <div id="solutionInfo_question2" class="solutionInfo" style="display: none;">
+      <p><strong>Explanation:</strong></p>
+      <p>To limit the amount of space consumed by users on Server1 with the specified requirements, you should use File Server Resource Manager (FSRM) quotas. FSRM allows you to set space limits on shared resources and provides more granular control over storage consumption. In this case, you can set FSRM quotas for the H: and G: drives based on the user's department and the specific space limits you need to enforce.</p>
+      <p>Reference: <a href="https://learn.microsoft.com/en-us/windows-server/storage/fsrm/quota-management">Microsoft Docs</a></p>
+  </div>
+</div>
