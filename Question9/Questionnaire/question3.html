@@ -1,0 +1,67 @@
+<div class="question">
+    <h2>Question 3</h2>
+    <p>You have an Azure subscription that contains the storage accounts shown in the following table.</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Location</th>
+                <th>File share</th>
+                <th>Blob container</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>storage1</td>
+                <td>West US</td>
+                <td>share1</td>
+                <td>None</td>
+            </tr>
+            <tr>
+                <td>storage2</td>
+                <td>West US</td>
+                <td>share2</td>
+                <td>container2</td>
+            </tr>
+            <tr>
+                <td>storage3</td>
+                <td>Central US</td>
+                <td>share3</td>
+                <td>None</td>
+            </tr>
+            <tr>
+                <td>storage4</td>
+                <td>Central US</td>
+                <td>share4</td>
+                <td>container4</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p>In the West US Azure region, you create a storage sync service named SyncA.</p>
+    <p>You plan to create a sync group named GroupA.</p>
+    <p>What is the maximum number of cloud endpoints you can use with GroupA?</p>
+
+    <div class="question-row">
+        <label><input type="radio" name="max-cloud-endpoints" value="A"> A. 1</label>
+    </div>
+    <div class="question-row">
+        <label><input type="radio" name="max-cloud-endpoints" value="B"> B. 2</label>
+    </div>
+    <div class="question-row">
+        <label><input type="radio" name="max-cloud-endpoints" value="C"> C. 3</label>
+    </div>
+    <div class="question-row">
+        <label><input type="radio" name="max-cloud-endpoints" value="D"> D. 4</label>
+    </div>
+
+    <button class="solutionButton" data-answer-name="question3">Solution</button>
+
+    <div id="solutionInfo_question3" class="solutionInfo" style="display: none;">
+        <p><strong>Explanation:</strong></p>
+        <p>THE QUESTION IS NOT ASKING HOW MANY OF THESE CLOUD ENDPOINTS CAN ALLOCATED TO THE GROUP BASED ON REGION, IN THIS CASE THERE ARE TWO IN WEST US BUT RATHER, HOW MANY CLOUD ENDPOINTS CAN A SYNC GROUP HOST. THE ANSWER IS 1. IT COULD BE ANYONE OF THE TWO IN WEST US BUT THE GROUP CAN ONLY CONTAIN 1 WHICH IS WHAT THE QUESTION ALLUDES TO.</p>
+        <p>One cloud endpoint per sync group.</p>
+        <p>Reference: <a href="https://learn.microsoft.com/en-us/azure/storage/files/storage-files-scale-targets?toc=%2Fazure%2Fstorage%2Ffilesync%2Ftoc.json#azure-file-sync-scale-targets">Microsoft Docs</a></p>
+    </div>
+</div>
