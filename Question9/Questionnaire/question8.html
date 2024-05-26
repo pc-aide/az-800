@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 8</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div>
+        <h2>Question 8</h2>
+        <p>You have a server named Server1 that runs Windows Server. The disks on Server1 are configured as shown in the following exhibit.</p>
+        <img src="https://raw.githubusercontent.com/pc-aide/az-800/main/Question9/png/q38.png" alt="Disk Configuration">
+        
+        <p>You need to convert volume E to ReFS. The solution must meet the following requirements:</p>
+        <ul>
+            <li>The data on volume E needs to be retained.</li>
+            <li>Minimize administrative effort.</li>
+        </ul>
+
+        <p>What should you do first?</p>
+
+        <div class="question-row">
+            <label><input type="radio" name="convert-volume" value="A"> A. Back up the data on volume E.</label>
+        </div>
+        <div class="question-row">
+            <label><input type="radio" name="convert-volume" value="B"> B. Take Disk 2 offline.</label>
+        </div>
+        <div class="question-row">
+            <label><input type="radio" name="convert-volume" value="C"> C. Convert Disk 2 to a dynamic disk.</label>
+        </div>
+        <div class="question-row">
+            <label><input type="radio" name="convert-volume" value="D"> D. Run convert.exe.</label>
+        </div>
+
+        <button class="solutionButton" data-answer-name="question8">Solution</button>
+
+        <div id="solutionInfo_question8" class="solutionInfo" style="display: none;">
+            <p><strong>Explanation:</strong></p>
+            <p>You cannot directly convert a basic exFAT disk to ReFS (Resilient File System) because they are different file systems. Converting file systems usually requires reformatting the disk, which would result in data loss. However, you can copy the data from the exFAT disk to another location, reformat the disk as ReFS, and then copy the data back.</p>
+            <p>Reference: <a href="https://answers.microsoft.com/en-us/windows/forum/all/how-do-i-convert-exfat-to-ntfs/b5feab08-6c7a-e011-9b4b-68b599b31bf5" target="_blank">How to Convert exFAT to NTFS</a></p>
+        </div>
+    </div>
+    <script src="Scripts/answer8.js"></script>
+</body>
+</html>
