@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 11</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div>
+        <h2>Question 11</h2>
+        <p>You have a server named Server1 that runs Windows Server and contains a file share named Share1.</p>
+        <p>You need to prevent users from storing MP4 files in Share1. The solution must ensure that the users can store other types of files in the share.</p>
+        <p>What should you configure on Server1?</p>
+
+        <div class="question-row">
+            <label><input type="radio" name="file-screening" value="A"> A. File Management Tasks</label>
+        </div>
+        <div class="question-row">
+            <label><input type="radio" name="file-screening" value="B"> B. NTFS Quotas</label>
+        </div>
+        <div class="question-row">
+            <label><input type="radio" name="file-screening" value="C"> C. NTFS permissions</label>
+        </div>
+        <div class="question-row">
+            <label><input type="radio" name="file-screening" value="D"> D. file screens</label>
+        </div>
+
+        <button class="solutionButton" data-answer-name="question11">Solution</button>
+
+        <div id="solutionInfo_question11" class="solutionInfo" style="display: none;">
+            <p><strong>Explanation:</strong></p>
+            <p>Open the File Server Resource Manager (FSRM) on Server1.</p>
+            <p>Navigate to "File Screening Management" and select "File Screens".</p>
+            <p>Create a new file screen for Share1.</p>
+            <p>Define a file screen template or create a custom file screen to block MP4 files.</p>
+            <p>Apply the file screen to Share1.</p>
+            <p><a href="https://raw.githubusercontent.com/pc-aide/az-800/main/Question9/png/q41.png" target="_blank">File Screen Management Screenshot</a></p>
+            <p>Reference: <a href="https://learn.microsoft.com/en-us/windows-server/storage/fsrm/file-screening-management" target="_blank">File Screening Management</a></p>
+        </div>
+    </div>
+    <script src="Scripts/answer11.js"></script>
+</body>
+</html>
