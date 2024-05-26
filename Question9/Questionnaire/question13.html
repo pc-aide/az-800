@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 13</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div>
+        <h2>Question 13</h2>
+        <p>Overview -</p>
+        <p>Fabrikam, Inc is a manufacturing company that has a main office in New York and a branch office in Seattle.</p>
+
+        <h3>Existing Environment -</h3>
+        <h4>On-premises Servers -</h4>
+        <p>The on-premises network contains servers that run Windows Server as shown in the following table.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Configuration</th>
+                    <th>Office</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>AADC1</td>
+                    <td>AAD Connect</td>
+                    <td>New York</td>
+                </tr>
+                <tr>
+                    <td>App1</td>
+                    <td>Application SRV</td>
+                    <td>New York</td>
+                </tr>
+                <tr>
+                    <td>App2</td>
+                    <td>Application SRV</td>
+                    <td>Seattle</td>
+                </tr>
+                <tr>
+                    <td>DC1</td>
+                    <td>Domain Controller</td>
+                    <td>New York</td>
+                </tr>
+                <tr>
+                    <td>DC2</td>
+                    <td>Domain Controller</td>
+                    <td>Seattle</td>
+                </tr>
+                <tr>
+                    <td>DHCP1</td>
+                    <td>DHCP SRV</td>
+                    <td>New York</td>
+                </tr>
+                <tr>
+                    <td>DHCP2</td>
+                    <td>DHCP SRV</td>
+                    <td>Seattle</td>
+                </tr>
+                <tr>
+                    <td>FS1</td>
+                    <td>File SRV</td>
+                    <td>New York</td>
+                </tr>
+                <tr>
+                    <td>FS2</td>
+                    <td>File SRV</td>
+                    <td>Seattle</td>
+                </tr>
+                <tr>
+                    <td>VM1</td>
+                    <td>None</td>
+                    <td>New York</td>
+                </tr>
+                <tr>
+                    <td>VM2</td>
+                    <td>None</td>
+                    <td>Seattle</td>
+                </tr>
+                <tr>
+                    <td>Web1</td>
+                    <td>Web SRV</td>
+                    <td>New York</td>
+                </tr>
+                <tr>
+                    <td>Web2</td>
+                    <td>Web SRV</td>
+                    <td>Seattle</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>DC1 hosts all the operation master roles.</p>
+        <p>VM1 and VM2 are connected to the internet.</p>
+        <p>WEB1 and WEB2 run an Internet Information Services (IIS) web app named Webapp1.</p>
+
+        <h4>On-premises Network -</h4>
+        <p>The New York and Seattle offices are connected by using redundant WAN links.</p>
+        <p>The client computers in each office get IP addresses from their local DHCP server.</p>
+        <p>DHCP1 contains a scope named Scope1 that has addresses for the New York office, DHCP2 contains a scope named Scope2 that has addresses for the Seattle office.</p>
+
+        <h4>Identity Infrastructure -</h4>
+        <p>The network contains a single on-premises Active Directory Domain Services (AD DS) domain named corp.falbrikam.com. Currently, all the service accounts use individual domain user accounts.</p>
+        <p>All domain controllers have the DNS Server role installed and host a copy of the Active Directory integrated DNS zone of corp.fabrikam.com.</p>
+        <p>The corp.fabrikam.com AD DS domain syncs with an Azure Active Directory (Azure AD) tenant.</p>
+
+        <h4>Group Policy Objects (GPOs)</h4>
+        <p>The corp.fabrikam.com domain contains the organizational units (OUs) and custom Group Policy Objects (GPOs) shown in the following table.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>OU name</th>
+                    <th>Linked GPO</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>AllUsers</td>
+                    <td>GPO1</td>
+                    <td>Contains all the user accounts in the domain</td>
+                </tr>
+                <tr>
+                    <td>AllComputers</td>
+                    <td>GPO2</td>
+                    <td>Contains all the computer accounts for the client computers in the domain</td>
+                </tr>
+                <tr>
+                    <td>AllServers</td>
+                    <td>GPO3</td>
+                    <td>Contains all the computer accounts for Windows servers</td>
+                </tr>
+                <tr>
+                    <td>VirtualDesktops</td>
+                    <td>GPO4</td>
+                    <td>A new OU that will contain the computers account for Azure Virtual Desktop session hosts</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Requirements -</h3>
+        <h4>Planned Changes -</h4>
+        <p>Fabrikam identifies the following planned changes:</p>
+        <ul>
+            <li>Create a single Azure subscription named Sub1 that will contain a single Azure virtual network named Vnet1.</li>
+            <li>Replace the WAN links between the Seattle and New York offices by using Azure Virtual WAN and FxpressRoute. Both on premises offices will be connected to Vnet1 by using ExpressRoute.</li>
+            <li>Create three Azure file shares named newyorkfiles, seattlefiles, and companyfiles.</li>
+            <li>Create a domain controller named dc3.corp.fabrikam.com in Vnet1.</li>
+            <li>Deploy an Azure Virtual Desktop host pool to Vnet1. The Azure Virtual Desktop session hosts will be hybrid Azure AD-joined.</li>
+            <li>License all servers for Microsoft Defender for servers.</li>
+            <li>Use Azure Policy to enforce configuration management policies on the servers in Azure and on-premises.</li>
+        </ul>
+
+        <h4>Networking Requirements -</h4>
+        <p>Fabrikam identifies the following networking requirements:</p>
+        <ul>
+            <li>Implement Virtual WAN and ensure that all the network traffic between the sites uses Virtual WAN. All communications must occur over ExpressRoute.</li>
+            <li>If a DHCP server fails, ensure that the client computers can continue to receive their dynamic IP address and renew their existing lease.</li>
+            <li>Ensure that the resources in Vnet1 can resolve the names of the on-premises servers in the corp.fabrikam.com domain.</li>
+        </ul>
+
+        <h4>Security Requirements -</h4>
+        <p>Fabrikam identifies the following security requirements:</p>
+        <ul>
+            <li>Apply GPO4 to the Azure Virtual Desktop session hosts. Ensure that Azure Virtual Desktop user sessions lock after being idle for 10 minutes. Users must be able to control the lockout time manually from their client computer.</li>
+            <li>Ensure that server administrators request approval before they can establish a Remote Desktop connection to an Azure virtual machine. If the request is approved, the connection must be established within two hours.</li>
+            <li>Prevent user passwords from containing all or part of words that are based on the company name, such as Fab, f@br1kAm or fabr!|.</li>
+            <li>Ensure that all instances of Webapp1 use the same service account. The password of the service account must change automatically every 30 days.</li>
+            <li>Prevent domain controllers from directly contacting hosts on the internet.</li>
+        </ul>
+
+        <h4>File Sharing Requirements -</h4>
+        <p>You need to configure the synchronization of Azure files to meet the following requirements:</p>
+        <ul>
+            <li>Ensure that seattlefiles syncs to FS2.</li>
+            <li>Ensure that newyorkfiles syncs to FS1.</li>
+            <li>Ensure that companyfiles syncs to both FS1 and FS2.</li>
+        </ul>
+
+        <h3>Question</h3>
+        <p>You need to configure the Group Policy settings to ensure that the Azure Virtual Desktop session hosts meet the security requirements.</p>
+        <p>What should you configure?</p>
+
+        <div class="question-row">
+            <label><input type="radio" name="gpo-settings" value="A"> A. loopback processing in GPO4</label>
+        </div>
+        <div class="question-row">
+            <label><input type="radio" name="gpo-settings" value="B"> B. security filtering for the link of GPO1</label>
+        </div>
+        <div class="question-row">
+            <label><input type="radio" name="gpo-settings" value="C"> C. loopback processing in GPO1</label>
+        </div>
+        <div class="question-row">
+            <label><input type="radio" name="gpo-settings" value="D"> D. the Enforced property for the link of GPO4</label>
+        </div>
+        <div class="question-row">
+            <label><input type="radio" name="gpo-settings" value="E"> E. the Enforced property for the link of GPO1</label>
+        </div>
+        <div class="question-row">
+            <label><input type="radio" name="gpo-settings" value="F"> F. security filtering for the link of GPO4</label>
+        </div>
+
+        <button class="solutionButton" data-answer-name="question13">Solution</button>
+
+        <div id="solutionInfo_question13" class="solutionInfo" style="display: none;">
+            <p><strong>Explanation:</strong></p>
+            <p><img src="https://raw.githubusercontent.com/pc-aide/az-800/main/Question9/png/q13.png" alt="GPO Settings Screenshot"></p>
+            <p>Enforced means that the GPO must be applied so D and E are out.</p>
+            <p>Security filtering means who can apply a GPO.</p>
+            <p>So B and F are out.</p>
+            <p>A would be the answer since it is for GPO4.</p>
+            <p>Reference:</p>
+            <ul>
+                <li><a href="https://learn.microsoft.com/en-us/windows/security/threat-protection/windows-firewall/assign-security-group-filters-to-the-gpo" target="_blank">Assign Security Group Filters to the GPO</a></li>
+                <li><a href="https://anthonyfontanez.com/index.php/2021/10/11/group-policy-loopback-processing-done-correctly/" target="_blank">Group Policy Loopback Processing Done Correctly</a></li>
+                <li><a href="https://learn.microsoft.com/en-us/troubleshoot/windows-server/group-policy/loopback-processing-of-group-policy" target="_blank">Loopback Processing of Group Policy</a></li>
+            </ul>
+        </div>
+    </div>
+    <script src="Scripts/answer13.js"></script>
+</body>
+</html>
