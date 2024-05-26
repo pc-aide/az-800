@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Question 17</title>
+    <title>Question 18</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div>
-        <h2>Question 17</h2>
+        <h2>Question 18</h2>
         <p>Contoso, Ltd. is a company that has a main office in Seattle and two branch offices in Los Angeles and Montreal.</p>
 
         <h3>Existing Environment -</h3>
@@ -251,28 +251,30 @@
         </ul>
 
         <h3>Question</h3>
-        <p>You need to meet the technical requirements for Server1. Which users can currently perform the required tasks?</p>
+        <p>You need to meet the technical requirements for the site links. Which users can perform the required tasks?</p>
 
         <div class="container">
             <div class="question-row">
-                <label><input type="radio" name="question17" value="Admin3 only"> Admin3 only</label><br>
-                <label><input type="radio" name="question17" value="Admin1 and Admin3 only"> Admin1 and Admin3 only</label><br>
-                <label><input type="radio" name="question17" value="Admin1 only"> Admin1 only</label><br>
-                <label><input type="radio" name="question17" value="Admin1, Admin2, and Admin3"> Admin1, Admin2, and Admin3</label>
+                <label><input type="radio" name="question18" value="Admin1, Admin2, and Admin3"> Admin1, Admin2, and Admin3</label><br>
+                <label><input type="radio" name="question18" value="Admin1 and Admin3 only"> Admin1 and Admin3 only</label><br>
+                <label><input type="radio" name="question18" value="Admin1 only"> Admin1 only</label><br>
+                <label><input type="radio" name="question18" value="Admin1 and Admin2 only"> Admin1 and Admin2 only</label><br>
+                <label><input type="radio" name="question18" value="Admin3 only"> Admin3 only</label>
             </div>
         </div>
 
-        <button class="solutionButton" data-solution-info-id="solutionInfo_question17" data-correct-answer="Admin1 and Admin3 only" data-answer-name="question17" data-solution-text="Correct answers:<br>1. Admin1 and Admin3 only.<br><br>Explanation:<br>Because Admin1 is in Enterprise Admins group. Which are then part of the Administrators group in all the domains in the forest, including Canada. Therefore both Admin1 and Admin3 perform the task.<br>If they start changing OUs or groups, this question gets too hard to answer. Agree, Admin1 and Admin3. Enterprise admin can promote in a child domain.<br><br>Reference:<br>- <a href='https://social.technet.microsoft.com/Forums/windows/en-US/bf8bb2dc-bedf-488e-8aa3-1c93dd833bba/promoting-a-member-server-of-a-child-domain-in-ad-to-read-only-domain-controller?forum=winserverDS' target='_blank'>Promoting a Member Server of a Child Domain in AD to Read-Only Domain Controller</a>">Solution</button>
+        <button class="solutionButton" data-solution-info-id="solutionInfo_question18" data-correct-answer="Admin1 only" data-answer-name="question18" data-solution-text="Correct answers:<br>1. Admin1 only.<br><br>Explanation:<br>I experienced this in the real world. My account in the top-level domain was unable to do any changes in this. Because I was a domain admin in the top-level domain, I was able to grant myself enterprise admin access. Then I was able to do the change in sites and services. So I go for enterprise admin only. To create sites, you must log on as a member of the Enterprise Admins group or the Domain Admins group in the forest root domain. In a child domain, the Domain Admins group will not have the necessary permissions to change the replication schedule for all site links by default. To do so, a member of the Domain Admins group would need to be delegated the necessary permissions by a member of the Enterprise Admins group. It is important to understand site links span across at *least* two domains, therefore the authority of a single domain is not enough to modify a link. Only enterprise admin has the authority that spans across all domains, therefore modify the link.<br><br>Reference:<br>- <a href='https://social.technet.microsoft.com/Forums/Lync/en-US/a72dc036-3375-4124-9ef7-d30af104451a/enterprise-administrator-and-child-domain?forum=winserverDS' target='_blank'>Enterprise Administrator and Child Domain</a><br>- <a href='https://www.toutwindows.com/adfaq_us.shtml' target='_blank'>AD FAQ</a>">Solution</button>
 
-        <div id="solutionInfo_question17" class="solutionInfo" style="display: none;">
+        <div id="solutionInfo_question18" class="solutionInfo" style="display: none;">
             <p><strong>Explanation:</strong></p>
-            <p>Because Admin1 is in Enterprise Admins group. Which are then part of the Administrators group in all the domains in the forest, including Canada. Therefore both Admin1 and Admin3 perform the task.<br>If they start changing OUs or groups, this question gets too hard to answer. Agree, Admin1 and Admin3. Enterprise admin can promote in a child domain.</p>
+            <p>I experienced this in the real world. My account in the top-level domain was unable to do any changes in this. Because I was a domain admin in the top-level domain, I was able to grant myself enterprise admin access. Then I was able to do the change in sites and services. So I go for enterprise admin only. To create sites, you must log on as a member of the Enterprise Admins group or the Domain Admins group in the forest root domain. In a child domain, the Domain Admins group will not have the necessary permissions to change the replication schedule for all site links by default. To do so, a member of the Domain Admins group would need to be delegated the necessary permissions by a member of the Enterprise Admins group. It is important to understand site links span across at *least* two domains, therefore the authority of a single domain is not enough to modify a link. Only enterprise admin has the authority that spans across all domains, therefore modify the link.</p>
             <p><strong>Reference:</strong></p>
             <ul>
-                <li><a href="https://social.technet.microsoft.com/Forums/windows/en-US/bf8bb2dc-bedf-488e-8aa3-1c93dd833bba/promoting-a-member-server-of-a-child-domain-in-ad-to-read-only-domain-controller?forum=winserverDS" target="_blank">Promoting a Member Server of a Child Domain in AD to Read-Only Domain Controller</a></li>
+                <li><a href="https://social.technet.microsoft.com/Forums/Lync/en-US/a72dc036-3375-4124-9ef7-d30af104451a/enterprise-administrator-and-child-domain?forum=winserverDS" target="_blank">Enterprise Administrator and Child Domain</a></li>
+                <li><a href="https://www.toutwindows.com/adfaq_us.shtml" target="_blank">AD FAQ</a></li>
             </ul>
         </div>
     </div>
-    <script src="Scripts/answer17.js"></script>
+    <script src="Scripts/answer18.js"></script>
 </body>
 </html>
