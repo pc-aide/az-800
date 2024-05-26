@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 12</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div>
+        <h2>Question 12</h2>
+        <p>Your network contains an Active Directory Domain Services (AD DS) domain named contoso.com. The domain contains the servers shown in the following table.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Role</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Server1</td>
+                    <td>DFS namespaces</td>
+                </tr>
+                <tr>
+                    <td>Server2</td>
+                    <td>DFS Replication</td>
+                </tr>
+                <tr>
+                    <td>Server3</td>
+                    <td>DFS Namespaces, DFS Replication</td>
+                </tr>
+                <tr>
+                    <td>Server4</td>
+                    <td>None</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>You need to create a Distributed File System (DFS) namespace that will contain the following:</p>
+        <ul>
+            <li>A domain-based namespace named \\contoso.com\Public</li>
+            <li>A folder named Finance</li>
+        </ul>
+
+        <p>Which servers can you configure as folder targets for the Finance folder?</p>
+
+        <div class="question-row">
+            <label><input type="radio" name="dfs-targets" value="A"> A. Server3 only</label>
+        </div>
+        <div class="question-row">
+            <label><input type="radio" name="dfs-targets" value="B"> B. Server2 and Server3 only</label>
+        </div>
+        <div class="question-row">
+            <label><input type="radio" name="dfs-targets" value="C"> C. Server1 and Server3 only</label>
+        </div>
+        <div class="question-row">
+            <label><input type="radio" name="dfs-targets" value="D"> D. Server1, Server2, and Server3 only</label>
+        </div>
+        <div class="question-row">
+            <label><input type="radio" name="dfs-targets" value="E"> E. Server1, Server2, Server3, and Server4</label>
+        </div>
+
+        <button class="solutionButton" data-answer-name="question12">Solution</button>
+
+        <div id="solutionInfo_question12" class="solutionInfo" style="display: none;">
+            <p><strong>Explanation:</strong></p>
+            <p>All the listed servers (Server1, Server2, Server3, and Server4) can be configured as folder targets for the Finance folder in the DFS namespace.</p>
+            <p>Reference: <a href="https://learn.microsoft.com/en-us/windows-server/storage/dfs-namespaces/dfs-overview" target="_blank">DFS Overview</a></p>
+        </div>
+    </div>
+    <script src="Scripts/answer12.js"></script>
+</body>
+</html>
