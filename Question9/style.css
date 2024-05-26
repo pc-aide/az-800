@@ -11,12 +11,6 @@
   margin-bottom: 10px;
 }
 
-#finalScore {
-  font-size: larger;
-  margin-top: 20px;
-  font-weight: bold;
-}
-
 .container {
   display: flex;
   justify-content: space-between;
@@ -64,4 +58,18 @@ th {
 
 .question-row {
   margin-bottom: 15px;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  background-color: #f9f9f9;
+  padding: 10px 0;
+}
+
+#finalScore {
+  font-size: larger;
+  font-weight: bold;
 }
