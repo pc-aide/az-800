@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 10</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div>
+        <h2>Question 10</h2>
+        <p>You have an Active Directory Domain Services (AD DS) domain that contains the member servers shown in the following table.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>OS</th>
+                    <th>Deduplication role service</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Server1</td>
+                    <td>Windows SRV 2019</td>
+                    <td>Installed</td>
+                </tr>
+                <tr>
+                    <td>Server2</td>
+                    <td>Windows SRV 2022</td>
+                    <td>Not installed</td>
+                </tr>
+                <tr>
+                    <td>Server3</td>
+                    <td>Windows SRV 2022</td>
+                    <td>Installed</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>Server3 contains a data disk named Disk1 that has Data Deduplication installed. Disk1 contains the files shown in the following table.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Size</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>File1.txt</td>
+                    <td>5 KB</td>
+                </tr>
+                <tr>
+                    <td>File2.docx</td>
+                    <td>800 KB</td>
+                </tr>
+                <tr>
+                    <td>File3.sys</td>
+                    <td>2 MB</td>
+                </tr>
+                <tr>
+                    <td>File4.bmp</td>
+                    <td>5 GB</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>Server3 fails.</p>
+        <p>You need to recover the files on Disk1.</p>
+        <p>Which files can you recover if you attach Disk1 to Server1, and which files can you recover if you attach Disk1 to Server2? To answer, select the appropriate options in the answer area.</p>
+
+        <div class="answer-row">
+            <label for="server1">Server1:</label>
+            <select name="server1">
+                <option value="File1.txt only">File1.txt only</option>
+                <option value="File1.txt & File2.docx only">File1.txt & File2.docx only</option>
+                <option value="File1.txt & File3.sys only">File1.txt & File3.sys only</option>
+                <option value="File1.txt, File2.docx, File3.sys, & File4.bmp">File1.txt, File2.docx, File3.sys, & File4.bmp</option>
+                <option value="No files can be recovered">No files can be recovered</option>
+            </select>
+        </div>
+        <div class="answer-row">
+            <label for="server2">Server2:</label>
+            <select name="server2">
+                <option value="File1.txt only">File1.txt only</option>
+                <option value="File1.txt & File2.docx only">File1.txt & File2.docx only</option>
+                <option value="File1.txt & File3.sys only">File1.txt & File3.sys only</option>
+                <option value="File1.txt, File2.docx, File3.sys, & File4.bmp">File1.txt, File2.docx, File3.sys, & File4.bmp</option>
+                <option value="No files can be recovered">No files can be recovered</option>
+            </select>
+        </div>
+
+        <button class="solutionButton" data-answer-name="question10">Solution</button>
+
+        <div id="solutionInfo_question10" class="solutionInfo" style="display: none;">
+            <p><strong>Explanation:</strong></p>
+            <p>Minimum for deduplication is size 32 KB. File1.txt can be recovered on Server2 because it is not deduplicated. Deduplication skips over system state files. The .sys extension is usually used for operating system files. So if they're trying to imply that File3.sys is a system file, that would be ignored by deduplication. Therefore, the answer is Server1: All files (because of the already installed deduplication feature) and Server2: File1.txt and File3.sys.</p>
+            <p>Reference: <a href="https://learn.microsoft.com/en-us/windows-server/storage/data-deduplication/install-enable" target="_blank">Install and Enable Data Deduplication</a></p>
+        </div>
+    </div>
+    <script src="Scripts/answer10.js"></script>
+</body>
+</html>
