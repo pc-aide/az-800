@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 20</title>
+</head>
+<body>
+    <div>
+        <h2>Question 20</h2>
+        <p>You have a server named Server1 that runs Windows Server and contains two drives named C and D. Server1 hosts multiple file shares.</p>
+        <p>You enable Data Deduplication on drive D and select the General purpose file server workload.</p>
+        <p>You need to minimize the space consumed by files that were recently modified or deleted.</p>
+        <p>What should you do?</p>
+
+        <form id="question20">
+            <input type="radio" id="optionA" name="answer" value="A">
+            <label for="optionA">A. Run the Set-DedupVolume cmdlet and configure the Scrubbing job.</label><br>
+            <input type="radio" id="optionB" name="answer" value="B">
+            <label for="optionB">B. Run the Set-DedupSchedule cmdlet and configure a GarbageCollection job.</label><br>
+            <input type="radio" id="optionC" name="answer" value="C">
+            <label for="optionC">C. Run the Set-DedupVolume cmdlet and configure the InputOutputScale settings.</label><br>
+            <input type="radio" id="optionD" name="answer" value="D">
+            <label for="optionD">D. Run the Set-DedupSchedule cmdlet and configure the Optimization job.</label><br>
+        </form>
+
+        <div id="solutionInfo20"></div>
+
+        <button class="solutionButton" data-solution-info-id="solutionInfo20" data-correct-answer="B" data-answer-name="answer20" data-solution-text="Correct answer: B. Run the Set-DedupSchedule cmdlet and configure a GarbageCollection job.<br><br>Explanation: Garbage Collection The Garbage Collection job reclaims disk space by removing unnecessary chunks that are no longer being referenced by files that have been recently modified or deleted.<br><br>Ref: <a href='https://learn.microsoft.com/en-us/windows-server/storage/data-deduplication/understand#job-info' target='_blank'>Data Deduplication Job Info</a>">Solution</button>
+    </div>
+
+    <footer>
+        <div id="finalScore"></div>
+    </footer>
+
+    <script src="Scripts/answer20.js"></script>
+</body>
+</html>
