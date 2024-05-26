@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 18</title>
+</head>
+<body>
+    <div>
+        <h2>Question 18</h2>
+        <p>Your company has a main office and 10 branch offices that are connected by using WAN links. The network contains an Active Directory domain.</p>
+        <p>All users have laptops and regularly travel between offices.</p>
+        <p>You plan to implement BranchCache in the branch offices.</p>
+        <p>In each branch office, you install a server that runs Windows Server and the BranchCache feature. You register the servers in Active Directory.</p>
+        <p>You need to configure the laptops to use the local BranchCache server automatically. The solution must minimize administrative effort.</p>
+        <p>Which two Group Policy settings should you configure? To answer, select the settings in the answer area.</p>
+
+        <form id="question18">
+            <input type="checkbox" id="option1" name="answer" value="Turn on BranchCache">
+            <label for="option1">Turn on BranchCache</label><br>
+            <input type="checkbox" id="option2" name="answer" value="Set BranchCache Distributed Cache mode">
+            <label for="option2">Set BranchCache Distributed Cache mode</label><br>
+            <input type="checkbox" id="option3" name="answer" value="Set BranchCache Hosted Cache mode">
+            <label for="option3">Set BranchCache Hosted Cache mode</label><br>
+            <input type="checkbox" id="option4" name="answer" value="Enable Automatic Hosted Cache Discovery by Service Connection Point (SCP)">
+            <label for="option4">Enable Automatic Hosted Cache Discovery by Service Connection Point (SCP)</label><br>
+            <input type="checkbox" id="option5" name="answer" value="Configure Hosted Cache Servers">
+            <label for="option5">Configure Hosted Cache Servers</label><br>
+            <input type="checkbox" id="option6" name="answer" value="Configure BranchCache for network files">
+            <label for="option6">Configure BranchCache for network files</label><br>
+            <input type="checkbox" id="option7" name="answer" value="Set percentage of disk space used for client computer cache">
+            <label for="option7">Set percentage of disk space used for client computer cache</label><br>
+            <input type="checkbox" id="option8" name="answer" value="Set age for segments in the data cache">
+            <label for="option8">Set age for segments in the data cache</label><br>
+            <input type="checkbox" id="option9" name="answer" value="Configure Client BranchCache Version Support">
+            <label for="option9">Configure Client BranchCache Version Support</label><br>
+        </form>
+
+        <div id="solutionInfo18"></div>
+
+        <button class="solutionButton" data-solution-info-id="solutionInfo18" data-correct-answer="Turn on BranchCache,Enable Automatic Hosted Cache Discovery by Service Connection Point (SCP)" data-answer-name="answer18" data-solution-text="Correct answers: Turn on BranchCache, Enable Automatic Hosted Cache Discovery by Service Connection Point (SCP)<br><br>Explanation: These settings will help client laptops discover and use the local cache server in their respective branch offices efficiently.<br><br>Ref: <a href='https://learn.microsoft.com/en-us/windows-server/networking/branchcache/deploy/use-group-policy-to-configure-domain-member-client-computers' target='_blank'>Configure BranchCache</a><br><a href='https://learn.microsoft.com/en-us/windows-server/networking/media/branchcache/bc_modes.jpg' target='_blank'>BranchCache Modes</a>">Solution</button>
+    </div>
+
+    <footer>
+        <div id="finalScore"></div>
+    </footer>
+
+    <script src="Scripts/answer18.js"></script>
+</body>
+</html>
