@@ -1,0 +1,69 @@
+<div class="question">
+  <h2>Question 1</h2>
+  <p>You have a server named Server1 that runs Windows Server and contains three volumes named C, D, and E.</p>
+  <p>Files are stored on Server1 as shown in the following table.</p>
+
+  <table>
+      <thead>
+          <tr>
+              <th>Name</th>
+              <th>On volume</th>
+              <th>Size</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr>
+              <td>File1</td>
+              <td>C</td>
+              <td>500 KB</td>
+          </tr>
+          <tr>
+              <td>File2</td>
+              <td>D</td>
+              <td>10 KB</td>
+          </tr>
+          <tr>
+              <td>File3</td>
+              <td>D</td>
+              <td>1 MB</td>
+          </tr>
+      </tbody>
+  </table>
+
+  <p>For volume D, Data Deduplication is enabled and set to General purpose file server.</p>
+  <p>You perform the following actions:</p>
+  <ul>
+      <li>Move File1 to volume D.</li>
+      <li>Copy File2 to volume D and name the copy File4.</li>
+      <li>Move File3 to volume E.</li>
+  </ul>
+  <p>For each of the following statements, select Yes if the statement is true. Otherwise, select No.</p>
+
+  <div class="question-row">
+      <label>File1 is deduplicated after the deduplication job runs:</label>
+      <input type="radio" name="file1-deduplication" value="yes"> Yes
+      <input type="radio" name="file1-deduplication" value="no"> No
+  </div>
+
+  <div class="question-row">
+      <label>File3 is deduplicated after the deduplication job runs:</label>
+      <input type="radio" name="file3-deduplication" value="yes"> Yes
+      <input type="radio" name="file3-deduplication" value="no"> No
+  </div>
+
+  <div class="question-row">
+      <label>File4 is deduplicated after the deduplication job runs:</label>
+      <input type="radio" name="file4-deduplication" value="yes"> Yes
+      <input type="radio" name="file4-deduplication" value="no"> No
+  </div>
+
+  <button class="solutionButton" data-answer-name="question1">Answer</button>
+</div>
+
+<div id="solutionInfo_question1" class="solutionInfo" style="display: none;">
+  <p><strong>Explanation:</strong></p>
+  <p>File1 is deduplicated after the deduplication job runs: Yes, because File1 is moved to volume D which has deduplication enabled.</p>
+  <p>File3 is deduplicated after the deduplication job runs: No, because File3 is moved to volume E, where deduplication is not mentioned.</p>
+  <p>File4 is deduplicated after the deduplication job runs: Yes, because File4 is a copy of File2 and will be on volume D with deduplication enabled.</p>
+  <p>Reference: <a href="https://learn.microsoft.com/en-us/previous-versions/windows/desktop/dedup/about-data-deduplication">Microsoft Docs</a></p>
+</div>
