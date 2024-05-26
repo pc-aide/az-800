@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 9</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div>
+        <h2>Question 9</h2>
+        <p>You have a disaggregated cluster deployment. The deployment contains a scale-out file server (SOFS) cluster that runs Windows Server and a compute cluster that has the Hyper-V role enabled.</p>
+        <p>You need to implement Storage Quality of Service (QoS). The solution must ensure that you can control the bandwidth usage between the SOFS cluster and the Hyper-V cluster.</p>
+        <p>Which cmdlet should you run on each cluster? To answer, drag the appropriate cmdlets to the correct clusters. Each cmdlet may be used once, more than once, or not at all. You may need to drag the split bar between panes or scroll to view content.</p>
+
+        <div class="container">
+            <div class="actions">
+                <p>Cmdlets:</p>
+                <div class="draggable" id="item9-1" draggable="true" data-action="New-StorageQosPolicy">New-StorageQosPolicy</div>
+                <div class="draggable" id="item9-2" draggable="true" data-action="Set-VMHardDiskDrive">Set-VMHardDiskDrive</div>
+                <div class="draggable" id="item9-3" draggable="true" data-action="Set-VMSan">Set-VMSan</div>
+            </div>
+            <div class="answers">
+                <p>SOFS:</p>
+                <div class="dropzone" id="dropZone9_1">SOFS Cmdlet</div>
+                <p>Hyper-V:</p>
+                <div class="dropzone" id="dropZone9_2">Hyper-V Cmdlet</div>
+            </div>
+        </div>
+
+        <div id="solutionInfo_question9"></div>
+
+        <button class="solutionButton" data-solution-info-id="solutionInfo_question9" data-correct-answer="item9-1,item9-2" data-answer-name="question9" data-solution-text="Correct answers:<br>SOFS: New-StorageQosPolicy<br>Hyper-V: Set-VMHardDiskDrive<br><br>Explanation:<br>The New-StorageQosPolicy cmdlet is used to create a storage QoS policy on the SOFS cluster, and the Set-VMHardDiskDrive cmdlet is used to apply the QoS policy to the virtual machines on the Hyper-V cluster.<br><br>Ref: <a href='https://learn.microsoft.com/en-us/windows-server/storage/storage-qos/storage-qos-overview#create-and-apply-a-dedicated-policy' target='_blank'>Storage QoS Overview</a>">Solution</button>
+    </div>
+    <script src="Scripts/answer9.js"></script>
+</body>
+</html>
