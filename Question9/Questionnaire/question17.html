@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 17</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div>
+        <h2>Question 17</h2>
+        <p>Contoso, Ltd. is a company that has a main office in Seattle and two branch offices in Los Angeles and Montreal.</p>
+
+        <h3>Existing Environment -</h3>
+        <h4>AD DS Environment -</h4>
+        <p>The network contains an on-premises Active Directory Domain Services (AD DS) forest named contoso.com. The forest contains two domains named contoso.com and canada.contoso.com.</p>
+        <p>The forest contains the domain controllers shown in the following table.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Domain</th>
+                    <th>Active Directory site</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>DC1</td>
+                    <td>contoso.com</td>
+                    <td>Seattle</td>
+                </tr>
+                <tr>
+                    <td>DC2</td>
+                    <td>contoso.com</td>
+                    <td>Los Angeles</td>
+                </tr>
+                <tr>
+                    <td>DC3</td>
+                    <td>canada.contoso.com</td>
+                    <td>Montreal</td>
+                </tr>
+                <tr>
+                    <td>DC4</td>
+                    <td>contoso.com</td>
+                    <td>Montreal</td>
+                </tr>
+                <tr>
+                    <td>DC5</td>
+                    <td>canada.contoso.com</td>
+                    <td>Seattle</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>All the domain controllers are global catalog servers.</p>
+
+        <h4>Server infrastructure -</h4>
+        <p>The network contains the servers shown in the following table.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Organizational Unit (OU)</th>
+                    <th>Server role</th>
+                    <th>Domain</th>
+                    <th>Active Directory site</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Server1</td>
+                    <td>Member Servers</td>
+                    <td>None</td>
+                    <td>canada.contoso.com</td>
+                    <td>Montreal</td>
+                </tr>
+                <tr>
+                    <td>Server2</td>
+                    <td>Member Servers</td>
+                    <td>Hyper-V</td>
+                    <td>canada.contoso.com</td>
+                    <td>Montreal</td>
+                </tr>
+                <tr>
+                    <td>Server3</td>
+                    <td>Member Servers</td>
+                    <td>None</td>
+                    <td>canada.contoso.com</td>
+                    <td>Montreal</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>A server named Server4 runs Windows Server and is in a workgroup. Windows Firewall on Server4 uses the private profile.</p>
+        <p>Server2 hosts three virtual machines named VM1, VM2, and VM3.</p>
+        <p>VM3 is a file server that stores data in the volumes shown in the following table.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>File system</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>C</td>
+                    <td>NTFS</td>
+                </tr>
+                <tr>
+                    <td>D</td>
+                    <td>NTFS</td>
+                </tr>
+                <tr>
+                    <td>E</td>
+                    <td>ReFS</td>
+                </tr>
+                <tr>
+                    <td>F</td>
+                    <td>ExFat</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h4>Group Policies -</h4>
+        <p>The contoso.com domain has the Group Policies Objects (GPOs) shown in the following table.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Minimum password length</th>
+                    <th>Linked to</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>GPO1</td>
+                    <td>14</td>
+                    <td>OU1</td>
+                </tr>
+                <tr>
+                    <td>GPO2</td>
+                    <td>8</td>
+                    <td>Member Servers</td>
+                </tr>
+                <tr>
+                    <td>Default Domain Policy</td>
+                    <td>10</td>
+                    <td>contoso.com</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h4>Existing Identities -</h4>
+        <p>The forest contains the users shown in the following table.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>In OU</th>
+                    <th>Member of</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Contoso\Admin1</td>
+                    <td>Contoso\OU1</td>
+                    <td>Contoso\Enterprise Admins</td>
+                </tr>
+                <tr>
+                    <td>Contoso\Admin2</td>
+                    <td>Contoso\OU1</td>
+                    <td>Contoso\Domain Admins</td>
+                </tr>
+                <tr>
+                    <td>Canada\Admin3</td>
+                    <td>Canada\OU2</td>
+                    <td>Canada\Domain Admins</td>
+                </tr>
+                <tr>
+                    <td>Contoso\User1</td>
+                    <td>Contoso\OU3</td>
+                    <td>Contoso\Domain Users</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>The forest contains the groups shown in the following table.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Domain</th>
+                    <th>Type</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Group1</td>
+                    <td>contoso.com</td>
+                    <td>Universal security group</td>
+                </tr>
+                <tr>
+                    <td>Group2</td>
+                    <td>contoso.com</td>
+                    <td>Global security group</td>
+                </tr>
+                <tr>
+                    <td>Group3</td>
+                    <td>contoso.com</td>
+                    <td>Domain local security group</td>
+                </tr>
+                <tr>
+                    <td>Group4</td>
+                    <td>canada.contoso.com</td>
+                    <td>Global distribution group</td>
+                </tr>
+                <tr>
+                    <td>Group5</td>
+                    <td>canada.contoso.com</td>
+                    <td>Global distribution group</td>
+                </tr>
+                <tr>
+                    <td>Group6</td>
+                    <td>canada.contoso.com</td>
+                    <td>Domain local distribution group</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Current Problems -</h3>
+        <p>When an administrator signs in to the console of VM2 by using Virtual Machine Connection, and then disconnects from the session without signing out, another administrator can connect to the console session as the currently signed in user.</p>
+
+        <h3>Requirements -</h3>
+        <h4>Technical Requirements -</h4>
+        <p>Contoso identifies the following technical requirements:</p>
+        <ul>
+            <li>Change the replication schedule for all site links to 30 minutes.</li>
+            <li>Promote Server1 to a domain controller in canada.contoso.com.</li>
+            <li>Install and authorize Server3 as a DHCP server.</li>
+            <li>Ensure that User1 can manage the membership of all the groups in Contoso\OU3.</li>
+            <li>Ensure that you can manage Server4 from Server1 by using PowerShell remoting.</li>
+            <li>Ensure that you can run virtual machines on VM1.</li>
+            <li>Force users to provide credentials when they connect to VM2.</li>
+            <li>On VM3, ensure that Data Deduplication on all volumes is possible.</li>
+        </ul>
+
+        <h3>Question</h3>
+        <p>You need to meet the technical requirements for Server1. Which users can currently perform the required tasks?</p>
+
+        <div class="container">
+            <div class="actions">
+                <div class="draggable" id="item17-1" draggable="true" data-action="Admin3 only">Admin3 only</div>
+                <div class="draggable" id="item17-2" draggable="true" data-action="Admin1 and Admin3 only">Admin1 and Admin3 only</div>
+                <div class="draggable" id="item17-3" draggable="true" data-action="Admin1 only">Admin1 only</div>
+                <div class="draggable" id="item17-4" draggable="true" data-action="Admin1, Admin2, and Admin3">Admin1, Admin2, and Admin3</div>
+            </div>
+            <div class="answers">
+                <div class="dropzone" id="dropZone17_1">Select the correct answer</div>
+            </div>
+        </div>
+
+        <button class="solutionButton" data-solution-info-id="solutionInfo_question17" data-correct-answer="item17-2" data-answer-name="question17" data-solution-text="Correct answers:<br>1. Admin1 and Admin3 only.<br><br>Explanation:<br>Because Admin1 is in Enterprise Admins group. Which are then part of the Administrators group in all the domains in the forest, including Canada. Therefore both Admin1 and Admin3 perform the task.<br>If they start changing OUs or groups, this question gets too hard to answer. Agree, Admin1 and Admin3. Enterprise admin can promote in a child domain.<br><br>Reference:<br>- <a href='https://social.technet.microsoft.com/Forums/windows/en-US/bf8bb2dc-bedf-488e-8aa3-1c93dd833bba/promoting-a-member-server-of-a-child-domain-in-ad-to-read-only-domain-controller?forum=winserverDS' target='_blank'>Promoting a Member Server of a Child Domain in AD to Read-Only Domain Controller</a>">Solution</button>
+
+        <div id="solutionInfo_question17" class="solutionInfo" style="display: none;"></div>
+    </div>
+    <script src="Scripts/answer17.js"></script>
+</body>
+</html>
