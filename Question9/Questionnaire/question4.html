@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 4</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div>
+        <h2>Question 4</h2>
+        <p>You have an on-premises server named Server1 that runs Windows Server. Server1 contains a file share named Share1.</p>
+        <p>You have an Azure subscription.</p>
+        <p>You perform the following actions:</p>
+        <ul>
+            <li>Deploy Azure File Sync.</li>
+            <li>Install the Azure File Sync agent on Server1.</li>
+            <li>Register Server1 with Azure File Sync.</li>
+        </ul>
+        <p>You need to ensure that you can add Share1 as an Azure File Sync server endpoint.</p>
+        <p>Which three actions should you perform in sequence? To answer, move the appropriate actions from the list of actions to the answer area and arrange them in the correct order.</p>
+
+        <div class="container">
+            <div class="actions">
+                <p>Actions:</p>
+                <div class="draggable" id="item4-1" draggable="true" data-action="Deploy the Azure Connected Machine agent">Deploy the Azure Connected Machine agent</div>
+                <div class="draggable" id="item4-2" draggable="true" data-action="Create an Azure Storage account">Create an Azure Storage account</div>
+                <div class="draggable" id="item4-3" draggable="true" data-action="Deploy an Azure VPN gateway">Deploy an Azure VPN gateway</div>
+                <div class="draggable" id="item4-4" draggable="true" data-action="Create an Azure file share">Create an Azure file share</div>
+                <div class="draggable" id="item4-5" draggable="true" data-action="Create a private endpoint">Create a private endpoint</div>
+                <div class="draggable" id="item4-6" draggable="true" data-action="Create a sync group">Create a sync group</div>
+            </div>
+            <div class="answers">
+                <p>Answer area:</p>
+                <div class="dropzone" id="dropZone4_1">step4.1</div>
+                <div class="dropzone" id="dropZone4_2">step4.2</div>
+                <div class="dropzone" id="dropZone4_3">step4.3</div>
+            </div>
+        </div>
+
+        <div id="solutionInfo_question4"></div>
+
+        <button class="solutionButton" data-solution-info-id="solutionInfo_question4" data-correct-answer="Create an Azure Storage account,Create an Azure file share,Create a sync group" data-answer-name="question4" data-solution-text="Correct answers:<br>1. Create an Azure Storage account<br>2. Create an Azure file share<br>3. Create a sync group<br><br>Explanation:<br>1. Create an Azure Storage account<br>2. Create an Azure file share<br>3. Create a sync group.<br><br>Ref: <a href='https://learn.microsoft.com/en-us/azure/storage/files/storage-files-sync-fileshare' target='_blank'>Azure File Sync</a>">Solution</button>
+    </div>
+    <script src="Scripts/answer4.js"></script>
+</body>
+</html>
