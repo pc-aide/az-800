@@ -254,20 +254,24 @@
         <p>You need to meet the technical requirements for Server1. Which users can currently perform the required tasks?</p>
 
         <div class="container">
-            <div class="actions">
-                <div class="draggable" id="item17-1" draggable="true" data-action="Admin3 only">Admin3 only</div>
-                <div class="draggable" id="item17-2" draggable="true" data-action="Admin1 and Admin3 only">Admin1 and Admin3 only</div>
-                <div class="draggable" id="item17-3" draggable="true" data-action="Admin1 only">Admin1 only</div>
-                <div class="draggable" id="item17-4" draggable="true" data-action="Admin1, Admin2, and Admin3">Admin1, Admin2, and Admin3</div>
-            </div>
-            <div class="answers">
-                <div class="dropzone" id="dropZone17_1">Select the correct answer</div>
+            <div class="question-row">
+                <label><input type="radio" name="question17" value="Admin3 only"> Admin3 only</label><br>
+                <label><input type="radio" name="question17" value="Admin1 and Admin3 only"> Admin1 and Admin3 only</label><br>
+                <label><input type="radio" name="question17" value="Admin1 only"> Admin1 only</label><br>
+                <label><input type="radio" name="question17" value="Admin1, Admin2, and Admin3"> Admin1, Admin2, and Admin3</label>
             </div>
         </div>
 
-        <button class="solutionButton" data-solution-info-id="solutionInfo_question17" data-correct-answer="item17-2" data-answer-name="question17" data-solution-text="Correct answers:<br>1. Admin1 and Admin3 only.<br><br>Explanation:<br>Because Admin1 is in Enterprise Admins group. Which are then part of the Administrators group in all the domains in the forest, including Canada. Therefore both Admin1 and Admin3 perform the task.<br>If they start changing OUs or groups, this question gets too hard to answer. Agree, Admin1 and Admin3. Enterprise admin can promote in a child domain.<br><br>Reference:<br>- <a href='https://social.technet.microsoft.com/Forums/windows/en-US/bf8bb2dc-bedf-488e-8aa3-1c93dd833bba/promoting-a-member-server-of-a-child-domain-in-ad-to-read-only-domain-controller?forum=winserverDS' target='_blank'>Promoting a Member Server of a Child Domain in AD to Read-Only Domain Controller</a>">Solution</button>
+        <button class="solutionButton" data-solution-info-id="solutionInfo_question17" data-correct-answer="Admin1 and Admin3 only" data-answer-name="question17" data-solution-text="Correct answers:<br>1. Admin1 and Admin3 only.<br><br>Explanation:<br>Because Admin1 is in Enterprise Admins group. Which are then part of the Administrators group in all the domains in the forest, including Canada. Therefore both Admin1 and Admin3 perform the task.<br>If they start changing OUs or groups, this question gets too hard to answer. Agree, Admin1 and Admin3. Enterprise admin can promote in a child domain.<br><br>Reference:<br>- <a href='https://social.technet.microsoft.com/Forums/windows/en-US/bf8bb2dc-bedf-488e-8aa3-1c93dd833bba/promoting-a-member-server-of-a-child-domain-in-ad-to-read-only-domain-controller?forum=winserverDS' target='_blank'>Promoting a Member Server of a Child Domain in AD to Read-Only Domain Controller</a>">Solution</button>
 
-        <div id="solutionInfo_question17" class="solutionInfo" style="display: none;"></div>
+        <div id="solutionInfo_question17" class="solutionInfo" style="display: none;">
+            <p><strong>Explanation:</strong></p>
+            <p>Because Admin1 is in Enterprise Admins group. Which are then part of the Administrators group in all the domains in the forest, including Canada. Therefore both Admin1 and Admin3 perform the task.<br>If they start changing OUs or groups, this question gets too hard to answer. Agree, Admin1 and Admin3. Enterprise admin can promote in a child domain.</p>
+            <p><strong>Reference:</strong></p>
+            <ul>
+                <li><a href="https://social.technet.microsoft.com/Forums/windows/en-US/bf8bb2dc-bedf-488e-8aa3-1c93dd833bba/promoting-a-member-server-of-a-child-domain-in-ad-to-read-only-domain-controller?forum=winserverDS" target="_blank">Promoting a Member Server of a Child Domain in AD to Read-Only Domain Controller</a></li>
+            </ul>
+        </div>
     </div>
     <script src="Scripts/answer17.js"></script>
 </body>
