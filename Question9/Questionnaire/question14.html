@@ -166,11 +166,11 @@
         <h4>Security Requirements -</h4>
         <p>Fabrikam identifies the following security requirements:</p>
         <ul>
-            <li>Apply GPO4 to the Azure Virtual Desktop session hosts. Ensure that Azure Virtual Desktop user sessions lock after being idle for 10 minutes. Users must be able to control the lockout time manually from their client computer.</li>
-            <li>Ensure that server administrators request approval before they can establish a Remote Desktop connection to an Azure virtual machine. If the request is approved, the connection must be established within two hours.</li>
-            <li>Prevent user passwords from containing all or part of words that are based on the company name, such as Fab, f@br1kAm or fabr!|.</li>
-            <li>Ensure that all instances of Webapp1 use the same service account. The password of the service account must change automatically every 30 days.</li>
-            <li>Prevent domain controllers from directly contacting hosts on the internet.</li>
+            <li>Apply GPO4 to the Azure Virtual Desktop session hosts. Ensure that Azure Virtual Desktop user sessions lock after being idle for 10 minutes. Users must be able to control the lockout time manually from their client computer.</p>
+            <li>Ensure that server administrators request approval before they can establish a Remote Desktop connection to an Azure virtual machine. If the request is approved, the connection must be established within two hours.</p>
+            <li>Prevent user passwords from containing all or part of words that are based on the company name, such as Fab, f@br1kAm or fabr!|.</p>
+            <li>Ensure that all instances of Webapp1 use the same service account. The password of the service account must change automatically every 30 days.</p>
+            <li>Prevent domain controllers from directly contacting hosts on the internet.</p>
         </ul>
 
         <h4>File Sharing Requirements -</h4>
@@ -204,7 +204,6 @@
             <p>Create a domain controller named dc3.corp.fabrikam.com in Vnet1.</p>
             <p>In a hybrid network, you can configure Azure virtual machines as domain controllers. The domain controllers in Azure communicate with the on-premises domain controllers in the same way that on-premises domain controllers communicate with each other.</p>
             <p>Therefore, an Azure virtual machine is the appropriate choice for deploying DC3.</p>
-            <p><img src="https://raw.githubusercontent.com/pc-aide/az-800/main/Question9/png/q13.png" alt="Deployment of DC3 Screenshot"></p>
             <p>Reference:</p>
             <ul>
                 <li><a href="https://learn.microsoft.com/en-us/azure/active-directory/devices/howto-device-identity-virtual-desktop-infrastructure" target="_blank">Azure Active Directory - Virtual Desktop Infrastructure</a></li>
