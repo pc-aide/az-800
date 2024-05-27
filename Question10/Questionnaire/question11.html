@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 11</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div>
+        <h2>Question 11</h2>
+        <p>Contoso, Ltd. is a company that has a main office in Seattle and two branch offices in Los Angeles and Montreal.</p>
+
+        <h3>Existing Environment -</h3>
+        <h4>AD DS Environment -</h4>
+        <p>The network contains an on premises Active Directory Domain Services (AD DS) forest named contoso.com. The forest contains two domains named contoso.com and canada.contoso.com.</p>
+        <p>The forest contains the domain controllers shown in the following table.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Domain</th>
+                    <th>Active Directory site</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>DC1</td>
+                    <td>contoso.com</td>
+                    <td>Seattle</td>
+                </tr>
+                <tr>
+                    <td>DC2</td>
+                    <td>contoso.com</td>
+                    <td>Los Angeles</td>
+                </tr>
+                <tr>
+                    <td>DC3</td>
+                    <td>canada.contoso.com</td>
+                    <td>Montreal</td>
+                </tr>
+                <tr>
+                    <td>DC4</td>
+                    <td>contoso.com</td>
+                    <td>Montreal</td>
+                </tr>
+                <tr>
+                    <td>DC5</td>
+                    <td>canada.contoso.com</td>
+                    <td>Seattle</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>All the domain controllers are global catalog servers.</p>
+
+        <h4>Server infrastructure -</h4>
+        <p>The network contains the servers shown in the following table.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Organizational Unit (OU)</th>
+                    <th>Server role</th>
+                    <th>Domain</th>
+                    <th>Active Directory site</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Server1</td>
+                    <td>Member Servers</td>
+                    <td>None</td>
+                    <td>canada.contoso.com</td>
+                    <td>Montreal</td>
+                </tr>
+                <tr>
+                    <td>Server2</td>
+                    <td>Member Servers</td>
+                    <td>Hyper-V</td>
+                    <td>canada.contoso.com</td>
+                    <td>Montreal</td>
+                </tr>
+                <tr>
+                    <td>Server3</td>
+                    <td>Member Servers</td>
+                    <td>None</td>
+                    <td>canada.contoso.com</td>
+                    <td>Montreal</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>A server named Server4 runs Windows Server and is in a workgroup. Windows Firewall on Server4 uses the private profile.</p>
+        <p>Server2 hosts three virtual machines named VM1, VM2, and VM3.</p>
+        <p>VM3 is a file server that stores data in the volumes shown in the following table.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>File system</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>C</td>
+                    <td>NTFS</td>
+                </tr>
+                <tr>
+                    <td>D</td>
+                    <td>NTFS</td>
+                </tr>
+                <tr>
+                    <td>E</td>
+                    <td>ReFS</td>
+                </tr>
+                <tr>
+                    <td>F</td>
+                    <td>ExFat</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h4>Group Policies -</h4>
+        <p>The contoso.com domain has the Group Policies Objects (GPOs) shown in the following table.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Minimum password length</th>
+                    <th>Linked to</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>GPO1</td>
+                    <td>14</td>
+                    <td>OU1</td>
+                </tr>
+                <tr>
+                    <td>GPO2</td>
+                    <td>8</td>
+                    <td>Member Servers</td>
+                </tr>
+                <tr>
+                    <td>Default Domain Policy</td>
+                    <td>10</td>
+                    <td>contoso.com</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h4>Existing Identities -</h4>
+        <p>The forest contains the users shown in the following table.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>In OU</th>
+                    <th>Member of</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Contoso\Admin1</td>
+                    <td>Contoso\OU1</td>
+                    <td>Contoso\Enterprise Admins</td>
+                </tr>
+                <tr>
+                    <td>Contoso\Admin2</td>
+                    <td>Contoso\OU1</td>
+                    <td>Contoso\Domain Admins</td>
+                </tr>
+                <tr>
+                    <td>Canada\Admin3</td>
+                    <td>Canada\OU2</td>
+                    <td>Canada\Domain Admins</td>
+                </tr>
+                <tr>
+                    <td>Contoso\User1</td>
+                    <td>Contoso\OU3</td>
+                    <td>Contoso\Domain Users</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>The forest contains the groups shown in the following table.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Domain</th>
+                    <th>Type</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Group1</td>
+                    <td>contoso.com</td>
+                    <td>Universal security group</td>
+                </tr>
+                <tr>
+                    <td>Group2</td>
+                    <td>contoso.com</td>
+                    <td>Global security group</td>
+                </tr>
+                <tr>
+                    <td>Group3</td>
+                    <td>contoso.com</td>
+                    <td>Domain local security group</td>
+                </tr>
+                <tr>
+                    <td>Group4</td>
+                    <td>canada.contoso.com</td>
+                    <td>Global distribution group</td>
+                </tr>
+                <tr>
+                    <td>Group5</td>
+                    <td>canada.contoso.com</td>
+                    <td>Global distribution group</td>
+                </tr>
+                <tr>
+                    <td>Group6</td>
+                    <td>canada.contoso.com</td>
+                    <td>Domain local distribution group</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h4>Current Problems -</h4>
+        <p>When an administrator signs in to the console of VM2 by using Virtual Machine Connection, and then disconnects from the session without signing out, another administrator can connect to the console session as the currently signed in user.</p>
+
+        <h4>Requirements -</h4>
+        <h5>Technical Requirements -</h5>
+        <p>Contoso identifies the following technical requirements:</p>
+        <ul>
+            <li>Change the replication schedule for all site links to 30 minutes.</li>
+            <li>Promote Server1 to a domain controller in canada.contoso.com.</li>
+            <li>Install and authorize Server3 as a DHCP server.</li>
+            <li>Ensure that User1 can manage the membership of all the groups in Contoso\OU3.</li>
+            <li>Ensure that you can manage Server4 from Server1 by using PowerShell remoting.</li>
+            <li>Ensure that you can run virtual machines on VM1.</li>
+            <li>Force users to provide credentials when they connect to VM2.</li>
+            <li>On VM3, ensure that Data Deduplication on all volumes is possible.</li>
+        </ul>
+
+        <h3>Question</h3>
+        <p>You need to meet the technical requirements for VM3. On which volumes can you enable Data Deduplication?</p>
+
+        <div class="question-row">
+            <label><input type="radio" name="question11" value="C and D only"> A. C and D only</label>
+        </div>
+        <div class="question-row">
+            <label><input type="radio" name="question11" value="D only"> B. D only</label>
+        </div>
+        <div class="question-row">
+            <label><input type="radio" name="question11" value="C, D, E, and F"> C. C, D, E, and F</label>
+        </div>
+        <div class="question-row">
+            <label><input type="radio" name="question11" value="D and E only"> D. D and E only</label>
+        </div>
+        <div class="question-row">
+            <label><input type="radio" name="question11" value="D, E, and F only"> E. D, E, and F only</label>
+        </div>
+
+        <button class="solutionButton" data-answer-name="question11">Solution</button>
+
+        <div id="solutionInfo_question11" class="solutionInfo" style="display: none;">
+            <p><strong>Explanation:</strong></p>
+            <p>ReFS - Data Deduplication is supported starting with Windows Server 2019.</p>
+            <p>You can't include C (Boot drive).</p>
+            <p>Data Deduplication is fully supported on Storage Spaces Direct with ReFS or NTFS-formatted volumes.</p>
+            <p>You cannot dedup the OS volume, only data volume. Thats why its called DataDedup!</p>
+            <p><strong>Reference:</strong></p>
+            <ul>
+                <li><a href="https://docs.microsoft.com/en-us/windows-server/storage/data-deduplication/interop" target="_blank">Data Deduplication Interop</a></li>
+                <li><a href="https://learn.microsoft.com/en-us/previous-versions/windows/desktop/dedup/about-data-deduplication" target="_blank">About Data Deduplication</a></li>
+            </ul>
+        </div>
+    </div>
+    <script src="../Scripts/answer11.js"></script>
+</body>
+</html>
