@@ -253,21 +253,25 @@
         <h3>Question</h3>
         <p>You need to meet the technical requirements for VM1. Which cmdlet should you run first? To answer, select the appropriate options in the answer area</p>
 
-        <p>Cmdlet:</p>
-        <select id="cmdletAnswer">
-            <option value="Set-VMBios">Set-VMBios</option>
-            <option value="Set-VMHost">Set-VMHost</option>
-            <option value="Set-VMFirmware">Set-VMFirmware</option>
-            <option value="Set-VMProcessor">Set-VMProcessor</option>
-        </select>
+        <div class="answer-row">
+            <select id="cmdletAnswer">
+                <option value="Set-VMBios">Set-VMBios</option>
+                <option value="Set-VMHost">Set-VMHost</option>
+                <option value="Set-VMFirmware">Set-VMFirmware</option>
+                <option value="Set-VMProcessor">Set-VMProcessor</option>
+            </select>
 
-        <p>VM1:</p>
-        <select id="vm1Answer">
-            <option value="-NewVMName">-NewVMName</option>
-            <option value="-GuestionControlledCacheTypes">-GuestionControlledCacheTypes</option>
-            <option value="-EnableHostResourceProtection">-EnableHostResourceProtection</option>
-            <option value="-ExposeVirtualizationExtension">-ExposeVirtualizationExtension</option>
-        </select>
+            <span>VM1</span>
+
+            <select id="vm1Answer">
+                <option value="-NewVMName">-NewVMName</option>
+                <option value="-GuestionControlledCacheTypes">-GuestionControlledCacheTypes</option>
+                <option value="-EnableHostResourceProtection">-EnableHostResourceProtection</option>
+                <option value="-ExposeVirtualizationExtension">-ExposeVirtualizationExtension</option>
+            </select>
+
+            <span>$true</span>
+        </div>
 
         <button class="solutionButton" data-answer-name="question4">Solution</button>
 
