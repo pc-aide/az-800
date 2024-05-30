@@ -1,64 +1,68 @@
-function attachSolutionButtonListeners_answer18(button) {
-    button.addEventListener('click', function() {
-        const solutionInfoId = this.dataset.solutionInfoId;
-        const correctAnswer = this.dataset.correctAnswer.split(',');
-        checkAnswer18(correctAnswer, solutionInfoId, this.dataset.solutionText);
-    });
-}
+function attachSolutionButtonListeners_question18(button) {
+  button.addEventListener('click', function() {
+      // Réinitialiser les couleurs des réponses
+      document.querySelectorAll('.answer-area').forEach(row => {
+          row.classList.remove('incorrect', 'highlight');
+      });
 
-function checkAnswer18(correctAnswer, solutionInfoId, solutionText) {
-    const selectImage1 = document.querySelector('#listDeroulante18_0');
-    const selectImage2 = document.querySelector('#listDeroulante18_1');
+      // Vérifier la réponse
+      let allCorrect = true;
+      const correctAnswers = {
+          "isolation18.1": "Hyper-V isolation or process isolation",
+          "isolation18.2": "Hyper-V isolation only"
+      };
 
-    if (!selectImage1 || !selectImage2) {
-        console.error("One or both of the dropdowns are not found");
-        return;
-    }
+      const userAnswers = {};
 
-    const userAnswer = [selectImage1.value, selectImage2.value];
-    console.log("User Answer: ", userAnswer); // Debugging message
+      for (let key in correctAnswers) {
+          const selectedAnswer = document.getElementById(key).value;
+          userAnswers[key] = selectedAnswer;
+          if (selectedAnswer === correctAnswers[key]) {
+              document.getElementById(key).parentElement.classList.add('highlight');
+          } else {
+              document.getElementById(key).parentElement.classList.add('incorrect');
+              allCorrect = false;
+          }
+      }
 
-    const isCorrect = (userAnswer[0] === correctAnswer[0] && userAnswer[1] === correctAnswer[1]);
+      // Afficher l'explication
+      const solutionInfo = document.getElementById('solutionInfo_question18');
+      if (solutionInfo) {
+          if (allCorrect) {
+              solutionInfo.classList.add('highlight');
+              solutionInfo.classList.remove('incorrect');
+              score++;
+          } else {
+              solutionInfo.classList.add('incorrect');
+              solutionInfo.classList.remove('highlight');
+              solutionInfo.innerHTML = `<p><strong>Explanation:</strong></p>
+              <p>Process isolation can run only on the same version of Windows.<br>
+              Hyper-V isolation can run the same version or older.</p>
+              <p>Your answers:</p>
+              <p>Image1: ${userAnswers["isolation18.1"]}</p>
+              <p>Image2: ${userAnswers["isolation18.2"]}</p>
+              <p><strong>Reference:</strong></p>
+              <ul>
+                  <li><a href="https://learn.microsoft.com/en-us/virtualization/windowscontainers/deploy-containers/version-compatibility?tabs=windows-server-2022%2Cwindows-11#windows-server-host-os-compatibility" target="_blank">Windows Server Host OS Compatibility</a></li>
+              </ul>`;
+          }
+          solutionInfo.style.display = 'block';
+      }
 
-    const solutionInfo = document.getElementById(solutionInfoId);
-    if (isCorrect) {
-        solutionInfo.innerHTML = solutionText;
-        solutionInfo.classList.remove('incorrect');
-        solutionInfo.classList.add('highlight');
-        score += 1; // Ajouter un point si la réponse est correcte
-    } else {
-        const userAnswerText = `Your answer: Image1: ${getDisplayText(selectImage1.value)}, Image2: ${getDisplayText(selectImage2.value)}.<br><br>Correct answer: Image1: ${getDisplayText(correctAnswer[0])}, Image2: ${getDisplayText(correctAnswer[1])}`;
-        solutionInfo.innerHTML = `${userAnswerText}.<br><br>${solutionText}`;
-        solutionInfo.classList.remove('highlight');
-        solutionInfo.classList.add('incorrect');
-    }
-
-    solutionInfo.style.display = 'block';
-    showFinalScore();
-}
-
-function getDisplayText(value) {
-    const options = {
-        "item18.1": "Hyper-V isolation only",
-        "item18.2": "Process isolation only",
-        "item18.3": "Hyper-V isolation or process isolation",
-        "item18.4": "Hyper-V isolation only",
-        "item18.5": "Process isolation only",
-        "item18.6": "Hyper-V isolation or process isolation"
-    };
-    return options[value] || value;
+      showFinalScore();
+  });
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    document.querySelectorAll('.solutionButton').forEach(button => {
-        attachSolutionButtonListeners_answer18(button);
-    });
+  document.querySelectorAll('.solutionButton').forEach(button => {
+      attachSolutionButtonListeners_question18(button);
+  });
 });
 
 function showFinalScore() {
-    const finalScoreElement = document.getElementById('finalScore');
-    if (finalScoreElement) {
-        const percentage = (score / totalQuestions) * 100;
-        finalScoreElement.textContent = `Final Score: ${score}/${totalQuestions} (${percentage.toFixed(2)}%)`;
-    }
+  const finalScoreElement = document.getElementById('finalScore');
+  if (finalScoreElement) {
+      const percentage = (score / totalQuestions) * 100;
+      finalScoreElement.textContent = `Final Score: ${score}/${totalQuestions} (${percentage.toFixed(2)}%)`;
+  }
 }

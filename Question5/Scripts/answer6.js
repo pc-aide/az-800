@@ -1,42 +1,42 @@
-function attachSolutionButtonListeners_answer6(button) {
-    button.addEventListener('click', function() {
-        const solutionInfoId = this.dataset.solutionInfoId;
-        const correctAnswer = this.dataset.correctAnswer;
-        checkAnswer6(correctAnswer, solutionInfoId, this.dataset.solutionText);
-    });
-}
+function attachSolutionButtonListeners_question6(button) {
+  button.addEventListener('click', function() {
+      // Réinitialiser les couleurs des réponses
+      document.querySelectorAll('.question-row').forEach(row => {
+          row.classList.remove('incorrect', 'highlight');
+      });
 
-function checkAnswer6(correctAnswer, solutionInfoId, solutionText) {
-    const selectedOption = document.querySelector('input[name="answer"]:checked');
-    const userAnswer = selectedOption ? selectedOption.value : null;
+      // Vérifier la réponse
+      let allCorrect = true;
 
-    const solutionInfo = document.getElementById(solutionInfoId);
-    if (userAnswer === correctAnswer) {
-        solutionInfo.innerHTML = solutionText;
-        solutionInfo.classList.remove('incorrect');
-        solutionInfo.classList.add('highlight');
-        score += 1; // Ajouter un point si la réponse est correcte
-    } else {
-        const userAnswerText = userAnswer ? `Your answer: ${userAnswer}` : "No answer selected";
-        solutionInfo.innerHTML = `${userAnswerText}.<br><br>${solutionText}`;
-        solutionInfo.classList.remove('highlight');
-        solutionInfo.classList.add('incorrect');
-    }
+      const selectedAnswer = document.querySelector('input[name="question6"]:checked');
+      if (selectedAnswer && selectedAnswer.value === 'Subnet11 and Subnet12 only') {
+          document.querySelector('input[name="question6"][value="Subnet11 and Subnet12 only"]').parentElement.classList.add('highlight');
+      } else {
+          document.querySelector('input[name="question6"][value="Subnet11 and Subnet12 only"]').parentElement.classList.add('incorrect');
+          allCorrect = false;
+      }
 
-    solutionInfo.style.display = 'block';
-    showFinalScore();
+      // Mise à jour du score
+      if (allCorrect) {
+          score++;
+      }
+      showFinalScore();
+
+      // Afficher l'explication
+      document.getElementById('solutionInfo_question6').style.display = 'block';
+  });
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    document.querySelectorAll('.solutionButton').forEach(button => {
-        attachSolutionButtonListeners_answer6(button);
-    });
+  document.querySelectorAll('.solutionButton').forEach(button => {
+      attachSolutionButtonListeners_question6(button);
+  });
 });
 
 function showFinalScore() {
-    const finalScoreElement = document.getElementById('finalScore');
-    if (finalScoreElement) {
-        const percentage = (score / totalQuestions) * 100;
-        finalScoreElement.textContent = `Final Score: ${score}/${totalQuestions} (${percentage.toFixed(2)}%)`;
-    }
+  const finalScoreElement = document.getElementById('finalScore');
+  if (finalScoreElement) {
+      const percentage = (score / totalQuestions) * 100;
+      finalScoreElement.textContent = `Final Score: ${score}/${totalQuestions} (${percentage.toFixed(2)}%)`;
+  }
 }

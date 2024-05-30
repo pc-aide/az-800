@@ -23,6 +23,7 @@ function enableDragAndDrop() {
           const draggedElement = document.getElementById(data);
           if (draggedElement) {
               e.target.textContent = draggedElement.dataset.action;
+              e.target.dataset.action = draggedElement.dataset.action;
               e.target.dataset.itemId = draggedElement.id;
               dropzone.classList.remove('highlight');
           }
@@ -30,43 +31,58 @@ function enableDragAndDrop() {
   });
 }
 
-function attachSolutionButtonListeners_answer4(button) {
+function attachSolutionButtonListeners_question4(button) {
   button.addEventListener('click', function() {
-      const solutionInfoId = this.dataset.solutionInfoId;
-      const correctAnswer = this.dataset.correctAnswer.split(',');
-      checkAnswer4(correctAnswer, solutionInfoId, this.dataset.solutionText);
-  });
-}
+      // Réinitialiser les couleurs des réponses
+      document.querySelectorAll('.dropzone').forEach(zone => {
+          zone.classList.remove('incorrect', 'highlight');
+      });
 
-function checkAnswer4(correctAnswer, solutionInfoId, solutionText) {
-  let isCorrect = true;
-  const dropzone1 = document.querySelector('#dropzone1').textContent.trim();
-  const dropzone2 = document.querySelector('#dropzone2').textContent.trim();
-  const dropzone3 = document.querySelector('#dropzone3').textContent.trim();
-  const userAnswer = [dropzone1, dropzone2, dropzone3];
+      // Vérifier la réponse
+      let allCorrect = true;
+      const correctAnswers = [
+          "Create & attach a new data disk",
+          "Initialize the disk",
+          "Create a new simple volume"
+      ];
 
-  userAnswer.forEach((answer, index) => {
-      if (answer !== correctAnswer[index]) {
-          isCorrect = false;
+      correctAnswers.forEach((answer, index) => {
+          const dropZone = document.getElementById(`dropZone4.${index + 1}`);
+          if (dropZone && dropZone.textContent.trim() === answer) {
+              dropZone.classList.add('highlight');
+          } else {
+              dropZone.classList.add('incorrect');
+              allCorrect = false;
+          }
+      });
+
+      // Si toutes les réponses sont correctes, mettre le texte en jaune
+      const solutionInfoElement = document.getElementById('solutionInfo_question4');
+      if (solutionInfoElement) {
+          if (allCorrect) {
+              solutionInfoElement.classList.add('highlight');
+          } else {
+              solutionInfoElement.classList.add('incorrect');
+          }
       }
+
+      // Mise à jour du score
+      if (allCorrect) {
+          score++;
+      }
+      showFinalScore();
+
+      // Afficher l'explication
+      solutionInfoElement.style.display = 'block';
   });
-
-  const solutionInfo = document.getElementById(solutionInfoId);
-  if (isCorrect) {
-      solutionInfo.innerHTML = solutionText;
-      solutionInfo.classList.remove('incorrect');
-      solutionInfo.classList.add('highlight');
-      score += 1; // Ajouter un point si la réponse est correcte
-  } else {
-      const userAnswerText = userAnswer.length ? userAnswer.join(', ') : "non défini";
-      solutionInfo.innerHTML = `Your answer: ${userAnswerText}.<br><br>${solutionText}`;
-      solutionInfo.classList.remove('highlight');
-      solutionInfo.classList.add('incorrect');
-  }
-
-  solutionInfo.style.display = 'block';
-  showFinalScore();
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+  enableDragAndDrop();
+  document.querySelectorAll('.solutionButton').forEach(button => {
+      attachSolutionButtonListeners_question4(button);
+  });
+});
 
 function showFinalScore() {
   const finalScoreElement = document.getElementById('finalScore');
@@ -75,11 +91,3 @@ function showFinalScore() {
       finalScoreElement.textContent = `Final Score: ${score}/${totalQuestions} (${percentage.toFixed(2)}%)`;
   }
 }
-
-document.addEventListener('DOMContentLoaded', function() {
-  enableDragAndDrop();
-
-  document.querySelectorAll('.solutionButton').forEach(button => {
-      attachSolutionButtonListeners_answer4(button);
-  });
-});

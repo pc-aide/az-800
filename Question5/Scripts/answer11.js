@@ -1,35 +1,39 @@
-function attachSolutionButtonListeners_answer11(button) {
+function attachSolutionButtonListeners_question11(button) {
   button.addEventListener('click', function() {
-      const solutionInfoId = this.dataset.solutionInfoId;
-      const correctAnswer = this.dataset.correctAnswer;
-      checkAnswer11(correctAnswer, solutionInfoId, this.dataset.solutionText);
+      // Réinitialiser les couleurs des réponses
+      document.querySelectorAll('.question-row').forEach(row => {
+          row.classList.remove('incorrect', 'highlight');
+      });
+
+      // Vérifier la réponse
+      let allCorrect = true;
+      const correctAnswer = "an Azure DevOps organization";
+
+      const selectedAnswer = document.querySelector('input[name="question11"]:checked');
+      if (selectedAnswer && selectedAnswer.value === correctAnswer) {
+          selectedAnswer.parentElement.classList.add('highlight');
+      } else {
+          if (selectedAnswer) {
+              selectedAnswer.parentElement.classList.add('incorrect');
+          }
+          document.querySelector(`input[name="question11"][value="${correctAnswer}"]`).parentElement.classList.add('highlight');
+          allCorrect = false;
+      }
+
+      // Mise à jour du score
+      if (allCorrect) {
+          score++;
+      }
+      showFinalScore();
+
+      // Afficher l'explication
+      document.getElementById('solutionInfo_question11').style.display = 'block';
   });
-}
-
-function checkAnswer11(correctAnswer, solutionInfoId, solutionText) {
-  const selectedOption = document.querySelector('input[name="answer"]:checked');
-  const userAnswer = selectedOption ? selectedOption.value : null;
-
-  const solutionInfo = document.getElementById(solutionInfoId);
-  if (userAnswer === correctAnswer) {
-      solutionInfo.innerHTML = solutionText;
-      solutionInfo.classList.remove('incorrect');
-      solutionInfo.classList.add('highlight');
-      score += 1; // Ajouter un point si la réponse est correcte
-  } else {
-      const userAnswerText = userAnswer ? `Your answer: ${selectedOption.nextElementSibling.textContent.trim()}` : "No answer selected";
-      solutionInfo.innerHTML = `${userAnswerText}.<br><br>${solutionText}`;
-      solutionInfo.classList.remove('highlight');
-      solutionInfo.classList.add('incorrect');
-  }
-
-  solutionInfo.style.display = 'block';
-  showFinalScore();
 }
 
 document.addEventListener('DOMContentLoaded', function() {
   document.querySelectorAll('.solutionButton').forEach(button => {
-      attachSolutionButtonListeners_answer11(button);
+      attachSolutionButtonListeners_question11(button);
   });
 });
 

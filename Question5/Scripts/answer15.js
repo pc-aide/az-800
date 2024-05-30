@@ -1,45 +1,67 @@
-function attachSolutionButtonListeners_answer15(button) {
-    button.addEventListener('click', function() {
-        const solutionInfoId = this.dataset.solutionInfoId;
-        const correctAnswer = this.dataset.correctAnswer.split(',');
-        checkAnswer15(correctAnswer, solutionInfoId, this.dataset.solutionText);
-    });
-}
+function attachSolutionButtonListeners_question15(button) {
+  button.addEventListener('click', function() {
+      // Réinitialiser les couleurs des réponses
+      document.querySelectorAll('.answer-area').forEach(row => {
+          row.classList.remove('incorrect', 'highlight');
+      });
 
-function checkAnswer15(correctAnswer, solutionInfoId, solutionText) {
-    const selectCommand = document.querySelector('#selectCommand').value;
-    const selectSSH = document.querySelector('#selectSSH').value;
-    const userAnswer = [selectCommand, selectSSH];
+      // Vérifier la réponse
+      let allCorrect = true;
+      const correctAnswers = {
+          "command15.1": "hvc.exe",
+          "ssh15.2": "User2@VM2"
+      };
 
-    const isCorrect = (userAnswer[0] === correctAnswer[0] && userAnswer[1] === correctAnswer[1]);
+      const userAnswers = {};
 
-    const solutionInfo = document.getElementById(solutionInfoId);
-    if (isCorrect) {
-        solutionInfo.innerHTML = solutionText;
-        solutionInfo.classList.remove('incorrect');
-        solutionInfo.classList.add('highlight');
-        score += 1; // Ajouter un point si la réponse est correcte
-    } else {
-        const userAnswerText = `Your answer: Command: ${selectCommand}, SSH: ${selectSSH}.<br><br>Correct answer: Command: ${correctAnswer[0]}, SSH: ${correctAnswer[1]}`;
-        solutionInfo.innerHTML = `${userAnswerText}.<br><br>${solutionText}`;
-        solutionInfo.classList.remove('highlight');
-        solutionInfo.classList.add('incorrect');
-    }
+      for (let key in correctAnswers) {
+          const selectedAnswer = document.getElementById(key).value;
+          userAnswers[key] = selectedAnswer;
+          if (selectedAnswer === correctAnswers[key]) {
+              document.getElementById(key).parentElement.classList.add('highlight');
+          } else {
+              document.getElementById(key).parentElement.classList.add('incorrect');
+              allCorrect = false;
+          }
+      }
 
-    solutionInfo.style.display = 'block';
-    showFinalScore();
+      // Afficher l'explication
+      const solutionInfo = document.getElementById('solutionInfo_question15');
+      if (solutionInfo) {
+          if (allCorrect) {
+              solutionInfo.classList.add('highlight');
+              solutionInfo.classList.remove('incorrect');
+              score++;
+          } else {
+              solutionInfo.classList.add('incorrect');
+              solutionInfo.classList.remove('highlight');
+              solutionInfo.innerHTML = `<p><strong>Explanation:</strong></p>
+              <p>By default, only Linux has SSH enabled. VM - OS: RHEL & contains a local user named user2.</p>
+              <p>Your answers:</p>
+              <p>Command: ${userAnswers["command15.1"]}</p>
+              <p>SSH: ${userAnswers["ssh15.2"]}</p>
+              <p><strong>Reference:</strong></p>
+              <ul>
+                  <li><a href="https://www.thomasmaurer.ch/2018/04/hvc-ssh-direct-for-linux-vms-on-hyper-v/" target="_blank">HVC SSH Direct for Linux VMs on Hyper-V</a></li>
+              </ul>`;
+          }
+          solutionInfo.style.display = 'block';
+      }
+
+      showFinalScore();
+  });
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    document.querySelectorAll('.solutionButton').forEach(button => {
-        attachSolutionButtonListeners_answer15(button);
-    });
+  document.querySelectorAll('.solutionButton').forEach(button => {
+      attachSolutionButtonListeners_question15(button);
+  });
 });
 
 function showFinalScore() {
-    const finalScoreElement = document.getElementById('finalScore');
-    if (finalScoreElement) {
-        const percentage = (score / totalQuestions) * 100;
-        finalScoreElement.textContent = `Final Score: ${score}/${totalQuestions} (${percentage.toFixed(2)}%)`;
-    }
+  const finalScoreElement = document.getElementById('finalScore');
+  if (finalScoreElement) {
+      const percentage = (score / totalQuestions) * 100;
+      finalScoreElement.textContent = `Final Score: ${score}/${totalQuestions} (${percentage.toFixed(2)}%)`;
+  }
 }

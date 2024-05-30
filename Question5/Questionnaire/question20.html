@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Question 20</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div>
@@ -14,21 +15,27 @@
         <p>You need to deploy a Site-to-Site (S2S) VPN to connect the on-premises network to VNet1.</p>
         <p>What should you do first?</p>
 
-        <div>
-            <input type="radio" id="item20.1" name="answer20" value="item20.1">
-            <label for="item20.1">A. Deploy Azure Bastion to VNet1.</label><br>
-            <input type="radio" id="item20.2" name="answer20" value="item20.2">
-            <label for="item20.2">B. Deploy Azure Extended Network.</label><br>
-            <input type="radio" id="item20.3" name="answer20" value="item20.3">
-            <label for="item20.3">C. Configure VNet1 to use the IP address range of 10.0.2.0/24.</label><br>
-            <input type="radio" id="item20.4" name="answer20" value="item20.4">
-            <label for="item20.4">D. Configure VNet1 to use an IP address range of 10.0.1.128/25.</label>
+        <div class="question-row">
+            <label><input type="radio" name="question20" value="A"> A. Deploy Azure Bastion to VNet1.</label>
+        </div>
+        <div class="question-row">
+            <label><input type="radio" name="question20" value="B"> B. Deploy Azure Extended Network.</label>
+        </div>
+        <div class="question-row">
+            <label><input type="radio" name="question20" value="C"> C. Configure VNet1 to use the IP address range of 10.0.2.0/24.</label>
+        </div>
+        <div class="question-row">
+            <label><input type="radio" name="question20" value="D"> D. Configure VNet1 to use an IP address range of 10.0.1.128/25.</label>
         </div>
 
-        <div id="solutionInfo20"></div>
+        <button class="solutionButton" data-answer-name="question20">Solution</button>
 
-        <button class="solutionButton" data-solution-info-id="solutionInfo20" data-correct-answer="item20.3" data-answer-name="answer20" data-solution-text="Correct answer: Configure VNet1 to use the IP address range of 10.0.2.0/24.<br><br>Explanation: Since your on-premises network has an IP address range of 10.0.0.0/23 and VNet1 currently has an IP address range of 10.0.1.0/24, which overlaps with the on-premises network, you need to change the IP address range of VNet1 to ensure that it does not overlap with the on-premises network.<br><br>There is an overlap in the ranges 10.0.0.0/23 and 10.0.1.0/24 as the 10.0.1.0/24 range is entirely contained within the 10.0.0.0/23 range.<br><br>Answer is C because of the overlapping of address.<br>On-prem has the range of 10.0.0.0 - 10.0.1.255.<br>Azure VNet1 has the range of 10.0.1.0 - 10.0.1.255.<br>Azure Extended Network can work with overlapping address ranges.">Solution</button>
+        <div id="solutionInfo_question20" class="solutionInfo" style="display: none;">
+            <p><strong>Explanation:</strong></p>
+            <p>There is an overlap in the ranges 10.0.0.0/23 and 10.0.1.0/24 as the 10.0.1.0/24 range is entirely contained within the 10.0.0.0/23 range. Configure VNet1 to use the IP address range of 10.0.2.0/24. This step ensures that there are no overlapping IP ranges between the on-premises network and the Azure virtual network, which is essential for a successful S2S VPN connection.</p>
+            <p><strong>Reference:</strong></p>
+        </div>
     </div>
-    <script src="Scripts/answer20.js"></script>
+    <script src="../Scripts/answer20.js"></script>
 </body>
 </html>

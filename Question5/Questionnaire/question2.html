@@ -4,12 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Question 2</title>
-    <style>
-        .container {
-            display: flex;
-            gap: 10px;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div>
@@ -17,30 +12,45 @@
         <p>You have a Windows Server container host named Server1 and an Azure subscription.
         You deploy an Azure container registry named Registry1 to the subscription.
         On Server1, you create a container image named image1.
-        You need to store image1 in Registry1.
-        Which command should you run on Server1? To answer, select the appropriate options in the answer area.</p>
+        You need to store image1 in Registry1.<br><br>
+        Which command should you run on Server1?<br><br>To answer, select the appropriate options in the answer area.</p>
 
-        <div class="container">
-            <select id="select2Option1">
-                <option value="item2.1">docker</option>
-                <option value="item2.2">azcopy</option>
-                <option value="item2.3">xcopy</option>
-                <option value="item2.4">git</option>
-            </select>
+        <div class="answer-row">
+            <div class="answer-area">
+                <select id="command">
+                    <option value="docker">docker</option>
+                    <option value="azcopy">azcopy</option>
+                    <option value="xcopy">xcopy</option>
+                    <option value="git">git</option>
+                </select>
+            </div>
 
-            <select id="select2Option2">
-                <option value="item2.5">export</option>
-                <option value="item2.6">import</option>
-                <option value="item2.7">pull</option>
-                <option value="item2.8">push</option>
-            </select>
+            <div class="answer-area">
+                <select id="operation">
+                    <option value="export">export</option>
+                    <option value="import">import</option>
+                    <option value="pull">pull</option>
+                    <option value="push">push</option>
+                </select>
+            </div>
 
-            <p>Registry1.Azurecr.io/image1</p>
+            <div class="answer-text" id="registry-text">
+                <span>Registry1.Azurecr.io/image1</span>
+            </div>
         </div>
 
-        <div id="solutionInfo2"></div>
+        <button class="solutionButton" data-answer-name="question2">Solution</button>
 
-        <button class="solutionButton" data-solution-info-id="solutionInfo2" data-correct-answer="item2.1,item2.8" data-answer-name="answer2" data-solution-text="Correct answer: docker (item2.1), push (item2.8).<br><br>Explanation: Push the image to your registry. Now that you've tagged the image with the fully qualified path to your private registry, you can push it to the registry with docker push:<br>docker push myregistry.azurecr.io/samples/nginx<br><br>For reference: <a href='https://docs.microsoft.com/en-us/azure/container-registry/container-registry-get-started-docker-cli?tabs=azure-cli#push-the-image-to-your-registry' target='_blank'>Push the image to your registry</a>.">Solution</button>
+        <div id="solutionInfo_question2" class="solutionInfo" style="display: none;">
+            <p><strong>Explanation:</strong></p>
+            <p>Push the image to your registry. Now that you've tagged the image with the fully qualified path to your private registry, you can push it to the registry with docker push:</p>
+            <p><code>docker push Registry1.Azurecr.io/image1</code></p>
+            <p><strong>Reference:</strong></p>
+            <ul>
+                <li><a href="https://docs.microsoft.com/en-us/azure/container-registry/container-registry-get-started-docker-cli?tabs=azure-cli#push-the-image-to-your-registry" target="_blank">Push the image to your registry</a></li>
+            </ul>
+        </div>
     </div>
+    <script src="../Scripts/answer2.js"></script>
 </body>
 </html>

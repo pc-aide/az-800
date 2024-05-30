@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Question 7</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div>
@@ -14,25 +15,27 @@
 
         <div class="container">
             <div class="actions">
-                <div class="draggable" id="item7.1" draggable="true" data-action="Redeploy VM1">Redeploy VM1</div>
-                <div class="draggable" id="item7.2" draggable="true" data-action="Resize VM1">Resize VM1</div>
-                <div class="draggable" id="item7.3" draggable="true" data-action="Start VM1">Start VM1</div>
-                <div class="draggable" id="item7.4" draggable="true" data-action="Resize the OS disk">Resize the OS disk</div>
-                <div class="draggable" id="item7.5" draggable="true" data-action="Resize Volume C">Resize Volume C</div>
-                <div class="draggable" id="item7.6" draggable="true" data-action="Stop VM1">Stop VM1</div>
+                <p>Actions:</p>
+                <div class="draggable" id="item7-1" draggable="true" data-action="Redeploy VM1">Redeploy VM1</div>
+                <div class="draggable" id="item7-2" draggable="true" data-action="Resize VM1">Resize VM1</div>
+                <div class="draggable" id="item7-3" draggable="true" data-action="Start VM1">Start VM1</div>
+                <div class="draggable" id="item7-4" draggable="true" data-action="Resize the OS disk">Resize the OS disk</div>
+                <div class="draggable" id="item7-5" draggable="true" data-action="Resize volume C">Resize volume C</div>
+                <div class="draggable" id="item7-6" draggable="true" data-action="Stop VM1">Stop VM1</div>
             </div>
             <div class="answers">
-                <div class="dropzone" id="dropzone7.7" data-step="1">Step 1</div>
-                <div class="dropzone" id="dropzone7.8" data-step="2">Step 2</div>
-                <div class="dropzone" id="dropzone7.9" data-step="3">Step 3</div>
-                <div class="dropzone" id="dropzone7.10" data-step="4">Step 4</div>
+                <p>Answer area:</p>
+                <div class="dropzone" id="dropZone7_1">Step 1</div>
+                <div class="dropzone" id="dropZone7_2">Step 2</div>
+                <div class="dropzone" id="dropZone7_3">Step 3</div>
+                <div class="dropzone" id="dropZone7_4">Step 4</div>
             </div>
         </div>
 
-        <div id="solutionInfo7"></div>
+        <button class="solutionButton" data-answer-name="question7" data-solution-info-id="solutionInfo_question7" data-correct-answer="item7-6,item7-4,item7-3,item7-5" data-solution-text="Correct answers:<br>1. Stop VM1<br>2. Resize the OS disk<br>3. Start VM1<br>4. Resize volume C<br><br>Explanation:<br>Expanding without downtime is only supported for data disks.<br><br>Ref: <a href='https://learn.microsoft.com/en-us/azure/virtual-machines/windows/expand-os-disk' target='_blank'>Expand the OS disk</a>">Solution</button>
 
-        <button class="solutionButton" data-solution-info-id="solutionInfo7" data-correct-answer="item7.6,item7.4,item7.3,item7.5" data-answer-name="answer7" data-solution-text="Correct answer: Stop VM1, Resize the OS disk, Start VM1, Resize Volume C.<br><br>Explanation: 1) Stop VM1, 2) Resize the operating system disk, 3) Start VM1, 4) Resize volume C.<br><br>For reference: <a href='https://learn.microsoft.com/en-us/azure/virtual-machines/windows/expand-os-disk' target='_blank'>Expand OS disk</a>.">Solution</button>
+        <div id="solutionInfo_question7" class="solutionInfo" style="display: none;"></div>
     </div>
-    <script src="Scripts/answer7.js"></script>
+    <script src="../Scripts/answer7.js"></script>
 </body>
 </html>

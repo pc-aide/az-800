@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Question 16</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div>
@@ -13,28 +14,36 @@
         <p>You need to ensure that you can connect to VM1 by using PowerShell remoting.</p>
         <p>Which cmdlet should you run, and what should you use to run the cmdlet? To answer, select the appropriate options in the answer area.</p>
 
-        <div>
-            <label for="selectRunFrom">Run from:</label>
-            <select id="selectRunFrom">
-                <option value="item16.1">A PowerShell session on Computer1</option>
-                <option value="item16.2">A PowerShell session on VM1</option>
-                <option value="item16.3">Azure Cloud Shell</option>
-            </select>
+        <div class="answer-row" style="display: flex; align-items: center; gap: 10px;">
+            <div class="answer-area">
+                <select id="runFrom16.1">
+                    <option value="A PowerShell session on Computer1">A PowerShell session on Computer1</option>
+                    <option value="A PowerShell session on VM1">A PowerShell session on VM1</option>
+                    <option value="Azure Cloud Shell">Azure Cloud Shell</option>
+                </select>
+            </div>
+
+            <div class="answer-area">
+                <select id="cmdlet16.2">
+                    <option value="Enable-AzVMPSRemoting">Enable-AzVMPSRemoting</option>
+                    <option value="Enable-PSRemoting -Force">Enable-PSRemoting -Force</option>
+                    <option value="Enable-PSSessionConfiguration">Enable-PSSessionConfiguration</option>
+                </select>
+            </div>
         </div>
 
-        <div>
-            <label for="selectCmdlet">Cmdlet:</label>
-            <select id="selectCmdlet">
-                <option value="item16.4">Enable-AzVMPSRemoting</option>
-                <option value="item16.5">Enable-PSRemoting -Force</option>
-                <option value="item16.6">EnablePSSessionConfiguration</option>
-            </select>
+        <button class="solutionButton" data-answer-name="question16">Solution</button>
+
+        <div id="solutionInfo_question16" class="solutionInfo" style="display: none;">
+            <p><strong>Explanation:</strong></p>
+            <p>There is no command Enable-PSRemoting in Cloud Shell. This command is local to Windows and is needed only on non server Windows. Enable-AzVMPSRemoting is a part of PSCloudShellUtility module. Description says: "Enable all aspects of PowerShell remoting on the given target (NSG Rules, Target WinRM/SSH configs).</p>
+            <p><strong>Reference:</strong></p>
+            <ul>
+                <li><a href="https://techcommunity.microsoft.com/t5/itops-talk-blog/powershell-basics-connecting-to-vms-with-azure-psremoting/ba-p/428403" target="_blank">PowerShell Basics: Connecting to VMs with Azure PSRemoting</a></li>
+                <li><a href="https://learn.microsoft.com/en-us/azure/cloud-shell/overview" target="_blank">Azure Cloud Shell Overview</a></li>
+            </ul>
         </div>
-
-        <div id="solutionInfo16"></div>
-
-        <button class="solutionButton" data-solution-info-id="solutionInfo16" data-correct-answer="item16.3,item16.4" data-answer-name="answer16" data-solution-text="Correct answer: Run from: Azure Cloud Shell, Cmdlet: Enable-AzVMPSRemoting.<br><br>Explanation: There is no command Enable-PSRemoting in Cloud Shell. This command is local to Windows and is needed only on non server Windows.<br><br>For reference: <a href='https://techcommunity.microsoft.com/t5/itops-talk-blog/powershell-basics-connecting-to-vms-with-azure-psremoting/ba-p/428403' target='_blank'>PowerShell Basics: Connecting to VMs with Azure PSRemoting</a>, <a href='https://learn.microsoft.com/en-us/azure/cloud-shell/overview' target='_blank'>Azure Cloud Shell Overview</a>.">Solution</button>
     </div>
-    <script src="Scripts/answer16.js"></script>
+    <script src="../Scripts/answer16.js"></script>
 </body>
 </html>

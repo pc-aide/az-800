@@ -1,36 +1,61 @@
-function attachSolutionButtonListeners_answer3(button) {
+function attachSolutionButtonListeners_question3(button) {
   button.addEventListener('click', function() {
-      const solutionInfoId = this.dataset.solutionInfoId;
-      const correctAnswer = this.dataset.correctAnswer.split(',');
-      checkAnswer3(correctAnswer, solutionInfoId, this.dataset.solutionText);
+      // Réinitialiser les couleurs des réponses
+      document.querySelectorAll('.answer-area').forEach(row => {
+          row.classList.remove('incorrect', 'highlight');
+      });
+
+      // Réinitialiser les couleurs du texte
+      const solutionInfoElement = document.getElementById('solutionInfo_question3');
+      if (solutionInfoElement) {
+          solutionInfoElement.classList.remove('incorrect', 'highlight');
+      }
+
+      // Vérifier la réponse
+      let allCorrect = true;
+      const correctAnswers = {
+          "volume-db": "F",
+          "caching-config": "None"
+      };
+
+      for (let key in correctAnswers) {
+          const selectedAnswer = document.getElementById(key).value;
+          if (selectedAnswer === correctAnswers[key]) {
+              document.getElementById(key).parentElement.classList.add('highlight');
+          } else {
+              document.getElementById(key).parentElement.classList.add('incorrect');
+              allCorrect = false;
+          }
+      }
+
+      // Si toutes les réponses sont correctes, mettre le texte en jaune
+      if (allCorrect) {
+          solutionInfoElement.classList.add('highlight');
+      } else {
+          solutionInfoElement.classList.add('incorrect');
+      }
+
+      // Mise à jour du score
+      if (allCorrect) {
+          score++;
+      }
+      showFinalScore();
+
+      // Afficher l'explication
+      document.getElementById('solutionInfo_question3').style.display = 'block';
   });
 }
 
-function checkAnswer3(correctAnswer, solutionInfoId, solutionText) {
-  let isCorrect = true;
-  const select1 = document.querySelector('#select3Option1').value;
-  const select2 = document.querySelector('#select3Option2').value;
-  const userAnswer = [select1, select2];
-
-  userAnswer.forEach((answer, index) => {
-      if (answer !== correctAnswer[index]) {
-          isCorrect = false;
-      }
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.solutionButton').forEach(button => {
+      attachSolutionButtonListeners_question3(button);
   });
+});
 
-  const solutionInfo = document.getElementById(solutionInfoId);
-  if (isCorrect) {
-      solutionInfo.innerHTML = solutionText;
-      solutionInfo.classList.remove('incorrect');
-      solutionInfo.classList.add('highlight');
-      score += 1; // Ajouter un point si la réponse est correcte
-  } else {
-      const userAnswerText = userAnswer.length ? userAnswer.join(', ') : "non défini";
-      solutionInfo.innerHTML = `Your answer: ${userAnswerText}.<br><br>Correct answer: ${correctAnswer.join(', ')}.<br><br>Explanation: Create a separate virtual data disk for storing the database, logs, and sysvol folder for Active Directory. Do not store these items on the same disk as the operating system.<br><br>By default, data disks that are attached to a VM use write-through caching. However, this form of caching can conflict with the requirements of AD DS. For this reason, set the Host Cache Preference setting on the data disk to None.<br><br>For reference: <a href='https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/identity/adds-extend-domain' target='_blank'>AD DS on Azure</a>, <a href='https://learn.microsoft.com/en-us/windows-server/administration/performance-tuning/role/active-directory-server/hardware-considerations' target='_blank'>Performance Tuning for Active Directory Servers</a>.`;
-      solutionInfo.classList.remove('highlight');
-      solutionInfo.classList.add('incorrect');
+function showFinalScore() {
+  const finalScoreElement = document.getElementById('finalScore');
+  if (finalScoreElement) {
+      const percentage = (score / totalQuestions) * 100;
+      finalScoreElement.textContent = `Final Score: ${score}/${totalQuestions} (${percentage.toFixed(2)}%)`;
   }
-
-  solutionInfo.style.display = 'block';
-  showFinalScore();
 }

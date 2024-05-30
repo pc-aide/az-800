@@ -1,38 +1,41 @@
-function attachSolutionButtonListeners_answer10(button) {
+function attachSolutionButtonListeners_question10(button) {
   button.addEventListener('click', function() {
-      const solutionInfoId = this.dataset.solutionInfoId;
-      const correctAnswer = this.dataset.correctAnswer.split(',');
-      checkAnswer10(correctAnswer, solutionInfoId, this.dataset.solutionText);
+      // Réinitialiser les couleurs des réponses
+      document.querySelectorAll('.answer-area').forEach(row => {
+          row.classList.remove('incorrect', 'highlight');
+      });
+
+      // Vérifier la réponse
+      let allCorrect = true;
+      const correctAnswers = {
+          "production-checkpoints": "VM1, VM2, & VM3",
+          "hibernation": "Only VM1 & VM2"
+      };
+
+      for (let key in correctAnswers) {
+          const selectedAnswer = document.getElementById(key).value;
+          if (selectedAnswer === correctAnswers[key]) {
+              document.getElementById(key).parentElement.classList.add('highlight');
+          } else {
+              document.getElementById(key).parentElement.classList.add('incorrect');
+              allCorrect = false;
+          }
+      }
+
+      // Mise à jour du score
+      if (allCorrect) {
+          score++;
+      }
+      showFinalScore();
+
+      // Afficher l'explication
+      document.getElementById('solutionInfo_question10').style.display = 'block';
   });
-}
-
-function checkAnswer10(correctAnswer, solutionInfoId, solutionText) {
-  const select1 = document.querySelector('#select10-1').value;
-  const select2 = document.querySelector('#select10-2').value;
-  const userAnswer = [select1, select2];
-
-  const isCorrect = (userAnswer[0] === correctAnswer[0] && userAnswer[1] === correctAnswer[1]);
-
-  const solutionInfo = document.getElementById(solutionInfoId);
-  if (isCorrect) {
-      solutionInfo.innerHTML = solutionText;
-      solutionInfo.classList.remove('incorrect');
-      solutionInfo.classList.add('highlight');
-      score += 1; // Ajouter un point si la réponse est correcte
-  } else {
-      const userAnswerText = `Your answer: can have production checkpoints: ${select1}, can be hibernated: ${select2}.<br><br>Correct answer: can have production checkpoints: ${correctAnswer[0]}, can be hibernated: ${correctAnswer[1]}`;
-      solutionInfo.innerHTML = `${userAnswerText}.<br><br>${solutionText}`;
-      solutionInfo.classList.remove('highlight');
-      solutionInfo.classList.add('incorrect');
-  }
-
-  solutionInfo.style.display = 'block';
-  showFinalScore();
 }
 
 document.addEventListener('DOMContentLoaded', function() {
   document.querySelectorAll('.solutionButton').forEach(button => {
-      attachSolutionButtonListeners_answer10(button);
+      attachSolutionButtonListeners_question10(button);
   });
 });
 

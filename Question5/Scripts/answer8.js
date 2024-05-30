@@ -1,35 +1,35 @@
-function attachSolutionButtonListeners_answer8(button) {
+function attachSolutionButtonListeners_question8(button) {
   button.addEventListener('click', function() {
-      const solutionInfoId = this.dataset.solutionInfoId;
-      const correctAnswer = this.dataset.correctAnswer;
-      checkAnswer8(correctAnswer, solutionInfoId, this.dataset.solutionText);
+      // Réinitialiser les couleurs des réponses
+      document.querySelectorAll('.question-row').forEach(row => {
+          row.classList.remove('incorrect', 'highlight');
+      });
+
+      // Vérifier la réponse
+      let allCorrect = true;
+
+      const selectedAnswer = document.querySelector('input[name="question8"]:checked');
+      if (selectedAnswer && selectedAnswer.value === 'Disk2 only') {
+          document.querySelector('input[name="question8"][value="Disk2 only"]').parentElement.classList.add('highlight');
+      } else {
+          document.querySelector('input[name="question8"][value="Disk2 only"]').parentElement.classList.add('incorrect');
+          allCorrect = false;
+      }
+
+      // Mise à jour du score
+      if (allCorrect) {
+          score++;
+      }
+      showFinalScore();
+
+      // Afficher l'explication
+      document.getElementById('solutionInfo_question8').style.display = 'block';
   });
-}
-
-function checkAnswer8(correctAnswer, solutionInfoId, solutionText) {
-  const selectedOption = document.querySelector('input[name="answer"]:checked');
-  const userAnswer = selectedOption ? selectedOption.value : null;
-
-  const solutionInfo = document.getElementById(solutionInfoId);
-  if (userAnswer === correctAnswer) {
-      solutionInfo.innerHTML = solutionText;
-      solutionInfo.classList.remove('incorrect');
-      solutionInfo.classList.add('highlight');
-      score += 1; // Ajouter un point si la réponse est correcte
-  } else {
-      const userAnswerText = userAnswer ? `Your answer: ${userAnswer}` : "No answer selected";
-      solutionInfo.innerHTML = `${userAnswerText}.<br><br>${solutionText}`;
-      solutionInfo.classList.remove('highlight');
-      solutionInfo.classList.add('incorrect');
-  }
-
-  solutionInfo.style.display = 'block';
-  showFinalScore();
 }
 
 document.addEventListener('DOMContentLoaded', function() {
   document.querySelectorAll('.solutionButton').forEach(button => {
-      attachSolutionButtonListeners_answer8(button);
+      attachSolutionButtonListeners_question8(button);
   });
 });
 

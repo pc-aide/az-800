@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Question 17</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div>
@@ -12,29 +13,39 @@
         <p>You need to install the Hyper-V server role on VM1.</p>
         <p>Which PowerShell command should you run first? To answer, select the appropriate options in the answer area.</p>
 
-        <div>
-            <select id="listDeroulante17_0">
-                <option value="item17.1">Set-VM VM1</option>
-                <option value="item17.2">Set-VMFirmware VM1</option>
-                <option value="item17.3">Set-VMHost Server1</option>
-                <option value="item17.4">Set-VMProcessor VM1</option>
-                <option value="item17.5">Set-VMSecurity VM1</option>
-            </select>
+        <div class="answer-row" style="display: flex; align-items: center; gap: 10px;">
+            <div class="answer-area">
+                <select id="command17.1">
+                    <option value="Set-VM VM1">Set-VM VM1</option>
+                    <option value="Set-VMFirmware VM1">Set-VMFirmware VM1</option>
+                    <option value="Set-VMHost Server1">Set-VMHost Server1</option>
+                    <option value="Set-VMProcessor VM1">Set-VMProcessor VM1</option>
+                    <option value="Set-VMSecurity VM1">Set-VMSecurity VM1</option>
+                </select>
+            </div>
 
-            <select id="listDeroulante17_1">
-                <option value="item17.6">-EnableEnhancedSessionMode</option>
-                <option value="item17.7">-EnableHostResourceProtection</option>
-                <option value="item17.8">-ExposeVirtualizationExtensions</option>
-                <option value="item17.9">-compatibilityForOlderOperatingSystemEnabled</option>
-            </select>
-
-            <span>$true</span>
+            <div class="answer-area" style="display: flex; align-items: center; gap: 10px;">
+                <select id="option17.2">
+                    <option value="-EnableEnhancedSessionMode">-EnableEnhancedSessionMode</option>
+                    <option value="-EnableHostResourceProtection">-EnableHostResourceProtection</option>
+                    <option value="-ExposeVirtualizationExtensions">-ExposeVirtualizationExtensions</option>
+                    <option value="-CompatibilityForOlderOperatingSystemsEnabled">-CompatibilityForOlderOperatingSystemsEnabled</option>
+                </select>
+                <span>$true</span>
+            </div>
         </div>
 
-        <div id="solutionInfo17"></div>
+        <button class="solutionButton" data-answer-name="question17">Solution</button>
 
-        <button class="solutionButton" data-solution-info-id="solutionInfo17" data-correct-answer="item17.4,item17.8" data-answer-name="answer17" data-solution-text="Correct answer: Set-VMProcessor VM1 -ExposeVirtualizationExtensions $true.<br><br>Explanation: Set-VMProcessor -VMName <VMName> -ExposeVirtualizationExtensions $true.<br><br>For reference: <a href='https://learn.microsoft.com/en-us/virtualization/hyper-v-on-windows/user-guide/enable-nested-virtualization' target='_blank'>Enable Nested Virtualization</a>.">Solution</button>
+        <div id="solutionInfo_question17" class="solutionInfo" style="display: none;">
+            <p><strong>Explanation:</strong></p>
+            <p>Set-VMProcessor -VMName &lt;VMName&gt; -ExposeVirtualizationExtensions $true</p>
+            <p><strong>Reference:</strong></p>
+            <ul>
+                <li><a href="https://learn.microsoft.com/en-us/virtualization/hyper-v-on-windows/user-guide/enable-nested-virtualization" target="_blank">Enable Nested Virtualization</a></li>
+            </ul>
+        </div>
     </div>
-    <script src="Scripts/answer17.js"></script>
+    <script src="../Scripts/answer17.js"></script>
 </body>
 </html>

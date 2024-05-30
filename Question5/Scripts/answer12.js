@@ -1,38 +1,41 @@
-function attachSolutionButtonListeners_answer12(button) {
+function attachSolutionButtonListeners_question12(button) {
   button.addEventListener('click', function() {
-      const solutionInfoId = this.dataset.solutionInfoId;
-      const correctAnswer = this.dataset.correctAnswer.split(',');
-      checkAnswer12(correctAnswer, solutionInfoId, this.dataset.solutionText);
+      // Réinitialiser les couleurs des réponses
+      document.querySelectorAll('.answer-area').forEach(row => {
+          row.classList.remove('incorrect', 'highlight');
+      });
+
+      // Vérifier la réponse
+      let allCorrect = true;
+      const correctAnswers = {
+          "processA": "Container1 & Server1 only",
+          "processC": "Container3 only"
+      };
+
+      for (let key in correctAnswers) {
+          const selectedAnswer = document.getElementById(key).value;
+          if (selectedAnswer === correctAnswers[key]) {
+              document.getElementById(key).parentElement.classList.add('highlight');
+          } else {
+              document.getElementById(key).parentElement.classList.add('incorrect');
+              allCorrect = false;
+          }
+      }
+
+      // Mise à jour du score
+      if (allCorrect) {
+          score++;
+      }
+      showFinalScore();
+
+      // Afficher l'explication
+      document.getElementById('solutionInfo_question12').style.display = 'block';
   });
-}
-
-function checkAnswer12(correctAnswer, solutionInfoId, solutionText) {
-  const selectProcessA = document.querySelector('#selectProcessA').value;
-  const selectProcessC = document.querySelector('#selectProcessC').value;
-  const userAnswer = [selectProcessA, selectProcessC];
-
-  const isCorrect = (userAnswer[0] === correctAnswer[0] && userAnswer[1] === correctAnswer[1]);
-
-  const solutionInfo = document.getElementById(solutionInfoId);
-  if (isCorrect) {
-      solutionInfo.innerHTML = solutionText;
-      solutionInfo.classList.remove('incorrect');
-      solutionInfo.classList.add('highlight');
-      score += 1; // Ajouter un point si la réponse est correcte
-  } else {
-      const userAnswerText = `Your answer: ProcessA: ${selectProcessA}, ProcessC: ${selectProcessC}.<br><br>Correct answer: ProcessA: ${correctAnswer[0]}, ProcessC: ${correctAnswer[1]}`;
-      solutionInfo.innerHTML = `${userAnswerText}.<br><br>${solutionText}`;
-      solutionInfo.classList.remove('highlight');
-      solutionInfo.classList.add('incorrect');
-  }
-
-  solutionInfo.style.display = 'block';
-  showFinalScore();
 }
 
 document.addEventListener('DOMContentLoaded', function() {
   document.querySelectorAll('.solutionButton').forEach(button => {
-      attachSolutionButtonListeners_answer12(button);
+      attachSolutionButtonListeners_question12(button);
   });
 });
 

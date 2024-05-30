@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Question 12</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div>
@@ -12,67 +13,83 @@
         <p>You start the containers on Server1 as shown in the following table.</p>
 
         <table>
-            <tr>
-                <th>Name</th>
-                <th>Image</th>
-                <th>Uses Hyper-V isolation</th>
-                <th>Process running on container</th>
-            </tr>
-            <tr>
-                <td>Container1</td>
-                <td>microsoft/iis</td>
-                <td>No</td>
-                <td>ProcessA</td>
-            </tr>
-            <tr>
-                <td>Container2</td>
-                <td>microsoft/iis</td>
-                <td>No</td>
-                <td>ProcessB</td>
-            </tr>
-            <tr>
-                <td>Container3</td>
-                <td>microsoft/iis</td>
-                <td>Yes</td>
-                <td>ProcessC</td>
-            </tr>
-            <tr>
-                <td>Container4</td>
-                <td>microsoft/iis</td>
-                <td>Yes</td>
-                <td>ProcessD</td>
-            </tr>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Image</th>
+                    <th>Uses Hyper-V isolation</th>
+                    <th>Process running on container</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Container1</td>
+                    <td>microsoft/iis</td>
+                    <td>No</td>
+                    <td>ProcessA</td>
+                </tr>
+                <tr>
+                    <td>Container2</td>
+                    <td>microsoft/iis</td>
+                    <td>No</td>
+                    <td>ProcessB</td>
+                </tr>
+                <tr>
+                    <td>Container3</td>
+                    <td>microsoft/iis</td>
+                    <td>Yes</td>
+                    <td>ProcessC</td>
+                </tr>
+                <tr>
+                    <td>Container4</td>
+                    <td>microsoft/iis</td>
+                    <td>Yes</td>
+                    <td>ProcessD</td>
+                </tr>
+            </tbody>
         </table>
 
         <p>You need to validate the status of ProcessA and ProcessC.</p>
         <p>Where can you verify that ProcessA and ProcessC are in a running state? To answer, select the appropriate options in the answer area.</p>
 
-        <div>
-            <label for="selectProcessA">ProcessA:</label>
-            <select id="selectProcessA">
-                <option value="item12.1">Container1 only</option>
-                <option value="item12.2">Container1 & Container2 only</option>
-                <option value="item12.3">Container1 & Server1 only</option>
-                <option value="item12.4">Container1, Container2, & Server1 only</option>
-                <option value="item12.5">All the containers & Server1</option>
-            </select>
+        <div class="answer-row" style="display: flex; align-items: center; gap: 10px;">
+            <div class="answer-area">
+                <label for="processA">ProcessA:</label>
+                <select id="processA">
+                    <option value="Container1 only">Container1 only</option>
+                    <option value="Container1 & Container2 only">Container1 & Container2 only</option>
+                    <option value="Container1 & Server1 only">Container1 & Server1 only</option>
+                    <option value="Container1, Container2, & Server1 only">Container1, Container2, & Server1 only</option>
+                    <option value="All the containers & Server1">All the containers & Server1</option>
+                </select>
+            </div>
         </div>
 
-        <div>
-            <label for="selectProcessC">ProcessC:</label>
-            <select id="selectProcessC">
-                <option value="item12.6">Container3 only</option>
-                <option value="item12.7">Container3 & Container4 only</option>
-                <option value="item12.8">Container3 & Server1 only</option>
-                <option value="item12.9">Container3, Container4, & Server1 only</option>
-                <option value="item12.10">All the containers & Server1</option>
-            </select>
+        <div class="answer-row" style="display: flex; align-items: center; gap: 10px;">
+            <div class="answer-area">
+                <label for="processC">ProcessC:</label>
+                <select id="processC">
+                    <option value="Container3 only">Container3 only</option>
+                    <option value="Container3 & Container4 only">Container3 & Container4 only</option>
+                    <option value="Container3 & Server1 only">Container3 & Server1 only</option>
+                    <option value="Container3, Container4, & Server1 only">Container3, Container4, & Server1 only</option>
+                    <option value="All the containers & Server1">All the containers & Server1</option>
+                </select>
+            </div>
         </div>
 
-        <div id="solutionInfo12"></div>
+        <button class="solutionButton" data-answer-name="question12">Solution</button>
 
-        <button class="solutionButton" data-solution-info-id="solutionInfo12" data-correct-answer="item12.3,item12.6" data-answer-name="answer12" data-solution-text="Correct answer: ProcessA: item12.3, ProcessC: item12.6.<br><br>Explanation: ProcessA is in a container that has process isolation. So, both Container1 and the host (Server1) can see the process. Per this article 'When you have a Windows container running in process isolation mode, all processes are isolated between the containers so they have no influence on each other. However, the security boundary between container host and containers is simply the process isolation itself, which means the container host has visibility into the processes running inside the container.' ProcessC is in a hyper-V isolation container in contrast, so only Container3 can see the process. So, Container1 and Server1 only for the first answer. Container3 only for the second one.<br><br>For reference: <a href='https://argonsys.com/microsoft-cloud/library/how-to-identify-processes-running-inside-a-windows-container-from-the-container-host/' target='_blank'>How to identify processes running inside a Windows container from the container host</a>.">Solution</button>
+        <div id="solutionInfo_question12" class="solutionInfo" style="display: none;">
+            <p><strong>Explanation:</strong></p>
+            <p>ProcessA is in a container that has process isolation. So, both Container1 and the host (Server1) can see the process.</p>
+            <p>ProcessC is in a Hyper-V isolation container. Only Container3 can see the process.</p>
+            <p><strong>Reference:</strong></p>
+            <ul>
+                <li><a href="https://argonsys.com/microsoft-cloud/library/how-to-identify-processes-running-inside-a-windows-container-from-the-container-host/" target="_blank">Identify processes running inside a Windows container from the container host</a></li>
+            </ul>
+        </div>
     </div>
-    <script src="Scripts/answer12.js"></script>
+    <script src="../Scripts/answer12.js"></script>
 </body>
 </html>
