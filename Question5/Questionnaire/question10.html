@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 10</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div>
+        <h2>Question 10</h2>
+        <p>You have a server named Server1 that has the Hyper-V server role installed. Server1 hosts the virtual machines shown in the following exhibit:</p>
+        <img src="https://raw.githubusercontent.com/pc-aide/az-800/main/Question5/img/Q10.png" alt="Server1 Virtual Machines">
+        <p>Use the drop-down menus to select the answer choice that completes each statement based on the information presented in the graphic.</p>
+
+        <div class="answer-row" style="display: flex; align-items: center; gap: 10px;">
+            <div class="answer-area">
+                <label for="production-checkpoints">can have production checkpoints:</label>
+                <select id="production-checkpoints">
+                    <option value="Only VM1">Only VM1</option>
+                    <option value="Only VM1 & VM2">Only VM1 & VM2</option>
+                    <option value="VM1, VM2, & VM3">VM1, VM2, & VM3</option>
+                </select>
+            </div>
+
+            <div class="answer-area">
+                <label for="hibernation">can be hibernated:</label>
+                <select id="hibernation">
+                    <option value="Only VM1">Only VM1</option>
+                    <option value="Only VM1 & VM2">Only VM1 & VM2</option>
+                    <option value="VM1, VM2, & VM3">VM1, VM2, & VM3</option>
+                </select>
+            </div>
+        </div>
+
+        <button class="solutionButton" data-answer-name="question10">Solution</button>
+
+        <div id="solutionInfo_question10" class="solutionInfo" style="display: none;">
+            <p><strong>Explanation:</strong></p>
+            <p>Production checkpoints are available from server version 2016 (config version 8.0) onwards. Hibernate is available from server version 2019 (config version 9).</p>
+            <p><strong>Reference:</strong></p>
+            <ul>
+                <li><a href="https://learn.microsoft.com/en-us/windows-server/virtualization/hyper-v/deploy/upgrade-virtual-machine-version-in-hyper-v-on-windows-or-windows-server" target="_blank">Upgrade Virtual Machine Version in Hyper-V</a></li>
+            </ul>
+        </div>
+    </div>
+    <script src="../Scripts/answer10.js"></script>
+</body>
+</html>

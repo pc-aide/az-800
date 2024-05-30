@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 4</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div>
+        <h2>Question 4</h2>
+        <p>You create an Azure virtual machine named Server1 that runs Windows Server. Server1 has the disk configurations shown in the following exhibit:</p>
+        <img src="https://raw.githubusercontent.com/pc-aide/az-800/main/Question5/img/q4.jpg" alt="Server1 Disk Configuration">
+        <p>You need to create a new 100-GB volume on Server1. Which three actions should you perform in sequence? To answer, move the appropriate actions from the list of actions to the answer area and arrange them in the correct order.</p>
+
+        <div class="container">
+            <div class="actions">
+                <p>Actions:</p>
+                <div class="draggable" id="item4-1" draggable="true" data-action="Create & attach a new data disk">Create & attach a new data disk</div>
+                <div class="draggable" id="item4-2" draggable="true" data-action="Initialize the disk">Initialize the disk</div>
+                <div class="draggable" id="item4-3" draggable="true" data-action="Create a new simple volume">Create a new simple volume</div>
+                <div class="draggable" id="item4-4" draggable="true" data-action="Shut down Server1">Shut down Server1</div>
+                <div class="draggable" id="item4-5" draggable="true" data-action="Start Server1">Start Server1</div>
+                <div class="draggable" id="item4-6" draggable="true" data-action="Create a new spanned volume">Create a new spanned volume</div>
+            </div>
+            <div class="answers">
+                <p>Answer area:</p>
+                <div class="dropzone" id="dropZone4.1">Step 1</div>
+                <div class="dropzone" id="dropZone4.2">Step 2</div>
+                <div class="dropzone" id="dropZone4.3">Step 3</div>
+            </div>
+        </div>
+
+        <button class="solutionButton" data-answer-name="question4">Solution</button>
+
+        <div id="solutionInfo_question4" class="solutionInfo" style="display: none;">
+            <p><strong>Explanation:</strong></p>
+            <p>Step 1: Create and attach a new data disk<br>
+            Step 2: Initialize the disk<br>
+            Step 3: Create a new simple volume<br>
+            You do not need to shut down/start a VM to add a new disk, and the question has not specified any special requirements to the volume so it uses the default simple volume.</p>
+            <p><strong>Reference:</strong></p>
+            <ul>
+                <li><a href="https://docs.microsoft.com/en-us/azure/virtual-machines/windows/attach-managed-disk-portal" target="_blank">Attach a managed disk to a Windows VM</a></li>
+            </ul>
+        </div>
+    </div>
+    <script src="../Scripts/answer4.js"></script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 19</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div>
+        <h2>Question 19</h2>
+        <p>You have an Azure virtual machine named VM1 that contains the drives shown in the following table.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Letter</th>
+                    <th>Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>C</td>
+                    <td>OS</td>
+                </tr>
+                <tr>
+                    <td>D</td>
+                    <td>Temporary Storage</td>
+                </tr>
+                <tr>
+                    <td>E</td>
+                    <td>Data Disk</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>On VM1, you plan to install an app named App1. The data for App1 must be stored on a persistent data disk assigned to drive D.</p>
+        <p>You need to assign the data disk to drive D.</p>
+        <p>What should you do on VM1 first?</p>
+
+        <div class="question-row">
+            <label><input type="radio" name="question19" value="A"> A. Change the drive letter of the Temporary Storage drive to F.</label>
+        </div>
+        <div class="question-row">
+            <label><input type="radio" name="question19" value="B"> B. Move pagefile.sys to the Operating System drive.</label>
+        </div>
+        <div class="question-row">
+            <label><input type="radio" name="question19" value="C"> C. Stop (deallocate) VM1.</label>
+        </div>
+        <div class="question-row">
+            <label><input type="radio" name="question19" value="D"> D. Expand the Temporary Storage drive.</label>
+        </div>
+
+        <button class="solutionButton" data-answer-name="question19">Solution</button>
+
+        <div id="solutionInfo_question19" class="solutionInfo" style="display: none;">
+            <p><strong>Explanation:</strong></p>
+            <p>First you need to move pagefile.sys and then change the drive letter.</p>
+            <p><strong>Reference:</strong></p>
+            <ul>
+                <li><a href="https://learn.microsoft.com/en-us/azure/virtual-machines/windows/change-drive-letter#:~:text=you%20need%20to%20follow%20these%20steps%20to%20temporarily%20move%20the%20pagefile.sys%2C%20attach%20a%20new%20data%20disk%20and%20assign%20it%20the%20letter%20D%20and" target="_blank">Change Drive Letter in Azure VMs</a></li>
+                <li><a href="https://learn.microsoft.com/en-us/azure/virtual-machines/windows/change-drive-letter" target="_blank">Change Drive Letter</a></li>
+            </ul>
+        </div>
+    </div>
+    <script src="../Scripts/answer19.js"></script>
+</body>
+</html>

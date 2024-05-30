@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 18</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div>
+        <h2>Question 18</h2>
+        <p>You have a Windows Server 2022 container host named Host1 and a container registry that contains the container images shown in the following table.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Container base image OS version</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Image1</td>
+                    <td>Windows Server 2022</td>
+                </tr>
+                <tr>
+                    <td>Image2</td>
+                    <td>Windows Server 2019</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>You need to run the containers on Host1.</p>
+        <p>Which isolation mode can you use for each image? To answer, select the appropriate options in the answer area.</p>
+
+        <div class="answer-row" style="display: flex; align-items: center; gap: 10px;">
+            <div class="answer-area">
+                <label for="image1">Image1:</label>
+                <select id="isolation18.1">
+                    <option value="Hyper-V isolation only">Hyper-V isolation only</option>
+                    <option value="Process isolation only">Process isolation only</option>
+                    <option value="Hyper-V isolation or process isolation">Hyper-V isolation or process isolation</option>
+                </select>
+            </div>
+
+            <div class="answer-area">
+                <label for="image2">Image2:</label>
+                <select id="isolation18.2">
+                    <option value="Hyper-V isolation only">Hyper-V isolation only</option>
+                    <option value="Process isolation only">Process isolation only</option>
+                    <option value="Hyper-V isolation or process isolation">Hyper-V isolation or process isolation</option>
+                </select>
+            </div>
+        </div>
+
+        <button class="solutionButton" data-answer-name="question18">Solution</button>
+
+        <div id="solutionInfo_question18" class="solutionInfo" style="display: none;">
+            <p><strong>Explanation:</strong></p>
+            <p>Process isolation can run only on the same version of Windows.<br>
+            Hyper-V isolation can run the same version or older.</p>
+            <p><strong>Reference:</strong></p>
+            <ul>
+                <li><a href="https://learn.microsoft.com/en-us/virtualization/windowscontainers/deploy-containers/version-compatibility?tabs=windows-server-2022%2Cwindows-11#windows-server-host-os-compatibility" target="_blank">Windows Server Host OS Compatibility</a></li>
+            </ul>
+        </div>
+    </div>
+    <script src="../Scripts/answer18.js"></script>
+</body>
+</html>

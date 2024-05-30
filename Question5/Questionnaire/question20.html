@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 20</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div>
+        <h2>Question 20</h2>
+        <p>Your on-premises network has an IP address range of 10.0.0.0/23.</p>
+        <p>You have an Azure virtual network named VNet1 that contains a virtual machine named VM1.</p>
+        <p>VNet1 has an IP address range of 10.0.1.0/24.</p>
+        <p>You need to deploy a Site-to-Site (S2S) VPN to connect the on-premises network to VNet1.</p>
+        <p>What should you do first?</p>
+
+        <div class="question-row">
+            <label><input type="radio" name="question20" value="A"> A. Deploy Azure Bastion to VNet1.</label>
+        </div>
+        <div class="question-row">
+            <label><input type="radio" name="question20" value="B"> B. Deploy Azure Extended Network.</label>
+        </div>
+        <div class="question-row">
+            <label><input type="radio" name="question20" value="C"> C. Configure VNet1 to use the IP address range of 10.0.2.0/24.</label>
+        </div>
+        <div class="question-row">
+            <label><input type="radio" name="question20" value="D"> D. Configure VNet1 to use an IP address range of 10.0.1.128/25.</label>
+        </div>
+
+        <button class="solutionButton" data-answer-name="question20">Solution</button>
+
+        <div id="solutionInfo_question20" class="solutionInfo" style="display: none;">
+            <p><strong>Explanation:</strong></p>
+            <p>There is an overlap in the ranges 10.0.0.0/23 and 10.0.1.0/24 as the 10.0.1.0/24 range is entirely contained within the 10.0.0.0/23 range. Configure VNet1 to use the IP address range of 10.0.2.0/24. This step ensures that there are no overlapping IP ranges between the on-premises network and the Azure virtual network, which is essential for a successful S2S VPN connection.</p>
+            <p><strong>Reference:</strong></p>
+        </div>
+    </div>
+    <script src="../Scripts/answer20.js"></script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 13</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div>
+        <h2>Question 13</h2>
+        <p>You have an Azure subscription that contains the virtual machines shown in the following table.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>OS</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>VM1</td>
+                    <td>Windows SRV 2022 Datacenter: Azure Edition</td>
+                </tr>
+                <tr>
+                    <td>VM2</td>
+                    <td>Windows SRV 2022 Datacenter: Azure Edition Core</td>
+                </tr>
+                <tr>
+                    <td>VM3</td>
+                    <td>Windows SRV 2022 Datacenter</td>
+                </tr>
+                <tr>
+                    <td>VM4</td>
+                    <td>Windows SRV 2019 Datacenter</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>You plan to implement Azure Automanage for Windows Server.</p>
+        <p>You need to identify the operating system prerequisites.</p>
+        <p>Which virtual machines support Hotpatch, and which virtual machines support SMB over QUIC? To answer, select the appropriate options in the answer area.</p>
+
+        <div class="answer-row" style="display: flex; align-items: center; gap: 10px;">
+            <div class="answer-area">
+                <label for="hotpatch">Hotpatch:</label>
+                <select id="hotpatch">
+                    <option value="VM1 only">VM1 only</option>
+                    <option value="VM2 only">VM2 only</option>
+                    <option value="VM1 & VM2 only">VM1 & VM2 only</option>
+                    <option value="VM1, VM2, & VM3 only">VM1, VM2, & VM3 only</option>
+                    <option value="VM1, VM2, VM3, & VM4">VM1, VM2, VM3, & VM4</option>
+                </select>
+            </div>
+
+            <div class="answer-area">
+                <label for="smb-quic">SMB over QUIC:</label>
+                <select id="smb-quic">
+                    <option value="VM1 only">VM1 only</option>
+                    <option value="VM2 only">VM2 only</option>
+                    <option value="VM1 & VM2 only">VM1 & VM2 only</option>
+                    <option value="VM1, VM2, & VM3 only">VM1, VM2, & VM3 only</option>
+                    <option value="VM1, VM2, VM3, & VM4">VM1, VM2, VM3, & VM4</option>
+                </select>
+            </div>
+        </div>
+
+        <button class="solutionButton" data-answer-name="question13">Solution</button>
+
+        <div id="solutionInfo_question13" class="solutionInfo" style="display: none;">
+            <p><strong>Explanation:</strong></p>
+            <p>Windows Server 2022 Azure Edition includes additional functionality such as Hotpatch and SMB over QUIC. Therefore, VM1 and VM2 support both Hotpatch and SMB over QUIC.</p>
+            <p><strong>Reference:</strong></p>
+            <ul>
+                <li><a href="https://learn.microsoft.com/en-us/windows-server/get-started/hotpatch" target="_blank">Hotpatch</a></li>
+                <li><a href="https://learn.microsoft.com/en-us/windows-server/get-started/editions-comparison-windows-server-2022" target="_blank">Windows Server 2022 Editions Comparison</a></li>
+                <li><a href="https://learn.microsoft.com/en-us/windows-server/storage/file-server/smb-over-quic" target="_blank">SMB over QUIC</a></li>
+            </ul>
+        </div>
+    </div>
+    <script src="../Scripts/answer13.js"></script>
+</body>
+</html>
