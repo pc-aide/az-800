@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 7</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div>
+        <h2>Question 7</h2>
+        <p>You have servers that have the DNS Server role installed. The servers are configured as shown in the following table.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Office</th>
+                    <th>Local DNS zone</th>
+                    <th>IP address</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Server1</td>
+                    <td>Paris</td>
+                    <td>contoso.com</td>
+                    <td>10.1.1.1</td>
+                </tr>
+                <tr>
+                    <td>Server2</td>
+                    <td>New York</td>
+                    <td>None</td>
+                    <td>10.2.2.2</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>All the client computers in the New York office use Server2 as the DNS server.</p>
+        <p>You need to configure name resolution in the New York office to meet the following requirements:</p>
+        <ul>
+            <li>Ensure that the client computers in New York can resolve names from contoso.com.</li>
+            <li>Ensure that Server2 forwards all DNS queries for internet hosts to 131.107.100.200.</li>
+            <li>The solution must NOT require modifications to Server1.</li>
+        </ul>
+        <p>Which two components should you configure on Server2? Each correct answer presents part of the solution.</p>
+
+        <div class="question-row">
+            <label><input type="checkbox" name="question7" value="A. a forwarder"> A. a forwarder</label>
+        </div>
+        <div class="question-row">
+            <label><input type="checkbox" name="question7" value="B. a conditional forwarder"> B. a conditional forwarder</label>
+        </div>
+        <div class="question-row">
+            <label><input type="checkbox" name="question7" value="C. a delegation"> C. a delegation</label>
+        </div>
+        <div class="question-row">
+            <label><input type="checkbox" name="question7" value="D. a secondary zone"> D. a secondary zone</label>
+        </div>
+        <div class="question-row">
+            <label><input type="checkbox" name="question7" value="E. a reverse lookup zone"> E. a reverse lookup zone</label>
+        </div>
+
+        <button class="solutionButton" data-answer-name="question7">Solution</button>
+
+        <div id="solutionInfo_question7" class="solutionInfo" style="display: none;">
+            <p><strong>Explanation:</strong></p>
+            <p>A conditional forwarder is required for contoso.com. A forwarder is required for all other domains. When you have a conditional forwarder and a forwarder configured, the conditional forwarder will be used for the specified domain. You could use a secondary zone for contoso.com but that would require a configuration change on Server1.</p>
+            <p><strong>Reference:</strong></p>
+            <ul>
+                <li><a href="https://blogs.msmvps.com/acefekay/2010/10/01/dns-parent-child-dns-delegation-how-to-create-a-dns-delegation/" target="_blank">DNS Parent-Child DNS Delegation</a></li>
+            </ul>
+        </div>
+    </div>
+    <script src="../Scripts/answer7.js"></script>
+</body>
+</html>

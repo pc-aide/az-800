@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 18</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div>
+        <h2>Question 18</h2>
+        <p>Your network contains an Active Directory Domain Services (AD DS) domain. The domain contains a user named User1 and the servers shown in the following table.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Server role</th>
+                    <th>DHCP scope</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Server1</td>
+                    <td>DHCP Server</td>
+                    <td>Scope1, Scope2</td>
+                </tr>
+                <tr>
+                    <td>Server2</td>
+                    <td>DHCP Server</td>
+                    <td>Scope3, Scope4</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>You need to ensure that User1 can manage only Scope1 and Scope3.</p>
+        <p>What should you do?</p>
+        <div class="question-row">
+            <label><input type="radio" name="question18" value="Add User1 to the DHCP Administrators group on Server1 and Server2"> A. Add User1 to the DHCP Administrators group on Server1 and Server2</label>
+        </div>
+        <div class="question-row">
+            <label><input type="radio" name="question18" value="Implement IP Address Management (IPAM)"> B. Implement IP Address Management (IPAM)</label>
+        </div>
+        <div class="question-row">
+            <label><input type="radio" name="question18" value="Add User1 to the DHCP Administrators domain local group"> C. Add User1 to the DHCP Administrators domain local group</label>
+        </div>
+        <div class="question-row">
+            <label><input type="radio" name="question18" value="Implement Windows Admin Center and add connections to Server1 and Server2"> D. Implement Windows Admin Center and add connections to Server1 and Server2</label>
+        </div>
+
+        <button class="solutionButton" data-answer-name="question18">Solution</button>
+
+        <div id="solutionInfo_question18" class="solutionInfo" style="display: none;">
+            <p><strong>Explanation:</strong></p>
+            <p>IPAM provides the ability to configure role-based access control (RBAC) to manage DHCP scopes with fine-grained permissions, allowing User1 to manage specific scopes like Scope1 and Scope3 without granting them full administrative rights over all DHCP scopes on the servers.</p>
+            <p><strong>Reference:</strong></p>
+            <ul>
+                <li><a href="https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/dn741281(v=ws.11)#see-also" target="_blank">IP Address Management (IPAM)</a></li>
+            </ul>
+        </div>
+    </div>
+    <script src="../Scripts/answer18.js"></script>
+</body>
+</html>

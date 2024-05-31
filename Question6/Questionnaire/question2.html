@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 2</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div>
+        <h2>Question 2</h2>
+        <p>Your network contains two VLANs for client computers and one VLAN for a datacenter. Each VLAN is assigned an IPv4 subnet. Currently, all the client computers use static IP addresses.</p>
+        <p>You plan to deploy a DHCP server to the VLAN in the datacenter.</p>
+        <p>You need to use the DHCP server to provide IP configurations to all the client computers.</p>
+        <p>What is the minimum number of scopes and DHCP relays you should create? To answer, select the appropriate option in the answer area.</p>
+
+        <div class="answer-row" style="display: flex; align-items: center; gap: 10px;">
+            <div class="answer-area">
+                <label for="dhcp-scopes">DHCP scopes:</label>
+                <select id="dhcp-scopes">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+            </div>
+
+            <div class="answer-area">
+                <label for="dhcp-relays">DHCP relays:</label>
+                <select id="dhcp-relays">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+            </div>
+        </div>
+
+        <button class="solutionButton" data-answer-name="question2">Solution</button>
+
+        <div id="solutionInfo_question2" class="solutionInfo" style="display: none;">
+            <p><strong>Explanation:</strong></p>
+            <p>Box 1: 2</p>
+            <p>Box 2: 2</p>
+            <p>It is saying to DHCP for client computers only (2 VLANs), not for servers. So why Box1 is 3? It should be 2. You need to use the DHCP server to provide IP configurations to all the client computers. We need to create two DHCP address scopes. One scope for each subnet, that contains client computers. Because DHCPDISCOVER packets sent by the DHCP clients are transport within the local subnet only, we need to add a DHCP relay agent to each subnet that does not contain a DHCP server. The DHCP relay agent will react on the DHCPDISCOVER broadcasts within its local subnet and will contact the configured DHCP server to retrieve an IP address for the client.</p>
+            <p><strong>Reference:</strong></p>
+            <ul>
+                <li><a href="https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc771390(v=ws.11)" target="_blank">Understanding DHCP Relay Agents</a></li>
+            </ul>
+        </div>
+    </div>
+    <script src="../Scripts/answer2.js"></script>
+</body>
+</html>

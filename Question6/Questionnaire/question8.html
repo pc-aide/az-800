@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 8</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div>
+        <h2>Question 8</h2>
+        <p>You have an Azure virtual machine named VM1 that runs Windows Server.</p>
+        <p>You need to configure the management of VM1 to meet the following requirements:</p>
+        <ul>
+            <li>Require administrators to request access to VM1 before establishing a Remote Desktop connection.</li>
+            <li>Limit access to VM1 from specific source IP addresses.</li>
+            <li>Limit access to VM1 to a specific management port.</li>
+        </ul>
+        <p>What should you configure?</p>
+
+        <div class="question-row">
+            <label><input type="radio" name="question8" value="A. a network security group (NSG)"> A. a network security group (NSG)</label>
+        </div>
+        <div class="question-row">
+            <label><input type="radio" name="question8" value="B. Azure Active Directory (Azure AD) Privileged Identity Management (PIM)"> B. Azure Active Directory (Azure AD) Privileged Identity Management (PIM)</label>
+        </div>
+        <div class="question-row">
+            <label><input type="radio" name="question8" value="C. Microsoft Defender for Cloud"> C. Microsoft Defender for Cloud</label>
+        </div>
+        <div class="question-row">
+            <label><input type="radio" name="question8" value="D. Azure Front Door"> D. Azure Front Door</label>
+        </div>
+
+        <button class="solutionButton" data-answer-name="question8">Solution</button>
+
+        <div id="solutionInfo_question8" class="solutionInfo" style="display: none;">
+            <p><strong>Explanation:</strong></p>
+            <p>JIT lets you allow access to your VMs only when the access is needed, on the ports needed, and for the period of time needed.</p>
+            <p><strong>Reference:</strong></p>
+            <ul>
+                <li><a href="https://docs.microsoft.com/en-us/azure/defender-for-cloud/just-in-time-access-usage?tabs=jit-config-asc%2Cjit-request-asc" target="_blank">Just-in-time access usage</a></li>
+            </ul>
+        </div>
+    </div>
+    <script src="../Scripts/answer8.js"></script>
+</body>
+</html>

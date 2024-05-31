@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 1</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div>
+        <h2>Question 1</h2>
+        <p>You have a server that runs Windows Server 2022 and has the network adapters shown in the following table.</p>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Vendor</th>
+                    <th>Interface</th>
+                    <th>Link speed</th>
+                    <th>Remote Direct Memory Access (RDMA) support</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>LAN1</td>
+                    <td>Vendor1</td>
+                    <td>Network Adapter #1</td>
+                    <td>1 Gbps</td>
+                    <td>No</td>
+                </tr>
+                <tr>
+                    <td>LAN2</td>
+                    <td>Vendor2</td>
+                    <td>Network Adapter #2</td>
+                    <td>25 Gbps</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>LAN3</td>
+                    <td>Vendor3</td>
+                    <td>Network Adapter #3</td>
+                    <td>25 Gbps</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>LAN4</td>
+                    <td>Vendor4</td>
+                    <td>Network Adapter #4</td>
+                    <td>1 Gbps</td>
+                    <td>No</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>You need to configure NIC teaming for LAN2 and LAN3. The solution must support Dynamic Virtual Machine Multi-Queue (d.VMMQ).</p>
+        <p>What should you use?</p>
+
+        <div class="question-row">
+            <label><input type="radio" name="question1" value="A"> A. LACP teaming mode</label>
+        </div>
+        <div class="question-row">
+            <label><input type="radio" name="question1" value="B"> B. Switch Embedded Teaming (SET)</label>
+        </div>
+        <div class="question-row">
+            <label><input type="radio" name="question1" value="C"> C. load balancing and failover (LBFO)</label>
+        </div>
+        <div class="question-row">
+            <label><input type="radio" name="question1" value="D"> D. Static teaming mode</label>
+        </div>
+
+        <button class="solutionButton" data-answer-name="question1">Solution</button>
+
+        <div id="solutionInfo_question1" class="solutionInfo" style="display: none;">
+            <p><strong>Explanation:</strong></p>
+            <p>Based on the information provided, you should use B. Switch Embedded Teaming (SET). SET is a feature available in Windows Server 2016 and later versions, including Windows Server 2022. It allows you to group between one and eight physical Ethernet network adapters into one or more software-based virtual network adapters. These virtual network adapters provide the same level of functionality as any other physical network adapter in a system.</p>
+            <p><strong>Reference:</strong></p>
+            <ul>
+                <li><a href="https://learn.microsoft.com/en-us/windows-server/networking/technologies/hpn/hpn-software-only-features#switch-embedded-teaming-set" target="_blank">Switch Embedded Teaming (SET)</a></li>
+            </ul>
+        </div>
+    </div>
+    <script src="../Scripts/answer1.js"></script>
+</body>
+</html>

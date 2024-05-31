@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 3</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div>
+        <h2>Question 3</h2>
+        <p>You have a server that runs Windows Server and has the DHCP Server role installed. The server has a scope named Scope1 that has the following configurations:</p>
+        <ul>
+            <li>Address range: 192.168.0.2 to 192.168.1.254</li>
+            <li>Mask: 255.255.254.0</li>
+            <li>Router: 192.168.0.1</li>
+            <li>Lease duration: 3 days</li>
+            <li>DNS server: 172.16.0.254</li>
+        </ul>
+        <p>You have 50 Microsoft Teams Phone devices from the same vendor. All the devices have MAC addresses within the same range.</p>
+        <p>You need to ensure that all the Teams Phone devices that receive a lease from Scope1 have IP addresses in the range of 192.168.1.100 to 192.168.1.200. The solution must NOT affect other DHCP clients that receive IP configurations from Scope1.</p>
+        <p>What should you create?</p>
+
+        <div class="question-row">
+            <label><input type="radio" name="question3" value="a scope"> A. a scope</label>
+        </div>
+        <div class="question-row">
+            <label><input type="radio" name="question3" value="a filter"> B. a filter</label>
+        </div>
+        <div class="question-row">
+            <label><input type="radio" name="question3" value="scope options"> C. scope options</label>
+        </div>
+        <div class="question-row">
+            <label><input type="radio" name="question3" value="a policy"> D. a policy</label>
+        </div>
+
+        <button class="solutionButton" data-answer-name="question3">Solution</button>
+
+        <div id="solutionInfo_question3" class="solutionInfo" style="display: none;">
+            <p><strong>Explanation:</strong></p>
+            <p>You should create a policy. This is because a policy allows you to apply specific settings to a subset of clients based on criteria such as MAC address.</p>
+            <p><strong>Reference:</strong></p>
+            <ul>
+                <li><a href="https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn425040(v=ws.11)#creating-a-scope-based-allow-filter-list-using-dhcp-policies" target="_blank">Creating a scope-based allow filter list using DHCP policies</a></li>
+            </ul>
+        </div>
+    </div>
+    <script src="../Scripts/answer3.js"></script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 5</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div>
+        <h2>Question 5</h2>
+        <p>You have an on-premises network that is connected to an Azure virtual network by using a Site-to-Site VPN. Each network contains a subnet that has the same IP address space. The on-premises subnet contains a virtual machine.</p>
+        <p>You plan to migrate the virtual machine to the Azure subnet.</p>
+        <p>You need to migrate the on premises virtual machine to Azure without modifying the IP address. The solution must minimize administrative effort. What should you implement before you perform the migration?</p>
+
+        <div class="question-row">
+            <label><input type="radio" name="question5" value="Azure Extended Network"> A. Azure Extended Network</label>
+        </div>
+        <div class="question-row">
+            <label><input type="radio" name="question5" value="Azure Virtual Network NAT"> B. Azure Virtual Network NAT</label>
+        </div>
+        <div class="question-row">
+            <label><input type="radio" name="question5" value="Azure Application Gateway"> C. Azure Application Gateway</label>
+        </div>
+        <div class="question-row">
+            <label><input type="radio" name="question5" value="Azure virtual network peering"> D. Azure virtual network peering</label>
+        </div>
+
+        <button class="solutionButton" data-answer-name="question5">Solution</button>
+
+        <div id="solutionInfo_question5" class="solutionInfo" style="display: none;">
+            <p><strong>Explanation:</strong></p>
+            <p>This allows you to extend your on-premises network to Azure and allows the virtual machine to retain its IP address during the migration. It also allows for minimal administrative effort as it does not require additional configuration on the virtual machine or the on-premises network.</p>
+            <p><strong>Reference:</strong></p>
+            <ul>
+                <li><a href="https://docs.microsoft.com/en-us/windows-server/manage/windows-admin-center/azure/azure-extended-network" target="_blank">Azure Extended Network</a></li>
+            </ul>
+        </div>
+    </div>
+    <script src="../Scripts/answer5.js"></script>
+</body>
+</html>

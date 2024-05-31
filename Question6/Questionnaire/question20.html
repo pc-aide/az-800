@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 20</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div>
+        <h2>Question 20</h2>
+        <p>You have servers that run Windows Server 2022 as shown in the following table.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Location</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Server1</td>
+                    <td>On-premises</td>
+                    <td>Hosts a Microsoft SQL Server 2019 instance</td>
+                </tr>
+                <tr>
+                    <td>Server2</td>
+                    <td>Azure</td>
+                    <td>Contains the .NET SDK</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>Server2 contains a .NET app named App1.</p>
+        <p>You need to establish a WebSocket connection from App1 to the SQL Server instance on Server1. The solution must meet the following requirements:</p>
+        <ul>
+            <li>Minimize the number of network ports that must be open on the on-premises network firewall.</li>
+            <li>Minimize administrative effort.</li>
+        </ul>
+        <p>What should you create first?</p>
+
+        <div class="question-row">
+            <label><input type="radio" name="question20" value="an Azure Relay namespace"> A. an Azure Relay namespace</label>
+        </div>
+        <div class="question-row">
+            <label><input type="radio" name="question20" value="an Azure VPN gateway"> B. an Azure VPN gateway</label>
+        </div>
+        <div class="question-row">
+            <label><input type="radio" name="question20" value="a WFC relay connection"> C. a WFC relay connection</label>
+        </div>
+        <div class="question-row">
+            <label><input type="radio" name="question20" value="a hybrid connection"> D. a hybrid connection</label>
+        </div>
+
+        <button class="solutionButton" data-answer-name="question20">Solution</button>
+
+        <div id="solutionInfo_question20" class="solutionInfo" style="display: none;">
+            <p><strong>Explanation:</strong></p>
+            <p>Azure Relay allows you to securely expose services that run on your corporate network to the public cloud. It minimizes the number of ports that need to be open on the firewall and requires less administrative effort compared to setting up a full VPN gateway or a hybrid connection.</p>
+            <p><strong>Reference:</strong></p>
+            <ul>
+                <li><a href="https://learn.microsoft.com/en-us/azure/azure-relay/relay-hybrid-connections-dotnet-get-started" target="_blank">Azure Relay</a></li>
+            </ul>
+        </div>
+    </div>
+    <script src="../Scripts/answer20.js"></script>
+</body>
+</html>

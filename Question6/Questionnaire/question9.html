@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 9</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div>
+        <h2>Question 9</h2>
+        <p>Your network contains an Active Directory Domain Services (AD DS) domain named contoso.com. The domain contains a DNS server named Server1. Server1 hosts a DNS zone named fabrikam.com that was signed by DNSSEC.</p>
+        <p>You need to ensure that all the member servers in the domain perform DNSSEC validation for the fabrikam.com namespace. What should you do?</p>
+
+        <div class="question-row">
+            <label><input type="radio" name="question9" value="A. On Server1, run the Add-DnsServerTrustAnchor cmdlet."> A. On Server1, run the Add-DnsServerTrustAnchor cmdlet.</label>
+        </div>
+        <div class="question-row">
+            <label><input type="radio" name="question9" value="B. On each member server, run the Add-DnsServerTrustAnchor cmdlet."> B. On each member server, run the Add-DnsServerTrustAnchor cmdlet.</label>
+        </div>
+        <div class="question-row">
+            <label><input type="radio" name="question9" value="C. From a Group Policy Object (GPO), add a rule to the Name Resolution Policy Table (NRPT)."> C. From a Group Policy Object (GPO), add a rule to the Name Resolution Policy Table (NRPT).</label>
+        </div>
+        <div class="question-row">
+            <label><input type="radio" name="question9" value="D. From a Group Policy Object (GPO), modify the Network List Manager policies."> D. From a Group Policy Object (GPO), modify the Network List Manager policies.</label>
+        </div>
+
+        <button class="solutionButton" data-answer-name="question9">Solution</button>
+
+        <div id="solutionInfo_question9" class="solutionInfo" style="display: none;">
+            <p><strong>Explanation:</strong></p>
+            <p>The Name Resolution Policy Table (NRPT) is a table that contains rules you can configure to specify DNS settings or special behavior for names or namespaces. The NRPT can be configured using Group Policy or by using the Windows Registry. When performing DNS name resolution, the DNS Client service checks the NRPT before sending a DNS query. If a DNS query or response matches an entry in the NRPT, it is handled according to settings in the policy. Queries and responses that do not match an NRPT entry are processed normally. You can use the NRPT to require that the DNS Client service perform DNSSEC validation of DNS responses for the namespaces that you specify.</p>
+            <p><strong>Reference:</strong></p>
+            <ul>
+                <li><a href="https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/dn593632(v=ws.11)#introduction-to-the-nrpt" target="_blank">Introduction to the NRPT</a></li>
+            </ul>
+        </div>
+    </div>
+    <script src="../Scripts/answer9.js"></script>
+</body>
+</html>

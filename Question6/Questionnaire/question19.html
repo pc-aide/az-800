@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 19</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div>
+        <h2>Question 19</h2>
+        <p>Your network contains an Active Directory Domain Services (AD DS) forest. The forest contains three domains. Each domain contains 10 domain controllers.</p>
+        <p>You plan to store a DNS zone in a custom Active Directory partition.</p>
+        <p>You need to create the Active Directory partition for the zone. The partition must replicate to only four of the domain controllers.</p>
+        <p>What should you use?</p>
+        <div class="question-row">
+            <label><input type="radio" name="question19" value="dnscmd.exe"> A. dnscmd.exe</label>
+        </div>
+        <div class="question-row">
+            <label><input type="radio" name="question19" value="Active Directory Sites and Services"> B. Active Directory Sites and Services</label>
+        </div>
+        <div class="question-row">
+            <label><input type="radio" name="question19" value="Set-DnsServer"> C. Set-DnsServer</label>
+        </div>
+        <div class="question-row">
+            <label><input type="radio" name="question19" value="New-ADObject"> D. New-ADObject</label>
+        </div>
+
+        <button class="solutionButton" data-answer-name="question19">Solution</button>
+
+        <div id="solutionInfo_question19" class="solutionInfo" style="display: none;">
+            <p><strong>Explanation:</strong></p>
+            <p>Use dnscmd.exe to create the Active Directory partition for the zone and specify the domain controllers to which it should replicate.</p>
+            <p><code>dnscmd.exe /zoneadd &lt;ZoneName&gt; /DSPrimary /DP /ForestReplication /AddMasters &lt;FQDN&gt; 10.0.1.0, 10.0.2.0 10.0.3.0 10.0.4.154</code></p>
+            <p><strong>Reference:</strong></p>
+            <ul>
+                <li><a href="https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/dnscmd" target="_blank">dnscmd</a></li>
+            </ul>
+        </div>
+    </div>
+    <script src="../Scripts/answer19.js"></script>
+</body>
+</html>
