@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 9</title>
+</head>
+<body>
+    <div>
+        <h2>Question 9</h2>
+        <p>Your network contains an Active Directory Domain Services (AD DS) forest. The forest contains the sites and site links shown in the following exhibit.</p>
+        <img src="https://raw.githubusercontent.com/pc-aide/az-800/main/Question7/q36.png" alt="Site Links Exhibit">
+        <p>The sites contain the bridgehead domain controllers shown in the following table.</p>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Site</th>
+            </tr>
+            <tr>
+                <td>DC1</td>
+                <td>Site1</td>
+            </tr>
+            <tr>
+                <td>DC2</td>
+                <td>Site2</td>
+            </tr>
+            <tr>
+                <td>DC3</td>
+                <td>Site3</td>
+            </tr>
+            <tr>
+                <td>DC4</td>
+                <td>Site4</td>
+            </tr>
+        </table>
+
+        <p>The IP intersite transport container is configured as shown in the following exhibit.</p>
+        <img src="https://raw.githubusercontent.com/pc-aide/az-800/main/Question7/q36_2.png" alt="IP Intersite Transport Exhibit">
+
+        <p>For each of the following statements, select Yes if the statement is true. Otherwise, select No.</p>
+
+        <p>DC1 can replicate directly to DC3:</p>
+        <input type="radio" id="option1Yes" name="answer1" value="Yes">
+        <label for="option1Yes">Yes</label>
+        <input type="radio" id="option1No" name="answer1" value="No">
+        <label for="option1No">No</label>
+
+        <p>DC1 will load balance replication traffic to DC4 via SiteLink3 & SiteLink4:</p>
+        <input type="radio" id="option2Yes" name="answer2" value="Yes">
+        <label for="option2Yes">Yes</label>
+        <input type="radio" id="option2No" name="answer2" value="No">
+        <label for="option2No">No</label>
+
+        <p>To ensure that replication between DC4 & DC2 is routed via DC1, the configuration of the IP intersite transport container must be modified:</p>
+        <input type="radio" id="option3Yes" name="answer3" value="Yes">
+        <label for="option3Yes">Yes</label>
+        <input type="radio" id="option3No" name="answer3" value="No">
+        <label for="option3No">No</label>
+
+        <div id="solutionInfo9"></div>
+
+        <button class="solutionButton" data-solution-info-id="solutionInfo9" data-correct-answer="Yes,No,No" data-answer-name="answer9" data-solution-text="Correct answers:<br>DC1 can replicate directly to DC3: Yes.<br>DC1 will load balance replication traffic to DC4 via SiteLink3 & SiteLink4: No.<br>To ensure that replication between DC4 & DC2 is routed via DC1, the configuration of the IP intersite transport container must be modified: No.<br><br>Explanation:<br>1. With the links bridged, DC1 can replicate with DC3 via SiteLink1 (Site1 -> Site2) and SiteLink2 (Site2 -> Site3).<br>2. Load balancing does not happen automatically with different costs. DC1 will likely replicate via SiteLink3 as it is a direct link to Site3, then Site3 to Site4 via SiteLink4. SiteLink3 is also a direct link.<br>3. With the links bridged, replication can occur via DC1 without any additional modifications.">Solution</button>
+    </div>
+    <script src="Scripts/answer9.js"></script>
+</body>
+</html>

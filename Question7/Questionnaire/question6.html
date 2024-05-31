@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 6</title>
+</head>
+<body>
+    <div>
+        <h2>Question 6</h2>
+        <p>You have a server named Server1 that runs Windows Server. Server1 has a single network interface and the Hyper-V virtual switches shown in the following exhibit.</p>
+        <img src="https://raw.githubusercontent.com/pc-aide/az-800/main/Question7/q31.png" alt="Hyper-V Virtual Switches">
+        <p>Use the drop-down menus to select the answer choice that completes each statement based on the information presented in the graphic.</p>
+
+        <div>
+            <label for="dropdown1">On Server1, you can create additional:</label>
+            <select id="dropdown1">
+                <option value="private_internal">private & internal virtual switches only</option>
+                <option value="private_internal_external">private, internal, & external virtual switches</option>
+                <option value="internal_only">internal virtual switches only</option>
+                <option value="private_only">private virtual switches only</option>
+            </select>
+        </div>
+        <div>
+            <label for="dropdown2">Server1 can access network shares on virtual machines that are connected to:</label>
+            <select id="dropdown2">
+                <option value="vswitch2_3">VSwitch2 or VSwitch3 only</option>
+                <option value="vswitch1_2">VSwitch1 or VSwitch2 only</option>
+                <option value="vswitch2_only">VSwitch2 only</option>
+                <option value="vswitch3_only">VSwitch3 only</option>
+                <option value="vswitch1_2_3">VSwitch1, VSwitch2, or VSwitch3</option>
+            </select>
+        </div>
+
+        <div id="solutionInfo6"></div>
+
+        <button class="solutionButton" data-solution-info-id="solutionInfo6" data-correct-answer="private_internal,vswitch2_3" data-answer-name="answer6" data-solution-text="Correct answer: On Server1, you can create additional: private & internal virtual switches only.<br>Server1 can access network shares on virtual machines that are connected to: VSwitch2 or VSwitch3 only.<br><br>Explanation: You can create many internal switches. Only external are limited because every one of them needs one physical adapter.<br><br>For reference: <a href='https://learn.microsoft.com/en-us/windows-server/virtualization/hyper-v/plan/plan-hyper-v-networking-in-windows-server' target='_blank'>Plan Hyper-V Networking in Windows Server</a>.">Solution</button>
+    </div>
+    <script src="Scripts/answer6.js"></script>
+</body>
+</html>

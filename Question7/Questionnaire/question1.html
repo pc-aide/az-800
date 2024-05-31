@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 1</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div>
+        <h2>Question 1</h2>
+        <p>You have an on-premises server named Server1 that runs Windows Server. Server1 contains an app named App1 and a firewall named Firewall1.</p>
+        <p>You have an Azure subscription.</p>
+        <p>Internal users connect to App1 by using WebSockets.</p>
+        <p>You need to make App1 available to users on the internet. The solution must minimize the number of inbound ports open on Firewall1.</p>
+        <p>What should you include in the solution?</p>
+
+        <div class="question-row">
+            <label><input type="radio" name="question1" value="Microsoft Application Request Routing (ARR) Version 2"> A. Microsoft Application Request Routing (ARR) Version 2</label>
+        </div>
+        <div class="question-row">
+            <label><input type="radio" name="question1" value="Azure Application Gateway"> B. Azure Application Gateway</label>
+        </div>
+        <div class="question-row">
+            <label><input type="radio" name="question1" value="Azure Relay"> C. Azure Relay</label>
+        </div>
+        <div class="question-row">
+            <label><input type="radio" name="question1" value="Web Application Proxy"> D. Web Application Proxy</label>
+        </div>
+
+        <button class="solutionButton" data-answer-name="question1">Solution</button>
+
+        <div id="solutionInfo_question1" class="solutionInfo" style="display: none;">
+            <p><strong>Explanation:</strong></p>
+            <p>The Azure Relay service enables you to securely expose services that run in your corporate network to the public cloud. You can do so without opening a port on your firewall, or making intrusive changes to your corporate network infrastructure.</p>
+            <p><strong>Reference:</strong></p>
+            <ul>
+                <li><a href="https://learn.microsoft.com/en-us/azure/azure-relay/relay-what-is-it" target="_blank">Azure Relay</a></li>
+            </ul>
+        </div>
+    </div>
+    <script src="../Scripts/answer1.js"></script>
+</body>
+</html>

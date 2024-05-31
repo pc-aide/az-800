@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 17</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div>
+        <h2>Question 17</h2>
+        <p>Your network contains an Active Directory Domain Services (AD DS) domain named contoso.com. The domain contains two servers named Server1 and Server2.
+        Server1 contains a disk named Disk2. Disk2 contains a folder named UserData. UserData is shared to the Domain Users group. Disk2 is configured for deduplication. Server1 is protected by using Azure Backup.
+        Server1 fails.
+        You connect Disk2 to Server2.
+        You need to ensure that you can access all the files on Disk2 as quickly as possible.
+        What should you do?</p>
+
+        <div class="question-row">
+            <label><input type="radio" name="question17" value="Create a storage pool"> A. Create a storage pool</label>
+        </div>
+        <div class="question-row">
+            <label><input type="radio" name="question17" value="Restore files from Azure Backup"> B. Restore files from Azure Backup</label>
+        </div>
+        <div class="question-row">
+            <label><input type="radio" name="question17" value="Install the File Server Resource Manager server role"> C. Install the File Server Resource Manager server role</label>
+        </div>
+        <div class="question-row">
+            <label><input type="radio" name="question17" value="Install the Data Deduplication server role"> D. Install the Data Deduplication server role</label>
+        </div>
+
+        <button class="solutionButton" data-answer-name="question17">Solution</button>
+
+        <div id="solutionInfo_question17" class="solutionInfo" style="display: none;">
+            <p><strong>Explanation:</strong></p>
+            <p>Portability: A volume that is under deduplication control is an atomic unit. You can back up the volume and restore it to another server. You can rip it out of one Windows 2012 server and move it to another. Everything that is required to access your data is located on the drive. All of the deduplication settings are maintained on the volume and will be picked up by the deduplication filter when the volume is mounted. The only thing that is not retained on the volume are the schedule settings that are part of the task-scheduler engine. If you move the volume to a server that is not running the Data Deduplication feature, you will only be able to access the files that have not been deduplicated</p>
+            <p><strong>Reference:</strong></p>
+            <ul>
+                <li><a href="https://docs.microsoft.com/en-us/windows-server/storage/data-deduplication/overview" target="_blank">Introduction to Data Deduplication in Windows Server 2012</a></li>
+            </ul>
+        </div>
+    </div>
+    <script src="../Scripts/answer17.js"></script>
+</body>
+</html>

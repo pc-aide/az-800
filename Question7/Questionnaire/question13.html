@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 13</title>
+</head>
+<body>
+    <div>
+        <h2>Question 13</h2>
+        <p>You need to sync files from an on-premises server named Server1 to Azure by using Azure File Sync. You have a cloud tiering policy that is configured for 30 percent free space and 70 days. Volume E on Server1 is 500 GB. A year ago, you configured E:\Data on Server1 to sync by using Azure File Sync. The files that are visible in E:\Data are shown in the following table.</p>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Size</th>
+                <th>Last accessed</th>
+            </tr>
+            <tr>
+                <td>File1</td>
+                <td>200 GB</td>
+                <td>2 days ago</td>
+            </tr>
+            <tr>
+                <td>File2</td>
+                <td>100 GB</td>
+                <td>10 days ago</td>
+            </tr>
+            <tr>
+                <td>File3</td>
+                <td>200 GB</td>
+                <td>60 days ago</td>
+            </tr>
+            <tr>
+                <td>File4</td>
+                <td>50 GB</td>
+                <td>100 days ago</td>
+            </tr>
+        </table>
+
+        <p>Volume E does NOT contain any other files. Where are File1 and File3 located? To answer, select the appropriate options in the answer area.</p>
+
+        <form>
+            <label for="file1-location">File1:</label><br>
+            <select id="file1-location">
+                <option value="Server1 only">Server1 only</option>
+                <option value="The Azure file share only">The Azure file share only</option>
+                <option value="Server1 & the Azure file share">Server1 & the Azure file share</option>
+            </select><br><br>
+
+            <label for="file3-location">File3:</label><br>
+            <select id="file3-location">
+                <option value="Server1 only">Server1 only</option>
+                <option value="The Azure file share only">The Azure file share only</option>
+                <option value="Server1 & the Azure file share">Server1 & the Azure file share</option>
+            </select><br><br>
+        </form>
+
+        <div id="solutionInfo13"></div>
+
+        <button class="solutionButton" data-solution-info-id="solutionInfo13" data-correct-answer="Server1 & the Azure file share,The Azure file share only" data-answer-name="answer13" data-solution-text="Correct answers:<br><br>
+        File1: Server1 & the Azure file share<br>
+        File3: The Azure file share only<br><br>
+        Explanation:<br>
+        The volume free space policy ensures that a specified percentage of the local volume the server endpoint is located on is always kept free.<br>
+        The date policy tiers files last accessed x days ago or later. The volume free space policy will always take precedence. When there isn't enough free space on the volume to store as many days worth of files as described by the date policy, Azure File Sync will override the date policy and continue tiering the coldest files until the volume free space percentage is met.<br><br>
+        Ref:<br>
+        <a href='https://docs.microsoft.com/en-us/windows-server/manage/windows-admin-center/azure/azure-file-sync' target='_blank'>Azure File Sync</a><br>
+        <a href='https://docs.microsoft.com/en-us/azure/storage/file-sync/file-sync-cloud-tiering-overview' target='_blank'>Azure File Sync Cloud Tiering Overview</a><br>
+        <a href='https://docs.microsoft.com/en-us/azure/storage/file-sync/file-sync-cloud-tiering-policy' target='_blank'>Azure File Sync Cloud Tiering Policy</a>">Solution</button>
+    </div>
+    <script src="Scripts/answer13.js"></script>
+</body>
+</html>

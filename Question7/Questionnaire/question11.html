@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 11</title>
+</head>
+<body>
+    <div>
+        <h2>Question 11</h2>
+        <p>Your network contains an Active Directory Domain Services (AD DS) domain. The domain contains the servers shown in the following table.</p>
+
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>OS</th>
+            </tr>
+            <tr>
+                <td>Server1</td>
+                <td>Windows srv 2016</td>
+            </tr>
+            <tr>
+                <td>Server2</td>
+                <td>Windows srv 2016</td>
+            </tr>
+            <tr>
+                <td>Server3</td>
+                <td>Windows srv 2019</td>
+            </tr>
+            <tr>
+                <td>Server4</td>
+                <td>Windows srv 2022</td>
+            </tr>
+            <tr>
+                <td>Server5</td>
+                <td>Windows srv 2022</td>
+            </tr>
+        </table>
+
+        <p>You need to deploy inbound firewall rules to the servers. The solution must minimize administrative effort.</p>
+        <p>What should you use?</p>
+
+        <form>
+            <input type="radio" id="radio1" name="answer11" value="A. PowerShell Desired State Configuration (DSC)">
+            <label for="radio1">A. PowerShell Desired State Configuration (DSC)</label><br>
+            <input type="radio" id="radio2" name="answer11" value="B. local security objects">
+            <label for="radio2">B. local security objects</label><br>
+            <input type="radio" id="radio3" name="answer11" value="C. Group Policy Objects (GPOs)">
+            <label for="radio3">C. Group Policy Objects (GPOs)</label><br>
+            <input type="radio" id="radio4" name="answer11" value="D. Microsoft Intune configuration profiles">
+            <label for="radio4">D. Microsoft Intune configuration profiles</label><br>
+        </form>
+
+        <div id="solutionInfo11"></div>
+
+        <button class="solutionButton" data-solution-info-id="solutionInfo11" data-correct-answer="C. Group Policy Objects (GPOs)" data-answer-name="answer11" data-solution-text="Correct answer: C. Group Policy Objects (GPOs)<br><br>Explanation:<br>GPOs allow centralized management of multiple servers within an Active Directory Domain Services domain, making it efficient to configure and enforce firewall rules across your network infrastructure. This approach is more streamlined than configuring each server individually using local security objects or other methods.<br><br>Ref: <a href='https://learn.microsoft.com/en-us/windows/security/operating-system-security/network-security/windows-firewall/configure' target='_blank'>Configure Windows Firewall with Group Policy</a>">Solution</button>
+    </div>
+    <script src="Scripts/answer11.js"></script>
+</body>
+</html>

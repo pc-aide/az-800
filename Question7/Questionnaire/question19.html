@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 19</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div>
+        <h2>Question 19</h2>
+        <p>Your network contains an Active Directory Domain Services (AD DS) domain named adatum.com. The domain contains a file server named Server1 and three users named User1, User2, and User3.
+        Server1 contains a shared folder named Share1 that has the following configurations:</p>
+        
+        <pre>
+        ShareState: Online
+        AvailabilityType: NonClustered
+        FolderEnumerationMode: AccessBased
+        CachingMode: Manual
+        LeasingMode: Full
+        SmbInstance: Default
+        CompressData: False
+        ContinuouslyAvailable: False
+        EncryptData: False
+        Name: Share1
+        Path: E:\Share1
+        ShadowCopy: False
+        </pre>
+
+        <p>The share permissions for Share1 are configured as shown in the Share Permissions exhibit:</p>
+        <img src="https://i.imgur.com/Nxn6ppZ.png">
+
+        <p>Share1 contains a file named File1.txt. The advanced security settings for File1.txt are configured as shown in the File Permissions exhibit:</p>
+        <img src="https://i.imgur.com/pzLrMGb.jpeg" alt="File Permissions">
+
+        <p>For each of the following statements, select Yes if the statement is true. Otherwise, select No.</p>
+
+        <div class="question-row">
+            <label>When User1 connects to \\Server1.adatum.com\Share1\, the user can take ownership of File1.txt:</label>
+            <div>
+                <label><input type="radio" name="q19_1" value="Yes"> Yes</label>
+                <label><input type="radio" name="q19_1" value="No"> No</label>
+            </div>
+        </div>
+        <div class="question-row">
+            <label>When User2 connects to \\Server1.adatum.com\Share1, File1.txt is visible:</label>
+            <div>
+                <label><input type="radio" name="q19_2" value="Yes"> Yes</label>
+                <label><input type="radio" name="q19_2" value="No"> No</label>
+            </div>
+        </div>
+        <div class="question-row">
+            <label>When User3 connects to \\Server1.adatum.com\Share1, File1.txt is visible:</label>
+            <div>
+                <label><input type="radio" name="q19_3" value="Yes"> Yes</label>
+                <label><input type="radio" name="q19_3" value="No"> No</label>
+            </div>
+        </div>
+
+        <button class="solutionButton" data-answer-name="question19">Solution</button>
+
+        <div id="solutionInfo_question19" class="solutionInfo" style="display: none;">
+            <p><strong>Explanation:</strong></p>
+            <p>Box 1: No. User 1 share permission in Change (domain users), NTFS = Full Control, most restrictive applies when combining permissions.</p>
+            <p>Box 2: Yes. User 2 has Read NTFS and Change (share) Read.</p>
+            <p>Box 3: No - when you configure FolderEnumerationMode to AccessBased only account who has Read specific permission to certain file/folder will see this file/folder. AccessBased Enumeration isn't enabled in default configuration, but in question there is screenshot which shows that it is enabled in our case.</p>
+            <p><strong>Reference:</strong></p>
+            <ul>
+                <li><a href="https://community.spiceworks.com/topic/832081-write-only-shared-folder-permissions-in-education-setting#:~:text=Creator%20Owner%20has%3A%20List%20folder%2Fread%20data%2C%20read%20attrib%2C,saved%20to%20make%20sure%20it%20was%20copied%20successfully" target="_blank">Write Only Shared Folder Permissions</a></li>
+            </ul>
+        </div>
+    </div>
+    <script src="../Scripts/answer19.js"></script>
+</body>
+</html>
