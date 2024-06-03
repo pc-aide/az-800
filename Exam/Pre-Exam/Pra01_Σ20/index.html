@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questionnaire</title>
+    <style>
+        .highlight {
+            background-color: yellow;
+        }
+
+        .incorrect {
+            color: red;
+        }
+
+        #solutionInfo {
+            display: none; /* Cacher par défaut */
+            margin-bottom: 10px;
+        }
+
+        #finalScore {
+            font-size: larger;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Questionnaire</h1>
+
+    <h2 id="finalScoreHeader"></h2> <!-- Afficher le score final dans le header -->
+
+    <h1>Question 1</h1>
+    <h2>Your network contains an Active Directory Domain Services (AD DS) domain named contoso.com. You need to identify which server is the PDC emulator for the domain.</h2>
+    <p><strong>Solution:</strong> From Active Directory Domains and Trusts, you right-click Active Directory Domains and Trusts in the console tree, and then select Operations Master.</p>
+
+    <form action="#">
+        <fieldset>
+            <legend>Does this meet the goal?</legend>
+            <input type="radio" id="yes1" name="answer1" value="yes">
+            <label for="yes1">A. Yes</label><br>
+            <input type="radio" id="no1" name="answer1" value="no">
+            <label for="no1">B. No</label><br>
+        </fieldset>
+    </form>
+
+    <div id="solutionInfo1"></div> <!-- Div pour afficher la réponse -->
+
+    <button id="showSolution1">Solution</button>
+
+    <h1>Question 2</h1>
+    <h2>Your network contains an Active Directory Domain Services (AD DS) domain named contoso.com. You need to identify which server is the PDC emulator for the domain.</h2>
+    <p><strong>Solution:</strong> From a command prompt, you run netdom.exe query fsmo.</p>
+
+    <form action="#">
+        <fieldset>
+            <legend>Does this meet the goal?</legend>
+            <input type="radio" id="yes2" name="answer2" value="yes">
+            <label for="yes2">A. Yes</label><br>
+            <input type="radio" id="no2" name="answer2" value="no">
+            <label for="no2">B. No</label><br>
+        </fieldset>
+    </form>
+
+    <div id="solutionInfo2"></div> <!-- Div pour afficher la réponse -->
+
+    <button id="showSolution2">Solution</button>
+
+    <h1>Question 3</h1>
+    <h2>You have an on-premises Active Directory Domain Services (AD DS) domain that syncs with an Azure Active Directory (Azure AD) tenant. You plan to implement self-service password reset (SSPR) in Azure AD. You need to ensure that users that reset their passwords by using SSPR can use the new password resources in the AD DS domain. What should you do?</h2>
+    
+    <form action="#">
+        <fieldset>
+            <legend>What should you do?</legend>
+            <input type="radio" id="optionA" name="answer3" value="A">
+            <label for="optionA">A. Deploy the Azure AD Password Protection proxy service to the on-premises network.</label><br>
+            <input type="radio" id="optionB" name="answer3" value="B">
+            <label for="optionB">B. Run the Microsoft Azure Active Directory Connect wizard and select Password writeback.</label><br>
+            <input type="radio" id="optionC" name="answer3" value="C">
+            <label for="optionC">C. Grant the Change password permission for the domain to the Azure AD Connect service account.</label><br>
+            <input type="radio" id="optionD" name="answer3" value="D">
+            <label for="optionD">D. Grant the impersonate a client after authentication user right to the Azure AD Connect service account.</label><br>
+        </fieldset>
+    </form>
+
+    <div id="solutionInfo3"></div> <!-- Div pour afficher la réponse -->
+
+    <button id="showSolution3">Solution</button>
+
+    <h1>Question 4</h1>
+    <h2>You have an Azure Active Directory Domain Services (Azure AD DS) domain named contoso.com. You need to provide an administrator with the ability to manage Group Policy Objects (GPOs). The solution must use the principle of least privilege. To which group should you add the administrator?</h2>
+    
+    <form action="#">
+        <fieldset>
+            <legend>To which group should you add the administrator?</legend>
+            <input type="radio" id="optionA" name="answer4" value="A">
+            <label for="optionA">A. AAD DC Administrators</label><br>
+            <input type="radio" id="optionB" name="answer4" value="B">
+            <label for="optionB">B. Domain Admins</label><br>
+            <input type="radio" id="optionC" name="answer4" value="C">
+            <label for="optionC">C. Schema Admins</label><br>
+            <input type="radio" id="optionD" name="answer4" value="D">
+            <label for="optionD">D. Enterprise Admins</label><br>
+            <input type="radio" id="optionE" name="answer4" value="E">
+            <label for="optionE">E. Group Policy Creator Owners</label><br>
+        </fieldset>
+    </form>
+
+    <div id="solutionInfo4"></div> <!-- Div pour afficher la réponse -->
+
+    <button id="showSolution4">Solution</button>
+
+    <div id="finalScore"></div> <!-- Div pour afficher le score final -->
+
+    <script>
+        var score = 0; // Initialiser le score à 0
+        var totalQuestions = 4; // Nombre total de questions
+
+        document.getElementById('showSolution1').addEventListener('click', function() {
+            var selectedAnswer = document.querySelector('input[name="answer1"]:checked');
+            if (selectedAnswer && selectedAnswer.value === 'no') {
+                score += 1; // Ajouter un point si la réponse est correcte
+                var solution = "B. No"; // Solution statique
+                var highlightedAnswer = document.createElement('div');
+                highlightedAnswer.innerHTML = "<img src='https://raw.githubusercontent.com/pc-aide/Azure/main/az-800%3A%20Administering%20Windows%20Server%20Hybrid%20Core%20Infrastructure/Exam/Pre-Exam/Pra01_%CE%A320/PDC%20role.png' alt='PDC Role'><br><img src='https://raw.githubusercontent.com/pc-aide/Azure/main/az-800%3A%20Administering%20Windows%20Server%20Hybrid%20Core%20Infrastructure/Exam/Pre-Exam/Pra01_%CE%A320/PDC.png' alt='PDC Image'><br>Solution: " + solution;
+                highlightedAnswer.classList.add('highlight'); // Ajouter la classe de surlignage
+                document.getElementById('solutionInfo1').textContent = ""; // Effacer tout contenu précédent
+                document.getElementById('solutionInfo1').appendChild(highlightedAnswer); // Afficher la réponse au-dessus du bouton Solution
+                document.getElementById('solutionInfo1').style.display = 'block'; // Afficher l'info
+            } else {
+                var incorrectMessage = document.createElement('div');
+                incorrectMessage.textContent = "Your answer is incorrect. Please select 'B. No' to see the solution.";
+                incorrectMessage.classList.add('incorrect');
+                document.getElementById('solutionInfo1').textContent = ""; // Effacer tout contenu précédent
+                document.getElementById('solutionInfo1').appendChild(incorrectMessage); // Afficher le message d'erreur
+                document.getElementById('solutionInfo1').style.display = 'block'; // Afficher l'info
+            }
+            showFinalScore();
+        });
+
+        document.getElementById('showSolution2').addEventListener('click', function() {
+            var selectedAnswer = document.querySelector('input[name="answer2"]:checked');
+            if (selectedAnswer && selectedAnswer.value === 'yes') {
+                score += 1; // Ajouter un point si la réponse est correcte
+                var solution = "A. Yes"; // Solution statique
+                var highlightedAnswer = document.createElement('div');
+                highlightedAnswer.innerHTML = "<img src='https://raw.githubusercontent.com/pc-aide/Azure/main/az-800%3A%20Administering%20Windows%20Server%20Hybrid%20Core%20Infrastructure/Exam/Pre-Exam/Pra01_%CE%A320/netdom%20query%20fsmo.png' alt='Netdom Query FSMO'><br>Solution: " + solution;
+                highlightedAnswer.classList.add('highlight'); // Ajouter la classe de surlignage
+                document.getElementById('solutionInfo2').textContent = ""; // Effacer tout contenu précédent
+                document.getElementById('solutionInfo2').appendChild(highlightedAnswer); // Afficher la réponse au-dessus du bouton Solution
+                document.getElementById('solutionInfo2').style.display = 'block'; // Afficher l'info
+            } else {
+                var incorrectMessage = document.createElement('div');
+                incorrectMessage.textContent = "Your answer is incorrect. Please select 'A. Yes' to see the solution.";
+                incorrectMessage.classList.add('incorrect');
+                document.getElementById('solutionInfo2').textContent = ""; // Effacer tout contenu précédent
+                document.getElementById('solutionInfo2').appendChild(incorrectMessage); // Afficher le message d'erreur
+                document.getElementById('solutionInfo2').style.display = 'block'; // Afficher l'info
+            }
+            showFinalScore();
+        });
+
+        document.getElementById('showSolution3').addEventListener('click', function() {
+            var selectedAnswer = document.querySelector('input[name="answer3"]:checked');
+            if (selectedAnswer && selectedAnswer.value === 'B') {
+                score += 1; // Ajouter un point si la réponse est correcte
+                var solution = "B. Run the Microsoft Azure Active Directory Connect wizard and select Password writeback."; // Solution statique
+                var highlightedAnswer = document.createElement('div');
+                highlightedAnswer.innerHTML = "Solution: " + solution;
+                highlightedAnswer.classList.add('highlight'); // Ajouter la classe de surlignage
+                document.getElementById('solutionInfo3').textContent = ""; // Effacer tout contenu précédent
+                document.getElementById('solutionInfo3').appendChild(highlightedAnswer); // Afficher la réponse au-dessus du bouton Solution
+                document.getElementById('solutionInfo3').style.display = 'block'; // Afficher l'info
+            } else {
+                var incorrectMessage = document.createElement('div');
+                incorrectMessage.textContent = "Your answer is incorrect. Please select 'B. Run the Microsoft Azure Active Directory Connect wizard and select Password writeback.' to see the solution.";
+                incorrectMessage.classList.add('incorrect');
+                document.getElementById('solutionInfo3').textContent = ""; // Effacer tout contenu précédent
+                document.getElementById('solutionInfo3').appendChild(incorrectMessage); // Afficher le message d'erreur
+                document.getElementById('solutionInfo3').style.display = 'block'; // Afficher l'info
+            }
+            showFinalScore();
+        });
+
+        document.getElementById('showSolution4').addEventListener('click', function() {
+            var selectedAnswer = document.querySelector('input[name="answer4"]:checked');
+            if (selectedAnswer && selectedAnswer.value === 'A') {
+                score += 1; // Ajouter un point si la réponse est correcte
+                var solution = "A. AAD DC Administrators"; // Solution statique
+                var highlightedAnswer = document.createElement('div');
+                highlightedAnswer.innerHTML = "Solution: " + solution;
+                highlightedAnswer.classList.add('highlight'); // Ajouter la classe de surlignage
+                document.getElementById('solutionInfo4').textContent = ""; // Effacer tout contenu précédent
+                document.getElementById('solutionInfo4').appendChild(highlightedAnswer); // Afficher la réponse au-dessus du bouton Solution
+                document.getElementById('solutionInfo4').style.display = 'block'; // Afficher l'info
+            } else {
+                var incorrectMessage = document.createElement('div');
+                incorrectMessage.textContent = "Your answer is incorrect. Please select 'A. AAD DC Administrators' to see the solution.";
+                incorrectMessage.classList.add('incorrect');
+                document.getElementById('solutionInfo4').textContent = ""; // Effacer tout contenu précédent
+                document.getElementById('solutionInfo4').appendChild(incorrectMessage); // Afficher le message d'erreur
+                document.getElementById('solutionInfo4').style.display = 'block'; // Afficher l'info
+            }
+            showFinalScore();
+        });
+
+        function showFinalScore() {
+            var percentage = (score / totalQuestions) * 100; // Calculer le score en pourcentage
+            document.getElementById('finalScore').textContent = "Final Score: " + score + "/" + totalQuestions + " (" + percentage.toFixed(2) + "%)";
+            document.getElementById('finalScoreHeader').textContent = "Final Score: " + score + "/" + totalQuestions + " (" + percentage.toFixed(2) + "%)"; // Afficher le score final dans le header
+        }
+    </script>
+</body>
+</html>
